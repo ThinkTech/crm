@@ -1,0 +1,25 @@
+<module>
+  <name>dashboard</name>
+  <url>dashboard</url>
+  <type>back-end</type>
+  <actions>
+    <action url="projects" page="projects" method="showProjects" script="projects.groovy"/>
+    <action url="projects/info"  method="getProjectInfo" script="projects.groovy"/>
+    <action url="projects/bill"  method="getProjectBill" script="projects.groovy"/>
+    <action url="projects/documents/save"  method="saveDocuments" script="projects.groovy"/>
+    <action url="projects/documents/download"  method="downloadDocument" script="projects.groovy"/>
+    <action url="projects/description/update"  method="updateProjectDescription" script="projects.groovy"/>
+    <action url="projects/comments/create"  method="addComment" script="projects.groovy"/>
+    <action url="messages" page="messages" method="showMessages"/>
+    <action url="messages/info"  method="getMessageInfo"/>
+    <action url="support"  page="support" method="showTickets" script="support.groovy"/>
+    <action url="support/tickets/info"  method="getTicketInfo" script="support.groovy"/>
+    <action url="support/tickets/comment"  method="addTicketComment" script="support.groovy"/>
+    <action url="support/tickets/close"  method="closeTicket" script="support.groovy"/>
+    <action url="billing"  page="billing" method="showBills" script="billing.groovy"/>
+    <action url="billing/info"  method="getBillInfo" script="billing.groovy"/>
+    <action url="services" page="services" method="showServices"/>
+    
+  </actions>
+  
+</module>

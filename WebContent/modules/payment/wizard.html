@@ -1,0 +1,54 @@
+<div id="checkout-wizard" style="display:none;position:absolute">
+<template type="text/x-dust-template">
+		<div class="checkout-wizard-content">
+			<h4 class="wizard-title"><i class="fa fa-money" aria-hidden="true"></i> Effectuer le paiement</h4>
+			<span title="fermer" class="close">X</span>
+			<div class="checkout-wizard-steps">
+				<form action="payment/pay" method="post">
+					<section class="step" data-step-title="Paiement">
+						<fieldset>
+							<p>Choisisser le mode de paiement le plus ad&edot;quat pour r&edot;gler votre facture du {date} pour le service <b>{service}</b>.</p>
+							<div>
+								<span>
+									<label><i class="fa fa-money" aria-hidden="true"></i> Payer avec</label> <select name="method">
+										<option value="visa">Visa</option>
+										<option value="wari">Wari</option>
+								</select>
+								</span>
+							</div>
+						</fieldset>
+
+					</section>
+					<section class="step" data-step-title="Confirmation">
+						<fieldset>
+							<div class="shopping-payment">
+								<div class="payment visa-payment">
+									<h4><b>Paiement Visa</b>
+									</h4>
+									<ol>
+										<li>Cliquer sur le bouton Visa Checkout</li>
+										<li>Effectuer le paiement de votre facture</li>
+									</ol>
+									<img alt="Visa Checkout" class="v-button img-responsive" role="button"
+										 src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png"/>
+								</div>
+								<div class="payment wari-payment">
+									<h4><b>Paiement Wari</b>
+									</h4>
+									<ol>
+										<li>Entrer le code de paiment</li>
+										<li>Cliquer sur le bouton Envoyer</li>
+									</ol>
+								</div>
+								<div class="shopping-amount">
+								    <span><span>Frais : </span><span><b>{fee|s}</b></span></span> 
+									<span><span>Montant : </span><span><b class="digit">{amount}</b> F</span></span> 
+								</div>
+							</div>
+						</fieldset>
+					</section>
+				</form>
+			</div>
+		</div>
+</template>
+</div>

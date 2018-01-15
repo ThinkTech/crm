@@ -1,0 +1,27 @@
+<module>
+	<name>users</name>
+	<type>back-end</type>
+	<author>Mamadou Lamine Ba</author>
+	<authorEmail>laminba2003@yahoo.fr</authorEmail>
+	<description>module to manage users</description>
+	<creationDate>2016-09-01</creationDate>
+	<copyright>© 2016</copyright>
+	<license>GNU/GPL</license>
+	<version>1.0</version>
+	<actions>
+	    <action  url="subscribe"  method="subscribe"/>
+	    <action  url="registration/confirm" method="confirm"/>
+		<action  url="login"  method="login"/>
+		<action  url="account" page="account"/>
+		<action  url="account/lock" method="lockAccount"/>
+		<action  url="account/unlock" method="unlockAccount"/>
+		<action  url="password/change"  method="changePassword"/>
+		<action  url="password/recover"  method="recoverPassword"/>
+		<action  url="profile/update"  method="updateProfil"/>
+		<action  url="collaborators/add"  method="addCollaborator"/>
+		<action  url="collaborators/invite"  method="inviteCollaborator"/>
+		<action  url="collaborators/remove"  method="removeCollaborator"/>
+		<action  url="collaborators/info"  method="getCollaboratorInfo"/>
+		<action  url="logout"  method="logout"/>
+	</actions>
+</module>
