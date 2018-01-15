@@ -117,12 +117,12 @@
 		   <p data-status="in progress">la durée du projet est estimée à {duration} mois et dans les normes, le produit final sera livré au plus tard le {end}</p>
 		   <p data-status="finished">la durée du projet fut de {duration} mois et le produit final a été livré le {end}</p>
 		</div>
-		<a><i class="fa fa-edit" aria-hidden="true"></i></a>
+		<a class="duration-edit"><i class="fa fa-edit" aria-hidden="true"></i></a>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
 		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span></span>
 		<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>  
 		<span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
-		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a> <a><i class="fa fa-edit" aria-hidden="true"></i></a>
+		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a> <a class="progress-edit"><i class="fa fa-edit" aria-hidden="true"></i></a>
 		<div class="info-tasks">
 		   <h1><i class="fa fa-tasks" aria-hidden="true"></i> Tâches&nbsp;&nbsp;
 			  <a class="task-list-ol"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
