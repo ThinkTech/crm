@@ -105,7 +105,7 @@
 		   <p data-status="finished">la durée du projet fut de {duration} mois et le produit final a été livré le {end}</p>
 		</div>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
-		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span> <a class="pay"><i class="fa fa-money"></i></a></span>
+		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span></span>
 		<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>  
 		<span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a>
@@ -277,10 +277,6 @@
       <span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>
 	  <span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
       <span class="badge badge-info">{progression}%</span>
-      <div class="info-message">
-	   	  {description}
-	  </div>
-      <span class="question"><a><i class="fa fa-question" aria-hidden="true"></i></a></span>
       <div class="info-message">
 	   	  {info}
 	  </div>

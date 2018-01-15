@@ -36,7 +36,7 @@ class ModuleAction extends ActionSupport {
 	def login() {
 	   def user = new JsonSlurper().parse(request.inputStream) 
 	   def connection = getConnection()
-	   user = connection.firstRow("select u.* from users u, accounts a where u.email = ? and u.password = ? and u.type = 'customer' and a.activated = true and a.locked = false and a.user_id = u.id", [user.email,user.password])
+	   user = connection.firstRow("select u.* from users u, accounts a where u.email = ? and u.password = ? and u.type = 'staff' and a.activated = true and a.locked = false and a.user_id = u.id", [user.email,user.password])
 	   if(user) {
 	    user.structure = connection.firstRow("select * from structures where id = ?", [user.structure_id])
         session.setAttribute("user",user)

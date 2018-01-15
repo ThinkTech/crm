@@ -13,8 +13,7 @@ class ModuleAction extends ActionSupport {
    def showBills(){
        def connection = getConnection()
        def bills = []
-       def id = session.getAttribute("user").structure.id
-       connection.eachRow("select b.id,b.fee,b.amount,b.date,b.status,p.subject,p.service from bills b,projects p where b.project_id = p.id and p.structure_id = ?",[id], { row -> 
+       connection.eachRow("select b.id,b.fee,b.amount,b.date,b.status,p.subject,p.service from bills b,projects p where b.project_id = p.id",[], { row -> 
           def bill = new Expando()
           bill.id = row.id
           bill.fee = row.fee
@@ -25,7 +24,7 @@ class ModuleAction extends ActionSupport {
           bill.service = row.service
           bills << bill
        })
-       def unpayed = connection.firstRow("select count(*) AS num from bills b, projects p where b.project_id = p.id and b.status = 'stand by' and p.structure_id = "+id).num
+       def unpayed = connection.firstRow("select count(*) AS num from bills b, projects p where b.project_id = p.id and b.status = 'stand by'").num
        connection.close() 
        request.setAttribute("bills",bills)  
        request.setAttribute("total",bills.size())
