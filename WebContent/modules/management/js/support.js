@@ -11,6 +11,10 @@ $(document).ready(function(){
 			page.details.closeTicket($(this).attr("href"),ticket);
 			return false;
 		});
+		$(".process-ticket",container).click(function(event){
+			page.details.processTicket($(this).attr("href"),ticket);
+			return false;
+		});
 	};
 	$(".window > div > form").submit(function(event){
 		    page.details.addTicket($(this));
@@ -129,6 +133,32 @@ $(document).ready(function(){
 						  const h3 = $("h3.unsolved");
 						  const count = parseInt(h3.text());
 						  h3.html(count-1);
+					  }
+				  },
+				  error : function(){
+					  page.release();
+					  alert("erreur lors de la connexion au serveur");
+				  },
+				  dataType: "json"
+			});
+		});
+	};
+	
+	page.details.processTicket = function(url,ticket){
+		confirm("&ecirc;tes vous s&ucirc;r de vouloir traiter ce ticket?",function(){
+			page.wait();
+			$.ajax({
+				  type: "POST",
+				  url: url,
+				  data: JSON.stringify(ticket),
+				  contentType : "application/json",
+				  success: function(response) {
+					  if(response.status){
+						  page.release();
+						  page.details.hide();
+						  const tr = $(".table tr[id="+ticket.id+"]");
+						  $("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
+						  $(".badge",tr).html("5%");
 					  }
 				  },
 				  error : function(){

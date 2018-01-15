@@ -87,34 +87,6 @@
       </div>
      <div class="clearfix"> </div>
 </div>
-<div class="window form">
-  <div>
-   <span title="fermer" class="close">X</span>
-   <h1><i class="fa fa-question-circle-o" aria-hidden="true"></i>Nouveau Ticket</h1>
-   <form action="${url}/support/tickets/create">
-	<fieldset>
-	    <span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span>
-		<select name="service">
-		  <option value="web dev">web dev</option>
-		</select>
-	    <span class="text-right"><i class="fa fa-file-code-o" aria-hidden="true"></i> Objet </span>
-	     <input name="subject" placeholder="votre objet" maxlength="100" type="text" required>
-		<span class="text-right"><i class="fa fa-product-hunt" aria-hidden="true"></i> Priorité </span>
-		<select name="priority">
-		  <option value="normal">normale</option>
-		  <option value="medium">moyenne</option>
-		  <option value="high">élevée</option>
-		</select>
-	   <span class="text-right full"><i class="fa fa-file-text-o" aria-hidden="true"></i> Description du probléme</span>
-		<textarea name="message"></textarea>
-	</fieldset>
-	<div class="submit">
-		 <input type="submit" value="Créér">
-		 <input type="button" value="Annuler">
-	</div>
-	</form>
-	</div>
-</div>
 <div class="window details">
     <div>
 		<span title="fermer" class="close">X</span>
@@ -130,8 +102,8 @@
 			<span data-status="medium" style="display:none">moyenne</span>
 			<span data-status="high" style="display:none">élevée</span>
 			<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
-			<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">équipe technique</span> <a href="${url}/support/tickets/close" class="close-ticket"><i class="fa fa-window-close"></i></a></span>
-			<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>  
+			<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">équipe technique</span> <a href="${url}/support/tickets/close" class="close-ticket"><i class="fa fa-window-close"></i></a> <a href="${url}/support/tickets/process" class="process-ticket"><i class="fa fa-play-circle-o"></i></a></span>
+			<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span> <a href="${url}/support/tickets/close" class="close-ticket"><i class="fa fa-window-close"></i></a></span>  
 			<span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
 			<span class="text-right" data-status="finished" style="display:none"><i class="fa fa-calendar" aria-hidden="true"></i> Date Fermeture </span> <span data-status="finished" style="display:none">{closedOn}</span>
 			<span class="text-right" data-status="finished" style="display:none"><i class="fa fa-user" aria-hidden="true"></i> Fermé Par </span> <span data-status="finished" style="display:none">{closedBy}</span>

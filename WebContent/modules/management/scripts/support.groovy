@@ -69,6 +69,16 @@ class ModuleAction extends ActionSupport {
 	   response.writer.write(json([status: 1]))
 	}
 	
+	def processTicket() {
+	   def ticket = new JsonSlurper().parse(request.inputStream)
+	   Thread.start {
+	      def connection = getConnection()
+	      connection.executeUpdate "update tickets set progression = 5, status = 'in progress' where id = ?", [ticket.id] 
+	      connection.close()
+	   }
+	   response.writer.write(json([status : 1]))
+	}
+	
 	def closeTicket() {
 	   def ticket = new JsonSlurper().parse(request.inputStream)
 	   def user_id = session.getAttribute("user").id 
