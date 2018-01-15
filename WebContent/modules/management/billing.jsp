@@ -47,6 +47,7 @@
                                       <th>Frais</th>
                                       <th>Projet</th>
                                       <th>Service</th>
+                                      <th>Client</th>
                                       <th>Date</th>  
                                       <th>Montant</th>                                                           
                                       <th>Paiement</th>
@@ -59,6 +60,7 @@
 	                                  <td>${bill.properties.fee}</td>
 	                                  <td>${bill.properties.project}</td>
 	                                  <td><i class="fa fa-ticket" aria-hidden="true"></i> ${bill.properties.service}</td>
+	                                  <td>${bill.properties.customer}</td>
                                   	  <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>
                                   	  <td><span class="digit">${bill.properties.amount}</span> F</td>                                        
 	                                  <td><span class="label ${bill.properties.status=='in progress' ? 'label-danger' : '' } ${bill.properties.status=='finished' ? 'label-success' : '' } ${bill.properties.status=='stand by' ? 'label-info' : '' }">
@@ -85,6 +87,7 @@
 			<span class="text-right"><i class="fa fa-money" aria-hidden="true"></i> Frais </span> <span>{fee|s}</span>
 			<span class="text-right"><i class="fa fa-briefcase" aria-hidden="true"></i> Projet </span> <span>{subject}</span>
 			<span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
+			<span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Customer </span> <span>{customer}</span>
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date </span> <span>{date}</span>
 			<span class="text-right"><i class="fa fa-money" aria-hidden="true"></i> Montant </span> <span><b class="digit">{amount}</b> F</span>
 			<div class="payment-info">

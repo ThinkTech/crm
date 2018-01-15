@@ -13,7 +13,7 @@ class ModuleAction extends ActionSupport {
    def showBills(){
        def connection = getConnection()
        def bills = []
-       connection.eachRow("select b.id,b.fee,b.amount,b.date,b.status,p.subject,p.service from bills b,projects p where b.project_id = p.id",[], { row -> 
+       connection.eachRow("select b.id,b.fee,b.amount,b.date,b.status,p.subject,p.service,u.name from bills b,projects p,users u where b.project_id = p.id and u.id = p.user_id",[], { row -> 
           def bill = new Expando()
           bill.id = row.id
           bill.fee = row.fee
@@ -22,6 +22,7 @@ class ModuleAction extends ActionSupport {
           bill.status = row.status
           bill.project = row.subject
           bill.service = row.service
+          bill.customer = row.name
           bills << bill
        })
        def unpayed = connection.firstRow("select count(*) AS num from bills b, projects p where b.project_id = p.id and b.status = 'stand by'").num
@@ -35,7 +36,7 @@ class ModuleAction extends ActionSupport {
     def getBillInfo() {
 	   def id = getParameter("id")
 	   def connection = getConnection()
-	   def bill = connection.firstRow("select b.*,p.subject,p.service from bills b, projects p where b.project_id = p.id and b.id = ?", [id])
+	   def bill = connection.firstRow("select b.*,p.subject,p.service, u.name as customer from bills b, projects p, users u where b.project_id = p.id and u.id = p.user_id and b.id = ?", [id])
 	   bill.date = new java.text.SimpleDateFormat("dd/MM/yyyy").format(bill.date)
 	   if(bill.paidOn) {
 	     bill.paidOn = new java.text.SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(bill.paidOn)
