@@ -99,7 +99,7 @@
 		<span data-status="normal" style="display:none">normale</span>
 		<span data-status="medium" style="display:none">moyenne</span>
 		<span data-status="high" style="display:none">élevée</span>
-		<span class="text-right"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span> <a class="duration"><i class="fa fa-info" aria-hidden="true"></i></a>
+		<span class="text-right"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span> <a class="duration"><i class="fa fa-info" aria-hidden="true"></i></a> <a><i class="fa fa-edit" aria-hidden="true"></i></a>
 		<div class="info-message">
 		   <p data-status="stand by">la durée du projet est estimée à {duration} mois dans l'attente du paiement de la caution que vous devez effectuer</p>
 		   <p data-status="in progress">la durée du projet est estimée à {duration} mois et dans les normes, le produit final sera livré au plus tard le {end}</p>
@@ -109,7 +109,7 @@
 		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span></span>
 		<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>  
 		<span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
-		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a>
+		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a> <a><i class="fa fa-edit" aria-hidden="true"></i></a>
 		<div class="info-tasks">
 		   <h1><i class="fa fa-tasks" aria-hidden="true"></i> Tâches&nbsp;&nbsp;
 			  <a class="task-list-ol"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
@@ -282,6 +282,10 @@
 	   	  {info}
 	  </div>
       <span><a><i class="fa fa-info" aria-hidden="true"></i></a></span>
+      <div class="info-message">
+	   	  {info}
+	  </div>
+      <span><a><i class="fa fa-edit" aria-hidden="true"></i></a></span>
     </li>
 	{/.}  
   </template>	
