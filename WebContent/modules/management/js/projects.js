@@ -6,6 +6,8 @@ $(document).ready(function(){
 			if(project.progression >= 95) {
 				$(".quality .imgcircle,.quality .line",container).addClass("active");
 			}
+		}else{
+			$(".duration-edit,.progress-edit",container).hide();
 		}
 		$("a.document-list-ol",container).click(function(){
 			$(".document-list ol",container).show();
