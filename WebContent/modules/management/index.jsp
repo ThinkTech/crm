@@ -309,6 +309,7 @@
 					<p><span>1</span> Base de données</p>  
 					<p>adresses emails</p>
 					<p>Référencement</p>
+					<p>Sauvegarde</p>
 					<p>Mises à jour</p>
 					<p>Formation</p>
 					<p class="text"><span>24/7</span> Assistance</p>
@@ -334,6 +335,7 @@
 				<p><span>1</span> Base de données</p>  
 				<p>adresses emails</p>
 				<p>Référencement</p>
+				<p>Sauvegarde</p>
 				<p>Mises à jour</p>
 				<p>Formation</p>
 				<p class="text"><span>24/7</span> Assistance</p>
@@ -357,7 +359,8 @@
 				<p><span>1 </span> Certificat</p>
 				<p><span>1</span> Base de données</p>
 				<p>adresses emails</p>
-				<p>Référencement</p>							
+				<p>Référencement</p>
+				<p>Sauvegarde</p>							
 				<p>Mises à jour</p>
 				<p>Formation</p>
 				<p class="text"><span>24/7</span> Assistance</p>
@@ -382,7 +385,8 @@
 				<p><span>1 </span> Certificat</p>
 				<p><span>1</span> Base de données</p>
 				<p>adresses emails</p>
-				<p>Référencement</p>							
+				<p>Référencement</p>
+				<p>Sauvegarde</p>							
 				<p>Mises à jour</p>
 				<p>Formation</p>
 				<p class="text"><span>24/7</span> Assistance</p>
