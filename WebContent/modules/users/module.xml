@@ -9,8 +9,6 @@
 	<license>GNU/GPL</license>
 	<version>1.0</version>
 	<actions>
-	    <action  url="subscribe"  method="subscribe"/>
-	    <action  url="registration/confirm" method="confirm"/>
 		<action  url="login"  method="login"/>
 		<action  url="account" page="account"/>
 		<action  url="account/lock" method="lockAccount"/>
