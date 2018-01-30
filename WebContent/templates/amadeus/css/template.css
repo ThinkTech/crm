@@ -88,8 +88,6 @@ html {
 	background-image: url(templates/amadeus/images/background.jpg);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
 	background-size: cover;
 }
 
@@ -104,15 +102,15 @@ body {
 .header-w3l h1 span {
 	color: #05d2ff;
 	display: inline-block;
-	border: 8px solid;
+	border: 11px solid;
 	padding: 0 .2em;
 	text-shadow: none;
 }
 
 .header-w3l h1 {
 	font-size: 4.75em;
-	color: #212121;
-	text-shadow: 1px 1px #ffffff;
+	color: #000000;
+	text-shadow: 1px 1px #000000;
 	font-weight: bold;
 	letter-spacing: 4px;
 	text-transform: uppercase;
@@ -134,9 +132,6 @@ body {
 	background: #05d2ff;
 	border: 1px solid #999;
 	background-size: cover;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
 }
 
 .wthree-pro h2 {
@@ -316,7 +311,7 @@ a.w3-pass {
 .footer p {
 	font-size: 12px;
 	font-weight: bold;
-	color: #212121;
+	color: #000000;
 	letter-spacing: 2px;
 	font-family: 'Tahoma', sans-serif;
 }
@@ -599,7 +594,7 @@ a.w3-pass {
 		margin-bottom : 0px;
 	}
 	.main-content-agile {
-		width: 89%;
+		width: 92.2%;
 		margin-top: -20px;
 	}
 	span.icon1, span.icon2 {
@@ -640,7 +635,6 @@ a.w3-pass {
 	}
 	.wthree-pro h2 {
 		font-size: 1.05em;
-		padding: 0.8em 0;
 	}
 	.sub-main-w3 input[type="email"], .sub-main-w3 input[type="password"] {
 		width: 87%;

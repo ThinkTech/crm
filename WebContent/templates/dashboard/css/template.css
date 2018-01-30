@@ -60,6 +60,7 @@ div.empty span{
 
 .table tr td:first-of-type {
 	min-width : 30px;
+	vertical-align: top;
 }
 
 .table tr {
@@ -70,6 +71,11 @@ input, select, textarea {
 	border : 1px solid #05d2ff;
 	background: #ffffff;
 	font-size : 14px;
+}
+
+select {
+	text-indent: 0px;
+    padding-left: 0;
 }
 
 input:focus, select:focus, textarea:focus {
@@ -133,7 +139,7 @@ legend a {
 /*--header main start here--*/
 td{
 	font-size : 13px;
-	color : #212121;
+	color : #000000;
 }
 
 td i {
@@ -182,7 +188,7 @@ td i.fa-user {
 }
 
 .badge {
-	background : #212121;
+	background : #000000;
 }
 
 .badge, .label {
@@ -216,10 +222,14 @@ td i.fa-user {
     font-size: 12px;
 }
 
+.pager {
+	text-align : center;
+}
+
 .page-number {
 	padding-top: 1px;
     background: #ffe;
-    color: #212121;
+    color: #000000;
     height: 21px;
     width: 21px;
     display: inline-block;
@@ -229,10 +239,17 @@ td i.fa-user {
     cursor: pointer;
     font-family : Tahoma;
     font-weight : 500;
+    text-align : center;
 }
 
 .page-number.active {
 	background: #05d2ff;
+}
+
+fieldset {
+	border: none;
+	padding: 0;
+    margin: 0;
 }
 
 fieldset > span {
@@ -250,10 +267,15 @@ fieldset > span {
 	box-shadow : 0 0px 0px 0 rgba(0, 0, 0, 0.05), 0 0px 8px 0 rgba(0, 0, 0, 0.04);
 }
 
+.text-center {
+	text-align : center;
+}
+
 fieldset > span.text-right {
 	width: 40%;
     background: #ffe;
     padding-right: 6px;
+    text-align : right;
 }
 
 fieldset > span.text-right i{
@@ -713,7 +735,7 @@ ul.dropdown-menu.drp-mnu li {
 }
 
 .info-update-right i.fa-question-circle-o {
-	color : #212121;
+	color : #000000;
 }
 
 .info-update-left,.info-update-right {
@@ -900,18 +922,6 @@ td a.pay i {
 .user-name {
     margin-right: 22px;
 }
-.billing th:nth-child(6), .billing td:nth-child(6) {
-    display: block;
-}
-.projects th:nth-child(5), .projects td:nth-child(5) {
-    display: block;
-}
-.projects th:nth-child(5),.support th:nth-child(6),.billing th:nth-child(6) {
-    font-size : 0px;
-}
-.support th:nth-child(6), .support td:nth-child(6) {
-    display: block;
-}
 .table > thead > tr > th, .table > tbody > tr > td {
     font-size: 11.5px;
     overflow : hidden;
@@ -926,6 +936,8 @@ td a.pay i {
  }
 .inner-block {
     padding-top: 30px;
+    padding-right : 0px;
+    padding-left: 18px;
 }
 .left-content {
     width: 80%;
@@ -988,6 +1000,9 @@ li.dropdown.head-dpdn a.dropdown-toggle {
     float: right;
     width: 49%;
 }
+
+.text-right .fa {display: none;}
+
 }
 @media (max-width:768px){
 
@@ -1141,7 +1156,7 @@ li.dropdown.head-dpdn a.dropdown-toggle {
 }
 .badge, .label {
     display: inline-block;
-    top: 1px;
+    top: 0px;
     position: relative;
 }
 .table .badge, .table .label {
@@ -1266,5 +1281,8 @@ ul.dropdown-menu {
 }
 .profile_details ul li ul.dropdown-menu.drp-mnu {
     min-width: 160px;
+}
+.inner-block {
+    padding-left: 13px;
 }
 }

@@ -1,11 +1,3 @@
-import org.metamorphosis.core.ActionSupport
-import org.metamorphosis.core.Mail
-import org.metamorphosis.core.MailConfig
-import org.metamorphosis.core.MailSender
-import groovy.text.markup.TemplateConfiguration
-import groovy.text.markup.MarkupTemplateEngine
-import static groovy.json.JsonOutput.toJson as json
-import groovy.json.JsonSlurper
 import groovy.sql.Sql
 
 class ModuleAction extends ActionSupport {
@@ -54,7 +46,7 @@ class ModuleAction extends ActionSupport {
           ticket.comments << comment
        })
 	   connection.close()
-	   response.writer.write(json([entity : ticket]))
+	   json([entity : ticket])
 	}
 	
 	def addTicketComment() {
@@ -66,7 +58,7 @@ class ModuleAction extends ActionSupport {
          connection.executeInsert 'insert into tickets_comments(message,ticket_id,createdBy) values (?,?,?)', params
 	     connection.close()
 	   } 
-	   response.writer.write(json([status: 1]))
+	   json([status: 1])
 	}
 	
 	def processTicket() {
@@ -76,7 +68,7 @@ class ModuleAction extends ActionSupport {
 	      connection.executeUpdate "update tickets set progression = 5, status = 'in progress' where id = ?", [ticket.id] 
 	      connection.close()
 	   }
-	   response.writer.write(json([status : 1]))
+	   json([status : 1])
 	}
 	
 	def closeTicket() {
@@ -87,11 +79,11 @@ class ModuleAction extends ActionSupport {
 	      connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where id = ?", [user_id,ticket.id] 
 	      connection.close()
 	   }
-	   response.writer.write(json([status : 1]))
+	   json([status : 1])
 	}
 	
-	def getConnection()  {
-		new Sql(context.getAttribute("datasource"))
+	def getConnection() {
+		new Sql(dataSource)
 	}
 	
 }

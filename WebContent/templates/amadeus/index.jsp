@@ -10,16 +10,14 @@
 <meta property="og:type" content="website">
 <meta name="description" content="Bienvenue sur le crm de ThinkTech"> 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@thinktech">
-<meta name="twitter:domain" property="og:site_name" content="crm.thinktech.sn">
-<meta name="twitter:url" property="og:url" content="${baseUrl}">
-<meta name="twitter:title" property="og:title" content="ThinkTech - CRM"> 
-<meta name="twitter:description" property="og:description" content="Bienvenue sur le portail de CRM"> 
-<meta name="twitter:image" property="og:image" content="${baseUrl}/images/banner.jpeg">
+ <meta name="twitter:site" content="@thinktech">
+ <meta name="twitter:domain" property="og:site_name" content="crm.thinktech.sn">
+ <meta name="twitter:url" property="og:url" content="${baseUrl}">
+ <meta name="twitter:title" property="og:title" content="ThinkTech - CRM"> 
+ <meta name="twitter:description" property="og:description" content="Bienvenue sur le portail de CRM"> 
+ <meta name="twitter:image" property="og:image" content="${baseUrl}/images/banner.jpeg">
 <style type="text/css">
  <%@include file="/css/metamorphosis.css"%>
-</style>
-<style type="text/css">
  <%@include file="/templates/amadeus/css/template.css"%>
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
@@ -66,11 +64,7 @@
 </div>
 <script>
 <%@include file="/js/jquery-3.1.1.min.js"%>
-</script>
-<script>
 <%@include file="/js/metamorphosis.js"%>
-</script>
-<script>
 <%@include file="/templates/amadeus/js/template.js"%>
 </script>
 </body>

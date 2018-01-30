@@ -181,7 +181,7 @@ jQuery(document).ready(function( $ ) {
 	});
 	
 	$(".window form").submit(function(event){
-		const window = $(".window").hide();
+		const window = $(".window.form").hide();
 		const form = $(this);
 		const user = {};
 		user.email = form.find("input[name=email]").val().trim();
@@ -232,7 +232,7 @@ jQuery(document).ready(function( $ ) {
 				  url: url,
 				  success: function(response) {
 					  if(response.id){
-						  alert("votre collaborateur a &edot;t&edot; bien supprim&edot;");
+						  alert("ce collaborateur a &edot;t&edot; bien supprim&edot;");
 						  $(".table tr[id="+response.id+"]").remove();
 					  }
 				  },

@@ -1,11 +1,3 @@
-import org.metamorphosis.core.ActionSupport
-import org.metamorphosis.core.Mail
-import org.metamorphosis.core.MailConfig
-import org.metamorphosis.core.MailSender
-import groovy.text.markup.TemplateConfiguration
-import groovy.text.markup.MarkupTemplateEngine
-import static groovy.json.JsonOutput.toJson as json
-import groovy.json.JsonSlurper
 import groovy.sql.Sql
 
 
@@ -64,7 +56,7 @@ class ModuleAction extends ActionSupport {
 	   message.date = new java.text.SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(message.date)
 	   connection.executeUpdate 'update messages set unread = false where id = ?', [id] 
 	   connection.close()
-	   response.writer.write(json([entity : message]))
+	   json([entity : message])
 	}
     
 	def showServices(){
@@ -77,8 +69,8 @@ class ModuleAction extends ActionSupport {
        SUCCESS
     }
 			
-	def getConnection()  {
-		new Sql(context.getAttribute("datasource"))
+	def getConnection() {
+		new Sql(dataSource)
 	}
 	
 }

@@ -1,11 +1,3 @@
-import org.metamorphosis.core.ActionSupport
-import org.metamorphosis.core.Mail
-import org.metamorphosis.core.MailConfig
-import org.metamorphosis.core.MailSender
-import groovy.text.markup.TemplateConfiguration
-import groovy.text.markup.MarkupTemplateEngine
-import static groovy.json.JsonOutput.toJson as json
-import groovy.json.JsonSlurper
 import app.FileManager
 import groovy.sql.Sql
 
@@ -77,7 +69,7 @@ class ModuleAction extends ActionSupport {
 	  	 project.bill.date = new java.text.SimpleDateFormat("dd/MM/yyyy").format(project.bill.date)
        }
 	   connection.close() 
-	   response.writer.write(json([entity : project]))
+	   json([entity : project])
 	}
 	
 	def getProjectBill() {
@@ -85,7 +77,7 @@ class ModuleAction extends ActionSupport {
 	   def connection = getConnection()
        def bill = connection.firstRow("select b.*,p.service from bills b, projects p where b.project_id = p.id and p.id = ?", [id])
 	   bill.date = new java.text.SimpleDateFormat("dd/MM/yyyy").format(bill.date)
-	   response.writer.write(json([entity : bill]))
+	   json([entity : bill])
 	   connection.close()
 	}
 	
@@ -98,7 +90,7 @@ class ModuleAction extends ActionSupport {
          connection.executeInsert 'insert into projects_comments(message,project_id,createdBy) values (?,?,?)', params
 	     connection.close()
 	   }
-	   response.writer.write(json([status: 1]))
+	   json([status: 1])
 	}
 	
 	def saveDocuments() {
@@ -113,7 +105,7 @@ class ModuleAction extends ActionSupport {
          }
 	     connection.close()
 	   }
-	   response.writer.write(json([status: 1]))
+	   json([status: 1])
 	}
 	
 	def downloadDocument(){
@@ -133,11 +125,11 @@ class ModuleAction extends ActionSupport {
 	     connection.executeUpdate "update projects set description = ? where id = ?", [project.description,project.id] 
 	     connection.close()
 	   }
-	   response.writer.write(json([status: 1]))
+	   json([status: 1])
 	}
 	
-	def getConnection()  {
-		new Sql(context.getAttribute("datasource"))
+	def getConnection() {
+		new Sql(dataSource)
 	}
 	
 }

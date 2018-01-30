@@ -6,8 +6,8 @@ $(document).ready(function(){
 			if(project.progression >= 95) {
 				$(".quality .imgcircle,.quality .line",container).addClass("active");
 			}
-		}else{
-			$(".duration-edit,.progress-edit",container).hide();
+		}else if(project.status == "stand by") {
+			$(".plan-edit,.priority-edit",container).show();
 		}
 		$("a.document-list-ol",container).click(function(){
 			$(".document-list ol",container).show();
@@ -38,6 +38,13 @@ $(document).ready(function(){
 		if(project.comments.length) page.details.showComments(project.comments);
 		if(project.documents.length) page.details.showDocuments(project.documents);
 		if(project.tasks) {
+			const showMessage = function(link){
+				 $(".info-message").hide();
+				 const info = link.parent().prev();
+				 var left = event.pageX-info.width()-50;
+				 left = left < 0 ? 2 : left;
+				 info.css({top : event.pageY-20,left : left}).show();
+			};
 			const ol = $(".info-tasks ol",container);
 			page.render(ol,project.tasks,true,function(){
 				for(var i = 0; i<project.tasks.length;i++){
@@ -45,12 +52,14 @@ $(document).ready(function(){
 						const li = $('li[data-name="'+project.tasks[i].name+'"]',ol);
 						$("span[data-status='"+project.tasks[i].status+"']",li).show();
 						$("a",li).click(function(event){
-							 $(".info-message").hide();
-							 const info = $(this).parent().prev();
-							 var left = event.pageX-info.width()-50;
-							 left = left < 0 ? 5 : left;
-							 info.css({top : event.pageY-20,left : left}).toggle();
+							 showMessage($(this));
 							 return false;
+						});
+						$("a",li).on("mouseover",function(event){
+							 showMessage($(this));
+						});
+						$("a",li).on("mouseout",function(event){
+							$(".info-message").hide();
 						});
 					}
 				}
@@ -87,16 +96,46 @@ $(document).ready(function(){
 	    	$("a.pay",container).hide().prev().hide().prev().hide();
 	    }
 		$("a.plan",container).click(function(event) {
-			const plan = $(this).data("plan");
 			const plans = $(".plans");
 			$(".pricing",plans).hide();
 		    const top = event.pageY;
-		    plans.css("top",top-50);
-			$("div[data-plan='"+plan+"']",plans).show();
+		    if(window.innerWidth>=1024){
+		    	plans.css("top",top-50);	
+		    }else {
+		    	plans.css("top","41px");
+		    }
+			$("div[data-plan='"+project.plan+"']",plans).show();
 			plans.toggle();
 			return false;
 		});
 		$(".plans").hide();
+		$(".priority-edit",container).click(function(event){
+			$(".info-message").hide();
+			 const div = $(this).prev();
+			 var left = event.pageX-div.width()-50;
+			 if(left<0) left = 10;
+			 div.css({top : event.pageY-20,left : left}).toggle();
+			 return false;
+		});
+		$(".priority-edition a",container).click(function(event){
+			const url = $(this).attr("href");
+			project.priority = $(".priority-edition select",container).val();
+			$.ajax({
+				  type: "POST",
+				  url: url,
+				  data: JSON.stringify(project),
+				  contentType : "application/json",
+				  success: function(response) {
+					  if(response.status){
+						  $(".priority-edition",container).hide();
+						  $(".status",container).hide();
+						  $("[data-status='"+project.priority+"']",container).show();
+					  }
+				  },
+				  dataType: "json"
+			});
+			return false;
+		});
 		$("a.tasks",container).click(function(event) {
 			$(".info-tasks",container).toggle();
 		});
@@ -132,6 +171,9 @@ $(document).ready(function(){
 				}
 			});
 			if(found) alert("un fichier portant ce nom existe d&edot;ja");
+		});
+		$(".info-message").click(function(event){
+			return false;
 		});
 	};
 	$(".window a.read-terms").click(function(event) {
@@ -255,13 +297,29 @@ $(document).ready(function(){
 		 const list = $(".documents .document-list");
 		 $(".document-list-ol,.document-list-tree,.document-list-icons").show();
 		 list.find("h6").hide();
-		 page.render($("ol",list).addClass("not-empty"),documents,true,function(div){
-		    $("span a",div).click(function(event){
-		    	$(".info-message").hide();
-				 const info = $(this).parent().prev();
-				 info.css({top : event.pageY-20,left : event.pageX-info.width()-50}).toggle();
-				 return false;
+		 const showMessage = function(link){
+			 $(".info-message").hide();
+			 const info = link.parent().prev();
+			 info.css({top : event.pageY-20,left : event.pageX-info.width()-50}).toggle(); 
+		 };
+		 page.render($("ol",list).addClass("not-empty"),documents,true,function(li){
+		    $("> span > a",li).click(function(event){
+		    	showMessage($(this));
+		    	return false;
 			});
+		    $("> span > a",li).on("mouseover",function(event){
+		    	 showMessage($(this));
+			});
+		    $("> span > a",li).on("mouseout",function(event){
+		    	$(".info-message").hide();
+			});
+		    $("> a",li).click(function(event){
+				 const href = $(this).attr("href");
+				 confirm("&ecirc;tes vous s&ucirc;r de vouloir t&edot;l&edot;charger ce document?",function(){
+					 location.href = href;
+				 });
+				 return false;
+			 });
 		 });
 		 if(callback) callback();
 	};
@@ -275,7 +333,14 @@ $(document).ready(function(){
 		 for(var i = 0; i <documents.length;i++){
 			 var name = documents[i].name.toLowerCase();
 			 const li = $("<li><a class='tree_label'/></li>");
-			 $("a",li).html('<i class="fa fa-file" aria-hidden="true"></i> '+name).attr("href",page.details.url+"/projects/documents/download?name="+name+"&project_id="+id);
+			 const link = $("a",li).html('<i class="fa fa-file" aria-hidden="true"></i> '+name).attr("href",page.details.url+"/projects/documents/download?name="+name+"&project_id="+id);
+			 link.click(function(event){
+				 const href = $(this).attr("href");
+				 confirm("&ecirc;tes vous s&ucirc;r de vouloir t&edot;l&edot;charger ce document?",function(){
+					 location.href = href;
+				 });
+				 return false;
+			 });
 			 if(name.endsWith(".png") || name.endsWith(".gif") || name.endsWith(".jpeg") || name.endsWith(".jpg")){
 				 images.append(li);
 			 }else {
@@ -297,6 +362,13 @@ $(document).ready(function(){
 			 const img = $("<img/>");
 			 div.append(img);
 			 div.append($("<a/>").html(name).attr("href",page.details.url+"/projects/documents/download?name="+name+"&project_id="+id));
+			 $("a",div).click(function(event){
+				 const href = $(this).attr("href");
+				 confirm("&ecirc;tes vous s&ucirc;r de vouloir t&edot;l&edot;charger ce document?",function(){
+					 location.href = href;
+				 });
+				 return false;
+			 });
 			 icons.append(div);
 			 if(name.endsWith(".png") || name.endsWith(".gif") || name.endsWith(".jpeg") || name.endsWith(".jpg")){
 				 img.attr("src",page.details.url+"/projects/documents/download?name="+name+"&project_id="+id);
@@ -309,7 +381,7 @@ $(document).ready(function(){
 				 });
 				 
 			 }else {
-				img.attr("src",url+"/images/document.png");
+				img.attr("src",url+"images/document.png");
 			 }
 		 }
 		 icons.show();
@@ -446,11 +518,22 @@ $(document).ready(function(){
 	page.details.showComments = function(comments){
 		const list = $(".comments .message-list");
 		list.find("h6").hide();
+		const showMessage = function(link){
+			$(".info-message").hide();
+			 const info = link.parent().prev();
+			 info.css({top : event.pageY-20,left : event.pageX-info.width()-50}).toggle();
+		};
 		page.render($("> div",list), comments, true, function(div) {
 			$("a",div).click(function(event){
+				 showMessage($(this));
+				 return false;
+			});
+			$("a",div).on("mouseover",function(event){
+				 showMessage($(this));
+				 return false;
+			});
+			$("a",div).on("mouseout",function(event){
 				$(".info-message").hide();
-				 const info = $(this).parent().prev();
-				 info.css({top : event.pageY-20,left : event.pageX-info.width()-50}).toggle();
 				 return false;
 			});
 	   });

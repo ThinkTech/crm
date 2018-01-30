@@ -93,24 +93,32 @@
 	<fieldset>
 	    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>{name}</span>
 	    <span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
-		<span class="text-right"><i class="fa fa-code" aria-hidden="true"></i> Plan </span> <span>{plan}</span> <a data-plan="{plan}" class="plan"><i class="fa fa-info" aria-hidden="true"></i></a>
+		<span class="text-right"><i class="fa fa-code" aria-hidden="true"></i> Plan </span> <span>{plan}</span> <a class="plan"><i class="fa fa-info" aria-hidden="true"></i></a> 
 		<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{date}</span>
 		<span class="text-right"><i class="fa fa-product-hunt" aria-hidden="true"></i> Priorité </span> 
-		<span data-status="normal" style="display:none">normale</span>
-		<span data-status="medium" style="display:none">moyenne</span>
-		<span data-status="high" style="display:none">élevée</span>
-		<span class="text-right"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span> <a class="duration"><i class="fa fa-info" aria-hidden="true"></i></a> 
+		<span data-status="normal" class="status" style="display:none">normale</span>
+		<span data-status="medium" class="status" style="display:none">moyenne</span>
+		<span data-status="high" class="status" style="display:none">élevée</span> 
+		<div class="info-message entity-edition priority-edition">
+		   <select>
+			  <option value="normal">normale</option>
+		      <option value="medium">moyenne</option>
+		      <option value="high">élevée</option>
+		    </select>
+			<a href="${url}/projects/priority/update"><i class="fa fa-check" aria-hidden="true"></i></a>
+		</div>
+		<a class="priority-edit" style="display:none"><i class="fa fa-edit" aria-hidden="true"></i></a>
+		<span class="text-right"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span> <a class="duration"><i class="fa fa-info" aria-hidden="true"></i></a>
 		<div class="info-message">
-		   <p data-status="stand by">la durée du projet est estimée à {duration} mois dans l'attente du paiement de la caution que vous devez effectuer</p>
-		   <p data-status="in progress">la durée du projet est estimée à {duration} mois et dans les normes, le produit final sera livré au plus tard le {end}</p>
+		   <p data-status="stand by">la durée maximale du projet est estimée à {duration} mois dans l'attente du paiement de la caution que vous devez effectuer</p>
+		   <p data-status="in progress">la durée maximale du projet est estimée à {duration} mois et dans les normes, le produit final sera livré au plus tard le {end}</p>
 		   <p data-status="finished">la durée du projet fut de {duration} mois et le produit final a été livré le {end}</p>
 		</div>
-		<a class="duration-edit"><i class="fa fa-edit" aria-hidden="true"></i></a>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
-		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span></span>
+		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span> <a class="pay"><i class="fa fa-money"></i></a></span>
 		<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>  
 		<span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
-		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a> <a class="progress-edit"><i class="fa fa-edit" aria-hidden="true"></i></a>
+		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a>
 		<div class="info-tasks">
 		   <h1><i class="fa fa-tasks" aria-hidden="true"></i> Tâches&nbsp;&nbsp;
 			  <a class="task-list-ol"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
@@ -280,13 +288,13 @@
 	  <span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
       <span class="badge badge-info">{progression}%</span>
       <div class="info-message">
-	   	  {info}
+	   	  {description}
+	  </div>
+      <span class="question"><a><i class="fa fa-question" aria-hidden="true"></i></a></span>
+      <div class="info-message">
+	   	  {info|s}
 	  </div>
       <span><a><i class="fa fa-info" aria-hidden="true"></i></a></span>
-      <div class="info-message">
-	   	  {info}
-	  </div>
-      <span><a><i class="fa fa-edit" aria-hidden="true"></i></a></span>
     </li>
 	{/.}  
   </template>	
@@ -295,7 +303,7 @@
       <div data-plan="plan business" class="pricing business" style="display:none">
 			<div class="pricing-top green-top">
 				<h3>Business</h3>
-				<p>20 000 F/mois</p>
+				<p>25 000 F/mois</p>
 			</div>
 			<div class="pricing-bottom">
 				<div class="pricing-bottom-top">
@@ -321,7 +329,7 @@
     <div data-plan="plan corporate" class="pricing corporate" style="display:none">
 		<div class="pricing-top blue-top">
 			<h3>Corporate</h3>
-			<p>15 000 F/mois</p>
+			<p>20 000 F/mois</p>
 		</div>
 		<div class="pricing-bottom">
 			<div class="pricing-bottom-top">
@@ -346,7 +354,7 @@
 	<div data-plan="plan personal" class="pricing personal" style="display:none">
 		<div class="pricing-top">
 			<h3>Personal</h3>
-			<p>10 000 F/mois</p>
+			<p>15 000 F/mois</p>
 		</div>
 		<div class="pricing-bottom">
 			<div class="pricing-bottom-top">
@@ -385,8 +393,8 @@
 				<p><span>1 </span> Certificat</p>
 				<p><span>1</span> Base de données</p>
 				<p>adresses emails</p>
-				<p>Référencement</p>
-				<p>Sauvegarde</p>							
+				<p>Référencement</p>	
+				<p>Sauvegarde</p>						
 				<p>Mises à jour</p>
 				<p>Formation</p>
 				<p class="text"><span>24/7</span> Assistance</p>

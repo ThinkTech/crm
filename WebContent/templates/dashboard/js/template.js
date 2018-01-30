@@ -3,7 +3,7 @@ page.form = {};
 page.form.show = function(){
 	const form = $(".window.form");
 	const area = $('textarea',form);
-	if(area.length) tinymce.init({target:area[0],height:"150",language: 'fr_FR',menubar:false,statusbar: false});
+	if(area.length) tinymce.init({target:area[0],skin: "xenmce",height:"150",language: 'fr_FR',menubar:false,statusbar: false});
 	setTimeout(function(){
 		form.show();
 	},1000);
@@ -25,11 +25,6 @@ page.details.show = function(entity) {
 			 node = $(node);
 			 const id = "#template-"+node.data("template");
 			 node.append($(id,div).clone());
-		 });
-		 $.each($(".digit",section),function(i,node){
-			 node = $(node);
-			 const val = parseInt(node.text());
-			 node.html(val.toLocaleString("fr-FR"));
 		 });
 		 $("a.message-add",section).click(function(event) {
 				const div = $(this).parent().next();
@@ -61,17 +56,23 @@ page.details.show = function(entity) {
 				div.find(".message-edition,.document-upload").hide();
 				return false;
 		  });
-		  if(page.details.bind) page.details.bind(div,entity);
-		  const areas = $("textarea",div); 
-		  if(areas.length) {
-			  tinymce.remove();
-			  $.each(areas,function(i,node){
-				  tinymce.init({target:node,height:"120",language: 'fr_FR',menubar:false,statusbar: false}); 
-			  });
-		  }
-		  div.show(10,function(){
+		  div.show(1,function(){
 			  page.release();
+			  $.each($(".digit",section),function(i,node){
+				 node = $(node);
+				 const val = parseInt(node.text());
+				 
+				 node.html(val.toLocaleString("fr-FR"));
+			  });
+			  const areas = $("textarea",div); 
+			  if(areas.length) {
+				  tinymce.remove();
+				  $.each(areas,function(i,node){
+					  tinymce.init({target:node,skin: "xenmce",height:"120",language: 'fr_FR',menubar:false,statusbar: false}); 
+				  });
+			  }
 		  });
+		  if(page.details.bind) page.details.bind(div,entity);
 	});
 	
 };
@@ -189,4 +190,18 @@ $(document).ready(function(){
 	});
 	$("#confirm-dialog-ok").html("Oui");
 	$("#confirm-dialog-cancel").html("Annuler");
+	if (!("Notification" in window)) {
+	}
+	else if (Notification.permission === "granted") {
+	}
+	else if (Notification.permission !== 'denied') {
+	    Notification.requestPermission(function (permission) {
+	      if (permission === "granted") {
+	    	  var n = new Notification('Notification', { 
+	    			body: 'Activation reussie!',
+	    			icon: 'images/favicon.png' // optional
+	    		});
+	      }
+	    });
+	}
  });

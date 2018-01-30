@@ -2,7 +2,8 @@ $(document).ready(function(){
 	page.details.bind = function(container,bill) {
 		if(bill.status == "finished"){
 		   $(".submit",container).hide();
-		   $(".payment-info",container).show();
+		   const div = $(".payment-info",container).show();
+		   if(!bill.code) $("fieldset span.code",div).hide().next().hide();
 		}else {
 		   $(".submit",container).show();
 		   $(".payment-info",container).hide();

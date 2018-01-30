@@ -43,6 +43,19 @@
 	width : 100%;
 }
 
+.window.details > div fieldset > span {
+	padding-left : 0px;
+}
+.window.details > div fieldset > span,.window.details > div fieldset > span.text-right {
+    width: 100%;
+    margin-right : 5px;
+    text-align : left;
+}
+	
+.window.details > div fieldset > span.text-right {
+    padding-left : 3px;
+}
+	
 .window > div h1 {
 	font-size: 1.2em;
     padding: 5px;
@@ -50,7 +63,7 @@
 }
 
 .window.details > div a{
-	color : #212121;
+	color : #000000;
 	cursor : pointer;
 	display: inline-block;
     width: auto;
@@ -62,20 +75,22 @@
 	margin-left: 5px;
     position: relative;
     left: 1px;
+    display: inline-block;
 }
 
 .window > div h1 i {
-	color: #212121;
+	color: #000000;
 }
 
 .first-one-inner {
-    background: #ffe;
     padding: 2em;
-    padding-top : 2em;
     padding-bottom : 1.5em;
-    border-radius: 0.3em;
-    border: 1px solid #dff9ff;
 }
+
+.password-area {
+	background: #ffe;
+}
+
 h3.tittle {
     text-align: center;
     margin-bottom: 1em;
@@ -84,16 +99,16 @@ h3.tittle {
     text-shadow: 1px 0px #000000;
     font-size: 1.6em;
 }
-/*--first-one--*/
-.first-one{
-    border-top-left-radius: 0.3em;
-    border-radius: 0.3em;
-  
-}
 
 .first-one .table-responsive {
 	min-height : 100px;
 	background: #fff;
+}
+
+td span {
+	float: right;
+    position: relative;
+    top: -2px;
 }
 
 .first-one input[type="password"]{
@@ -113,6 +128,9 @@ h3.tittle {
 .submit {
     text-align: center;
     margin-top: 10px;
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .first-one input[type="submit"],.first-one input[type="button"]{
     font-size: 17px;
@@ -122,28 +140,20 @@ h3.tittle {
     outline: none;
     padding: 15px 15px;
     width: 48%;
-    background: #212121;
+    background: #000000;
     border-radius: 0.3em;
     text-transform: uppercase;
 }
 .first-one input[type="submit"]:hover,.first-one input[type="button"]:hover{
   background:#fff;
-  color : #212121;
+  color : #000000;
 }
-/* Bounce To Bottom */
-/*--//first-one--*/
-/*--/second-one--*/
-/*--social--*/
-/*--social--*/
-/*--//second-one--*/
-/*--profile--*/
-
 .profile-edition {
 	display : none;
 }
 
 .profile-edition input[type=text], .profile-edition input[type=email] {
-	padding: 0px;
+	padding: 2px;
 	width : 50%;
 	padding-left : 2px;
 }
@@ -154,11 +164,17 @@ h3.tittle {
 
 .first-one .profile-edition input[type="submit"]:hover {
 	background : #fff;
-	color : #212121;
+	color : #000000;
 }
 
 .profile {
     text-align: center;
+    vertical-align: top;
+    margin-top: -2em;
+    min-height: 459px;
+    padding-top: 1em;
+    margin-left: -17px;
+    background : #05d2ff;
 }
 .profile a {
 	position: relative;
@@ -167,10 +183,11 @@ h3.tittle {
     color: #fff;
     cursor : pointer;
 }
-.first-one-inner.lost{
-  background:#05d2ff;
-  
+
+.profile fieldset {
+	padding : 10px;
 }
+
 
 legend {
  font-size: 22px;
@@ -181,7 +198,7 @@ legend {
  margin-bottom: 0;
  text-align: center;
  background: #05d2ff;
- border: 1px solid #bceef9;
+ width : 100%;
 }
 
 legend a {
@@ -191,7 +208,7 @@ legend a {
 legend a i.fa {
 	position: relative;
     top: 1px;
-    color: #212121;
+    color: #000000;
     margin-left: 2px;
 }
 
@@ -230,21 +247,24 @@ legend a i.fa {
 }
 @media (max-width:1280px){
 	.profile a {
-    	top: 10px;
+    	top: -10px;
     	font-size: 13px;
+    	left: 14%;
 	}
 	.first-one input[type="password"] {
        margin: 0.5em 0;
 	}
+	.profile{min-height: 445px;}
 }
 @media (max-width:1024px){
+	.profile{min-height: 453px;margin-left: 0px;}
    .first-one-inner {
       padding: 2em 1em;
 	}
 	.first-one input[type="submit"],.first-one input[type="button"] {
 		font-size: 15px;
 		padding: 11px 15px;
-		width: 48%;
+		width: 56%;
 	}
 	.first-one input[type="password"] {
 		width: 100%;
@@ -252,16 +272,22 @@ legend a i.fa {
 		color: #858282;
 		font-size: 15px;
 	}
+	.window > div h1 {font-size: 1em}
 }
 @media (max-width:991px){
-	.window{padding-top : 2%}
-	.window.details > div fieldset > span:nth-child(2n) {
-    width: 100%;
-    margin-right : 5px;
+	.profile a {
+    	left: 0%;
+	}
+	fieldset > span.text-right {
+    margin-bottom: 0px;
 }
+	.window{padding-top : 2%}
 	.profile-edition input[type=text], .profile-edition input[type=email] {
       width: 100%;
       text-align: left;
+      margin-bottom: 0px;
+      margin-top: 5px;
+      font-size: 12px;
      }
 	.first-one {
 		width: 71%;
@@ -291,6 +317,8 @@ legend a i.fa {
 	}
 	.first-one-inner.lost {
 		padding-top: 40px;
+		padding-left: 0px;
+        padding-right: 0px;
 	}
 	.first-one-inner {
 		padding: 2em 2em;
@@ -372,10 +400,11 @@ legend a i.fa {
 		font-size: 15px;
 	}
 	.first-one input[type="submit"],.first-one input[type="button"] {
-		font-size: 12px;
-		padding: 11px 15px;
-		width: 48%;
-	}
+		font-size: 13px;
+        padding: 10px 15px;
+        padding-left: 11px;
+        width: 47%;
+    }
 	h3.tittle {
 		margin-bottom: 1em;
 		font-size: 1.2em;
@@ -390,10 +419,6 @@ legend a i.fa {
 		padding: 0.6em 4em 0.6em 1em;
 		color: #858282;
 		font-size: 15px;
-	}
-	.first-one input[type="submit"],.first-one input[type="button"] {
-		font-size: 13px;
-		padding: 10px 15px;
 	}
     
 }

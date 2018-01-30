@@ -105,24 +105,32 @@
 	<fieldset>
 	    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>{name}</span>
 	    <span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
-		<span class="text-right"><i class="fa fa-code" aria-hidden="true"></i> Plan </span> <span>{plan}</span> <a data-plan="{plan}" class="plan"><i class="fa fa-info" aria-hidden="true"></i></a>
+		<span class="text-right"><i class="fa fa-code" aria-hidden="true"></i> Plan </span> <span>{plan}</span> <a class="plan"><i class="fa fa-info" aria-hidden="true"></i></a> 
 		<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{date}</span>
 		<span class="text-right"><i class="fa fa-product-hunt" aria-hidden="true"></i> Priorité </span> 
-		<span data-status="normal" style="display:none">normale</span>
-		<span data-status="medium" style="display:none">moyenne</span>
-		<span data-status="high" style="display:none">élevée</span>
-		<span class="text-right"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span> <a class="duration"><i class="fa fa-info" aria-hidden="true"></i></a> 
+		<span data-status="normal" class="status" style="display:none">normale</span>
+		<span data-status="medium" class="status" style="display:none">moyenne</span>
+		<span data-status="high" class="status" style="display:none">élevée</span> 
+		<div class="info-message entity-edition priority-edition">
+		   <select>
+			  <option value="normal">normale</option>
+		      <option value="medium">moyenne</option>
+		      <option value="high">élevée</option>
+		    </select>
+			<a href="${url}/projects/priority/update"><i class="fa fa-check" aria-hidden="true"></i></a>
+		</div>
+		<a class="priority-edit" style="display:none"><i class="fa fa-edit" aria-hidden="true"></i></a>
+		<span class="text-right"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span> <a class="duration"><i class="fa fa-info" aria-hidden="true"></i></a>
 		<div class="info-message">
-		   <p data-status="stand by">la durée du projet est estimée à {duration} mois dans l'attente du paiement de la caution que vous devez effectuer</p>
-		   <p data-status="in progress">la durée du projet est estimée à {duration} mois et dans les normes, le produit final sera livré au plus tard le {end}</p>
+		   <p data-status="stand by">la durée maximale du projet est estimée à {duration} mois dans l'attente du paiement de la caution que vous devez effectuer</p>
+		   <p data-status="in progress">la durée maximale du projet est estimée à {duration} mois et dans les normes, le produit final sera livré au plus tard le {end}</p>
 		   <p data-status="finished">la durée du projet fut de {duration} mois et le produit final a été livré le {end}</p>
 		</div>
-		<a class="duration-edit"><i class="fa fa-edit" aria-hidden="true"></i></a>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
-		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span></span>
+		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span> <a class="pay"><i class="fa fa-money"></i></a></span>
 		<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>  
 		<span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
-		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a> <a class="progress-edit"><i class="fa fa-edit" aria-hidden="true"></i></a>
+		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a>
 		<div class="info-tasks">
 		   <h1><i class="fa fa-tasks" aria-hidden="true"></i> Tâches&nbsp;&nbsp;
 			  <a class="task-list-ol"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
@@ -292,13 +300,13 @@
 	  <span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
       <span class="badge badge-info">{progression}%</span>
       <div class="info-message">
-	   	  {info}
+	   	  {description}
+	  </div>
+      <span class="question"><a><i class="fa fa-question" aria-hidden="true"></i></a></span>
+      <div class="info-message">
+	   	  {info|s}
 	  </div>
       <span><a><i class="fa fa-info" aria-hidden="true"></i></a></span>
-      <div class="info-message">
-	   	  {info}
-	  </div>
-      <span><a><i class="fa fa-edit" aria-hidden="true"></i></a></span>
     </li>
 	{/.}  
   </template>	
@@ -307,7 +315,7 @@
       <div data-plan="plan business" class="pricing business" style="display:none">
 			<div class="pricing-top green-top">
 				<h3>Business</h3>
-				<p>20 000 F/mois</p>
+				<p>25 000 F/mois</p>
 			</div>
 			<div class="pricing-bottom">
 				<div class="pricing-bottom-top">
@@ -333,7 +341,7 @@
     <div data-plan="plan corporate" class="pricing corporate" style="display:none">
 		<div class="pricing-top blue-top">
 			<h3>Corporate</h3>
-			<p>15 000 F/mois</p>
+			<p>20 000 F/mois</p>
 		</div>
 		<div class="pricing-bottom">
 			<div class="pricing-bottom-top">
@@ -358,7 +366,7 @@
 	<div data-plan="plan personal" class="pricing personal" style="display:none">
 		<div class="pricing-top">
 			<h3>Personal</h3>
-			<p>10 000 F/mois</p>
+			<p>15 000 F/mois</p>
 		</div>
 		<div class="pricing-bottom">
 			<div class="pricing-bottom-top">
@@ -406,117 +414,6 @@
 		</div>
 	</div>
    </div>
-</div>
-<div class="window project-wizard" data-url="${url}/projects/bill">
-  <template>
-  <div> 
-  <section>
-    <span>Merci pour votre souscription au {plan}</span>
-	<h2><span class="number">1</span> Etape 1 : Contrat et Caution</h2>
-	<div class="col-md-12">
-		  <div class="content-process">
-			<div class="content3">
-				<div class="shipment">
-					<div class="confirm">
-						<div class="imgcircle">
-							<img src="${images}/confirm.png">
-						</div>
-						<span class="line"></span>
-						<p>Contrat et Caution</p>
-					</div>
-					<div class="process">
-						<div class="imgcircle">
-							<img src="${images}/process.png">
-						</div>
-						<span class="line"></span>
-						<p>Développement</p>
-					</div>
-					<div class="quality">
-						<div class="imgcircle">
-							<img src="${images}/quality.png">
-						</div>
-						<span class="line"></span>
-						<p>Tests et Validation</p>
-					</div>
-					<div class="delivery">
-						<div class="imgcircle">
-							<img src="${images}/delivery.png">
-						</div>
-						<p>Livraison Produit</p>
-					</div>
-					<div class="clear"></div>
-				</div>
-			</div>
-		   </div>	
-	   </div>
-	   <h2>Projet Description</h2>
-	   <p>
-	     {description|s}
-	   </p>
-	   <hr/>
-	   <p>
-	    Les informations fournies seront utilisées pour générer le contrat vous liant à ThinkTech et ce dernier sera ajouté aux documents du projet. La facture pour le paiement de la caution a été créée. Vous pouvez choisir d'effectuer le paiement maintenant en cliquant sur le bouton Terminer afin que votre projet soit traité au plus vite par notre équipe de développement. 
-	    <span class="terms-agreement">
-	      <input type="checkbox" checked> Payer la caution
-	    </span>
-	   </p>
-	   <div class="submit">
-		 <input type="button" value="Terminer" style="float:right">
-	</div>
-  </section>
-  <section>
-   <span>Merci pour votre souscription au {plan}</span>
-	<h2><span class="number">2</span> Etape 2 : Développement</h2>
-	<div class="col-md-12">
-		  <div class="content-process">
-			<div class="content3">
-				<div class="shipment">
-					<div class="confirm">
-						<div class="imgcircle active">
-							<img src="${images}/confirm.png">
-						</div>
-						<span class="line active"></span>
-						<p>Contrat et Caution</p>
-					</div>
-					<div class="process">
-						<div class="imgcircle active">
-							<img src="${images}/process.png">
-						</div>
-						<span class="line"></span>
-						<p>Développement</p>
-					</div>
-					<div class="quality">
-						<div class="imgcircle">
-							<img src="${images}/quality.png">
-						</div>
-						<span class="line"></span>
-						<p>Tests et Validation</p>
-					</div>
-					<div class="delivery">
-						<div class="imgcircle">
-							<img src="${images}/delivery.png">
-						</div>
-						<p>Livraison Produit</p>
-					</div>
-					<div class="clear"></div>
-				</div>
-			</div>
-		   </div>	
-	   </div>
-	   <h2>Projet Description</h2>
-	   <p>
-	     {description|s}
-	   </p>
-	   <hr/>
-	   <p>Le contrat vous liant à ThinkTech a été généré et votre projet a été transmis à notre équipe technique pour traitement. La durée du projet est estimée à 3 mois et vous pouvez bien entendu suivre son évolution. Nous vous contacterons sous peu pour de 
-	      plus amples informations ou pour fournir des documents que vous pouvez attacher au projet.
-	   </p>
-	   <div class="submit">
-		 <input type="button" value="Terminer" style="float:right">
-	</div>
-  </section>
-  </div>
-  </template>
 </div>
 </div>
 <script src="${js}/projects.js" defer></script>

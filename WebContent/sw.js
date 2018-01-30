@@ -1,5 +1,5 @@
-const assets = ["/","."];
-const cacheName = "assets-v-1";
+const assets = ["/",".","js/dust-full.min.js"];
+const cacheName = "assets-v-1-0";
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(cacheName).then(function(cache) {

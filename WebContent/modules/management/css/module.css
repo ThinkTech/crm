@@ -27,7 +27,7 @@
 .window > div .label, .window > div .badge {
      width: auto;
      border : none;
-     padding: 2px;
+     padding: 3px;
      padding-bottom: 3px;
      padding-left : 4px;
      padding-right : 4px;
@@ -66,7 +66,7 @@
 }
 
 .window > div a.close-ticket {
-	color : #212121;
+	color : #000000;
 }
 
 .window > div a.pay {
@@ -83,11 +83,11 @@
 }
 
 .window > div .terms h1 i.fa {
-    color : #212121;
+    color : #000000;
 }
 
 .window > div .terms p {
-	color: #212121;
+	color: #000000;
     line-height: 2em;
     font-size: 15px;
     display: block;
@@ -99,7 +99,7 @@
 }
 
 .window > div .terms h1 {
-    color: #212121;
+    color: #000000;
     margin-top: 5px;
     font-size : 2em;
 }
@@ -123,7 +123,7 @@
 	width: 90%;
     margin: auto;
     margin-top : 5px;
-    padding-left: 10%;
+    text-align: center;
 }
 
 .window > div input[type="submit"],.window > div input[type="button"]{
@@ -133,24 +133,25 @@
     cursor: pointer;
     outline: none;
     padding: 15px 15px;
-    width: 44%;
+    width: 34%;
     margin: auto;
     margin-right: 10px;
     display: inline-block;
     margin-top: 5px;
-    background: #212121;
+    background: #000000;
     border-radius: 0.3em;
     text-transform: uppercase;
 }
 
 .window > div input[type="submit"]:hover,.window > div input[type="button"]:hover{
-  background:#05d2ff;
+  background: #fff;
+  color: #000;
 }
 
 .window > div fieldset input[type=file] {
     display: inline-block;
     font-weight: 600;
-    color : #212121;
+    color : #000000;
     border : none;
 }
 
@@ -159,7 +160,7 @@ legend {
     color: #fff;
     font-weight: bold;
     padding: 3px;
-    background: #212121;
+    background: #000000;
     border: 1px solid #2d1e1e;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -205,7 +206,7 @@ legend {
 }
 
 .window > div ul a, .window > div ol a {
-	color : #212121;
+	color : #000000;
 	cursor : pointer;
 	font-size: 12px;
     font-weight: 500;
@@ -248,10 +249,6 @@ legend {
 	margin-right : 4px;
 }
 
-.window > div ol li > span > a {
-	margin-left : 20px;
-}
-
 .window > div textarea { 
 	width : 100%;
 	height : 150px;
@@ -259,7 +256,7 @@ legend {
 }
 
 .window > div .info-tasks .badge {
-	background : #212121;
+	background : #000000;
 	margin-left : 10px;
 	font-weight : bold;
 }
@@ -332,6 +329,22 @@ legend {
 	text-align : right;
 }
 
+.window > div .entity-edition{
+    width: 150px;
+}
+
+.window > div .entity-edition select {
+	font-size: 13px;
+    width: 83%;
+    margin-right: 5px;
+    display : inline-block;
+}
+
+.window > div fieldset .entity-edition a {
+	top : 0px;
+	width: auto;
+    display: inline-block;
+}
 
 .window > div .info-tasks{
 	background: #fff;
@@ -339,7 +352,11 @@ legend {
 }
 
 .window > div .info-tasks h1 {
-	padding-left : 0px;
+	padding-left: 0px;
+    background: #000000;
+    color: #fff;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .window > div .message-list > div > div {
@@ -369,7 +386,8 @@ legend {
 	top: 0px;
     position: relative;
     margin-right: 3px;
-    color : #212121;
+    margin-left: 3px;
+    
 }
 
 .window > div h1 i.fa-briefcase {
@@ -450,8 +468,13 @@ legend a i.fa {
 
 .window > div input[type=text], .window > div select {
 	padding: 1px;
-	padding-left : 2px;
+	padding-left : 4px;
 	width : 50%;
+}
+
+.window > div select {
+   text-indent: 0px;
+    padding-left: 0;
 }
 
 .window > div .badge {
@@ -527,7 +550,6 @@ legend a i.fa {
     width: 25%;
     vertical-align: top;
     text-align: center;
-    margin-bottom: 10px;
 }
 
 .icons > div img {
@@ -539,7 +561,7 @@ legend a i.fa {
 }
 
 .icons > div a {
-	color: #212121;
+	color: #000000;
     font-size: 11px;
     width: 91%;
     display: block;
@@ -581,13 +603,9 @@ legend a i.fa {
 
 .tree > li:last-child { padding-bottom: 0; }
 
-/* ————————————————————–
-  Tree labels
-*/
 .tree_label {
   position: relative;
   display: inline-block;
-  background: #fff;
   margin : 0;
 }
 
@@ -618,6 +636,26 @@ label.tree_label:before {
 
 .tree ul {
 	list-style-type: none;
+}
+
+.service {
+	width : 100px;
+	text-align : center;
+	margin-top : 20px;
+	padding : 5px;
+}
+
+.service h3 {
+	font-size : 16px;
+	font-weight : bold;
+}
+
+.service i {
+	color : #5cb85c;
+}
+
+.service img {
+	width : 64px;
 }
 
 @media (max-width:1280px){
@@ -652,7 +690,13 @@ label.tree_label:before {
       float : right;
      }
      .window > div a.pay,.window > div a.close-ticket{position : relative; top : -2px}
-     .info-tasks li span:first-of-type {width : 100%;}
+     .info-tasks li span:first-of-type {width : 100%;padding-top: 4px;padding-bottom: 3px;}
+     .window > div fieldset a {position: relative;top: 1px;}
+     .window > div .entity-edition select {font-size: 11px;}
+     .billing th:nth-child(7), .billing td:nth-child(7) {display: block;}
+	.projects th:nth-child(5), .projects td:nth-child(5) {display: block;}
+    .projects th:nth-child(5),.support th:nth-child(6) {font-size : 0px;}
+    .support th:nth-child(6), .support td:nth-child(6) {display: block;}
 }
 
 @media (max-width:768px){
@@ -662,7 +706,6 @@ label.tree_label:before {
 	   font-size: 13px;
 	   padding: 10px 15px;
 	   width: 45%;
-	   border: none;
 	}
 	.window > div input[type=text], .window > div select, .window > div input[type=file] {
        font-size: 12px;
@@ -701,10 +744,11 @@ label.tree_label:before {
 	.window > div .terms-agreement {font-size: 13px;margin-top: 5px;}
 	.window > div .message-list > div > div span,.window > div ol li span {display : block;width:100%;text-align:right;margin-left:2px;top: 0px;}
 	.window > div ol li a{margin-bottom : 2px;display:inline-block;width:90%;white-space:normal;word-break : break-word}
+	.window > div div.info-tasks ol li a{position: relative;top: -27px;}
 	.window > div ol li span{text-align:center;display:inline-block;width:auto}
 	.window > div ol li > span:first-of-type{text-align:left;width:100%;display:block;}
 	.window > div ol li span[data-status]{margin-bottom:5px}
-	.window > div .info-tasks ol li > span:last-of-type{position : relative;top : -2px;float:right;margin : 0;margin-right:20px;display : inline-block;width : 20px}
+	.window > div .info-tasks ol li > span:last-of-type{position : relative;top : -2px;margin : 0;margin-right:20px;display : inline-block;width : 20px}
 	.window > div ol li > span:last-of-type{width : 20px;display:inline-block;position : relative;}
 	.window > div ol li span{margin-top:0px}
 	.window > div ul, .window > div ol {padding-left: 0px;list-style: none;}
@@ -754,7 +798,7 @@ label.tree_label:before {
 }
 
 .black-top {
-	background : #212121;
+	background : #000000;
 }
 
 .green-top{
@@ -853,7 +897,7 @@ p.text {
 	margin-bottom: 10px;
 }
 .content1 {
-	background-color:#212121;
+	background-color:#000000;
 	text-align:center;
 	padding:2em;
 }
@@ -892,7 +936,7 @@ p.text {
 span.line {
     height: 5px;
     width: 90px;
-    background-color:#212121;
+    background-color:#000000;
     display: block;
     position: absolute;
     top: 28%;
@@ -906,11 +950,11 @@ span.line {
 	margin-left:3%;
 }
 .confirm .imgcircle , .process .imgcircle, .quality .imgcircle {
-	background-color:#212121;
+	background-color:#000000;
 }
 
 .confirm span.line, .process span.line {
-	background-color:#212121; 
+	background-color:#000000; 
 }
 
 .imgcircle.active, span.line.active{
@@ -931,7 +975,7 @@ span.line {
 	height: 60px;
     width: 60px;
     border-radius: 50%;
-	background-color:#212121;
+	background-color:#000000;
 	position:relative;
 }
 .imgcircle img {

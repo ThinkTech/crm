@@ -7,7 +7,7 @@
 			    <div class="web-forms">
 				 <!--first-one-->
 				 <div class="col-md-4 first-one">
-				  <div class="first-one-inner">
+				  <div class="first-one-inner password-area">
 				     <h3 class="tittle"><i class="fa fa-key"></i> Mot de Passe</h3>
 					<form class="password-form" action="${url}/password/change">
 						<input type="password" name="password" class="text" required>
@@ -25,12 +25,13 @@
                              	 <s:iterator value="#request.collaborators" var="collaborator" status="status">
 	                                <tr id="${collaborator.properties.id}">
 	                                   <td><span class="number">${status.index+1}</span></td>
-	                                   <td>${collaborator.properties.name}</td>
-	                                   <td>
+	                                   <td>${collaborator.properties.name}
+	                                     <span>
 	                                   	 <i class="fa fa-check" style="display:${collaborator.properties.active ? 'inline-block' : 'none'}"></i>
 	                                   	 <i class="fa fa-envelope" style="display:${collaborator.properties.active ? 'none' : 'inline-block'}"></i>
 	                                   	 <a href="${url}/collaborators/remove?id=${collaborator.properties.id}"><i class="fa fa-remove" style="display:${collaborator.properties.active ? 'none' : 'inline-block'}"></i></a>
 	                                   	 <i class="fa fa-lock" style="display:${collaborator.properties.locked ? 'inline-block' : 'none'}"></i>
+	                                   	 </span>
 	                                   </td>
 	                          	   </tr>
 	                          	</s:iterator>             
@@ -38,10 +39,11 @@
 							     {#.}
 							      <tr id="{id}">
 							            <td><span class="number"></span></td>
-							   	        <td>{email}</td>
-							   	        <td>
-							   	        <i class="fa fa-envelope"></i>
-							   	        <a href="${url}/collaborators/remove?id={id}"><i class="fa fa-remove"></i></a>
+							   	        <td>{email}
+								   	        <span>
+								   	        <i class="fa fa-envelope"></i>
+								   	        <a href="${url}/collaborators/remove?id={id}"><i class="fa fa-remove"></i></a>
+								   	        </span>
 							   	        </td>
 							   	    </tr>
 							     {/.}
@@ -87,7 +89,7 @@
 			      </div>
 				 
 				   <!--/third-one-->
-				   <div class="col-md-6 first-one">
+				   <div class="col-md-5 first-one">
 					    <div class="first-one-inner lost">
 						    <div class="user profile">
 								<div class="profile-bottom">
@@ -123,8 +125,6 @@
    										<input name="profession" type="text" value="${user.profession}">
 										<span class="text-right">Téléphone </span>
 										<input name="telephone" value="${user.telephone}" type="text">
-										<span class="text-right">Role </span>
-   										<span>&nbsp;${user.role}</span>
 										<span class="text-right" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">Structure </span>
    										<input name="structure" value="${user.structure.name}" type="text" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">
    										<span class="text-right" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">Activité Principale </span>

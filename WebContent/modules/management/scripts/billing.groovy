@@ -1,11 +1,3 @@
-import org.metamorphosis.core.ActionSupport
-import org.metamorphosis.core.Mail
-import org.metamorphosis.core.MailConfig
-import org.metamorphosis.core.MailSender
-import groovy.text.markup.TemplateConfiguration
-import groovy.text.markup.MarkupTemplateEngine
-import static groovy.json.JsonOutput.toJson as json
-import groovy.json.JsonSlurper
 import groovy.sql.Sql
 
 class ModuleAction extends ActionSupport {
@@ -44,11 +36,11 @@ class ModuleAction extends ActionSupport {
 	     bill.paidBy = user.name 
 	   }
 	   connection.close()
-	   response.writer.write(json([entity : bill]))
+	   json([entity : bill])
 	}
 	
-	def getConnection()  {
-		new Sql(context.getAttribute("datasource"))
+	def getConnection() {
+		new Sql(dataSource)
 	}
 	
 }
