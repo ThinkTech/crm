@@ -50,7 +50,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def addTicketComment() {
-	   def comment = new JsonSlurper().parse(request.inputStream)
+	   def comment = parse(request)
 	   def user_id = session.getAttribute("user").id
 	   Thread.start {
 	     def connection = getConnection()
@@ -62,7 +62,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def processTicket() {
-	   def ticket = new JsonSlurper().parse(request.inputStream)
+	   def ticket = parse(request)
 	   Thread.start {
 	      def connection = getConnection()
 	      connection.executeUpdate "update tickets set progression = 5, status = 'in progress' where id = ?", [ticket.id] 
@@ -72,7 +72,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def closeTicket() {
-	   def ticket = new JsonSlurper().parse(request.inputStream)
+	   def ticket = parse(request)
 	   def user_id = session.getAttribute("user").id 
 	   Thread.start {
 	      def connection = getConnection()

@@ -82,7 +82,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def addComment() {
-	   def comment = new JsonSlurper().parse(request.inputStream) 
+	   def comment = parse(request) 
 	   def user_id = session.getAttribute("user").id
 	   Thread.start { 
 	   	 def connection = getConnection()
@@ -94,7 +94,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def saveDocuments() {
-	   def upload = new JsonSlurper().parse(request.inputStream) 
+	   def upload = parse(request) 
 	   def id = upload.id
 	   def user_id = session.getAttribute("user").id
 	   Thread.start {
@@ -119,7 +119,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def updateProjectDescription() {
-	   def project = new JsonSlurper().parse(request.inputStream)
+	   def project = parse(request)
 	   Thread.start {
 	   	 def connection = getConnection()
 	     connection.executeUpdate "update projects set description = ? where id = ?", [project.description,project.id] 
