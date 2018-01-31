@@ -82,7 +82,7 @@
 		<span title="fermer" class="close">X</span>
 		<section>
 		 <template>
-		 <h1><i class="fa fa-money" aria-hidden="true"></i>Facture : {id}</h1>
+		 <h1><i class="fa fa-money" aria-hidden="true"></i>Facture du {date}</h1>
 		<fieldset>
 			<span class="text-right"><i class="fa fa-money" aria-hidden="true"></i> Frais </span> <span>{fee|s}</span>
 			<span class="text-right"><i class="fa fa-briefcase" aria-hidden="true"></i> Projet </span> <span>{subject}</span>
