@@ -70,7 +70,7 @@ $(document).ready(function(){
 							 div.css({top : top,left : left}).show();
 							 return false;
 						}).unbind("mouseover");
-						if(project.tasks[i].status == "stand by"){
+						if(project.tasks[i].status == "stand by" && project.status == "in progress"){
 							$(".start-task",li).show();
 						}else{
 							$(".start-task",li).hide();
