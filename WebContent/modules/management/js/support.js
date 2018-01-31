@@ -15,7 +15,7 @@ $(document).ready(function(){
 			page.details.closeTicket($(this).attr("href"),ticket);
 			return false;
 		});
-		$(".priority-edit",container).click(function(event){
+		$(".priority-edit,.progression-edit",container).click(function(event){
 			$(".info-message").hide();
 			 const div = $(this).prev();
 			 var left = event.pageX-div.width()-50;
@@ -42,7 +42,9 @@ $(document).ready(function(){
 			});
 			return false;
 		});
-		
+		$(".progression-edition input").on("change",function(){
+			$(".progression-edition label").html($(this).val()+"%");
+		});
 		$(".info-message").click(function(event){
 			return false;
 		});

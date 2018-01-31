@@ -81,6 +81,16 @@ class ModuleAction extends ActionSupport {
 	   connection.close()
 	}
 	
+	def updateProjectPriority(){
+	    def project = parse(request) 
+	    Thread.start {
+	   	   def connection = getConnection()
+	       connection.executeUpdate "update projects set priority = ? where id = ?", [project.priority,project.id] 
+	       connection.close()
+	    }
+		json([status: 1])
+	}
+	
 	def addComment() {
 	   def comment = parse(request) 
 	   def user_id = session.getAttribute("user").id

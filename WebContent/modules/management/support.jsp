@@ -98,16 +98,44 @@
 		    <span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{date}</span>
 			<span class="text-right"><i class="fa fa-product-hunt" aria-hidden="true"></i> Priorité </span> 
-			<span data-status="normal" style="display:none">normale</span>
-			<span data-status="medium" style="display:none">moyenne</span>
-			<span data-status="high" style="display:none">élevée</span>
+			<span data-status="normal" class="status" style="display:none">normale</span>
+		    <span data-status="medium" class="status" style="display:none">moyenne</span>
+		    <span data-status="high" class="status" style="display:none">élevée</span> 
+			<div class="info-message entity-edition priority-edition">
+		      <select>
+			    <option value="normal">normale</option>
+		        <option value="medium">moyenne</option>
+		        <option value="high">élevée</option>
+		      </select>
+			 <a href="${url}/tickets/priority/update"><i class="fa fa-check" aria-hidden="true"></i></a>
+		    </div>
+		    <a class="priority-edit" style="display:none"><i class="fa fa-edit" aria-hidden="true"></i></a>
 			<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
 			<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">équipe technique</span> <a href="${url}/support/tickets/close" class="close-ticket"><i class="fa fa-window-close"></i></a> <a href="${url}/support/tickets/process" class="process-ticket"><i class="fa fa-play-circle-o"></i></a></span>
 			<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span> <a href="${url}/support/tickets/close" class="close-ticket"><i class="fa fa-window-close"></i></a></span>  
 			<span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
 			<span class="text-right" data-status="finished" style="display:none"><i class="fa fa-calendar" aria-hidden="true"></i> Date Fermeture </span> <span data-status="finished" style="display:none">{closedOn}</span>
 			<span class="text-right" data-status="finished" style="display:none"><i class="fa fa-user" aria-hidden="true"></i> Fermé Par </span> <span data-status="finished" style="display:none">{closedBy}</span>
-			<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="progress-edit"><i class="fa fa-edit" aria-hidden="true"></i></a>
+			<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> 
+			<div class="info-message entity-edition progression-edition">
+			   <input type="range" min="0" max="100" step="10" value="{progression}" list="tickmarks">
+			   <datalist id="tickmarks">
+				  <option value="0" label="0%">
+				  <option value="10">
+				  <option value="20">
+				  <option value="30">
+				  <option value="40">
+				  <option value="50" label="50%">
+				  <option value="60">
+				  <option value="70">
+				  <option value="80">
+				  <option value="90">
+				  <option value="100" label="100%">
+				</datalist>
+				<label>{progression}%</label>&nbsp;&nbsp;
+				<a href="${url}/tickets/progression/update"><i class="fa fa-check" aria-hidden="true"></i></a>
+			</div>
+			<a class="progression-edit"><i class="fa fa-edit" aria-hidden="true"></i></a>
 		</fieldset>
 		<fieldset>
 		<fieldset>

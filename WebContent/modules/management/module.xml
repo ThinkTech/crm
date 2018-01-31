@@ -10,6 +10,7 @@
     <action url="projects/documents/download"  method="downloadDocument" script="projects.groovy"/>
     <action url="projects/description/update"  method="updateProjectDescription" script="projects.groovy"/>
     <action url="projects/comments/create"  method="addComment" script="projects.groovy"/>
+    <action url="projects/priority/update"  method="updateProjectPriority" script="projects.groovy"/>
     <action url="messages" page="messages" method="showMessages"/>
     <action url="messages/info"  method="getMessageInfo"/>
     <action url="support"  page="support" method="showTickets" script="support.groovy"/>
@@ -17,6 +18,7 @@
     <action url="support/tickets/info"  method="getTicketInfo" script="support.groovy"/>
     <action url="support/tickets/comment"  method="addTicketComment" script="support.groovy"/>
     <action url="support/tickets/close"  method="closeTicket" script="support.groovy"/>
+    <action url="tickets/priority/update"  method="updateTicketPriority" script="support.groovy"/>
     <action url="billing"  page="billing" method="showBills" script="billing.groovy"/>
     <action url="billing/info"  method="getBillInfo" script="billing.groovy"/>
     <action url="services" page="services" method="showServices"/>

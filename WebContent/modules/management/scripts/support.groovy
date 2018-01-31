@@ -61,6 +61,16 @@ class ModuleAction extends ActionSupport {
 	   json([status: 1])
 	}
 	
+	def updateTicketPriority(){
+	    def ticket = parse(request) 
+	    Thread.start {
+	   	   def connection = getConnection()
+	       connection.executeUpdate "update tickets set priority = ? where id = ?", [ticket.priority,ticket.id] 
+	       connection.close()
+	    }
+		json([status: 1])
+	}
+	
 	def processTicket() {
 	   def ticket = parse(request)
 	   Thread.start {
