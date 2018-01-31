@@ -42,7 +42,7 @@ $(document).ready(function(){
 				 $(".info-message").hide();
 				 const info = link.parent().prev();
 				 var left = event.pageX-info.width()-50;
-				 left = left < 0 ? 2 : left;
+				 left = left < 0 ? 0 : left;
 				 info.css({top : event.pageY-20,left : left}).show();
 			};
 			const ol = $(".info-tasks ol",container);
@@ -61,6 +61,15 @@ $(document).ready(function(){
 						$("a",li).on("mouseout",function(event){
 							$(".info-message").hide();
 						});
+						$(".task-info-edit",li).click(function(event){
+							 $(".task-info-edition").hide();
+							 const div = $(".task-info-edition",li);
+							 var left = event.pageX-div.width()-50;
+							 if(left<0) left = 10;
+							 var top = ol.position().top;
+							 div.css({top : top,left : left}).show();
+							 return false;
+						}).unbind("mouseover");
 					}
 				}
 			});

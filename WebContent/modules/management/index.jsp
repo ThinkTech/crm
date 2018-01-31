@@ -294,8 +294,15 @@
       <div class="info-message">
 	   	  {info|s}
 	  </div>
-      <span><a><i class="fa fa-info" aria-hidden="true"></i></a></span>
-      <span><a><i class="fa fa-edit" aria-hidden="true"></i></a></span>
+      <span><a class="task-info"><i class="fa fa-info" aria-hidden="true"></i></a></span>
+      <span><a class="task-info-edit"><i class="fa fa-edit" aria-hidden="true"></i></a></span>
+      <div class="task-info-edition">
+          <textarea style="height:150px">{info}</textarea>
+          <div class="submit">
+		   <input type="submit" value="Modifier">
+		   <input type="button" value="Annuler">
+		</div>
+	  </div>
     </li>
 	{/.}  
   </template>	

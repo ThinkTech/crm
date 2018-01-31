@@ -309,6 +309,18 @@ legend {
 	margin-left : 5px;
 }
 
+.window > div div.task-info-edition {
+	position : absolute;
+	z-index : 999999;
+	display : none;
+	background : #fafafa;
+	font-size : 12px;
+	padding : 10px;
+	border : 1px solid #05d2ff;
+	border-radius : 5px;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
 .window > div div.info-message {
 	font-weight : bold;
 	position : absolute; 
@@ -723,6 +735,7 @@ label.tree_label:before {
 }
 
 @media(max-width:640px){
+	.window > div div.task-info-edition {position: static;margin-top: -25px;margin-left: -5px;}
 	.window > div .terms {top:0px;height: 100%;width: 100%;margin-left: 0px;margin-left: -8px;}
 	.window {padding-top: 0px;}
 	.window > div {width: 100%;border-radius: 0px;height: 100%;}
@@ -744,8 +757,10 @@ label.tree_label:before {
 	.project-wizard h1{margin-left: -16px;}
 	.window > div .terms-agreement {font-size: 13px;margin-top: 5px;}
 	.window > div .message-list > div > div span,.window > div ol li span {display : block;width:100%;text-align:right;margin-left:2px;top: 0px;}
+	.window > div ol li a{top: -30px;margin-left: -10px;}
 	.window > div ol li a{margin-bottom : 2px;display:inline-block;width:90%;white-space:normal;word-break : break-word}
 	.window > div div.info-tasks ol li a{position: relative;top: -27px;}
+	.window > div div.info-tasks ol li a.task-info{top: -29px;margin-left: -20px;}
 	.window > div ol li span{text-align:center;display:inline-block;width:auto}
 	.window > div ol li > span:first-of-type{text-align:left;width:100%;display:block;}
 	.window > div ol li span[data-status]{margin-bottom:5px}
