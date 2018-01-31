@@ -235,6 +235,8 @@ legend {
 	background : #fff;
 }
 
+.window > div div.info-tasks ol li a.start-task{top: -2px;}
+
 .window > div .info-tasks ol li > span:first-of-type{
 	width:50%;
 	font-size : 12px;
@@ -761,17 +763,19 @@ label.tree_label:before {
 	.window > div ol li a{margin-bottom : 2px;display:inline-block;width:90%;white-space:normal;word-break : break-word}
 	.window > div div.info-tasks ol li a{position: relative;top: -27px;}
 	.window > div div.info-tasks ol li a.task-info{top: -29px;margin-left: -20px;}
+	.window > div div.info-tasks ol li a.task-info-edit{top: -29px;}
+	.window > div div.info-tasks ol li a.start-task{top: -28px;}
 	.window > div ol li span{text-align:center;display:inline-block;width:auto}
 	.window > div ol li > span:first-of-type{text-align:left;width:100%;display:block;}
 	.window > div ol li span[data-status]{margin-bottom:5px}
-	.window > div .info-tasks ol li > span:last-of-type{position : relative;top : -2px;margin : 0;margin-right:20px;display : inline-block;width : 20px}
+	.window > div .info-tasks ol li > span:last-of-type{position : relative;top : -2px;margin : 0;margin-left:9px;display : inline-block;width : 20px}
 	.window > div ol li > span:last-of-type{width : 20px;display:inline-block;position : relative;}
 	.window > div ol li span{margin-top:0px}
 	.window > div ul, .window > div ol {padding-left: 0px;list-style: none;}
 	.window > div ul.tree {padding-left: 9px;list-style: none;}
 	.window > div ul.tree li{padding-left: 21px;}
 	.window > div .message-list > div > div div.message {width : 97%;}
-	.window > div ol li span.question{width:20px;margin-left: 78%;position: relative; top: -2px;}
+	.window > div ol li span.question{width:20px;margin-left: 70%;position: relative; top: -2px;}
 	legend a i.fa {position: relative;top: -1px;}
 }
 

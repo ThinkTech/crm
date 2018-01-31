@@ -70,6 +70,14 @@ $(document).ready(function(){
 							 div.css({top : top,left : left}).show();
 							 return false;
 						}).unbind("mouseover");
+						if(project.tasks[i].status == "stand by"){
+							$(".start-task",li).show();
+						}else{
+							$(".start-task",li).hide();
+						}
+						$(".task-info-edition input[type=button]").click(function(){
+							$(".task-info-edition").hide();
+						});
 					}
 				}
 			});
