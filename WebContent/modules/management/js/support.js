@@ -45,6 +45,24 @@ $(document).ready(function(){
 		$(".progression-edition input").on("change",function(){
 			$(".progression-edition label").html($(this).val()+"%");
 		});
+		$(".progression-edition a",container).click(function(event){
+			const url = $(this).attr("href");
+			ticket.progression = $(".progression-edition input",container).val();
+			$.ajax({
+				  type: "POST",
+				  url: url,
+				  data: JSON.stringify(ticket),
+				  contentType : "application/json",
+				  success: function(response) {
+					  if(response.status){
+						  $(".progression-edition",container).hide();
+						  $(".progression-info",container).html(ticket.progression+"%");
+					  }
+				  },
+				  dataType: "json"
+			});
+			return false;
+		});
 		$(".info-message").click(function(event){
 			return false;
 		});
