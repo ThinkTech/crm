@@ -42,7 +42,7 @@ $(document).ready(function(){
 				 $(".info-message").hide();
 				 const info = link.parent().prev();
 				 var left = event.pageX-info.width()-50;
-				 left = left < 0 ? 0 : left;
+				 left = left < 0 ? 5 : left;
 				 info.css({top : event.pageY-20,left : left}).show();
 			};
 			const ol = $(".info-tasks ol",container);
@@ -55,12 +55,6 @@ $(document).ready(function(){
 							 showMessage($(this));
 							 return false;
 						});
-						$("a",li).on("mouseover",function(event){
-							 showMessage($(this));
-						});
-						$("a",li).on("mouseout",function(event){
-							$(".info-message").hide();
-						});
 						$(".task-info-edit",li).click(function(event){
 							 $(".task-info-edition").hide();
 							 const div = $(".task-info-edition",li);
@@ -69,11 +63,16 @@ $(document).ready(function(){
 							 var top = ol.position().top;
 							 div.css({top : top,left : left}).show();
 							 return false;
-						}).unbind("mouseover");
+						});
 						if(project.tasks[i].status == "stand by" && project.status == "in progress"){
 							$(".start-task",li).show();
 						}else{
 							$(".start-task",li).hide();
+						}
+						if(project.status == "in progress"){
+							$(".task-info-edit",li).show();
+						}else{
+							$(".task-info-edit",li).hide();
 						}
 						$(".task-info-edition input[type=button]").click(function(){
 							$(".task-info-edition").hide();
