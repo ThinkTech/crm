@@ -177,7 +177,7 @@
 	        <i class="fa fa-user" aria-hidden="true"></i> 
 	   	  	<div class="message">{message|s}</div>
 	   	  	<div class="info-message">
-	   	  	    <b>Client :</b> {author}<br>
+	   	  	    <b>Auteur :</b> {author}<br>
 	   	  	    <b>Date :</b> {date}
 	   	  	</div>
 	   	  	<span><a><i class="fa fa-info" aria-hidden="true"></i></a></span>
