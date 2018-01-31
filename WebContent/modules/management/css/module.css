@@ -237,6 +237,13 @@ legend {
 
 .window > div div.info-tasks ol li a.start-task{top: -2px;}
 
+.window > div .task-info-edition h4{margin-bottom : 5px;font-weight: bold;}
+
+.window > div .task-info-edition h4 i{
+  position: relative;
+  top: 1px;
+}
+
 .window > div .info-tasks ol li > span:first-of-type{
 	width:50%;
 	font-size : 12px;
