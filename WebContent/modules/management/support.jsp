@@ -46,7 +46,7 @@
                                       <th></th>
                                       <th>Ticket</th>
                                       <th>Service</th>
-                                      <th>Auteur</th> 
+                                      <th>Client</th> 
                                       <th>Date Création</th>                                                             
                                       <th>Traitement</th>
                                       <th>Progression</th>
@@ -94,7 +94,7 @@
 		 <template>
 		 <h1><i class="fa fa-question-circle-o" aria-hidden="true"></i>Ticket : {subject}</h1>
 		<fieldset>
-		    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>{name}</span>
+		    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>{name}</span>
 		    <span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{date}</span>
 			<span class="text-right"><i class="fa fa-product-hunt" aria-hidden="true"></i> Priorité </span> 
@@ -177,7 +177,7 @@
 	        <i class="fa fa-user" aria-hidden="true"></i> 
 	   	  	<div class="message">{message|s}</div>
 	   	  	<div class="info-message">
-	   	  	    <b>Auteur :</b> {author}<br>
+	   	  	    <b>Client :</b> {author}<br>
 	   	  	    <b>Date :</b> {date}
 	   	  	</div>
 	   	  	<span><a><i class="fa fa-info" aria-hidden="true"></i></a></span>

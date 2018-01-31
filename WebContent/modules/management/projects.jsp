@@ -57,7 +57,7 @@
                                     <tr>
                                       <th></th>
                                       <th>Projet</th>
-                                      <th>Auteur</th>
+                                      <th>Client</th>
                                       <th>Date Création</th>                                                             
                                       <th>Traitement</th>
                                       <th>Progression</th>
@@ -103,7 +103,7 @@
 	 <template>
 	 <h1><i class="fa fa-briefcase" aria-hidden="true"></i>Projet : {subject|s}</h1>
 	<fieldset>
-	    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>{name}</span>
+	    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>{name}</span>
 	    <span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
 		<span class="text-right"><i class="fa fa-code" aria-hidden="true"></i> Plan </span> <span>{plan}</span> <a class="plan"><i class="fa fa-info" aria-hidden="true"></i></a> 
 		<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{date}</span>
@@ -270,7 +270,7 @@
 			<li>
 				<a href="${url}/projects/documents/download?name={name}&project_id={project_id}"><i class="fa fa-file" aria-hidden="true"></i> {name}</a>
 				<div class="info-message">
-	   	  	    	<b>Auteur :</b> {author}<br>
+	   	  	    	<b>Client :</b> {author}<br>
 	   	  	    	<b>Date :</b> {date}<br>
 	   	  	    	<b>Taille :</b> {size}
 	   	  		</div>
@@ -284,7 +284,7 @@
 	        <i class="fa fa-user" aria-hidden="true"></i> 
 	   	  	<div class="message">{message|s}</div>
 	   	  	<div class="info-message">
-	   	  	    <b>Auteur :</b> {author}<br>
+	   	  	    <b>Client :</b> {author}<br>
 	   	  	    <b>Date :</b> {date}
 	   	  	</div>
 	   	  	<span><a><i class="fa fa-info" aria-hidden="true"></i></a></span>

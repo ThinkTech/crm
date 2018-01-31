@@ -57,7 +57,7 @@
                                     <tr>
                                       <th></th>
                                       <th>Projet</th>
-                                      <th>Auteur</th>
+                                      <th>Client</th>
                                       <th>Date Création</th>                                                             
                                       <th>Traitement</th>
                                       <th>Progression</th>
@@ -91,7 +91,7 @@
 	 <template>
 	 <h1><i class="fa fa-briefcase" aria-hidden="true"></i>Projet : {subject|s}</h1>
 	<fieldset>
-	    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>{name}</span>
+	    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>{name}</span>
 	    <span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
 		<span class="text-right"><i class="fa fa-code" aria-hidden="true"></i> Plan </span> <span>{plan}</span> <a class="plan"><i class="fa fa-info" aria-hidden="true"></i></a> 
 		<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{date}</span>
@@ -258,7 +258,7 @@
 			<li>
 				<a href="${url}/projects/documents/download?name={name}&project_id={project_id}"><i class="fa fa-file" aria-hidden="true"></i> {name}</a>
 				<div class="info-message">
-	   	  	    	<b>Auteur :</b> {author}<br>
+	   	  	    	<b>Client :</b> {author}<br>
 	   	  	    	<b>Date :</b> {date}<br>
 	   	  	    	<b>Taille :</b> {size}
 	   	  		</div>
@@ -272,7 +272,7 @@
 	        <i class="fa fa-user" aria-hidden="true"></i> 
 	   	  	<div class="message">{message|s}</div>
 	   	  	<div class="info-message">
-	   	  	    <b>Auteur :</b> {author}<br>
+	   	  	    <b>Client :</b> {author}<br>
 	   	  	    <b>Date :</b> {date}
 	   	  	</div>
 	   	  	<span><a><i class="fa fa-info" aria-hidden="true"></i></a></span>
@@ -403,117 +403,6 @@
 	</div>
    </div>
 </div>
-</div>
-<div class="window project-wizard" data-url="${url}/projects/bill">
-  <template>
-  <div> 
-  <section>
-    <span>Merci pour votre souscription au {plan}</span>
-	<h2><span class="number">1</span> Etape 1 : Contrat et Caution</h2>
-	<div class="col-md-12">
-		  <div class="content-process">
-			<div class="content3">
-				<div class="shipment">
-					<div class="confirm">
-						<div class="imgcircle">
-							<img src="${images}/confirm.png">
-						</div>
-						<span class="line"></span>
-						<p>Contrat et Caution</p>
-					</div>
-					<div class="process">
-						<div class="imgcircle">
-							<img src="${images}/process.png">
-						</div>
-						<span class="line"></span>
-						<p>Développement</p>
-					</div>
-					<div class="quality">
-						<div class="imgcircle">
-							<img src="${images}/quality.png">
-						</div>
-						<span class="line"></span>
-						<p>Tests et Validation</p>
-					</div>
-					<div class="delivery">
-						<div class="imgcircle">
-							<img src="${images}/delivery.png">
-						</div>
-						<p>Livraison Produit</p>
-					</div>
-					<div class="clear"></div>
-				</div>
-			</div>
-		   </div>	
-	   </div>
-	   <h2>Projet Description</h2>
-	   <p>
-	     {description|s}
-	   </p>
-	   <hr/>
-	   <p>
-	    Les informations fournies seront utilisées pour générer le contrat vous liant à ThinkTech et ce dernier sera ajouté aux documents du projet. La facture pour le paiement de la caution a été créée. Vous pouvez choisir d'effectuer le paiement maintenant en cliquant sur le bouton Terminer afin que votre projet soit traité au plus vite par notre équipe de développement. 
-	    <span class="terms-agreement">
-	      <input type="checkbox" checked> Payer la caution
-	    </span>
-	   </p>
-	   <div class="submit">
-		 <input type="button" value="Terminer" style="float:right">
-	</div>
-  </section>
-  <section>
-   <span>Merci pour votre souscription au {plan}</span>
-	<h2><span class="number">2</span> Etape 2 : Développement</h2>
-	<div class="col-md-12">
-		  <div class="content-process">
-			<div class="content3">
-				<div class="shipment">
-					<div class="confirm">
-						<div class="imgcircle active">
-							<img src="${images}/confirm.png">
-						</div>
-						<span class="line active"></span>
-						<p>Contrat et Caution</p>
-					</div>
-					<div class="process">
-						<div class="imgcircle active">
-							<img src="${images}/process.png">
-						</div>
-						<span class="line"></span>
-						<p>Développement</p>
-					</div>
-					<div class="quality">
-						<div class="imgcircle">
-							<img src="${images}/quality.png">
-						</div>
-						<span class="line"></span>
-						<p>Tests et Validation</p>
-					</div>
-					<div class="delivery">
-						<div class="imgcircle">
-							<img src="${images}/delivery.png">
-						</div>
-						<p>Livraison Produit</p>
-					</div>
-					<div class="clear"></div>
-				</div>
-			</div>
-		   </div>	
-	   </div>
-	   <h2>Projet Description</h2>
-	   <p>
-	     {description|s}
-	   </p>
-	   <hr/>
-	   <p>Le contrat vous liant à ThinkTech a été généré et votre projet a été transmis à notre équipe technique pour traitement. La durée du projet est estimée à 3 mois et vous pouvez bien entendu suivre son évolution. Nous vous contacterons sous peu pour de 
-	      plus amples informations ou pour fournir des documents que vous pouvez attacher au projet.
-	   </p>
-	   <div class="submit">
-		 <input type="button" value="Terminer" style="float:right">
-	</div>
-  </section>
-  </div>
-  </template>
 </div>
 <script src="${js}/projects.js" defer></script>
 <script src="js/tinymce/tinymce.min.js" defer></script> 
