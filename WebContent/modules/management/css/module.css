@@ -746,6 +746,7 @@ label.tree_label:before {
 }
 
 @media(max-width:640px){
+	.window > div .task-info-edition h4{font-size : 13px}
 	.window > div div.task-info-edition {position: static;margin-top: -25px;margin-left: -5px;}
 	.window > div .terms {top:0px;height: 100%;width: 100%;margin-left: 0px;margin-left: -8px;}
 	.window {padding-top: 0px;}
