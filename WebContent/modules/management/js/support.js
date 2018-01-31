@@ -6,7 +6,7 @@ $(document).ready(function(){
 		}else if(ticket.status == "stand by"){
 			$(".priority-edit,.service-edit",container).show();
 		}else{
-			$(".progression-edition a",container).show();
+			$(".progression-edit",container).show();
 		}
 		if(ticket.comments.length) page.details.showComments(ticket.comments);
 		$(".messages form",container).submit(function(event){
