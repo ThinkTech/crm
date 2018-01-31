@@ -14,7 +14,7 @@
     <action url="messages" page="messages" method="showMessages"/>
     <action url="messages/info"  method="getMessageInfo"/>
     <action url="support"  page="support" method="showTickets" script="support.groovy"/>
-    <action url="support/tickets/process"  method="processTicket" script="support.groovy"/>
+    <action url="support/tickets/open"  method="openTicket" script="support.groovy"/>
     <action url="support/tickets/info"  method="getTicketInfo" script="support.groovy"/>
     <action url="support/tickets/comment"  method="addTicketComment" script="support.groovy"/>
     <action url="support/tickets/close"  method="closeTicket" script="support.groovy"/>

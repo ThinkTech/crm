@@ -5,6 +5,8 @@ $(document).ready(function(){
 			$("legend a",container).hide();
 		}else if(ticket.status == "stand by"){
 			$(".priority-edit,.service-edit",container).show();
+		}else{
+			$(".progression-edition a",container).show();
 		}
 		if(ticket.comments.length) page.details.showComments(ticket.comments);
 		$(".messages form",container).submit(function(event){
@@ -13,6 +15,10 @@ $(document).ready(function(){
 		});
 		$(".close-ticket",container).click(function(event){
 			page.details.closeTicket($(this).attr("href"),ticket);
+			return false;
+		});
+		$(".open-ticket",container).click(function(event){
+			page.details.openTicket($(this).attr("href"),ticket);
 			return false;
 		});
 		$(".priority-edit,.progression-edit",container).click(function(event){
@@ -174,6 +180,30 @@ $(document).ready(function(){
 				 $(".info-message").hide();
 			});
 	   });
+	};
+	page.details.openTicket = function(url,ticket){
+		confirm("&ecirc;tes vous s&ucirc;r de vouloir ouvrir ce ticket?",function(){
+			page.wait();
+			$.ajax({
+				  type: "POST",
+				  url: url,
+				  data: JSON.stringify(ticket),
+				  contentType : "application/json",
+				  success: function(response) {
+					  if(response.status){
+						  page.release();
+						  page.details.hide();
+						  const tr = $(".table tr[id="+ticket.id+"]");
+						  $("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
+					  }
+				  },
+				  error : function(){
+					  page.release();
+					  alert("erreur lors de la connexion au serveur");
+				  },
+				  dataType: "json"
+			});
+		});
 	};
 	page.details.closeTicket = function(url,ticket){
 		confirm("&ecirc;tes vous s&ucirc;r de vouloir fermer ce ticket?",function(){

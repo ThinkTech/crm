@@ -690,7 +690,7 @@ label.tree_label:before {
       float : right;
      }
      .window > div fieldset a.priority-edit {position: relative; top: 3px;}
-     .window > div a.pay,.window > div a.close-ticket,.window > div a.process-ticket{position : relative; top : 0px}
+     .window > div a.pay,.window > div a.close-ticket,.window > div a.open-ticket{position : relative; top : 0px}
      .info-tasks li span:first-of-type {width : 100%;padding-top: 4px;padding-bottom: 3px;}
      .window > div fieldset a {position: relative;top: 1px;}
      .window > div .entity-edition select {font-size: 11px;}
