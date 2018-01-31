@@ -295,6 +295,7 @@
 	   	  {info|s}
 	  </div>
       <span><a><i class="fa fa-info" aria-hidden="true"></i></a></span>
+      <span><a><i class="fa fa-edit" aria-hidden="true"></i></a></span>
     </li>
 	{/.}  
   </template>	
