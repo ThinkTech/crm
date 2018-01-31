@@ -326,7 +326,7 @@ legend {
 	display : none;
 	background : #fafafa;
 	font-size : 12px;
-	padding : 10px;
+	padding : 5px;
 	border : 1px solid #05d2ff;
 	border-radius : 5px;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -768,7 +768,7 @@ label.tree_label:before {
 	.project-wizard h1{margin-left: -16px;}
 	.window > div .terms-agreement {font-size: 13px;margin-top: 5px;}
 	.window > div .message-list > div > div span,.window > div ol li span {display : block;width:100%;text-align:right;margin-left:2px;top: 0px;}
-	.window > div ol li a{top: -30px;margin-left: -10px;}
+	.window > div div.info-tasks ol li a{top: -30px;margin-left: -10px;}
 	.window > div ol li a{margin-bottom : 2px;display:inline-block;width:90%;white-space:normal;word-break : break-word}
 	.window > div div.info-tasks ol li a{position: relative;top: -27px;}
 	.window > div div.info-tasks ol li a.task-info{top: -29px;margin-left: -20px;}
