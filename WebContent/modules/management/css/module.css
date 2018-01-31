@@ -239,6 +239,8 @@ legend {
 
 .window > div .task-info-edition h4{margin-bottom : 5px;font-weight: bold;}
 
+.window > div .task-info-edition .mce-caret {border-top: none;}
+
 .window > div .task-info-edition h4 i{
   position: relative;
   top: 1px;
