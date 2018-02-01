@@ -298,6 +298,7 @@
       <span><a class="task-info-edit"><i class="fa fa-edit" aria-hidden="true"></i></a></span>
       <span><a class="start-task" style="display:none"><i class="fa fa-play-circle-o"></i></a></span>
       <div class="task-info-edition">
+         <form action="${url}/projects/tasks/update">
           <h4><i class="fa fa-tasks" aria-hidden="true"></i> {name}</h4>
           <div class="progression-edition">
                <span>Progression : </span>
@@ -322,6 +323,7 @@
 		   <input type="submit" value="Modifier">
 		   <input type="button" value="Annuler">
 		</div>
+		</form>
 	  </div>
     </li>
 	{/.}  

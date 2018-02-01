@@ -11,6 +11,7 @@
     <action url="projects/description/update"  method="updateProjectDescription" script="projects.groovy"/>
     <action url="projects/comments/create"  method="addComment" script="projects.groovy"/>
     <action url="projects/priority/update"  method="updateProjectPriority" script="projects.groovy"/>
+    <action url="projects/tasks/update"  method="updateTask" script="projects.groovy"/>
     <action url="messages" page="messages" method="showMessages"/>
     <action url="messages/info"  method="getMessageInfo"/>
     <action url="support"  page="support" method="showTickets" script="support.groovy"/>

@@ -55,8 +55,9 @@ class ModuleAction extends ActionSupport {
           project.documents << document
        })
        project.tasks = []
-	   connection.eachRow("select t.name,t.description, p.info, p.status, p.progression from tasks t, projects_tasks p where t.id = p.task_id and p.project_id = ?", [project.id],{ row -> 
+	   connection.eachRow("select t.name,t.description, p.id, p.info, p.status, p.progression from tasks t, projects_tasks p where t.id = p.task_id and p.project_id = ?", [project.id],{ row -> 
           def task = new Expando()
+          task.id = row.id
           task.name = row.name
           task.description = row.description
           task.status = row.status
@@ -81,6 +82,16 @@ class ModuleAction extends ActionSupport {
 	   connection.close()
 	}
 	
+    def updateTask(){
+       def task = parse(request)
+       Thread.start {
+	   	  def connection = getConnection()
+	      connection.executeUpdate "update projects_tasks set status = ?, progression = ?, info = ? where id = ?", [task.status,task.progression,task.info,task.id] 
+	      connection.close()
+	   }
+       json([status: 1])
+    }
+    	
 	def updateProjectPriority(){
 	    def project = parse(request) 
 	    Thread.start {

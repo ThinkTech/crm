@@ -65,7 +65,9 @@ $(document).ready(function(){
 							 div.css({top : top,left : left}).show();
 							 return false;
 						});
-						$(".progression-edition input[type=range]",li).on("change",function(){
+						$(".progression-edition input[type=range]",li).on("change",{task : project.tasks[i]},function(event){
+							const task = event.data.task;
+							task.progression = $(this).val();
 							$(".progression-edition label",li).html($(this).val()+"%");
 						});
 						if(project.tasks[i].status == "stand by" && project.status == "in progress"){
@@ -86,8 +88,44 @@ $(document).ready(function(){
 						}else{
 							$(".task-info-edit",li).hide();
 						}
-						$(".task-info-edition input[type=button]").click(function(){
+						$(".task-info-edition input[type=button]",li).click(function(){
 							$(".task-info-edition").hide();
+						});
+						$(".task-info-edition input[type=submit]",li).on('click',{task : project.tasks[i]},function(event){
+							const task = event.data.task;
+							task.info =  tinyMCE.activeEditor.getContent();
+							if(tinyMCE.activeEditor.getContent({format: 'text'}).trim() == ""){
+								alert("vous devez entrer votre message",function(){
+									tinyMCE.activeEditor.focus();
+								});
+								return false;
+							}
+							task.status = task.progression == 100 ? "finished" : "in progress";
+							const form = li.find("form");
+							const top = form.offset().top+50;
+							page.wait({top : top});
+							$.ajax({
+								  type: "POST",
+								  url: form.attr("action"),
+								  data: JSON.stringify(task),
+								  contentType : "application/json",
+								  success: function(response) {
+									  page.release();
+									  $("span.badge-info",li).html(task.progression+"%");
+									  $(".task-info-edition",li).hide();
+									  if(task.status == "finished") {
+										  $("span.label",li).html("termin&edot;").removeClass().addClass("label label-success");
+									  }else{
+										  $("span.label",li).html("en cours").removeClass().addClass("label label-danger");
+									  }
+								  },
+								  error : function(){
+									  page.release();
+									  alert("erreur lors de la connexion au serveur");
+								  },
+								  dataType: "json"
+							});
+						   return false;
 						});
 					}
 				}
@@ -415,99 +453,6 @@ $(document).ready(function(){
 		 icons.show();
 		 if(callback) callback();
 	};
-	page.details.createProject = function(form){
-		const project = {};
-		project.service = form.find("input[name=service]").val();
-		project.subject = form.find("select[name=subject]").val();
-		project.plan =  form.find("select[name=plan]").val();
-		project.priority =  form.find("select[name=priority]").val();
-		project.description =  tinyMCE.activeEditor.getContent();
-		if(tinyMCE.activeEditor.getContent({format: 'text'}).trim() == ""){
-			alert("vous devez entrer une description",function(){
-				tinyMCE.activeEditor.focus();
-			});
-			return false;
-		}
-		const date = new Date();
-		project.date = (date.getDate()>=10?date.getDate():("0"+date.getDate()))+"/"+(date.getMonth()>=10?(date.getMonth()+1):("0"+(date.getMonth()+1)))+"/"+date.getFullYear();
-		confirm("&ecirc;tes vous s&ucirc;r de vouloir cr&edot;&edot;r ce projet?",function(){
-			page.form.hide();
-			const top = form.offset().top+200;
-			page.wait({top : top});
-			$.ajax({
-				  type: "POST",
-				  url: form.attr("action"),
-				  data: JSON.stringify(project),
-				  contentType : "application/json",
-				  success: function(response) {
-					  if(response.id){
-						  tinyMCE.activeEditor.setContent("");
-						  project.id = response.id;
-						  page.table.addRow(project,function(){
-							  page.release();
-							  var h3 = $("h3.total");
-							  h3.html(parseInt(h3.text())+1);
-							  h3 = $("h3.unactive");
-							  h3.html(parseInt(h3.text())+1);
-							  alert("votre projet a &edot;t&edot; bien cr&edot;&edot;",function(){
-					    	      page.details.showProjectWizard(project);  
-							  });
-						  });
-					  }
-				  },
-				  error : function(){
-					  page.release();
-					  alert("erreur lors de la connexion au serveur");
-				  },
-				  dataType: "json"
-			});
-		});
-	};
-	page.details.showProjectWizard = function(project){
-		 if(project.plan != "plan social"){
-			  const wizard = $(".project-wizard");
-			  const url = wizard.data("url");
-			  page.render(wizard, project, false, function() {
-				  $("> div section:nth-child(1)",wizard).show();
-				  wizard.fadeIn(100);
-				  $("> div section:nth-child(1) input[type=button]",wizard).click(function(event) {
-						const input = $("input[type=checkbox]",wizard);
-						if(input.is(":checked")){
-							page.wait({top : top});
-							$.ajax({
-								  type: "GET",
-								  url: url+"?id="+project.id,
-								  success: function(response) {
-									  const bill = response.entity;
-									  head.load("modules/payment/js/wizard.js",function() {
-										    page.wizard.show(bill,top,function(){
-										    	const tr = $(".table tr[id="+project.id+"]");
-												$("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
-												$(".badge",tr).html("5%");
-												var h3 = $("h3.unactive");
-												h3.html(parseInt(h3.text())-1);
-												h3 = $("h3.active");
-												h3.html(parseInt(h3.text())+1);
-												$("> div section:nth-child(1)",wizard).hide();
-												$("> div section:nth-child(2)",wizard).show();
-												wizard.fadeIn(100);
-										    });
-										    page.release();
-									 });
-								  },
-								  dataType: "json"
-							});
-						}
-						wizard.hide();
-				});
-				  
-				$("> div section:nth-child(2) input[type=button]",wizard).click(function(event) {
-					  wizard.hide();
-				});  
-				  
-			 });
-	     }
-	};
 	page.details.addComment = function(form){
 		const comment = {};
 		comment.message =  tinyMCE.get("textarea-message").getContent();
@@ -571,22 +516,4 @@ $(document).ready(function(){
 		$(".plans").hide();
 		$(".modal").remove();
 	});
-	const $table = $(".table");
-	const url = $table.data("url");
-	const tr = $("tbody tr",$table);
-	const firstTime = localStorage.getItem("firsTime");
-	if(tr.length == 1 && !firstTime){
-		if($("td span.label-info",tr).length){
-			const id = tr.attr("id");
-    		$.ajax({
-				  type: "GET",
-				  url: url+"?id="+id,
-				  success: function(response) {
-					  page.details.showProjectWizard(response.entity);
-					  localStorage.setItem("firsTime",true);
-				  },
-				  dataType: "json"
-			});
-		}
-	}
 });
