@@ -81,7 +81,7 @@ $(document).ready(function(){
 						}else{
 							$(".start-task",li).hide();
 						}
-						if(project.status == "in progress"){
+						if(project.tasks[i].status == "in progress" || project.tasks[i].status == "finished" && project.status == "in progress"){
 							$(".task-info-edit",li).show();
 						}else{
 							$(".task-info-edit",li).hide();
