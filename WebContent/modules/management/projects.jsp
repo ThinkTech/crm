@@ -311,6 +311,24 @@
       <span><a class="start-task" style="display:none"><i class="fa fa-play-circle-o"></i></a></span>
       <div class="task-info-edition">
           <h4><i class="fa fa-tasks" aria-hidden="true"></i> {name}</h4>
+          <div class="progression-edition">
+               <span>Progression : </span>
+               <label>{progression}%</label>&nbsp;&nbsp;
+			   <input type="range" min="0" max="100" step="10" value="{progression}" list="tickmarks">
+			   <datalist id="tickmarks">
+				  <option value="0" label="0%">
+				  <option value="10">
+				  <option value="20">
+				  <option value="30">
+				  <option value="40">
+				  <option value="50" label="50%">
+				  <option value="60">
+				  <option value="70">
+				  <option value="80">
+				  <option value="90">
+				  <option value="100" label="100%">
+				</datalist>
+		  </div>
           <textarea style="height:150px">{info}</textarea>
           <div class="submit">
 		   <input type="submit" value="Modifier">

@@ -239,6 +239,12 @@ legend {
 
 .window > div .task-info-edition h4{margin-bottom : 5px;font-weight: bold;}
 
+.window > div .task-info-edition .progression-edition input{display : inline-block;vertical-align: top;}
+
+.window > div .task-info-edition .progression-edition span{display: inline-block;width: auto;margin-right: 5px;vertical-align: top;}
+
+.window > div .task-info-edition .progression-edition label{display : inline-block;vertical-align: top;}
+
 .window > div .task-info-edition .mce-caret {border-top: none;}
 
 .window > div .task-info-edition h4 i{

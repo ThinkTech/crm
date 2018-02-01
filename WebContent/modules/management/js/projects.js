@@ -64,6 +64,9 @@ $(document).ready(function(){
 							 div.css({top : top,left : left}).show();
 							 return false;
 						});
+						$(".progression-edition input[type=range]",li).on("change",function(){
+							$(".progression-edition label",li).html($(this).val()+"%");
+						});
 						if(project.tasks[i].status == "stand by" && project.status == "in progress"){
 							$(".start-task",li).show();
 						}else{
