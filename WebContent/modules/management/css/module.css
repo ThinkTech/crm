@@ -241,9 +241,9 @@ legend {
 
 .window > div .task-info-edition .progression-edition input{display : inline-block;vertical-align: top;margin-top: 0px;}
 
-.window > div .task-info-edition .progression-edition span{display: inline-block;width: auto;margin-right: 5px;vertical-align: top;}
+.window > div .task-info-edition .progression-edition span{display: inline-block;font-weight: bold;margin-top: 7px;width: auto;margin-right: 5px;vertical-align: top;}
 
-.window > div .task-info-edition .progression-edition label{display : inline-block;vertical-align: top;}
+.window > div .task-info-edition .progression-edition label{display : inline-block;font-weight: bold;margin-top: 8px;vertical-align: top;}
 
 .window > div .task-info-edition .mce-caret {border-top: none;}
 
