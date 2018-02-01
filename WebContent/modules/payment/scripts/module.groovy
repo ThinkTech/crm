@@ -13,7 +13,7 @@ class ModuleAction extends ActionSupport {
       def connection = getConnection()
 	  connection.executeUpdate "update bills set status = 'finished', paidWith = ?, paidOn = NOW(), paidBy = ? where id = ?", [bill.paidWith,session.getAttribute("user").id,bill.id]
 	  if(bill.fee == "caution"){
-	  	connection.executeUpdate "update projects set status = 'in progress', progression = 5 where id = ?", [bill.project_id]
+	  	connection.executeUpdate "update projects set status = 'in progress', progression = 10 where id = ?", [bill.project_id]
 	  	def info = "le paiement de la caution a été éffectué et le contrat vous liant à ThinkTech a été généré et ajouté aux documents du projet"
 	  	connection.executeUpdate "update projects_tasks set status = 'finished', info = ? , progression = 100 where task_id = ? and project_id = ?", [info,1,bill.project_id]
 	  	connection.executeUpdate "update projects_tasks set status = 'in progress' where task_id = ? and project_id = ?", [2,bill.project_id]
