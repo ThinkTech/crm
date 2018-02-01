@@ -47,6 +47,7 @@ $(document).ready(function(){
 			};
 			const ol = $(".info-tasks ol",container);
 			page.render(ol,project.tasks,true,function(){
+				var count = 0;
 				for(var i = 0; i<project.tasks.length;i++){
 					if(project.tasks[i]){
 						const li = $('li[data-name="'+project.tasks[i].name+'"]',ol);
@@ -68,7 +69,15 @@ $(document).ready(function(){
 							$(".progression-edition label",li).html($(this).val()+"%");
 						});
 						if(project.tasks[i].status == "stand by" && project.status == "in progress"){
-							$(".start-task",li).show();
+							if(count==0){
+								const previous = project.tasks[i-1];
+								if(previous){
+									if(previous.status == "finished"){
+										$(".start-task",li).show();
+										count++;	
+									}
+								}
+							}
 						}else{
 							$(".start-task",li).hide();
 						}
