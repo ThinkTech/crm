@@ -1,6 +1,3 @@
-import org.metamorphosis.core.ActionSupport 
-import static groovy.json.JsonOutput.toJson as json
-import groovy.json.JsonSlurper
 import groovy.sql.Sql
 import org.apache.poi.hwpf.HWPFDocument
 import org.apache.poi.poifs.filesystem.POIFSFileSystem
@@ -9,12 +6,12 @@ import app.FileManager
 class ModuleAction extends ActionSupport {
 
    def pay(){
-      def bill = new JsonSlurper().parse(request.inputStream) 
+      def bill = parse(request) 
       def connection = getConnection()
-	  connection.executeUpdate "update bills set status = 'finished', paidWith = ?, paidOn = NOW(), paidBy = ? where id = ?", [bill.paidWith,session.getAttribute("user").id,bill.id]
+	  connection.executeUpdate "update bills set code = ?, status = 'finished', paidWith = ?, paidOn = NOW(), paidBy = ? where id = ?", [bill.code,bill.paidWith,session.getAttribute("user").id,bill.id]
 	  if(bill.fee == "caution"){
 	  	connection.executeUpdate "update projects set status = 'in progress', progression = 10 where id = ?", [bill.project_id]
-	  	def info = "le paiement de la caution a été éffectué et le contrat vous liant à ThinkTech a été généré et ajouté aux documents du projet"
+	  	def info = "le paiement de la caution a &edot;t&edot; &edot;ffectu&edot; et le contrat vous liant &aacute; ThinkTech a &edot;t&edot; g&edot;n&edot;r&edot; et ajout&edot; aux documents du projet"
 	  	connection.executeUpdate "update projects_tasks set status = 'finished', info = ? , progression = 100 where task_id = ? and project_id = ?", [info,1,bill.project_id]
 	  	connection.executeUpdate "update projects_tasks set status = 'in progress' where task_id = ? and project_id = ?", [2,bill.project_id]
 	  	def params = ["contrat.doc",50000,bill.project_id,session.getAttribute("user").id]
@@ -23,13 +20,13 @@ class ModuleAction extends ActionSupport {
 	  	generateContract(project)
 	  }
 	  connection.close()
-      response.writer.write(json([status: 1]))
+	  json([status: 1])
    }
    
    def generateContract(project) {
       def user = session.getAttribute("user")
       def structure = user.structure
-      def folder =  module.folder.absolutePath + "\\contracts\\"
+      def folder =  currentModule.folder.absolutePath + "/contracts/"
       Thread.start{
         if(project.service == "web dev"){
           def file = project.plan.replace(' ','-')+".doc"
@@ -47,7 +44,7 @@ class ModuleAction extends ActionSupport {
    }
    
    def getConnection()  {
-		new Sql(context.getAttribute("datasource"))
+		new Sql(dataSource)
    }
 }
 

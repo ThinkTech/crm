@@ -175,6 +175,36 @@
     font-weight: 600;
 }
 
+.payment > div {
+    margin-top : 20px;
+    margin-bottom : 20px;
+}
+
+.checkout-wizard-content fieldset .payment > div label {
+    width: auto;
+    position: relative;
+    top: 0px;
+}
+
+.payment > div input {
+	margin-right: 5px;
+    width: 90px;
+    font-size: 14px;
+    padding-left: 2px;
+}
+
+.payment > div input[type="button"] {
+    border: 2px solid #05d2ff;
+    background: #212121;
+    color: #fff;
+    width: 90px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px;
+    padding-top: 5px;
+    cursor : pointer;
+}
+
 .shopping-payment {
 	width: 51%;
 }
@@ -526,7 +556,13 @@
 	.shopping-payment .help {display:inline-block}
 	.shopping-payment{margin-top:-9px}
 	.checkout-wizard-content {width: 65%;padding:0px}
-	}
+	.payment > div input {font-size: 12px;padding-left : 2px}
+    .payment > div input[type="button"] {
+    	font-size: 9px;
+   	    padding: 5px;
+        width: 65px;
+    }
+}
 @media (max-width: 600px){
 	.checkout-wizard-content .register input[type="text"],.checkout-wizard-content .register input[type="email"],.checkout-wizard-content .register input[type="password"] {
 		font-size: 13px;

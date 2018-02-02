@@ -120,8 +120,12 @@ $(document).ready(function(){
 									  $("span[data-status='"+task.status+"']",li).show();
 									  $(".task-info-edition",li).hide();
 									  if(task.status == "finished") {
-										  project.progression = project.progression+10;
-										  $(".project-progression").html(project.progression+"%");
+										  const next = project.tasks[event.data.index+1];
+										  if(next){
+											$(".start-task",li.next()).show();
+										    project.progression = project.progression+10;
+										  }
+										  $(".project-progression",container).html(project.progression+"%");
 										  const tr = $(".table tr[id="+project.id+"]");
 										  $(".badge",tr).html(project.progression+"%");
 										  if(project.progression >= 70) {
@@ -130,9 +134,34 @@ $(document).ready(function(){
 										  if(project.progression >= 90) {
 												$(".quality .imgcircle,.quality .line,.delivery .imgcircle",container).addClass("active");
 										  }
-										  const next = project.tasks[event.data.index+1];
-										  if(next)$(".start-task",li.next()).show();
+										  if(project.progression==100){
+											  project.status = "finished"; 
+											  $("fieldset > .project-status",container).hide();
+											  $("fieldset > [data-status='"+project.status+"']",container).show();
+											  h3 = $("h3.active");
+											  h3.html(parseInt(h3.text())-1);
+										  }
 										  
+									  }else{
+										  var progression = 0; 
+										  for(var j = 0; j<project.tasks.length;j++){
+											if(project.tasks[j].status =="finished"){
+												progression = progression +10; 	
+											} 
+										  }
+										  project.progression = progression;  
+										  $(".project-progression",container).html(project.progression+"%");
+										  const tr = $(".table tr[id="+project.id+"]");
+										  $(".badge",tr).html(project.progression+"%");
+										  if(project.progression >= 70) {
+												$(".process .line,.quality .imgcircle",container).addClass("active");
+										  }
+										  if(project.progression >= 90) {
+												$(".quality .imgcircle,.quality .line,.delivery .imgcircle",container).addClass("active");
+										  }
+										  project.status = "in progress"; 
+										  $("fieldset > .project-status",container).hide();
+										  $("fieldset > [data-status='"+project.status+"']",container).show();
 									  }
 								  },
 								  error : function(){
@@ -178,7 +207,7 @@ $(document).ready(function(){
 			    page.wizard.show(project.bill,top,function(){
 			    	const tr = $(".table tr[id="+project.id+"]");
 					$("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
-					$(".badge",tr).html("5%");
+					$(".badge",tr).html("10%");
 					var h3 = $("h3.unactive");
 					h3.html(parseInt(h3.text())-1);
 					h3 = $("h3.active");

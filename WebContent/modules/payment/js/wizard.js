@@ -17,7 +17,7 @@ page.wizard.init = function(){
 		    		$(".payment",currentStep).hide();
 		    		const input = prevStep.find("select[name='method']");
 	    			const val = input.val();
-                    if(val == "visa") {
+                    if(val == "visa" || val == "mastercard") {
                       page.wait({top : form.offset().top+80});
                       head.load("https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js",function(){
                     	  page.release();
@@ -41,7 +41,7 @@ page.wizard.init = function(){
                     		  } 
                     		  });
                     		  V.on("payment.success", function(response){
-                    			  page.wizard.bill.paidWith = "Carte Visa";
+                    			  page.wizard.bill.paidWith = val == 'visa' ? "Visa" : "MasterCard";
                     			  page.wizard.submit();
                     		  });
                     		  V.on("payment.cancel", function(response){ 
@@ -49,6 +49,17 @@ page.wizard.init = function(){
                     		  V.on("payment.error", function(response, error){ 
                     		  });
                       });
+      	    		}else if (val == "wari"){
+      	    			const button = currentStep.find("input[type='button']");
+      	    			button.unbind("click").click(function(){
+      	    				page.wizard.bill.code = currentStep.find("input[type='text']").val();
+      	    				if(page.wizard.bill.code){
+      	    					 page.wizard.bill.paidWith = "Wari";
+      	    					page.wizard.submit();	
+      	    				}else {
+      	    					alert("veuillez saisir votre code Wari");
+      	    				}
+      	    			});
       	    		}	
 		    		$("."+val+"-payment",div).show();
 		    	}
@@ -114,7 +125,7 @@ page.wizard.submit = function(){
 			  if(response.status){
 				  page.release();
 				  wizard.fadeOut();
-				  alert("le paiement de votre facture a &edot;t&edot; bien effectu&edot;e");
+				  alert("le paiement de votre facture a &edot;t&edot; bien effectu&edot;");
 				  if(page.wizard.callback) page.wizard.callback()
 			  }
 		  },
