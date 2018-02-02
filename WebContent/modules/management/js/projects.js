@@ -3,9 +3,12 @@ $(document).ready(function(){
 		$("[data-status='"+project.priority+"']",container).show();
 		if(project.status == "in progress") {
 			$(".confirm .imgcircle,.confirm .line,.process .imgcircle",container).addClass("active");
-			if(project.progression >= 95) {
-				$(".quality .imgcircle,.quality .line",container).addClass("active");
-			}
+			if(project.progression >= 70) {
+				$(".process .line,.quality .imgcircle",container).addClass("active");
+		    }
+		    if(project.progression >= 90) {
+				$(".quality .imgcircle,.quality .line,.delivery .imgcircle",container).addClass("active");
+		    }
 		}else if(project.status == "stand by") {
 			$(".plan-edit,.priority-edit",container).show();
 		}
@@ -91,7 +94,7 @@ $(document).ready(function(){
 						$(".task-info-edition input[type=button]",li).click(function(){
 							$(".task-info-edition").hide();
 						});
-						$(".task-info-edition input[type=submit]",li).on('click',{task : project.tasks[i]},function(event){
+						$(".task-info-edition input[type=submit]",li).on('click',{task : project.tasks[i],index : i},function(event){
 							const task = event.data.task;
 							task.project_id = project.id;
 							task.info =  tinyMCE.activeEditor.getContent();
@@ -116,7 +119,21 @@ $(document).ready(function(){
 									  $("span[data-status]",li).hide();
 									  $("span[data-status='"+task.status+"']",li).show();
 									  $(".task-info-edition",li).hide();
-									  if(task.status == "finished") $(".project-progression").html((project.progression+10)+"%");
+									  if(task.status == "finished") {
+										  project.progression = project.progression+10;
+										  $(".project-progression").html(project.progression+"%");
+										  const tr = $(".table tr[id="+project.id+"]");
+										  $(".badge",tr).html(project.progression+"%");
+										  if(project.progression >= 70) {
+												$(".process .line,.quality .imgcircle",container).addClass("active");
+										  }
+										  if(project.progression >= 90) {
+												$(".quality .imgcircle,.quality .line,.delivery .imgcircle",container).addClass("active");
+										  }
+										  const next = project.tasks[event.data.index+1];
+										  if(next)$(".start-task",li.next()).show();
+										  
+									  }
 								  },
 								  error : function(){
 									  page.release();
