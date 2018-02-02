@@ -93,6 +93,7 @@ $(document).ready(function(){
 						});
 						$(".task-info-edition input[type=submit]",li).on('click',{task : project.tasks[i]},function(event){
 							const task = event.data.task;
+							task.project_id = project.id;
 							task.info =  tinyMCE.activeEditor.getContent();
 							if(tinyMCE.activeEditor.getContent({format: 'text'}).trim() == ""){
 								alert("vous devez entrer votre message",function(){
@@ -112,12 +113,10 @@ $(document).ready(function(){
 								  success: function(response) {
 									  page.release();
 									  $("span.badge-info",li).html(task.progression+"%");
+									  $("span[data-status]",li).hide();
+									  $("span[data-status='"+task.status+"']",li).show();
 									  $(".task-info-edition",li).hide();
-									  if(task.status == "finished") {
-										  $("span.label",li).html("termin&edot;").removeClass().addClass("label label-success");
-									  }else{
-										  $("span.label",li).html("en cours").removeClass().addClass("label label-danger");
-									  }
+									  if(task.status == "finished") $(".project-progression").html((project.progression+10)+"%");
 								  },
 								  error : function(){
 									  page.release();
@@ -126,6 +125,29 @@ $(document).ready(function(){
 								  dataType: "json"
 							});
 						   return false;
+						});
+						$(".start-task",li).on('click',{task : project.tasks[i]},function(event){
+							const task = event.data.task;
+							const url = $(this).attr("href");
+							confirm("&ecirc;tes vous s&ucirc;r de vouloir ouvrir cette t&acirc;che?",function(){
+								$.ajax({
+									  type: "POST",
+									  url: url,
+									  data: JSON.stringify(task),
+									  contentType : "application/json",
+									  success: function(response) {
+										  if(response.status){
+											  task.status = "in progress";
+											  $(".start-task",li).hide();
+											  $(".task-info-edit",li).show();
+											  $("span[data-status]",li).hide();
+											  $("span[data-status='"+task.status+"']",li).show();
+										  }
+									  },
+									  dataType: "json"
+								});
+							});		
+							return false;
 						});
 					}
 				}

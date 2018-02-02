@@ -87,6 +87,17 @@ class ModuleAction extends ActionSupport {
        Thread.start {
 	   	  def connection = getConnection()
 	      connection.executeUpdate "update projects_tasks set status = ?, progression = ?, info = ? where id = ?", [task.status,task.progression,task.info,task.id] 
+	      if(task.status == 'finished') connection.executeUpdate "update projects set progression = (select (count(*) * 10) from projects_tasks p where p.status = 'finished' and p.project_id = ?) where id = ?", [task.project_id,task.project_id]
+	      connection.close()
+	   }
+       json([status: 1])
+    }
+    
+     def openTask(){
+       def task = parse(request)
+       Thread.start {
+	   	  def connection = getConnection()
+	      connection.executeUpdate "update projects_tasks set status = 'in progress' where id = ?", [task.id] 
 	      connection.close()
 	   }
        json([status: 1])
