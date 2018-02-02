@@ -701,6 +701,7 @@ label.tree_label:before {
 }
 
 @media (max-width:991px){
+	.window > div .task-info-edition .progression-edition label {margin-top: 12px;}
 	.window > div input[type=text],.window > div select, .window > div input[type=file] {
       width: 100%;
       text-align: left;
@@ -730,6 +731,7 @@ label.tree_label:before {
 }
 
 @media (max-width:768px){
+	.window > div .task-info-edition .progression-edition label {margin-top: 11px;}
 	.window > div {width: 90%;}
 	.message {font-size : 70%}
 	.window > div input[type="submit"],.window > div input[type="button"] {

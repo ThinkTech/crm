@@ -98,12 +98,6 @@ $(document).ready(function(){
 							const task = event.data.task;
 							task.project_id = project.id;
 							task.info =  tinyMCE.activeEditor.getContent();
-							if(tinyMCE.activeEditor.getContent({format: 'text'}).trim() == ""){
-								alert("vous devez entrer votre message",function(){
-									tinyMCE.activeEditor.focus();
-								});
-								return false;
-							}
 							task.status = task.progression == 100 ? "finished" : "in progress";
 							const form = li.find("form");
 							const top = form.offset().top+50;
@@ -119,49 +113,45 @@ $(document).ready(function(){
 									  $("span[data-status]",li).hide();
 									  $("span[data-status='"+task.status+"']",li).show();
 									  $(".task-info-edition",li).hide();
-									  if(task.status == "finished") {
-										  const next = project.tasks[event.data.index+1];
-										  if(next){
-											$(".start-task",li.next()).show();
-										    project.progression = project.progression+10;
-										  }
-										  $(".project-progression",container).html(project.progression+"%");
-										  const tr = $(".table tr[id="+project.id+"]");
-										  $(".badge",tr).html(project.progression+"%");
-										  if(project.progression >= 70) {
-												$(".process .line,.quality .imgcircle",container).addClass("active");
-										  }
-										  if(project.progression >= 90) {
-												$(".quality .imgcircle,.quality .line,.delivery .imgcircle",container).addClass("active");
-										  }
-										  if(project.progression==100){
-											  project.status = "finished"; 
-											  $("fieldset > .project-status",container).hide();
-											  $("fieldset > [data-status='"+project.status+"']",container).show();
-											  h3 = $("h3.active");
-											  h3.html(parseInt(h3.text())-1);
-										  }
-										  
-									  }else{
-										  var progression = 0; 
-										  for(var j = 0; j<project.tasks.length;j++){
-											if(project.tasks[j].status =="finished"){
-												progression = progression +10; 	
-											} 
-										  }
-										  project.progression = progression;  
-										  $(".project-progression",container).html(project.progression+"%");
-										  const tr = $(".table tr[id="+project.id+"]");
-										  $(".badge",tr).html(project.progression+"%");
-										  if(project.progression >= 70) {
-												$(".process .line,.quality .imgcircle",container).addClass("active");
-										  }
-										  if(project.progression >= 90) {
-												$(".quality .imgcircle,.quality .line,.delivery .imgcircle",container).addClass("active");
-										  }
-										  project.status = "in progress"; 
+									  var progression = 0; 
+									  for(var j = 0; j<project.tasks.length;j++){
+										if(project.tasks[j].status =="finished"){
+											progression = progression +10; 	
+										} 
+									  }
+									  project.progression = progression; 
+									  $(".project-progression",container).html(project.progression+"%");
+									  const tr = $(".table tr[id="+project.id+"]");
+									  $(".badge",tr).html(project.progression+"%");
+									  if(project.progression >= 70) {
+											$(".process .line,.quality .imgcircle",container).addClass("active");
+									  }
+									  if(project.progression >= 90) {
+											$(".quality .imgcircle,.quality .line,.delivery .imgcircle",container).addClass("active");
+									  }
+									  if(project.progression==100){
+										  project.status = "finished";
+										  $("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
 										  $("fieldset > .project-status",container).hide();
 										  $("fieldset > [data-status='"+project.status+"']",container).show();
+										  h3 = $("h3.active");
+										  h3.html(parseInt(h3.text())-1);
+									  }else{
+										  project.status = "in progress"; 
+										  $("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
+										  $("fieldset > .project-status",container).hide();
+										  $("fieldset > [data-status='"+project.status+"']",container).show();  
+									  }
+									  if(task.status == "finished") {
+										  const next = project.tasks[event.data.index+1];
+										  if(next)$(".start-task",li.next()).show();
+									  }else{
+										  if(project.status == "finished"){
+											  var h3 = $("h3.active");
+											  h3.html(parseInt(h3.text())+1);
+										  }
+										  const next = project.tasks[event.data.index+1];
+										  if(next)$(".start-task",li.next()).hide();
 									  }
 								  },
 								  error : function(){

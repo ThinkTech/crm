@@ -91,7 +91,8 @@ class ModuleAction extends ActionSupport {
 	        connection.executeUpdate "update projects set progression = (select (count(*) * 10) from projects_tasks p where p.status = 'finished' and p.project_id = ?) where id = ?", [task.project_id,task.project_id]
 	        connection.executeUpdate "update projects set status = if((select count(*) * 10 from projects_tasks p where p.status = 'finished' and p.project_id = ?) = 100, 'finished', status) where id = ?", [task.project_id,task.project_id]
 	       }else{
-	          connection.executeUpdate "update projects set status = 'in progress' where id = ?", [task.project_id]
+	         connection.executeUpdate "update projects set progression = (select (count(*) * 10) from projects_tasks p where p.status = 'finished' and p.project_id = ?) where id = ?", [task.project_id,task.project_id]
+	         connection.executeUpdate "update projects set status = 'in progress' where id = ?", [task.project_id]
 	       }
 	      connection.close()
 	   }

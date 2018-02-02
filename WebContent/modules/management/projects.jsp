@@ -127,10 +127,10 @@
 		   <p data-status="finished">la durée du projet fut de {duration} mois et le produit final a été livré le {end}</p>
 		</div>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
-		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span> <a class="pay"><i class="fa fa-money"></i></a></span>
-		<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>  
-		<span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
-		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a>
+		<span data-status="stand by" style="display:none" class="project-status"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span> <a class="pay"><i class="fa fa-money"></i></a></span>
+		<span data-status="in progress" style="display:none" class="project-status"><span class="label label-danger">en cours</span></span>  
+		<span data-status="finished" style="display:none" class="project-status"><span class="label label-success">terminé</span></span>
+		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info project-progression">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a>
 		<div class="info-tasks">
 		   <h1><i class="fa fa-tasks" aria-hidden="true"></i> Tâches&nbsp;&nbsp;
 			  <a class="task-list-ol"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
@@ -308,7 +308,7 @@
 	  </div>
       <span><a class="task-info"><i class="fa fa-info" aria-hidden="true"></i></a></span>
       <span><a class="task-info-edit"><i class="fa fa-edit" aria-hidden="true"></i></a></span>
-      <span><a class="start-task" style="display:none"><i class="fa fa-play-circle-o"></i></a></span>
+      <span><a class="start-task" href="${url}/projects/tasks/open" style="display:none"><i class="fa fa-play-circle-o"></i></a></span>
       <div class="task-info-edition">
          <form action="${url}/projects/tasks/update">
           <h4><i class="fa fa-tasks" aria-hidden="true"></i> {name}</h4>
