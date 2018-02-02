@@ -418,7 +418,6 @@
 		</div>
 	</div>
 	
-	
 	<div data-plan="plan social" class="pricing social" style="display:none">
 		<div class="pricing-top black-top">
 			<h3>Social</h3>

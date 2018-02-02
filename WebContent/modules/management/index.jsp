@@ -355,7 +355,6 @@
 			</div>
 	 </div>
 	
-
     <div data-plan="plan corporate" class="pricing corporate" style="display:none">
 		<div class="pricing-top blue-top">
 			<h3>Corporate</h3>

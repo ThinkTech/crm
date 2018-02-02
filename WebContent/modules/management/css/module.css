@@ -729,7 +729,6 @@ label.tree_label:before {
     .projects th:nth-child(5),.support th:nth-child(6) {font-size : 0px;}
     .support th:nth-child(6), .support td:nth-child(6) {display: block;}
 }
-
 @media (max-width:768px){
 	.window > div .task-info-edition .progression-edition label {margin-top: 11px;}
 	.window > div {width: 90%;}
