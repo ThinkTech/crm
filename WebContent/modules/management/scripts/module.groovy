@@ -53,7 +53,7 @@ class ModuleAction extends ActionSupport {
 	   def connection = getConnection()
 	   def message = connection.firstRow("select m.*, u.name from messages m, users u where m.user_id=u.id and m.id = ?", [id])
 	   if(message.subject.length()>40) message.subject = message.subject.substring(0,40)+"..."
-	   message.date = new java.text.SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(message.date)
+	   message.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(message.date)
 	   connection.executeUpdate 'update messages set unread = false where id = ?', [id] 
 	   connection.close()
 	   json([entity : message])
