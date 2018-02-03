@@ -303,7 +303,7 @@
 	   	  {description}
 	  </div>
       <span class="question"><a><i class="fa fa-question" aria-hidden="true"></i></a></span>
-      <div class="info-message">
+      <div class="info-message task-message">
 	   	  {info|s}
 	  </div>
       <span><a class="task-info"><i class="fa fa-info" aria-hidden="true"></i></a></span>
@@ -367,7 +367,6 @@
 			</div>
 	 </div>
 	
-
     <div data-plan="plan corporate" class="pricing corporate" style="display:none">
 		<div class="pricing-top blue-top">
 			<h3>Corporate</h3>
@@ -417,6 +416,7 @@
 			</div>
 		</div>
 	</div>
+	
 	
 	<div data-plan="plan social" class="pricing social" style="display:none">
 		<div class="pricing-top black-top">
