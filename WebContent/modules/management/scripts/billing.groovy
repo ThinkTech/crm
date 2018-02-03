@@ -29,9 +29,9 @@ class ModuleAction extends ActionSupport {
 	   def id = getParameter("id")
 	   def connection = getConnection()
 	   def bill = connection.firstRow("select b.*,p.subject,p.service, u.name as customer from bills b, projects p, users u where b.project_id = p.id and u.id = p.user_id and b.id = ?", [id])
-	   bill.date = new java.text.SimpleDateFormat("dd/MM/yyyy").format(bill.date)
+	   bill.date = new SimpleDateFormat("dd/MM/yyyy").format(bill.date)
 	   if(bill.paidOn) {
-	     bill.paidOn = new java.text.SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(bill.paidOn)
+	     bill.paidOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(bill.paidOn)
 	     def user = connection.firstRow("select u.name from users u, bills b where u.id = b.paidBy and b.id = ?", [id])
 	     bill.paidBy = user.name 
 	   }
