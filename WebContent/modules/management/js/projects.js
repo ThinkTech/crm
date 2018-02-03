@@ -114,13 +114,12 @@ $(document).ready(function(){
 									  $("span[data-status]",li).hide();
 									  $("span[data-status='"+task.status+"']",li).show();
 									  $(".task-info-edition",li).hide();
-									  var progression = 0; 
+									  project.progression = 0; 
 									  for(var j = 0; j<project.tasks.length;j++){
 										if(project.tasks[j].status =="finished"){
-											progression = progression +10; 	
+											project.progression = project.progression +10; 	
 										} 
 									  }
-									  project.progression = progression; 
 									  $(".project-progression",container).html(project.progression+"%");
 									  const tr = $(".table tr[id="+project.id+"]");
 									  $(".badge",tr).html(project.progression+"%");
