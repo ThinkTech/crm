@@ -30,9 +30,9 @@ class ModuleAction extends ActionSupport {
 	   def connection = getConnection()
 	   def ticket = connection.firstRow("select t.*, u.name from tickets t,users u where t.id = ? and t.user_id = u.id", [id])
 	   if(ticket.subject.length()>40) ticket.subject = ticket.subject.substring(0,40)+"..."
-	   ticket.date = new java.text.SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.date)
+	   ticket.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.date)
 	   if(ticket.closedOn) {
-	   	ticket.closedOn = new java.text.SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.closedOn)
+	   	ticket.closedOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.closedOn)
 	   	def user = connection.firstRow("select u.name from users u, tickets t where u.id = t.closedBy and t.id = ?", [id])
 	    ticket.closedBy = user.name 
 	   }
@@ -41,7 +41,7 @@ class ModuleAction extends ActionSupport {
           def comment = new Expando()
           comment.id = row.id
           comment.author = row.name
-          comment.date = new java.text.SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
+          comment.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
           comment.message = row.message
           ticket.comments << comment
        })

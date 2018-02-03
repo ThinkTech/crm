@@ -33,14 +33,14 @@ class ModuleAction extends ActionSupport {
 	   def project = connection.firstRow("select p.*,u.name from projects p,users u where p.id = ? and p.user_id = u.id", [id])
 	   project.end = connection.firstRow("select date_add(date,interval duration month) as end from projects where id = ?", [id]).end
 	   if(project.subject.length()>40) project.subject = project.subject.substring(0,40)+"..."
-	   project.date = new java.text.SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.date)
-	   project.end = new java.text.SimpleDateFormat("dd/MM/yyyy").format(project.end)
+	   project.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.date)
+	   project.end = new SimpleDateFormat("dd/MM/yyyy").format(project.end)
 	   project.comments = []
 	   connection.eachRow("select c.id, c.message, c.date, u.name from projects_comments c, users u where c.createdBy = u.id and c.project_id = ?", [project.id],{ row -> 
           def comment = new Expando()
           comment.id = row.id
           comment.author = row.name
-          comment.date = new java.text.SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
+          comment.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
           comment.message = row.message
           project.comments << comment
        })
@@ -49,7 +49,7 @@ class ModuleAction extends ActionSupport {
           def document = new Expando()
           document.project_id = row.project_id
           document.author = row.author
-          document.date = new java.text.SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
+          document.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
           document.name = row.name
           document.size = byteCount(row.size as long)
           project.documents << document
@@ -67,7 +67,7 @@ class ModuleAction extends ActionSupport {
        })
        if(project.status == "stand by" && project.plan != "plan social") {
          project.bill = connection.firstRow("select b.*,p.service from bills b, projects p where b.project_id = p.id and p.id = ?", [id])
-	  	 project.bill.date = new java.text.SimpleDateFormat("dd/MM/yyyy").format(project.bill.date)
+	  	 project.bill.date = new SimpleDateFormat("dd/MM/yyyy").format(project.bill.date)
        }
 	   connection.close() 
 	   json([entity : project])
@@ -77,7 +77,7 @@ class ModuleAction extends ActionSupport {
 	   def id = getParameter("id")
 	   def connection = getConnection()
        def bill = connection.firstRow("select b.*,p.service from bills b, projects p where b.project_id = p.id and p.id = ?", [id])
-	   bill.date = new java.text.SimpleDateFormat("dd/MM/yyyy").format(bill.date)
+	   bill.date = new SimpleDateFormat("dd/MM/yyyy").format(bill.date)
 	   json([entity : bill])
 	   connection.close()
 	}
