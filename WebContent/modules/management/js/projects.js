@@ -11,6 +11,11 @@ $(document).ready(function(){
 		    }
 		}else if(project.status == "stand by") {
 			$(".plan-edit,.priority-edit",container).show();
+			$(".document-add",container).hide();
+		}else{
+			$("a.refresh",container).hide();
+			$("legend a",container).hide();
+			$(".imgcircle,.line",container).addClass("active");
 		}
 		$("a.document-list-ol",container).click(function(){
 			$(".document-list ol",container).show();
@@ -28,11 +33,9 @@ $(document).ready(function(){
 			container.find(".document-upload").hide();
 			page.details.showDocumentsIcons(project.documents);
 		}).hide();
-		if(project.status == "stand by") $(".document-add",container).hide();
-		else if(project.status == "finished") {
-			$("legend a",container).hide();
-			$(".imgcircle,.line",container).addClass("active");
-		}
+		$("a.refresh",container).click(function(){
+			page.details.refresh();
+		});
 		if(project.description){
 			const list = $(".description .message-list",container);
 			list.find("h6").hide();

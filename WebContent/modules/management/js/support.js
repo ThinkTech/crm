@@ -3,6 +3,7 @@ $(document).ready(function(){
 		$("[data-status='"+ticket.priority+"']",container).show();
 		if(ticket.status == "finished"){
 			$("legend a",container).hide();
+			$("a.refresh",container).hide();
 		}else if(ticket.status == "stand by"){
 			$(".priority-edit,.service-edit",container).show();
 		}else{
@@ -20,6 +21,9 @@ $(document).ready(function(){
 		$(".open-ticket",container).click(function(event){
 			page.details.openTicket($(this).attr("href"),ticket);
 			return false;
+		});
+		$("a.refresh",container).click(function(){
+			page.details.refresh();
 		});
 		$(".priority-edit,.progression-edit",container).click(function(event){
 			$(".info-message").hide();
