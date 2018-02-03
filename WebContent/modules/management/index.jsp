@@ -291,7 +291,7 @@
 	   	  {description}
 	  </div>
       <span class="question"><a><i class="fa fa-question" aria-hidden="true"></i></a></span>
-      <div class="info-message">
+      <div class="info-message task-message">
 	   	  {info|s}
 	  </div>
       <span><a class="task-info"><i class="fa fa-info" aria-hidden="true"></i></a></span>

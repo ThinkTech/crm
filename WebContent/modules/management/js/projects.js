@@ -109,6 +109,7 @@ $(document).ready(function(){
 								  contentType : "application/json",
 								  success: function(response) {
 									  page.release();
+									  $(".task-message",li).html(task.info);
 									  $("span.badge-info",li).html(task.progression+"%");
 									  $("span[data-status]",li).hide();
 									  $("span[data-status='"+task.status+"']",li).show();
