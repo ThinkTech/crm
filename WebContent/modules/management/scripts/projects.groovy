@@ -24,8 +24,7 @@ class ModuleAction extends ActionSupport {
        request.setAttribute("active",active)
        request.setAttribute("unactive",unactive)
        SUCCESS
-   }
-
+    }
 	
 	def getProjectInfo() {
 	   def id = getParameter("id")
@@ -148,7 +147,11 @@ class ModuleAction extends ActionSupport {
 	
 	def downloadDocument(){
 	   def user = session.getAttribute("user")
-	   def dir = "structure_"+user.structure.id+"/"+"project_"+getParameter("project_id")
+	   def project_id = getParameter("project_id")
+	   def connection = getConnection()
+	   def structure_id = connection.firstRow("select structure_id from projects where id = "+project_id).structure_id
+       connection.close()
+	   def dir = "structure_"+structure_id+"/"+"project_"+project_id
 	   def name = getParameter("name")
 	   response.contentType = context.getMimeType(name)
 	   response.setHeader("Content-disposition","attachment; filename=$name")
