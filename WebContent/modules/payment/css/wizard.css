@@ -37,7 +37,7 @@
 	background:#fff;
 	font-size:14px;
 	color:#3a0b03;
-	border: 1px solid #05d2ff;
+	border: 1px solid #08ccf7;
 	border-radius: 5px;
 	font-family : Tahoma;
 	margin-bottom : 30px;
@@ -61,7 +61,7 @@
 		inset 0 0 0 18px #fff, 
 		inset 0 0 0 19px #fff, 
 		inset 0 0 0 20px #fff, 
-		inset 0 0 0 21px #05d2ff;
+		inset 0 0 0 21px #08ccf7;
 }
 
 #checkout-wizard fieldset > h3 {
@@ -75,7 +75,7 @@
 }
 
 #checkout-wizard fieldset h5 a,#checkout-wizard fieldset h5 a:visited {
-	color : #05d2ff;
+	color : #08ccf7;
 	display: inline-block;
     padding: 5px;
     padding-left: 0px;
@@ -88,7 +88,7 @@
     width: 82%;
     background: #fafafa;
     padding: 10px;
-    border: 1px solid #05d2ff;
+    border: 1px solid #08ccf7;
     border-radius: 6px;
     outline: 0;
     overflow : hidden;
@@ -150,7 +150,7 @@
     top: 0px;
     font-family: Tahoma;
     letter-spacing: 0;
-    color: #05d2ff;
+    color: #08ccf7;
     width: 165px;
 }
 
@@ -171,7 +171,7 @@
     position: relative;
     left: 4px;
     padding: 7px;
-    color: #05d2ff;
+    color: #08ccf7;
     font-weight: 600;
 }
 
@@ -194,7 +194,7 @@
 }
 
 .payment > div input[type="button"] {
-    border: 2px solid #05d2ff;
+    border: 2px solid #08ccf7;
     background: #212121;
     color: #fff;
     width: 90px;
@@ -273,7 +273,7 @@
     margin : auto;
     height : 220px;
     background: #fff;
-    border: 1px solid #05d2ff;
+    border: 1px solid #08ccf7;
     border-radius: 6px;
     outline: 0;
     margin : auto;
@@ -289,7 +289,7 @@
 #order-confirmation h1 {
 	font-size: 1.2em;
     padding: 10px;
-    background: #05d2ff;
+    background: #08ccf7;
     color: white;
     font-family : Tahoma;
     font-weight : bold;
@@ -314,7 +314,7 @@
     top: 4px;
     margin-right: 5px;
     margin-left: -8px;
-    color: #05d2ff;
+    color: #08ccf7;
 }
 
 #order-confirmation a {
@@ -329,7 +329,7 @@
     cursor : pointer;
     font-family : Tahoma;
     user-select : none;
-    border: 2px solid #05d2ff;
+    border: 2px solid #08ccf7;
     border-radius: 25px;
     background: #180101;
     
@@ -359,7 +359,7 @@
     width : 200px;
     white-space: nowrap;
 }
-.easyWizardSteps li.current {color: #fff;background: #05d2ff;}
+.easyWizardSteps li.current {color: #fff;background: #08ccf7;}
 .easyWizardButtons {overflow:hidden;}
 .easyWizardButtons button, .easyWizardButtons .submit {margin-top : 20px;cursor:pointer;user-select : none;}
 .easyWizardButtons .prev {
@@ -369,7 +369,7 @@
     cursor: pointer;
     width: 80px;
     border-radius: 2px;
-    border: 2px solid #05d2ff;
+    border: 2px solid #08ccf7;
     border-radius: 5px;
     background: #180101;
     color: white;
@@ -387,7 +387,7 @@
 	width : 80px;
 	border-radius : 2px;
 	margin-bottom : 20px;
-	border: 2px solid #05d2ff;
+	border: 2px solid #08ccf7;
     border-radius: 5px;
     background: #180101;
     color: white;

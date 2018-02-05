@@ -25,7 +25,7 @@ tr:nth-child(even) {
 }
 
 thead tr:nth-child(odd) {
-	background : #05d2ff;
+	background : #08ccf7;
 }
 
 th {
@@ -68,7 +68,7 @@ div.empty span{
 }
 
 input, select, textarea {
-	border : 1px solid #05d2ff;
+	border : 1px solid #08ccf7;
 	background: #ffffff;
 	font-size : 14px;
 }
@@ -79,11 +79,11 @@ select {
 }
 
 input:focus, select:focus, textarea:focus {
-    border: 1px solid #05d2ff;
+    border: 1px solid #08ccf7;
 }
 
 input[type=submit],input[type="button"] {
-	border: 2px solid #05d2ff;
+	border: 2px solid #08ccf7;
 	font-family: Tahoma;
 }
 
@@ -92,7 +92,7 @@ input[readonly]{
 }
 
 legend {
-	border-bottom : 1px solid #05d2ff;
+	border-bottom : 1px solid #08ccf7;
 }
 
 legend a {
@@ -145,7 +145,7 @@ td{
 td i {
 	position : relative;
 	top : 1px;
-	color: #05d2ff;
+	color: #08ccf7;
 }
 
 td i.fa-briefcase {
@@ -203,7 +203,7 @@ td i.fa-user {
 }
 
 .buttons a {
-	color : #05d2ff;
+	color : #08ccf7;
 	font-size : 1.5em;
 	cursor : pointer;
 }
@@ -243,7 +243,7 @@ td i.fa-user {
 }
 
 .page-number.active {
-	background: #05d2ff;
+	background: #08ccf7;
 }
 
 fieldset {
@@ -261,7 +261,7 @@ fieldset > span {
 	font-weight: 600;
 	background: #dcf5fb;
 	font-size: 13px;
-	border: 1px solid #05d2ff;
+	border: 1px solid #08ccf7;
 	font-family : Tahoma;
 	margin-top : 4px;
 	box-shadow : 0 0px 0px 0 rgba(0, 0, 0, 0.05), 0 0px 8px 0 rgba(0, 0, 0, 0.04);
@@ -279,7 +279,7 @@ fieldset > span.text-right {
 }
 
 fieldset > span.text-right i{
-	color : #05d2ff;
+	color : #08ccf7;
 }
 
 fieldset > span.text-right.full {
@@ -299,7 +299,7 @@ fieldset > span.text-right.full {
   top: 0px;
   left:0px;
   bottom: 0;
-  background-color:#05d2ff;
+  background-color:#08ccf7;
   color: #fff;
   z-index: 999;
   overflow: hidden;
@@ -430,7 +430,7 @@ fieldset > span.text-right.full {
 	margin-right: 3px;
     position: relative;
     top: 1px;
-    color: #05d2ff;
+    color: #08ccf7;
     text-shadow: none;
     font-weight: bold;
 }
@@ -473,11 +473,11 @@ ul.dropdown-menu li {
 	background: #fff;
 }
 .header-right i.fa.fa-envelope{
-	color:#05d2ff;
+	color:#08ccf7;
 }
 /***** Messages *************/
 .notification_header{
-	background-color:#05d2ff;
+	background-color:#08ccf7;
 	padding: 10px 15px;
 	border-bottom:1px solid rgba(0, 0, 0, 0.05);
 	margin-bottom: 8px;
@@ -530,7 +530,7 @@ ul.dropdown-menu li {
     font-size: 10px;
     font-weight: bold;
     color: #FFF;
-    background:#05d2ff;
+    background:#08ccf7;
     line-height: 10px;
     width: 15px;
     height: 15px;
@@ -551,7 +551,7 @@ ul.dropdown-menu li {
 /********* profile details **********/
 ul.dropdown-menu.drp-mnu i.fa {
     margin-right: 0.5em;
-    color: #05d2ff;
+    color: #08ccf7;
 }
 ul.dropdown-menu {
     padding: 0;
@@ -600,7 +600,7 @@ ul.dropdown-menu {
     position: absolute;
     top: 34%;
     right: 8%;
-    color: #05d2ff;
+    color: #08ccf7;
     font-size: 1.6em;
 }
 .profile_details ul li ul.dropdown-menu.drp-mnu {
@@ -685,12 +685,12 @@ ul.dropdown-menu.drp-mnu li {
     transition: 0.5s all;
 }
 .info-update-block.clr-block-2 {
-    background:#05d2ff;
+    background:#08ccf7;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     transition: 0.5s all;
 }
 .info-update-block.clr-block-3 {
-    background:#05d2ff;
+    background:#08ccf7;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     transition: 0.5s all;
 }
@@ -718,11 +718,11 @@ ul.dropdown-menu.drp-mnu li {
 }
 
 .info-update-right i.fa-envelope-o, .info-update-right i.fa-ticket {
-	color : #05d2ff;
+	color : #08ccf7;
 }
 
 .chit-chat-layer1-left .info-update-block.clr-block-1 {
-	background : #05d2ff;
+	background : #08ccf7;
 }
 
 .chit-chat-layer1-left .info-update-gd {
@@ -761,7 +761,7 @@ h3.tlt {
 
 h3 .fa {
 	position: relative;
-    color: #05d2ff;
+    color: #08ccf7;
     text-shadow: none;
     font-weight: bold;
 }
@@ -800,20 +800,20 @@ h3 .fa-question-circle-o {
 }
 
 #confirm-dialog-container > div, #alert-dialog-container > div {
-	border : 1px solid #05d2ff;
+	border : 1px solid #08ccf7;
 }
 
 #confirm-dialog-container span:nth-child(1), #alert-dialog-container span:nth-child(1) {
-	background:#05d2ff;
+	background:#08ccf7;
 }
 
 #confirm-dialog-container a, #alert-dialog-container a,#alert-dialog-container span:nth-child(1) {
-	background : #05d2ff;
-	background-color : #05d2ff;
+	background : #08ccf7;
+	background-color : #08ccf7;
 }
 
 #confirm-dialog-container a:hover,#alert-dialog-container a:hover, #confirm-dialog-container a:focus,#alert-dialog-container a:focus {
-    color: #05d2ff;
+    color: #08ccf7;
     background-color: #fff;
     border: 1px solid;
     text-decoration : none;
@@ -826,7 +826,7 @@ h3 .fa-question-circle-o {
 
 #loader {
 	border: 16px solid #eee;
-    border-top: 16px solid #05d2ff;
+    border-top: 16px solid #08ccf7;
     width: 90px;
     height: 90px;
 }
