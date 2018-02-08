@@ -7,7 +7,7 @@
 <title>ThinkTech - CRM</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<meta name="theme-color" content="#05d2ff"> 
+<meta name="theme-color" content="#08ccf7"> 
 <meta property="og:type" content="website">
 <meta name="description" content="Bienvenue sur le crm de ThinkTech"> 
 <meta name="twitter:card" content="summary">
@@ -34,9 +34,8 @@
 		      <ul id="menu">
 		      <s:iterator value="#application.moduleManager.backendModules" var="module">
 		      <s:iterator value="#module.getMenus('main')" var="menu">
-		   	      	
 		   	         <s:iterator value="#menu.menuItems" var="item">
-						<li><a href="${item.url}"><i class="fa fa-${item.icon}"></i><span>${item.label}</span></a></li>
+						<li><a href="${item.url}" class="${item == activeItem ? 'active' : ''}"><i class="fa fa-${item.icon}"></i><span>${item.label}</span></a></li>
 					</s:iterator>
 			   </s:iterator>
 			   </s:iterator>

@@ -181,14 +181,6 @@ page.updateUserName = function(name){
 };
 
 $(document).ready(function(){
-	$.each($(".menu a"),function(i,element){
-		 const link = $(element);
-		 const href = link.attr("href");
-		 if(location.href.slice(-href.length) === href){
-			 link.addClass("active");
-			 return false;
-	     };
-	});
 	page.table.paginate();
 	$(".window .close").click(function(event) {
 		const div = $(this).parent().parent().hide();
