@@ -31,15 +31,16 @@
    <div class="sidebar-menu">		
      <h1><a><span>T</span>hinkTech</a></h1>  
 		    <div class="menu">
-		      <ul id="menu" >
-		        <li><a href="dashboard"><i class="fa fa-television"></i><span>Dashboard</span></a></li>
-		        <li><a href="dashboard/projects"><i class="fa fa-briefcase" aria-hidden="true"></i><span>Vos Projets</span></a></li>
-		        <li><a href="users/account"><i class="fa fa-user" aria-hidden="true"></i><span>Votre Compte</span></a></li>
-		        <li><a href="dashboard/messages"><i class="fa fa-envelope-o"></i><span>Messagerie</span></a></li>
-		        <li><a href="dashboard/services"><i class="fa fa-ticket"></i><span>Nos Services</span></a></li>
-		        <li><a href="dashboard/support"><i class="fa fa-question-circle-o"></i><span>Assistance</span></a></li>
-		        <li><a href="dashboard/billing"><i class="fa fa-money"></i><span>Facturation</span></a></li>
-		      </ul>
+		      <ul id="menu">
+		      <s:iterator value="#application.moduleManager.backendModules" var="module">
+		      <s:iterator value="#module.getMenus('main')" var="menu">
+		   	      	
+		   	         <s:iterator value="#menu.menuItems" var="item">
+						<li><a href="${item.url}"><i class="fa fa-${item.icon}"></i><span>${item.label}</span></a></li>
+					</s:iterator>
+			   </s:iterator>
+			   </s:iterator>
+			    </ul>
 		    </div>
 	 </div>
 	<div class="clearfix"> </div>	

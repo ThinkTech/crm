@@ -22,4 +22,9 @@
 		<action  url="collaborators/info"  method="getCollaboratorInfo"/>
 		<action  url="logout"  method="logout"/>
 	</actions>
+	<menus>
+	  <menu name="main">
+		<menuItem label="Votre Compte" url="account" icon="user"/>
+	 </menu>
+  </menus>
 </module>

@@ -25,7 +25,17 @@
     <action url="billing"  page="billing" method="showBills" script="billing.groovy"/>
     <action url="billing/info"  method="getBillInfo" script="billing.groovy"/>
     <action url="services" page="services" method="showServices"/>
-    
   </actions>
+  
+  <menus>
+	<menu name="main">
+		<menuItem label="Dashboard" icon="television"/>
+		<menuItem label="Vos Projets" url="projects" icon="briefcase"/>
+		<menuItem label="Messagerie" url="messages" icon="envelope-o"/>
+		<menuItem label="Nos Services" url="services" icon="ticket"/>
+		<menuItem label="Assistance" url="support" icon="question-circle-o"/>
+		<menuItem label="Facturation" url="billing" icon="money"/>
+	</menu>
+  </menus>
   
 </module>
