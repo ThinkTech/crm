@@ -8,23 +8,11 @@
 			<div class="col-md-4 info-update-gd">
 				<div class="info-update-block clr-block-1">
 					<div class="col-md-8 info-update-left">
-						<h3 class="active">${projects_count}</h3>
+						<h3 class="active">${total}</h3>
 						<h4>clients</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
 						<i class="fa fa-address-book"> </i>
-					</div>
-				  <div class="clearfix"> </div>
-				</div>
-			</div>
-			<div class="col-md-4 info-update-gd">
-				<div class="info-update-block clr-block-3">
-					<div class="col-md-8 info-update-left">
-						<h3>${tickets_unsolved}</h3>
-						<h4>nouveaux clients</h4>
-					</div>
-					<div class="col-md-4 info-update-right">
-						<i class="fa fa-address-book"></i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -39,29 +27,29 @@
                     <div class="chit-chat-heading">
                         <h3 class="tlt">${activeItem.label}</h3>
                     </div>
-                    <div class="projects table-responsive">
-                      <table data-url="${url}/projects/info" class="projects table table-hover">
+                    <div class="customers table-responsive">
+                      <table data-url="${url}/customers/info" class="customers table table-hover">
                                   <thead>
                                     <tr>
                                       <th></th>
-                                      <th>Projet</th>
-                                      <th>Client</th>
-                                      <th>Date Création</th>                                                             
-                                      <th>Traitement</th>
-                                      <th>Progression</th>
+                                      <th>Prénom et Nom</th>
+                                      <th>Structure</th>
+                                      <th>Date Création</th> 
+                                      <th>Profession</th>                                                            
+                                      <th>Email</th>
+                                      <th>Téléphone</th>
                                   </tr>
                               </thead>
                               <tbody>
-                              <s:iterator value="#request.projects" var="project" status="status">
-	                                <tr id="${project.properties.id}">
+                              <s:iterator value="#request.customers" var="customer" status="status">
+	                                <tr id="${customer.properties.id}">
 	                                  <td><span class="number">${status.index+1}</span></td>
-	                                  <td>${project.properties.subject}</td>
-	                                  <td><i class="fa fa-user" aria-hidden="true"></i> ${project.properties.author}</td>
-	                                  <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>                                        
-	                                  <td><span class="label ${project.properties.status=='in progress' ? 'label-danger' : '' } ${project.properties.status=='finished' ? 'label-success' : '' } ${project.properties.status=='stand by' ? 'label-info' : '' }">
-	                                  ${project.properties.status=='in progress' ? 'en cours' : '' } ${project.properties.status=='finished' ? 'terminé' : '' } ${project.properties.status=='stand by' ? 'en attente' : '' }
-	                                  </span></td>
-	                                  <td><span class="badge badge-info">${project.properties.progression}%</span></td>
+	                                  <td><i class="fa fa-user" aria-hidden="true"></i> ${customer.properties.name}</td>
+	                                  <td>${customer.properties.structure}</td>
+	                                  <td><s:date name="properties.createdOn" format="dd/MM/yyyy" /></td>                                        
+	                                  <td>${customer.properties.profession}</td>
+	                                  <td>${customer.properties.email}</td>
+	                                  <td>${customer.properties.telephone}</td>
 	                              </tr>
 	                          </s:iterator>
                           </tbody>
@@ -93,7 +81,7 @@
 		      <option value="medium">moyenne</option>
 		      <option value="high">élevée</option>
 		    </select>
-			<a href="${url}/projects/priority/update"><i class="fa fa-check" aria-hidden="true"></i></a>
+			<a href="${url}/customers/priority/update"><i class="fa fa-check" aria-hidden="true"></i></a>
 		</div>
 		<a class="priority-edit" style="display:none"><i class="fa fa-edit" aria-hidden="true"></i></a>
 		<span class="text-right"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span> <a class="duration"><i class="fa fa-info" aria-hidden="true"></i></a>
@@ -103,10 +91,10 @@
 		   <p data-status="finished">la durée du projet fut de {duration} mois et le produit final a été livré le {end}</p>
 		</div>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
-		<span data-status="stand by" style="display:none" class="project-status"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span> <a class="pay"><i class="fa fa-money"></i></a></span>
-		<span data-status="in progress" style="display:none" class="project-status"><span class="label label-danger">en cours</span></span>  
-		<span data-status="finished" style="display:none" class="project-status"><span class="label label-success">terminé</span></span>
-		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info project-progression">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a> <a class="refresh"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+		<span data-status="stand by" style="display:none" class="customer-status"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span> <a class="pay"><i class="fa fa-money"></i></a></span>
+		<span data-status="in progress" style="display:none" class="customer-status"><span class="label label-danger">en cours</span></span>  
+		<span data-status="finished" style="display:none" class="customer-status"><span class="label label-success">terminé</span></span>
+		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info customer-progression">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a> <a class="refresh"><i class="fa fa-refresh" aria-hidden="true"></i></a>
 		<div class="info-tasks">
 		   <h1><i class="fa fa-tasks" aria-hidden="true"></i> Tâches&nbsp;&nbsp;
 			  <a class="task-list-ol"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
@@ -162,7 +150,7 @@
    		 		<div></div>
    		 	</div>
    		 	<div class="message-edition description">
-   		 	    <form action="${url}/projects/description/update">
+   		 	    <form action="${url}/customers/description/update">
    		 		<textarea id="textarea-description" name="description">{description}</textarea>
    		 		<div class="submit">
 			      <input type="submit" value="Modifier">
@@ -206,7 +194,7 @@
    		 	    <span class="text-right"><i class="fa fa-file"></i> Document 1 </span> <input name="file1" type="file" required>
 				<span class="text-right"><i class="fa fa-file"></i> Document 2 </span> <input name="file2" type="file">
 				<span class="text-right"><i class="fa fa-file"></i> Document 3 </span> <input name="file3" type="file">
-				<input name="url" type="hidden" value="${url}/projects/documents/save"/>
+				<input name="url" type="hidden" value="${url}/customers/documents/save"/>
 				<input name="author" type="hidden" value="${user.name}">
 				</fieldset>
 				<div class="submit">
@@ -228,7 +216,7 @@
 				<br>
 			</div>
    		 	<div class="message-edition">
-   		 	   <form action="${url}/projects/comments/create">
+   		 	   <form action="${url}/customers/comments/create">
    		 		<textarea id="textarea-message" name="message"></textarea>
    		 		<input name="author" type="hidden" value="${user.name}">
    		 		<div class="submit">
@@ -244,7 +232,7 @@
   <template id="template-documents">
 		{#.}
 			<li>
-				<a href="${url}/projects/documents/download?name={name}&project_id={project_id}"><i class="fa fa-file" aria-hidden="true"></i> {name}</a>
+				<a href="${url}/customers/documents/download?name={name}&customer_id={customer_id}"><i class="fa fa-file" aria-hidden="true"></i> {name}</a>
 				<div class="info-message">
 	   	  	    	<b>Auteur :</b> {author}<br>
 	   	  	    	<b>Date :</b> {date}<br>
@@ -284,9 +272,9 @@
 	  </div>
       <span><a class="task-info"><i class="fa fa-info" aria-hidden="true"></i></a></span>
       <span><a class="task-info-edit"><i class="fa fa-edit" aria-hidden="true"></i></a></span>
-      <span><a class="start-task" href="${url}/projects/tasks/open" style="display:none"><i class="fa fa-play-circle-o"></i></a></span>
+      <span><a class="start-task" href="${url}/customers/tasks/open" style="display:none"><i class="fa fa-play-circle-o"></i></a></span>
       <div class="task-info-edition">
-         <form action="${url}/projects/tasks/update">
+         <form action="${url}/customers/tasks/update">
           <h4><i class="fa fa-tasks" aria-hidden="true"></i> {name}</h4>
           <div class="progression-edition">
                <span>Progression : </span>
@@ -421,5 +409,5 @@
    </div>
 </div>
 </div>
-<script src="${js}/projects.js" defer></script>
+<script src="${js}/customers.js" defer></script>
 <script src="js/tinymce/tinymce.min.js" defer></script> 

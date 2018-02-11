@@ -6,17 +6,20 @@ class ModuleAction extends ActionSupport {
    def showCustomers(){
 	   def connection = getConnection()
        def customers = []
-       connection.eachRow("select * from users",[], { row -> 
+       connection.eachRow("select u.*, s.name as structure from users u, structures s where u.type = 'customer' and u.owner = true and u.structure_id = s.id",[], { row -> 
           def customer = new Expando()
           customer.id = row.id
           customer.name = row.name
+          customer.createdOn = row.createdOn
+          customer.structure = row.structure
+          customer.email = row.email
+          customer.telephone = row.telephone
+          customer.profession = row.profession
           customers << customer
        })
-      // def unread = connection.firstRow("select count(*) AS num from messages where unread = true and structure_id = "+id).num
        connection.close() 
        request.setAttribute("customers",customers)  
        request.setAttribute("total",customers.size())
-       //request.setAttribute("unread",unread)
        SUCCESS
     }
     
