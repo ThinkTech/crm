@@ -40,7 +40,7 @@ class ModuleAction extends ActionSupport {
 	   }
 	   if(project.subject.length()>40) project.subject = project.subject.substring(0,40)+"..."
 	   project.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.date)
-	   project.end = new SimpleDateFormat("dd/MM/yyyy").format(project.end)
+	   project.end = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.end)
 	   project.comments = []
 	   connection.eachRow("select c.id, c.message, c.date, u.name from projects_comments c, users u where c.createdBy = u.id and c.project_id = ?", [project.id],{ row -> 
           def comment = new Expando()
