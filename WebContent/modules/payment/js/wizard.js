@@ -55,10 +55,21 @@ page.wizard.init = function(){
       	    				page.wizard.bill.code = currentStep.find("input[type='text']").val();
       	    				if(page.wizard.bill.code){
       	    					 page.wizard.bill.paidWith = "Wari";
-      	    					page.wizard.submit();	
+      	    					 confirm("&ecirc;tes vous s&ucirc;r de vouloir effectuer ce paiement?",function(){
+          	    					page.wizard.submit();
+          	    				 });	
       	    				}else {
       	    					alert("veuillez saisir votre code Wari");
       	    				}
+      	    			});
+      	    		}
+      	    		else if (val == "cash"){
+      	    			const button = currentStep.find("input[type='button']");
+      	    			button.unbind("click").click(function(){
+      	    				page.wizard.bill.paidWith = "Cash";
+      	    				confirm("&ecirc;tes vous s&ucirc;r de vouloir effectuer ce paiement?",function(){
+      	    					page.wizard.submit();
+      	    				});
       	    			});
       	    		}	
 		    		$("."+val+"-payment",div).show();
