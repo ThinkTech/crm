@@ -33,8 +33,8 @@
 	<menu name="main">
 		<menuItem label="Dashboard" icon="television"/>
 		<menuItem label="Vos Projets" url="projects" icon="briefcase"/>
-		<menuItem label="Vos Clients" url="customers" icon="user"/>
-		<menuItem label="Vos Prospects" url="prospects" icon="user"/>
+		<menuItem label="Vos Clients" url="customers" icon="address-book"/>
+		<menuItem label="Vos Prospects" url="prospects" icon="address-card"/>
 		<menuItem label="Messagerie" url="messages" icon="envelope-o"/>
 		<menuItem label="Nos Services" url="services" icon="ticket"/>
 		<menuItem label="Assistance" url="support" icon="question-circle-o"/>

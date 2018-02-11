@@ -6,37 +6,13 @@
 <!--info updates updates-->
 	 <div class="info-updates">
 			<div class="col-md-4 info-update-gd">
-				<div class="info-update-block clr-block-1">
-					<div class="col-md-8 info-update-left">
-						<h3 class="active">${projects_count}</h3>
-						<h4>nouveaux projets</h4>
-					</div>
-					<div class="col-md-4 info-update-right">
-						<i class="fa fa-briefcase"> </i>
-					</div>
-				  <div class="clearfix"> </div>
-				</div>
-			</div>
-			<div class="col-md-4 info-update-gd">
 				<div class="info-update-block clr-block-3">
 					<div class="col-md-8 info-update-left">
-						<h3>${tickets_unsolved}</h3>
-						<h4>tickets non résolus</h4>
+						<h3 class="active">${projects_count}</h3>
+						<h4>prospects</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
-						<i class="fa fa-question-circle-o"></i>
-					</div>
-				  <div class="clearfix"> </div>
-				</div>
-			</div>
-			<div class="col-md-4 info-update-gd">
-				<div class="info-update-block clr-block-6">
-					<div class="col-md-8 info-update-left">
-						<h3 class="unpayed">${bills_count}</h3>
-						<h4>factures impayées</h4>
-					</div>
-					<div class="col-md-4 info-update-right">
-						<i class="fa fa-money"> </i>
+						<i class="fa fa-address-card"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -78,7 +54,7 @@
 	                          </s:iterator>
                           </tbody>
                       </table>
-                      <div class="empty"><span>aucun projet</span></div>            
+                      <div class="empty"><span>aucun prospect</span></div>            
                     </div>
              </div>
       </div>
