@@ -59,8 +59,8 @@
              </div>
       </div>
      <div class="clearfix"> </div>
-</div>
-<div class="window details">
+ </div>
+ <div class="window details">
 	   <div>
 		<span title="fermer" class="close">X</span>
 		<section>
