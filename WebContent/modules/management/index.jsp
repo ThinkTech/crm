@@ -112,7 +112,7 @@
 		<div class="info-message">
 		   <p data-status="stand by">la durée maximale du projet est estimée à {duration} mois dans l'attente du paiement de la caution que vous devez effectuer</p>
 		   <p data-status="in progress">la durée maximale du projet est estimée à {duration} mois et dans les normes, le produit final sera livré au plus tard le {end}</p>
-		   <p data-status="finished">la durée du projet fut de {duration} mois et le produit final a été livré le {end}</p>
+		   <p data-status="finished">la durée du projet fut de {duration} mois et il a été clôturé le {end}</p>
 		</div>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
 		<span data-status="stand by" style="display:none" class="project-status"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span> <a class="pay"><i class="fa fa-money"></i></a></span>
