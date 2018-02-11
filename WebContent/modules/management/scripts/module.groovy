@@ -61,7 +61,6 @@ class ModuleAction extends ActionSupport {
     
 	def showServices(){
 	   request.setAttribute("total",1)
-       request.setAttribute("subscribed",1)
        def services = []
        def service = new Expando(name : 'web dev',icon : 'siteweb-service.png')
        services << service

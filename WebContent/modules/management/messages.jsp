@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <div class="inner-block">
 	<div class="logo-name">
-		<h1><i class="fa fa-envelope-o" aria-hidden="true"></i>Vos Messages</h1>
+		<h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>${activeItem.label}</h1>
 	</div>
 	<!--info updates updates-->
 	<div class="info-updates">

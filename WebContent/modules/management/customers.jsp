@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <div class="inner-block">
 <div class="logo-name">
-	<h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>${activeItem.label}</h1> 								
+		<h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>${activeItem.label}</h1> 								
 </div>
 <!--info updates updates-->
 	 <div class="info-updates">
@@ -49,7 +49,7 @@
 	<div class="col-md-12 chit-chat-layer1-left">
                <div class="work-progres">
                     <div class="chit-chat-heading">
-                        <h3 class="tlt">Vos Projets</h3>
+                        <h3 class="tlt">${activeItem.label}</h3>
                     </div>
                     <div class="projects table-responsive">
                       <table data-url="${url}/projects/info" class="projects table table-hover">

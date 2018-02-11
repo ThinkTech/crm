@@ -3,6 +3,8 @@
   <url>dashboard</url>
   <type>back-end</type>
   <actions>
+    <action url="customers" page="customers" method="showCustomers" script="customers.groovy"/>
+    <action url="prospects" page="prospects" method="showProspects" script="prospects.groovy"/>
     <action url="projects" page="projects" method="showProjects" script="projects.groovy"/>
     <action url="projects/info"  method="getProjectInfo" script="projects.groovy"/>
     <action url="projects/bill"  method="getProjectBill" script="projects.groovy"/>
@@ -31,6 +33,8 @@
 	<menu name="main">
 		<menuItem label="Dashboard" icon="television"/>
 		<menuItem label="Vos Projets" url="projects" icon="briefcase"/>
+		<menuItem label="Vos Clients" url="customers" icon="user"/>
+		<menuItem label="Vos Prospects" url="prospects" icon="user"/>
 		<menuItem label="Messagerie" url="messages" icon="envelope-o"/>
 		<menuItem label="Nos Services" url="services" icon="ticket"/>
 		<menuItem label="Assistance" url="support" icon="question-circle-o"/>
