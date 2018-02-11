@@ -135,10 +135,9 @@ $(document).ready(function(){
 									  if(project.progression==100){
 										  project.status = "finished";
 										  $("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
-										  $("fieldset > .project-status",container).hide();
-										  $("fieldset > [data-status='"+project.status+"']",container).show();
-										  h3 = $("h3.active");
+										  const h3 = $("h3.active");
 										  h3.html(parseInt(h3.text())-1);
+										  page.details.refresh();
 									  }else{
 										  project.status = "in progress"; 
 										  $("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
@@ -150,7 +149,7 @@ $(document).ready(function(){
 										  if(next)$(".start-task",li.next()).show();
 									  }else{
 										  if(project.status == "finished"){
-											  var h3 = $("h3.active");
+											  const h3 = $("h3.active");
 											  h3.html(parseInt(h3.text())+1);
 										  }
 										  const next = project.tasks[event.data.index+1];

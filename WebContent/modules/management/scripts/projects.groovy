@@ -110,7 +110,7 @@ class ModuleAction extends ActionSupport {
        def task = parse(request)
        Thread.start {
 	   	  def connection = getConnection()
-	      connection.executeUpdate "update projects_tasks set status = 'in progress' where id = ?", [task.id] 
+	      connection.executeUpdate "update projects_tasks set status = 'in progress', date = NOW() where id = ?", [task.id] 
 	      connection.close()
 	   }
        json([status: 1])
