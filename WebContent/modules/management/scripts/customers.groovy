@@ -5,22 +5,18 @@ class ModuleAction extends ActionSupport {
 
    def showCustomers(){
 	   def connection = getConnection()
-       def messages = []
-       def id = session.getAttribute("user").structure.id
-       connection.eachRow("select m.id,m.subject,m.message,m.date,m.unread,u.name from messages m, users u where m.structure_id = ? and m.user_id = u.id",[id], { row -> 
-          def message = new Expando()
-          message.id = row.id
-          message.subject = row.subject
-          message.date = row.date
-          message.user = row.name
-          message.unread = row.unread
-          messages << message
+       def customers = []
+       connection.eachRow("select * from users",[], { row -> 
+          def customer = new Expando()
+          customer.id = row.id
+          customer.name = row.name
+          customers << customer
        })
-       def unread = connection.firstRow("select count(*) AS num from messages where unread = true and structure_id = "+id).num
+      // def unread = connection.firstRow("select count(*) AS num from messages where unread = true and structure_id = "+id).num
        connection.close() 
-       request.setAttribute("messages",messages)  
-       request.setAttribute("total",messages.size())
-       request.setAttribute("unread",unread)
+       request.setAttribute("customers",customers)  
+       request.setAttribute("total",customers.size())
+       //request.setAttribute("unread",unread)
        SUCCESS
     }
     
