@@ -388,10 +388,11 @@ fieldset > span.text-right.full {
     margin-bottom: 10px;
     font-size: 1.5em;
     display: inline-block;
-    margin-right: 5px;
+    margin-right: 8px;
     position: relative;
     top: 2px;
     width: 21px;
+    text-align: right;
 }
 .menu {
     padding:4.2em 0em 0em 0em;
