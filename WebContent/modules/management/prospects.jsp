@@ -9,7 +9,7 @@
 				<div class="info-update-block clr-block-1">
 					<div class="col-md-8 info-update-left">
 						<h3 class="active">${total}</h3>
-						<h4>clients</h4>
+						<h4>prospects</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
 						<i class="fa fa-address-book"> </i>
@@ -32,10 +32,8 @@
                                   <thead>
                                     <tr>
                                       <th></th>
-                                      <th>Prénom et Nom</th>
                                       <th>Structure</th>
                                       <th>Date Création</th> 
-                                      <th>Profession</th>                                                            
                                       <th>Email</th>
                                       <th>Téléphone</th>
                                   </tr>
@@ -44,10 +42,8 @@
                               <s:iterator value="#request.prospects" var="prospect" status="status">
 	                                <tr id="${prospect.properties.id}">
 	                                  <td><span class="number">${status.index+1}</span></td>
-	                                  <td><i class="fa fa-user" aria-hidden="true"></i> ${prospect.properties.name}</td>
-	                                  <td>${prospect.properties.structure}</td>
+	                                  <td><i class="fa fa-building" aria-hidden="true"></i> ${prospect.properties.name}</td>
 	                                  <td><s:date name="properties.createdOn" format="dd/MM/yyyy" /></td>                                        
-	                                  <td>${prospect.properties.profession}</td>
 	                                  <td>${prospect.properties.email}</td>
 	                                  <td>${prospect.properties.telephone}</td>
 	                              </tr>
@@ -60,20 +56,20 @@
       </div>
      <div class="clearfix"> </div>
  </div>
- <div class="window details">
+<div class="window details">
 	   <div>
 		<span title="fermer" class="close">X</span>
 		<section>
 		 <template>
-		 <h1><i class="fa fa-envelope-o" aria-hidden="true"></i>{subject|s}</h1>
+		 <h1><i class="fa fa-envelope-o" aria-hidden="true"></i>Prospect</h1>
 		<fieldset>
-			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>ThinkTech</span> 
-			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Destinataire </span> <span>{name}</span>
-			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date </span> <span>{date}</span>
+			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>&nbsp;{name}</span> 
+			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Structure </span> <span>&nbsp;{structure}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>&nbsp;{createdOn}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Profession </span> <span>&nbsp;{profession}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Email </span> <span>&nbsp;{email}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Téléphone </span> <span>&nbsp;{telephone}</span>
 		</fieldset>
-		<div class="message">
-		  {message|s}
-		</div>
 		</template>
 		</section>
 		</div>

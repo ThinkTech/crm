@@ -28,10 +28,10 @@ class ModuleAction extends ActionSupport {
     def getCustomerInfo() {
 	   def id = getParameter("id")
 	   def connection = getConnection()
-	   def user = connection.firstRow("select u.*, s.name as structure from users u, structures s where u.id = ? and u.structure_id = s.id", [id])
-	   user.createdOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(user.createdOn)
+	   def customer = connection.firstRow("select u.*, s.name as structure from users u, structures s where u.id = ? and u.structure_id = s.id", [id])
+	   customer.createdOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(customer.createdOn)
 	   connection.close()
-	   json([entity : user])
+	   json([entity : customer])
 	}
     	
 	def getConnection() {
