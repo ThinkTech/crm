@@ -67,6 +67,8 @@ $(document).ready(function(){
 					  if(response.status){
 						  $(".progression-edition",container).hide();
 						  $(".progression-info",container).html(ticket.progression+"%");
+						  const tr = $(".table tr[id="+ticket.id+"]");
+						  $(".badge",tr).html(ticket.progression+"%");
 					  }
 				  },
 				  dataType: "json"
@@ -196,7 +198,7 @@ $(document).ready(function(){
 				  success: function(response) {
 					  if(response.status){
 						  page.release();
-						  page.details.hide();
+						  page.details.refresh();
 						  const tr = $(".table tr[id="+ticket.id+"]");
 						  $("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
 					  }
