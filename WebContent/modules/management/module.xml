@@ -4,6 +4,7 @@
   <type>back-end</type>
   <actions>
     <action url="customers" page="customers" method="showCustomers" script="customers.groovy"/>
+    <action url="customers/info"  method="getCustomerInfo" script="customers.groovy"/>
     <action url="prospects" page="prospects" method="showProspects" script="prospects.groovy"/>
     <action url="projects" page="projects" method="showProjects" script="projects.groovy"/>
     <action url="projects/info"  method="getProjectInfo" script="projects.groovy"/>

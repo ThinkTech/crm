@@ -17,6 +17,18 @@
 				  <div class="clearfix"> </div>
 				</div>
 			</div>
+			<div class="col-md-4 info-update-gd">
+				<div class="info-update-block clr-block-1">
+					<div class="col-md-8 info-update-left">
+						<h3 class="active">${unactive}</h3>
+						<h4>nouveaux clients</h4>
+					</div>
+					<div class="col-md-4 info-update-right">
+						<i class="fa fa-address-book"> </i>
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div>
 		   <div class="clearfix"> </div>
 		</div>
 <!--info updates end here-->
@@ -65,15 +77,15 @@
 		<span title="fermer" class="close">X</span>
 		<section>
 		 <template>
-		 <h1><i class="fa fa-envelope-o" aria-hidden="true"></i>{subject|s}</h1>
+		 <h1><i class="fa fa-envelope-o" aria-hidden="true"></i>Client</h1>
 		<fieldset>
-			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>ThinkTech</span> 
-			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Destinataire </span> <span>{name}</span>
-			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date </span> <span>{date}</span>
+			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>&nbsp;{name}</span> 
+			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Structure </span> <span>&nbsp;{structure}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>&nbsp;{createdOn}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Profession </span> <span>&nbsp;{profession}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Email </span> <span>&nbsp;{email}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Téléphone </span> <span>&nbsp;{telephone}</span>
 		</fieldset>
-		<div class="message">
-		  {message|s}
-		</div>
 		</template>
 		</section>
 		</div>

@@ -1,18 +1,18 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <div class="inner-block">
 <div class="logo-name">
-	<h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>${activeItem.label}</h1> 								
+		<h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>${activeItem.label}</h1> 								
 </div>
 <!--info updates updates-->
 	 <div class="info-updates">
 			<div class="col-md-4 info-update-gd">
-				<div class="info-update-block clr-block-3">
+				<div class="info-update-block clr-block-1">
 					<div class="col-md-8 info-update-left">
-						<h3 class="active">${projects_count}</h3>
-						<h4>prospects</h4>
+						<h3 class="active">${total}</h3>
+						<h4>clients</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
-						<i class="fa fa-address-card"> </i>
+						<i class="fa fa-address-book"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -27,34 +27,34 @@
                     <div class="chit-chat-heading">
                         <h3 class="tlt">${activeItem.label}</h3>
                     </div>
-                    <div class="projects table-responsive">
-                      <table data-url="${url}/projects/info" class="projects table table-hover">
+                    <div class="prospects table-responsive">
+                      <table data-url="${url}/prospects/info" class="prospects table table-hover">
                                   <thead>
                                     <tr>
                                       <th></th>
-                                      <th>Projet</th>
-                                      <th>Client</th>
-                                      <th>Date Création</th>                                                             
-                                      <th>Traitement</th>
-                                      <th>Progression</th>
+                                      <th>Prénom et Nom</th>
+                                      <th>Structure</th>
+                                      <th>Date Création</th> 
+                                      <th>Profession</th>                                                            
+                                      <th>Email</th>
+                                      <th>Téléphone</th>
                                   </tr>
                               </thead>
                               <tbody>
-                              <s:iterator value="#request.projects" var="project" status="status">
-	                                <tr id="${project.properties.id}">
+                              <s:iterator value="#request.prospects" var="prospect" status="status">
+	                                <tr id="${prospect.properties.id}">
 	                                  <td><span class="number">${status.index+1}</span></td>
-	                                  <td>${project.properties.subject}</td>
-	                                  <td><i class="fa fa-user" aria-hidden="true"></i> ${project.properties.author}</td>
-	                                  <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>                                        
-	                                  <td><span class="label ${project.properties.status=='in progress' ? 'label-danger' : '' } ${project.properties.status=='finished' ? 'label-success' : '' } ${project.properties.status=='stand by' ? 'label-info' : '' }">
-	                                  ${project.properties.status=='in progress' ? 'en cours' : '' } ${project.properties.status=='finished' ? 'terminé' : '' } ${project.properties.status=='stand by' ? 'en attente' : '' }
-	                                  </span></td>
-	                                  <td><span class="badge badge-info">${project.properties.progression}%</span></td>
+	                                  <td><i class="fa fa-user" aria-hidden="true"></i> ${prospect.properties.name}</td>
+	                                  <td>${prospect.properties.structure}</td>
+	                                  <td><s:date name="properties.createdOn" format="dd/MM/yyyy" /></td>                                        
+	                                  <td>${prospect.properties.profession}</td>
+	                                  <td>${prospect.properties.email}</td>
+	                                  <td>${prospect.properties.telephone}</td>
 	                              </tr>
 	                          </s:iterator>
                           </tbody>
                       </table>
-                      <div class="empty"><span>aucun prospect</span></div>            
+                      <div class="empty"><span>aucun client</span></div>            
                     </div>
              </div>
       </div>
@@ -79,5 +79,5 @@
 		</div>
 	</div>
 </div>
-<script src="${js}/projects.js" defer></script>
+<script src="${js}/prospects.js" defer></script>
 <script src="js/tinymce/tinymce.min.js" defer></script> 

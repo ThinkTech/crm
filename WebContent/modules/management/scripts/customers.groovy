@@ -17,21 +17,21 @@ class ModuleAction extends ActionSupport {
           customer.profession = row.profession
           customers << customer
        })
+       def unactive = connection.firstRow("select count(*) AS num from users u, accounts c where u.type = 'customer' and u.owner = true and c.activated = false and u.id = c.user_id").num
        connection.close() 
        request.setAttribute("customers",customers)  
        request.setAttribute("total",customers.size())
+       request.setAttribute("unactive",unactive)
        SUCCESS
     }
     
     def getCustomerInfo() {
 	   def id = getParameter("id")
 	   def connection = getConnection()
-	   def message = connection.firstRow("select m.*, u.name from messages m, users u where m.user_id=u.id and m.id = ?", [id])
-	   if(message.subject.length()>40) message.subject = message.subject.substring(0,40)+"..."
-	   message.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(message.date)
-	   connection.executeUpdate 'update messages set unread = false where id = ?', [id] 
+	   def user = connection.firstRow("select u.*, s.name as structure from users u, structures s where u.id = ? and u.structure_id = s.id", [id])
+	   user.createdOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(user.createdOn)
 	   connection.close()
-	   json([entity : message])
+	   json([entity : user])
 	}
     	
 	def getConnection() {
