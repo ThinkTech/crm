@@ -84,7 +84,6 @@ page.details.refresh = function(callback){
 		  type: "GET",
 		  url: url+"?id="+page.details.entity.id,
 		  success: function(response) {
-			  console.log(response.entity);
 			  page.details.entity = response.entity;
 			  page.details.show(response.entity);
 			  if(callback) callback();
