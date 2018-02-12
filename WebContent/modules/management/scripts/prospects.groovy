@@ -4,7 +4,7 @@ import groovy.sql.Sql
 class ModuleAction extends ActionSupport {
 
    def showProspects(){
-	    def connection = getConnection()
+	   def connection = getConnection()
        def prospects = []
        connection.eachRow("select * from prospects",[], { row -> 
           def prospect = new Expando()
@@ -15,9 +15,11 @@ class ModuleAction extends ActionSupport {
           prospect.telephone = row.telephone
           prospects << prospect
        })
+       def converted = connection.firstRow("select count(*) AS num from prospects where converted = true").num
        connection.close() 
        request.setAttribute("prospects",prospects)  
        request.setAttribute("total",prospects.size())
+       request.setAttribute("converted",converted)
        SUCCESS
     }
     
