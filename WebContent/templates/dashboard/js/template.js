@@ -77,7 +77,7 @@ page.details.show = function(entity) {
 	
 };
 
-page.details.refresh = function(){
+page.details.refresh = function(callback){
 	page.wait({top : $(".window.details").offset().top});
 	const url = $(".table").data("url");
 	$.ajax({
@@ -87,6 +87,7 @@ page.details.refresh = function(){
 			  console.log(response.entity);
 			  page.details.entity = response.entity;
 			  page.details.show(response.entity);
+			  if(callback) callback();
 		  },
 		  error : function(){
 			  page.release();

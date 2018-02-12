@@ -34,7 +34,15 @@ $(document).ready(function(){
 			page.details.showDocumentsIcons(project.documents);
 		}).hide();
 		$("a.refresh",container).click(function(){
-			page.details.refresh();
+			const div = $(".info-tasks",container);
+			const visible = div.is(":visible");
+			if(visible){
+				page.details.refresh(function(){
+					$(".info-tasks",container).show();
+				});
+			}else{
+				page.details.refresh();
+			}
 		});
 		if(project.description){
 			const list = $(".description .message-list",container);
@@ -137,7 +145,7 @@ $(document).ready(function(){
 										  $("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
 										  const h3 = $("h3.active");
 										  h3.html(parseInt(h3.text())-1);
-										  page.details.refresh();
+										  $("a.refresh",container).trigger("click");
 									  }else{
 										  project.status = "in progress"; 
 										  $("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
