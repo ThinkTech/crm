@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <div class="inner-block">
  <div class="logo-name">
-	<h1><i class="fa fa-user" aria-hidden="true"></i>Votre Compte</h1> 								
+	<h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Votre Compte</h1> 								
  </div>
 <!--web-forms-->
 			    <div class="web-forms">
@@ -17,7 +17,7 @@
 				   </div>
 				   <fieldset style="display:${user.role == 'administrateur' ? 'block' : 'none'}">
 					   <legend>
-					     <i class="fa fa-user"></i> Vos Collaborateurs <a class="user-add"><i class="fa fa-plus" aria-hidden="true"></i></a>
+					     <i class="fa fa-${activeItem.icon}"></i> Vos Collaborateurs <a class="user-add"><i class="fa fa-plus" aria-hidden="true"></i></a>
 					   </legend>
 					   <div class="table-responsive">
 					      <table data-url="${url}/collaborators/info" class="table table-hover">
@@ -55,7 +55,7 @@
 				<div class="window form">
 				  <div>
 					<span title="fermer" class="close">X</span>
-	 				<h1><i class="fa fa-user-plus" aria-hidden="true"></i> Nouveau Collaborateur</h1>
+	 				<h1><i class="fa fa-${activeItem.icon}-plus" aria-hidden="true"></i> Nouveau Collaborateur</h1>
 	 				<form action="${url}/collaborators/add">
 						<fieldset>
 	  						<span class="text-right"><i class="fa fa-envelope" aria-hidden="true"></i> Email </span>
@@ -70,7 +70,7 @@
 						<span title="fermer" class="close">X</span>
 						<section>
 						 <template>
-						 <h1><i class="fa fa-user" aria-hidden="true"></i> Collaborateur</h1>
+						 <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i> Collaborateur</h1>
 						<fieldset>
 							<span class="text-right">Nom </span> <span>&nbsp;{name}</span>
 							<span class="text-right">Email </span> <span>&nbsp;{email}</span>
@@ -93,7 +93,7 @@
 					    <div class="first-one-inner lost">
 						    <div class="user profile">
 								<div class="profile-bottom">
-									<i class="fa fa-user" aria-hidden="true"></i>
+									<i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>
 								</div>
 								<div>
 								   <fieldset class="profile-details">
