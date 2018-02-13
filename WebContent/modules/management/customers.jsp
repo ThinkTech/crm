@@ -79,12 +79,12 @@
 		 <template>
 		 <h1><i class="fa fa-envelope-o" aria-hidden="true"></i>Client</h1>
 		<fieldset>
-			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>&nbsp;{name}</span> 
-			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Structure </span> <span>&nbsp;{structure}</span>
-			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>&nbsp;{createdOn}</span>
-			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Profession </span> <span>&nbsp;{profession}</span>
-			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Email </span> <span>&nbsp;{email}</span>
-			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Téléphone </span> <span>&nbsp;{telephone}</span>
+			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>{name}</span> 
+			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Structure </span> <span>{structure|s}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{createdOn}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Profession </span> <span>{profession|s}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Email </span> <span>{email}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Téléphone </span> <span>{telephone|s}</span>
 		</fieldset>
 		</template>
 		</section>
