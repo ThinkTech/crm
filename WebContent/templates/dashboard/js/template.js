@@ -82,11 +82,11 @@ page.details.refresh = function(callback){
 	const url = $(".table").data("url");
 	$.ajax({
 		  type: "GET",
-		  url: url+"?id="+page.details.entity.id,
+		  url: url+"?id="+page.details.entity.id+"&timestamp="+new Date().getTime(),
 		  success: function(response) {
 			  page.details.entity = response.entity;
 			  page.details.show(response.entity);
-			  if(callback) callback();
+			  if(callback) callback(response.entity);
 		  },
 		  error : function(){
 			  page.release();

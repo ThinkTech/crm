@@ -23,7 +23,13 @@ $(document).ready(function(){
 			return false;
 		});
 		$("a.refresh",container).click(function(){
-			page.details.refresh();
+			page.details.refresh(function(ticket){
+				if(ticket.status == "finished"){
+					const tr = $(".table tr[id="+ticket.id+"]");
+					 $("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
+					 $(".badge",tr).html("100%");
+				};
+			});
 		});
 		$(".priority-edit,.progression-edit",container).click(function(event){
 			$(".info-message").hide();
