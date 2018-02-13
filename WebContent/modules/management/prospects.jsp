@@ -6,13 +6,13 @@
 <!--info updates updates-->
 	 <div class="info-updates">
 			<div class="col-md-4 info-update-gd">
-				<div class="info-update-block clr-block-1">
+				<div class="info-update-block clr-block-3">
 					<div class="col-md-8 info-update-left">
 						<h3 class="active">${total}</h3>
 						<h4>prospects</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
-						<i class="fa fa-address-book"> </i>
+						<i class="fa fa-${activeItem.icon}"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -24,7 +24,7 @@
 						<h4>convertis en clients</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
-						<i class="fa fa-address-book"> </i>
+						<i class="fa fa-${activeItem.icon}"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -73,7 +73,7 @@
 		<span title="fermer" class="close">X</span>
 		<section>
 		 <template>
-		 <h1><i class="fa fa-envelope-o" aria-hidden="true"></i>Prospect</h1>
+		 <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Prospect</h1>
 		<fieldset>
 			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Structure </span> <span>{name}</span> 
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{createdOn}</span>

@@ -12,7 +12,7 @@
 						<h4>tickets</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
-						<i class="fa fa-question-circle-o"> </i>
+						<i class="fa fa-${activeItem.icon}"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -24,7 +24,7 @@
 						<h4>tickets non résolus</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
-						<i class="fa fa-question-circle-o"> </i>
+						<i class="fa fa-${activeItem.icon}"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -92,7 +92,7 @@
 		<span title="fermer" class="close">X</span>
 		<section>
 		 <template>
-		 <h1><i class="fa fa-question-circle-o" aria-hidden="true"></i>Ticket : {subject}</h1>
+		 <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Ticket : {subject}</h1>
 		<fieldset>
 		    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>{name}</span>
 		    <span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>

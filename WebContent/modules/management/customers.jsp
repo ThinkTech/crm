@@ -12,7 +12,7 @@
 						<h4>clients</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
-						<i class="fa fa-address-book"> </i>
+						<i class="fa fa-${activeItem.icon}"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -24,7 +24,7 @@
 						<h4>nouveaux clients</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
-						<i class="fa fa-address-book"> </i>
+						<i class="fa fa-${activeItem.icon}"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -77,7 +77,7 @@
 		<span title="fermer" class="close">X</span>
 		<section>
 		 <template>
-		 <h1><i class="fa fa-envelope-o" aria-hidden="true"></i>Client</h1>
+		 <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Client</h1>
 		<fieldset>
 			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>{name}</span> 
 			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Structure </span> <span>{structure|s}</span>

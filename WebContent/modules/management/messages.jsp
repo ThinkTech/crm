@@ -12,7 +12,7 @@
 					<h4>messages</h4>
 				</div>
 				<div class="col-md-4 info-update-right">
-					<i class="fa fa-envelope-o"> </i>
+					<i class="fa fa-${activeItem.icon}"> </i>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -24,7 +24,7 @@
 					<h4>messages non lus</h4>
 				</div>
 				<div class="col-md-4 info-update-right">
-					<i class="fa fa-envelope-o"> </i>
+					<i class="fa fa-${activeItem.icon}"> </i>
 				</div>
 				<div class="clearfix"></div>
 			</div>

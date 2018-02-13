@@ -12,7 +12,7 @@
 						<h4>factures</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
-						<i class="fa fa-money"> </i>
+						<i class="fa fa-${activeItem.icon}"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -24,7 +24,7 @@
 						<h4>factures impayées</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
-						<i class="fa fa-money"> </i>
+						<i class="fa fa-${activeItem.icon}"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -82,14 +82,14 @@
 		<span title="fermer" class="close">X</span>
 		<section>
 		 <template>
-		 <h1><i class="fa fa-money" aria-hidden="true"></i>Facture du {date}</h1>
+		 <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Facture du {date}</h1>
 		<fieldset>
-			<span class="text-right"><i class="fa fa-money" aria-hidden="true"></i> Frais </span> <span>{fee|s}</span>
+			<span class="text-right"><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i> Frais </span> <span>{fee|s}</span>
 			<span class="text-right"><i class="fa fa-briefcase" aria-hidden="true"></i> Projet </span> <span>{subject}</span>
 			<span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
 			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>{customer}</span>
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date </span> <span>{date}</span>
-			<span class="text-right"><i class="fa fa-money" aria-hidden="true"></i> Montant </span> <span><b class="digit">{amount}</b> F</span>
+			<span class="text-right"><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i> Montant </span> <span><b class="digit">{amount}</b> F</span>
 			<div class="payment-info">
 			   <fieldset>
 			    <span class="text-right"><i class="fa fa-check" aria-hidden="true"></i> Paiement </span> <span><span class="label label-success">terminé</span></span>

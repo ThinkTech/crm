@@ -12,7 +12,7 @@
 						<h4>services</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
-						<i class="fa fa-ticket"> </i>
+						<i class="fa fa-${activeItem.icon}"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
@@ -25,7 +25,7 @@
 	<div class="col-md-12 chit-chat-layer1-left">
                <div class="work-progres">
                             <div class="chit-chat-heading">
-                                  <h3 class="tlt"><i class="fa fa-ticket" aria-hidden="true"></i> Nos Services</h3>
+                                  <h3 class="tlt">Nos Services</h3>
                             </div>
                             <div class="info-updates">
 	        <div class="col-md-12 services">
