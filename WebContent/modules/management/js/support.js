@@ -24,7 +24,7 @@ $(document).ready(function(){
 		});
 		$("a.refresh",container).click(function(){
 			page.details.refresh(function(ticket){
-				const tr = $(".table tr[id="+project.id+"]");
+				const tr = $(".table tr[id="+ticket.id+"]");
 				if(ticket.status == "finished"){
 					 $("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
 					 $(".badge",tr).html("100%");

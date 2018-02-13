@@ -33,11 +33,11 @@ $(document).ready(function(){
 			container.find(".document-upload").hide();
 			page.details.showDocumentsIcons(project.documents);
 		}).hide();
-		$("a.refresh",container).click(function(project){
+		$("a.refresh",container).click(function(){
 			const div = $(".info-tasks",container);
 			const visible = div.is(":visible");
 			if(visible){
-				page.details.refresh(function(){
+				page.details.refresh(function(project){
 					$(".info-tasks",container).show();
 					const tr = $(".table tr[id="+project.id+"]");
 					if(project.status == "finished"){
@@ -48,7 +48,7 @@ $(document).ready(function(){
 					}
 				});
 			}else{
-				page.details.refresh(function(){
+				page.details.refresh(function(project){
 					const tr = $(".table tr[id="+project.id+"]");
 					if(project.status == "finished"){
 						$("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
