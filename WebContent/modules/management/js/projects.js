@@ -33,15 +33,26 @@ $(document).ready(function(){
 			container.find(".document-upload").hide();
 			page.details.showDocumentsIcons(project.documents);
 		}).hide();
-		$("a.refresh",container).click(function(){
+		$("a.refresh",container).click(function(project){
 			const div = $(".info-tasks",container);
 			const visible = div.is(":visible");
 			if(visible){
 				page.details.refresh(function(){
 					$(".info-tasks",container).show();
+					if(project.status == "finished"){
+						const tr = $(".table tr[id="+project.id+"]");
+						$("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
+						$(".badge",tr).html("100%");
+					};
 				});
 			}else{
-				page.details.refresh();
+				page.details.refresh(function(){
+					if(project.status == "finished"){
+						const tr = $(".table tr[id="+project.id+"]");
+						$("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
+						$(".badge",tr).html("100%");
+					};
+				});
 			}
 		});
 		if(project.description){
