@@ -28,6 +28,9 @@ $(document).ready(function(){
 				if(ticket.status == "finished"){
 					 $("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
 					 $(".badge",tr).html("100%");
+					 const h3 = $("h3.unsolved");
+					 const count = parseInt(h3.text());
+					 h3.html(count-1);
 				}else{
 					$(".badge",tr).html(+ticket.progression+"%");
 				}

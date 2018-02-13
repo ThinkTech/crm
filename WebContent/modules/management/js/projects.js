@@ -43,6 +43,8 @@ $(document).ready(function(){
 					if(project.status == "finished"){
 						$("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
 						$(".badge",tr).html("100%");
+						const h3 = $("h3.active");
+						h3.html(parseInt(h3.text())-1);
 					}else{
 						$(".badge",tr).html(+project.progression+"%");
 					}
@@ -173,7 +175,7 @@ $(document).ready(function(){
 									  }else{
 										  if(project.status == "finished"){
 											  const h3 = $("h3.active");
-											  h3.html(parseInt(h3.text())+1);
+											  h3.html(parseInt(h3.text())-1);
 										  }
 										  const next = project.tasks[event.data.index+1];
 										  if(next)$(".start-task",li.next()).hide();
