@@ -62,7 +62,7 @@
 	                          </s:iterator>
                           </tbody>
                       </table>
-                      <div class="empty"><span>aucun client</span></div>            
+                      <div class="empty"><span>aucun prospect</span></div>            
                     </div>
              </div>
       </div>
