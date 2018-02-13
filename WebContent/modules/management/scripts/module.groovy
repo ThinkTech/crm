@@ -16,7 +16,7 @@ class ModuleAction extends ActionSupport {
           project.progression = row.progression
           projects << project
        })
-       def projects_count = connection.firstRow("select count(*) AS num from projects where status = 'stand by' or status = 'in progress'").num
+       def projects_count = connection.firstRow("select count(*) AS num from projects where status = 'stand by'").num
        def tickets_unsolved = connection.firstRow("select count(*) AS num from tickets where status != 'finished'").num
        def bills_count = connection.firstRow("select count(*) AS num from bills b, projects p where b.project_id = p.id and b.status = 'stand by'").num
        connection.close() 
