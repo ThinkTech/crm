@@ -39,19 +39,23 @@ $(document).ready(function(){
 			if(visible){
 				page.details.refresh(function(){
 					$(".info-tasks",container).show();
+					const tr = $(".table tr[id="+project.id+"]");
 					if(project.status == "finished"){
-						const tr = $(".table tr[id="+project.id+"]");
 						$("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
 						$(".badge",tr).html("100%");
-					};
+					}else{
+						$(".badge",tr).html(+project.progression+"%");
+					}
 				});
 			}else{
 				page.details.refresh(function(){
+					const tr = $(".table tr[id="+project.id+"]");
 					if(project.status == "finished"){
-						const tr = $(".table tr[id="+project.id+"]");
 						$("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
 						$(".badge",tr).html("100%");
-					};
+					}else{
+						$(".badge",tr).html(+project.progression+"%");
+					}
 				});
 			}
 		});
