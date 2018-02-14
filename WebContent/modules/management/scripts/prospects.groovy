@@ -6,7 +6,7 @@ class ModuleAction extends ActionSupport {
    def showProspects(){
 	   def connection = getConnection()
        def prospects = []
-       connection.eachRow("select * from prospects order by createdOn DESC",[], { row -> 
+       connection.eachRow("select * from others where type = 'prospect' order by createdOn DESC",[], { row -> 
           def prospect = new Expando()
           prospect.id = row.id
           prospect.name = row.name
@@ -15,7 +15,7 @@ class ModuleAction extends ActionSupport {
           prospect.telephone = row.telephone
           prospects << prospect
        })
-       def converted = connection.firstRow("select count(*) AS num from prospects where converted = true").num
+       def converted = connection.firstRow("select count(*) AS num from others where type = 'prospect' and converted = true").num
        connection.close() 
        request.setAttribute("prospects",prospects)  
        request.setAttribute("total",prospects.size())
