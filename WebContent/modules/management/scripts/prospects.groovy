@@ -6,7 +6,7 @@ class ModuleAction extends ActionSupport {
    def showProspects(){
 	   def connection = getConnection()
        def prospects = []
-       connection.eachRow("select * from prospects",[], { row -> 
+       connection.eachRow("select * from prospects order by createdOn DESC",[], { row -> 
           def prospect = new Expando()
           prospect.id = row.id
           prospect.name = row.name

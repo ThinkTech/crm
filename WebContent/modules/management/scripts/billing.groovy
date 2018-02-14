@@ -5,7 +5,7 @@ class ModuleAction extends ActionSupport {
    def showBills(){
        def connection = getConnection()
        def bills = []
-       connection.eachRow("select b.id,b.fee,b.amount,b.date,b.status,p.subject,p.service,u.name from bills b,projects p,users u where b.project_id = p.id and u.id = p.user_id",[], { row -> 
+       connection.eachRow("select b.id,b.fee,b.amount,b.date,b.status,p.subject,p.service,u.name from bills b,projects p,users u where b.project_id = p.id and u.id = p.user_id order by b.date DESC",[], { row -> 
           def bill = new Expando()
           bill.id = row.id
           bill.fee = row.fee

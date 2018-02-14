@@ -5,7 +5,7 @@ class ModuleAction extends ActionSupport {
 	def showTickets(){
        def connection = getConnection()
        def tickets = []
-       connection.eachRow("select t.id,t.subject,t.message,t.date,t.service,t.status,t.progression, u.name from tickets t, users u where t.user_id = u.id", [], { row -> 
+       connection.eachRow("select t.id,t.subject,t.message,t.date,t.service,t.status,t.progression, u.name from tickets t, users u where t.user_id = u.id order by t.date DESC", [], { row -> 
           def ticket = new Expando()
           ticket.id = row.id
           ticket.author =  row.name

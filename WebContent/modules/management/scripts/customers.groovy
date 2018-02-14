@@ -6,7 +6,7 @@ class ModuleAction extends ActionSupport {
    def showCustomers(){
 	   def connection = getConnection()
        def customers = []
-       connection.eachRow("select u.*, s.name as structure from users u, structures s where u.type = 'customer' and u.owner = true and u.structure_id = s.id",[], { row -> 
+       connection.eachRow("select u.*, s.name as structure from users u, structures s where u.type = 'customer' and u.owner = true and u.structure_id = s.id order by u.createdOn DESC",[], { row -> 
           def customer = new Expando()
           customer.id = row.id
           customer.name = row.name

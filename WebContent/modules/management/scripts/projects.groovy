@@ -7,7 +7,7 @@ class ModuleAction extends ActionSupport {
    def showProjects(){
        def connection = getConnection()
        def projects = []
-       connection.eachRow("select p.id,p.subject,p.date,p.status,p.progression,u.name from projects p, users u where p.user_id = u.id", [], { row -> 
+       connection.eachRow("select p.id,p.subject,p.date,p.status,p.progression,u.name from projects p, users u where p.user_id = u.id order by p.date DESC", [], { row -> 
           def project = new Expando()
           project.id = row.id
           project.author =  row.name
