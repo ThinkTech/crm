@@ -42,24 +42,24 @@ $(document).ready(function(){
 					const tr = $(".table tr[id="+project.id+"]");
 					if(project.status == "finished"){
 						$("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
-						$(".badge",tr).html("100%");
 						const h3 = $("h3.active");
 						h3.html(parseInt(h3.text())-1);
-					}else{
-						$(".badge",tr).html(+project.progression+"%");
+					}else if(project.status == "in progress"){
+						$("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
 					}
+					$(".badge",tr).html(+project.progression+"%");
 				});
 			}else{
 				page.details.refresh(function(project){
 					const tr = $(".table tr[id="+project.id+"]");
 					if(project.status == "finished"){
 						$("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
-						$(".badge",tr).html("100%");
 						const h3 = $("h3.active");
 						h3.html(parseInt(h3.text())-1);
-					}else{
-						$(".badge",tr).html(+project.progression+"%");
+					}else if(project.status == "in progress"){
+						$("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
 					}
+					$(".badge",tr).html(+project.progression+"%");
 				});
 			}
 		});
