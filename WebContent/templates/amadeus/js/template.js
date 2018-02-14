@@ -1,6 +1,11 @@
 $(document).ready(function(){
-	    const email = localStorage.getItem("user.email");
-		$('input[name=email]').val(email ? email : "").focus();
+		const email = localStorage.getItem("user.email");
+	    if(email){
+	    	$('input[name=email]').val(email);
+	    	$('input[name=password]').focus();
+	    }else{
+	    	$('input[name=email]').focus();
+	    }
 		$(".login form").submit(function(event){
 			const form = $(this);
 			const user = {};
