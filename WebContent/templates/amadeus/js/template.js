@@ -1,5 +1,6 @@
 $(document).ready(function(){
-		$('input[name=email]').focus();
+	    const email = localStorage.getItem("user.email");
+		$('input[name=email]').val(email ? email : "").focus();
 		$(".login form").submit(function(event){
 			const form = $(this);
 			const user = {};
@@ -13,6 +14,7 @@ $(document).ready(function(){
 				  contentType : "application/json",
 				  success: function(response) {
 					  if(response.url) {
+						  localStorage.setItem("user.email",user.email);
 						  location.href = response.url;
 					  }else {
 						  page.release();
