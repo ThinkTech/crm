@@ -7,6 +7,8 @@
     <action url="customers/info"  method="getCustomerInfo" script="customers.groovy"/>
     <action url="prospects" page="prospects" method="showProspects" script="prospects.groovy"/>
     <action url="prospects/info"  method="getProspectInfo" script="prospects.groovy"/>
+    <action url="partners" page="partners" method="showPartners" script="partners.groovy"/>
+    <action url="partners/info"  method="getPartnerInfo" script="partners.groovy"/>
     <action url="projects" page="projects" method="showProjects" script="projects.groovy"/>
     <action url="projects/info"  method="getProjectInfo" script="projects.groovy"/>
     <action url="projects/bill"  method="getProjectBill" script="projects.groovy"/>
@@ -37,6 +39,7 @@
 		<menuItem label="Vos Projets" url="projects" icon="briefcase"/>
 		<menuItem label="Vos Clients" url="customers" icon="address-book"/>
 		<menuItem label="Vos Prospects" url="prospects" icon="address-card"/>
+		<menuItem label="Vos Partenaires" url="partners" icon="handshake-o"/>
 		<menuItem label="Messagerie" url="messages" icon="envelope-o"/>
 		<menuItem label="Nos Services" url="services" icon="ticket"/>
 		<menuItem label="Assistance" url="support" icon="question-circle-o"/>
