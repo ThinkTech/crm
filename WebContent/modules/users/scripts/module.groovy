@@ -61,7 +61,7 @@ class ModuleAction extends ActionSupport {
 	   	connection.close()
 	   	def mailConfig = new MailConfig(context.getInitParameter("smtp.email"),context.getInitParameter("smtp.password"),"smtp.thinktech.sn")
 	   	def mailSender = new MailSender(mailConfig)
-	   	def mail = new Mail("$user.name","$user.email","Réinitialisation de votre mot de passe",getPasswordTemplate(user))
+	   	def mail = new Mail("$user.name","$user.email","Changement de votre mot de passe",getPasswordTemplate(user))
 	   	mailSender.sendMail(mail)
 	   	json([status: 1])
 	   }else {
