@@ -9,7 +9,7 @@
 				<div class="info-update-block clr-block-3">
 					<div class="col-md-8 info-update-left">
 						<h3 class="active">${total}</h3>
-						<h4>${activeItem.label}</h4>
+						<h4>partenaires</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
 						<i class="fa fa-${activeItem.icon}"> </i>
