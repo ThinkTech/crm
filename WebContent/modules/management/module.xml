@@ -41,7 +41,6 @@
 		<menuItem label="Vos Prospects" url="prospects" icon="address-card"/>
 		<menuItem label="Vos Partenaires" url="partners" icon="handshake-o"/>
 		<menuItem label="Messagerie" url="messages" icon="envelope-o"/>
-		<menuItem label="Nos Services" url="services" icon="ticket"/>
 		<menuItem label="Assistance" url="support" icon="question-circle-o"/>
 		<menuItem label="Facturation" url="billing" icon="money"/>
 	</menu>

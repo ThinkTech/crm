@@ -58,16 +58,7 @@ class ModuleAction extends ActionSupport {
 	   connection.close()
 	   json([entity : message])
 	}
-    
-	def showServices(){
-	   request.setAttribute("total",1)
-       def services = []
-       def service = new Expando(name : 'web dev',icon : 'siteweb-service.png')
-       services << service
-       request.setAttribute("services",services)
-       SUCCESS
-    }
-			
+   
 	def getConnection() {
 		new Sql(dataSource)
 	}
