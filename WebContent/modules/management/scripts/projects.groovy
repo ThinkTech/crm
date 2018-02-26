@@ -61,7 +61,7 @@ class ModuleAction extends ActionSupport {
           project.documents << document
        })
        project.tasks = []
-	   connection.eachRow("select t.name,t.description, p.id, p.info, p.status, p.progression from tasks t, projects_tasks p where t.id = p.task_id and p.project_id = ?", [project.id],{ row -> 
+	   connection.eachRow("select name,description,info,status,progression from projects_tasks where project_id = ?", [project.id],{ row -> 
           def task = new Expando()
           task.id = row.id
           task.name = row.name
