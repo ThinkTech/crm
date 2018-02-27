@@ -282,13 +282,13 @@
   <template id="template-tasks">
     {#.}
     <li data-name="{name}">
-      <span><i class="fa fa-tasks" aria-hidden="true"></i> {name}</span> 
+      <span><i class="fa fa-tasks" aria-hidden="true"></i> {name|s}</span> 
       <span data-status="stand by" style="display:none"><span class="label label-info">en attente</span></span>  
       <span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>
 	  <span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
       <span class="badge badge-info">{progression}%</span>
       <div class="info-message">
-	   	  {description}
+	   	  {description|s}
 	  </div>
       <span class="question"><a><i class="fa fa-question" aria-hidden="true"></i></a></span>
       <div class="info-message task-message">
@@ -299,7 +299,7 @@
       <span><a class="start-task" href="${url}/projects/tasks/open" style="display:none"><i class="fa fa-play-circle-o"></i></a></span>
       <div class="task-info-edition">
          <form action="${url}/projects/tasks/update">
-          <h4><i class="fa fa-tasks" aria-hidden="true"></i> {name}</h4>
+          <h4><i class="fa fa-tasks" aria-hidden="true"></i> {name|s}</h4>
           <div class="progression-edition">
                <span>Progression : </span>
                <label>{progression}%</label>&nbsp;&nbsp;
