@@ -129,7 +129,7 @@ page.wizard.submit = function(){
 	page.wait({top : page.wizard.top});
 	$.ajax({
 		  type: "POST",
-		  url: "payment/pay",
+		  url: form.attr("action"),
 		  data: JSON.stringify(page.wizard.bill),
 		  contentType : "application/json",
 		  success: function(response) {
