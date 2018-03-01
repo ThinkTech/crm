@@ -34,6 +34,8 @@ class ModuleAction extends ActionSupport {
 	     bill.paidOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(bill.paidOn)
 	     def user = connection.firstRow("select u.name from users u, bills b where u.id = b.paidBy and b.id = ?", [id])
 	     bill.paidBy = user.name 
+	   }else{
+	   	 bill.user = user
 	   }
 	   connection.close()
 	   json([entity : bill])

@@ -51,7 +51,7 @@ class ModuleAction extends ActionSupport {
 	
 	def addTicketComment() {
 	   def comment = parse(request)
-	   def user_id = session.getAttribute("user").id
+	   def user_id = user.id
 	   Thread.start {
 	     def connection = getConnection()
 	     def params = [comment.message,comment.ticket,user_id]
@@ -93,7 +93,7 @@ class ModuleAction extends ActionSupport {
 	
 	def closeTicket() {
 	   def ticket = parse(request)
-	   def user_id = session.getAttribute("user").id 
+	   def user_id = user.id 
 	   Thread.start {
 	      def connection = getConnection()
 	      connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where id = ?", [user_id,ticket.id] 
