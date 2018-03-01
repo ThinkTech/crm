@@ -87,7 +87,6 @@
 			<span class="text-right"><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i> Frais </span> <span>{fee|s}</span>
 			<span class="text-right"><i class="fa fa-briefcase" aria-hidden="true"></i> Projet </span> <span>{subject}</span>
 			<span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
-			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>{customer}</span>
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date </span> <span>{date}</span>
 			<span class="text-right"><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i> Montant </span> <span><b class="digit">{amount}</b> F</span>
 			<div class="payment-info">
@@ -96,6 +95,7 @@
 			    <span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Effectué le </span> <span>{paidOn}</span>
 			    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Par </span> <span>{paidBy}</span>
 			    <span class="text-right"><i class="fa fa-credit-card" aria-hidden="true"></i> Par </span> <span>{paidWith}</span>
+			    <span class="code text-right"><i class="fa fa-credit-card" aria-hidden="true"></i> Code </span> <span>{code}</span>
 			   </fieldset>
 			</div>
 		</fieldset>
