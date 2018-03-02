@@ -84,7 +84,7 @@
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{createdOn}</span>
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Profession </span> <span>{profession|s}</span>
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Email </span> <span>{email}</span>
-			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Téléphone </span> <span>{telephone|s}</span>
+			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Téléphone </span> <span><a href="tel:{telephone}">{telephone}</a></span>
 		</fieldset>
 		</template>
 		</section>
