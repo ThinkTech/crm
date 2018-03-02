@@ -26,6 +26,16 @@ class ModuleAction extends ActionSupport {
        request.setAttribute("unactive",unactive)
        SUCCESS
     }
+    
+    def openProject(){
+       def project = parse(request)
+       Thread.start {
+	   	  def connection = getConnection()
+	      connection.executeUpdate "update projects set status = 'in progress' where id = ?", [project.id] 
+	      connection.close()
+	   }
+       json([status: 1])
+    }
 	
 	def getProjectInfo() {
 	   def id = getParameter("id")

@@ -111,13 +111,12 @@ $(document).ready(function(){
 										$(".start-task",li).show();
 										count++;	
 									}
+								}else{
+									$(".start-task",li).show();
 								}
 							}
 						}else{
 							$(".start-task",li).hide();
-							if(i==0 && project.status == "stand by" && project.plan == "plan social"){
-								$(".start-task",li).show();
-							}
 						}
 						if(project.tasks[i].status == "in progress" || project.tasks[i].status == "finished" && project.status == "in progress"){
 							$(".task-info-edit",li).show();
@@ -250,6 +249,27 @@ $(document).ready(function(){
 		});
 	    if(project.plan == "plan social") {
 	    	$("a.pay",container).hide().prev().hide().prev().hide();
+	    	if(project.status == "stand by"){
+	    		$("a.open",container).click(function(){
+	    			const url = $(this).attr("href");
+					confirm("&ecirc;tes vous s&ucirc;r de vouloir ouvrir ce projet?",function(){
+						$.ajax({
+							  type: "POST",
+							  url: url,
+							  data: JSON.stringify(project),
+							  contentType : "application/json",
+							  success: function(response) {
+								  if(response.status){
+									  $("a.refresh",container).click();
+								  }
+							  },
+							  dataType: "json"
+						});
+					});		
+					return false;	
+	    			
+	    		}).show();
+	    	}
 	    }
 		$("a.plan",container).click(function(event) {
 			const plans = $(".plans");

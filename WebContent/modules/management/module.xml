@@ -10,6 +10,7 @@
     <action url="partners" page="partners" method="showPartners" script="partners.groovy"/>
     <action url="partners/info"  method="getPartnerInfo" script="partners.groovy"/>
     <action url="projects" page="projects" method="showProjects" script="projects.groovy"/>
+    <action url="projects/open"  method="openProject" script="projects.groovy"/>
     <action url="projects/info"  method="getProjectInfo" script="projects.groovy"/>
     <action url="projects/bill"  method="getProjectBill" script="projects.groovy"/>
     <action url="projects/documents/save"  method="saveDocuments" script="projects.groovy"/>
