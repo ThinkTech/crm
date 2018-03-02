@@ -260,7 +260,7 @@ $(document).ready(function(){
 							  contentType : "application/json",
 							  success: function(response) {
 								  if(response.status){
-									  $("a.refresh",container).click();
+									  $("a.refresh",container).trigger("click");
 								  }
 							  },
 							  dataType: "json"
