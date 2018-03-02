@@ -115,6 +115,9 @@ $(document).ready(function(){
 							}
 						}else{
 							$(".start-task",li).hide();
+							if(i==0 && project.status == "stand by" && project.plan == "plan social"){
+								$(".start-task",li).show();
+							}
 						}
 						if(project.tasks[i].status == "in progress" || project.tasks[i].status == "finished" && project.status == "in progress"){
 							$(".task-info-edit",li).show();
