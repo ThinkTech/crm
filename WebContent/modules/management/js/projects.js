@@ -252,7 +252,7 @@ $(document).ready(function(){
 	    	if(project.status == "stand by"){
 	    		$("a.open",container).click(function(){
 	    			const url = $(this).attr("href");
-					confirm("&ecirc;tes vous s&ucirc;r de vouloir ouvrir ce projet?",function(){
+					confirm("&ecirc;tes vous s&ucirc;r de vouloir traiter ce projet?",function(){
 						$.ajax({
 							  type: "POST",
 							  url: url,
