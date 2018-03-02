@@ -78,14 +78,9 @@ class ModuleAction extends ActionSupport {
 	   	    return
 	   	 }
 	   }
-	   connection.executeUpdate 'update users set name = ?, email = ?, profession = ?, telephone = ?  where id = ?', [user.name,user.email,user.profession,user.telephone,session.getAttribute("user").id]
-	   def structure = user.structure
-	   structure.id = session.getAttribute("user").structure.id
+	   connection.executeUpdate 'update users set name = ?, email = ?  where id = ?', [user.name,user.email,session.getAttribute("user").id]
 	   user = connection.firstRow("select * from users where id = ?", [session.getAttribute("user").id])
-	   if(user.role == "administrateur"){
-	   	 connection.executeUpdate 'update structures set name = ?, business = ?, ninea = ? where id = ?', [structure.name,structure.business,structure.ninea,structure.id]
-	   }
-	   user.structure = connection.firstRow("select * from structures where id = ?", [user.structure_id])
+	   user.structure = session.getAttribute("user").structure
        session.setAttribute("user",user) 
 	   connection.close() 
 	   json([status: 1])

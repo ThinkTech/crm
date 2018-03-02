@@ -133,11 +133,6 @@ jQuery(document).ready(function( $ ) {
 		user.structure = {};
 		user.name = form.find("input[name=name]").val().trim();
 		user.email = form.find("input[name=email]").val().trim();
-		user.telephone = form.find("input[name=telephone]").val().trim();
-		user.profession = form.find("input[name=profession]").val().trim();
-		user.structure.name = form.find("input[name=structure]").val().trim();
-		user.structure.business = form.find("input[name=business]").val().trim();
-		user.structure.ninea = form.find("input[name=ninea]").val().trim();
 		page.wait({top : form.offset().top});
 		$.ajax({
 			  type: "POST",
@@ -150,11 +145,6 @@ jQuery(document).ready(function( $ ) {
 					  alert("votre profil a &edot;t&edot; bien modifi&edot;");
 					  $(".profile-details #name").html("&nbsp;"+user.name);
 					  $(".profile-details #email").html("&nbsp;"+user.email);
-					  $(".profile-details #telephone").html("&nbsp;"+user.telephone);
-					  $(".profile-details #profession").html("&nbsp;"+user.profession);
-					  $(".profile-details #structure").html("&nbsp;"+user.structure.name);
-					  $(".profile-details #business").html("&nbsp;"+user.structure.business);
-					  $(".profile-details #ninea").html("&nbsp;"+user.structure.ninea);
 					  $(".profile-details").show();
 					  $(".profile-edition").hide();
 					  $(".user a").show();
