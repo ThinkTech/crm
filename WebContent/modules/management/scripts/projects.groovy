@@ -78,7 +78,7 @@ class ModuleAction extends ActionSupport {
           task.description = row.description
           task.status = row.status
           task.progression = row.progression
-          task.info = row.info
+          task.info = row.info ? row.info : "aucune information" 
           project.tasks << task
        })
        if(project.status == "stand by" && project.plan != "plan social") {
