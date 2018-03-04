@@ -356,7 +356,7 @@
 				<div class="pricing-bottom-bottom">
 					<p><span>1</span> Nom de domaine</p>
 					<p><span>1 </span> Certificat</p>
-					<p><span>1</span> Base de données</p>  
+					<p><span>1</span> Base de données [5 MB]</p>  
 					<p>adresses emails</p>
 					<p>Référencement</p>
 					<p>Sauvegarde</p>
@@ -381,7 +381,7 @@
 			<div class="pricing-bottom-bottom">
 				<p><span>1</span> Nom de domaine</p>
 				<p><span>1 </span> Certificat</p>
-				<p><span>1</span> Base de données</p>  
+				<p><span>1</span> Base de données [5 MB]</p>  
 				<p>adresses emails</p>
 				<p>Référencement</p>
 				<p>Sauvegarde</p>
@@ -406,7 +406,7 @@
 			<div class="pricing-bottom-bottom">
 				<p><span>1</span> Nom de domaine</p>
 				<p><span>1 </span> Certificat</p>
-				<p><span>1</span> Base de données</p>
+				<p><span>1</span> Base de données [5 MB]</p>
 				<p>adresses emails</p>
 				<p>Référencement</p>
 				<p>Sauvegarde</p>							
@@ -432,7 +432,7 @@
 			<div class="pricing-bottom-bottom">
 				<p><span>1</span> Nom de domaine</p>
 				<p><span>1 </span> Certificat</p>
-				<p><span>1</span> Base de données</p>
+				<p><span>1</span> Base de données [5 MB]</p>
 				<p>adresses emails</p>
 				<p>Référencement</p>	
 				<p>Sauvegarde</p>						
