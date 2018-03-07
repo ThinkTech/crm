@@ -185,14 +185,14 @@ class ModuleAction extends ActionSupport {
 		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
 		    div(style : "margin-top:10px;padding-top:2%;height:100px;text-align:center;background:#05d2ff") {
 		      h4(style : "font-size: 200%;color: #fff;margin: 3px") {
-		        span("R&edot;initialisation de votre mot de passe")
+		        span("R&eacute;initialisation de votre mot de passe")
 		      }
 		      p(style : "font-size:150%;color:#fff"){
-		         span("r&edot;initialisation reussie")
+		         span("r&eacute;initialisation reussie")
 		      }
 		    }
 		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
-		      p("Votre mot de passe a &edot;t&edot; bien r&edot;initialis&edot;")
+		      p("Votre mot de passe a &eacute;t&eacute; bien r&eacute;initialis&eacute;")
 		      br()
 		      p("Mot de passe : <b>$user.password</b>")
 		      br()
@@ -202,7 +202,7 @@ class ModuleAction extends ActionSupport {
 		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 11px;text-align:center") {
 		      p("Vous recevez cet email parce que vous (ou quelqu'un utilisant cet email)")
-		      p("a envoy&edot; une demande en utilisant cette adresse")
+		      p("a envoy&eacute; une demande en utilisant cette adresse")
 		  }
 		  
 		   
@@ -240,7 +240,7 @@ class ModuleAction extends ActionSupport {
 		  }
 		  div(style :"margin: 10px;margin-top:10px;font-size : 11px;text-align:center") {
 		      p("Vous recevez cet email parce que $name ")
-		      p("a envoy&edot; une demande de collaboration en utilisant cette adresse")
+		      p("a envoy&eacute; une demande de collaboration en utilisant cette adresse")
 		  }
 		  
 		 }
