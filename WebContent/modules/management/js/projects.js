@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	page.details.bind = function(container,project) {
 		$("[data-status='"+project.priority+"']",container).show();
-		if(project.plan == "plan social") $(".confirm",container).hide();
+		if(project.plan == "plan social") $(".confirm p",container).html("Contrat").addClass("adjust");
 		if(project.status == "in progress") {
 			$(".confirm .imgcircle,.confirm .line,.process .imgcircle",container).addClass("active");
 			if(project.progression >= 70) {

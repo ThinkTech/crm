@@ -1007,6 +1007,9 @@ span.line {
     font-family: Tahoma;
     border: none;
 } 
+.content3 p.adjust{
+	margin-left: 2%;
+}
 .imgcircle {
 	height: 60px;
     width: 60px;
@@ -1213,6 +1216,9 @@ span.line {
     margin-top: 0px;
     margin-bottom: 5px;
     white-space: nowrap;
+    }
+    .content3 p.adjust {
+     margin-left: 40%;
     }
 	.content1 h2 {
 	font-size:22px;
