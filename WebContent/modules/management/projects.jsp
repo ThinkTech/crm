@@ -342,7 +342,8 @@
   </template>
   </div>
      <div class="plans">
-      <div data-plan="plan business" class="pricing business" style="display:none">
+      <div class="pricing business" style="display:none">
+	        <span class="close">X</span>
 			<div class="pricing-top green-top">
 				<h3>Business</h3>
 				<p>25 000 F/mois</p>
@@ -356,18 +357,22 @@
 				<div class="pricing-bottom-bottom">
 					<p><span>1</span> Nom de domaine</p>
 					<p><span>1 </span> Certificat</p>
-					<p><span>1</span> Base de données</p>  
-					<p>adresses emails</p>
+					<p><span>1</span> Base de données [1 GB]</p>  
+					<p>adresses emails [5 GB]</p>
 					<p>Référencement</p>
 					<p>Sauvegarde</p>
 					<p>Mises à jour</p>
 					<p>Formation</p>
 					<p class="text"><span>24/7</span> Assistance</p>
 				</div>
+				<div class="buy-button">
+					<a class="subscribe" data-plan="business">Souscrire</a>
+				</div>
 			</div>
 	 </div>
-	
-    <div data-plan="plan corporate" class="pricing corporate" style="display:none">
+
+    <div class="pricing corporate" style="display:none">
+	    <span class="close">X</span>
 		<div class="pricing-top blue-top">
 			<h3>Corporate</h3>
 			<p>20 000 F/mois</p>
@@ -381,24 +386,29 @@
 			<div class="pricing-bottom-bottom">
 				<p><span>1</span> Nom de domaine</p>
 				<p><span>1 </span> Certificat</p>
-				<p><span>1</span> Base de données</p>  
-				<p>adresses emails</p>
+				<p><span>1</span> Base de données [1 GB]</p>  
+				<p>adresses emails [5 GB]</p>
 				<p>Référencement</p>
 				<p>Sauvegarde</p>
 				<p>Mises à jour</p>
 				<p>Formation</p>
 				<p class="text"><span>24/7</span> Assistance</p>
 			</div>
+			<div class="buy-button">
+				<a class="subscribe" data-plan="corporate">Souscrire</a>
+			</div>
 		</div>
 	</div>
 	
-	<div data-plan="plan personal" class="pricing personal" style="display:none">
+	<div class="pricing personal" style="display:none">
+	    <span class="close">X</span>
 		<div class="pricing-top">
 			<h3>Personal</h3>
 			<p>15 000 F/mois</p>
 		</div>
 		<div class="pricing-bottom">
-			<div class="pricing-bottom-top">
+			<div 
+			class="pricing-bottom-top">
 				<p>1 site web</p>
 				<p>responsive</p>
 				<p>http/2</p>
@@ -406,19 +416,22 @@
 			<div class="pricing-bottom-bottom">
 				<p><span>1</span> Nom de domaine</p>
 				<p><span>1 </span> Certificat</p>
-				<p><span>1</span> Base de données</p>
-				<p>adresses emails</p>
+				<p><span>1</span> Base de données [1 GB]</p>
+				<p>adresses emails [5 GB]</p>
 				<p>Référencement</p>
 				<p>Sauvegarde</p>							
 				<p>Mises à jour</p>
 				<p>Formation</p>
 				<p class="text"><span>24/7</span> Assistance</p>
 			</div>
+			<div class="buy-button">
+				<a class="subscribe" data-plan="personal">Souscrire</a>
+			</div>
 		</div>
 	</div>
 	
-	
-	<div data-plan="plan social" class="pricing social" style="display:none">
+	<div class="pricing social" style="display:none">
+	    <span class="close">X</span>
 		<div class="pricing-top black-top">
 			<h3>Social</h3>
 			<p>Gratuit</p>
@@ -432,17 +445,22 @@
 			<div class="pricing-bottom-bottom">
 				<p><span>1</span> Nom de domaine</p>
 				<p><span>1 </span> Certificat</p>
-				<p><span>1</span> Base de données</p>
-				<p>adresses emails</p>
-				<p>Référencement</p>	
-				<p>Sauvegarde</p>						
+				<p><span>1</span> Base de données [5 MB]</p>
+				<p>adresses emails [5 GB]</p>
+				<p>Référencement</p>
+				<p>Sauvegarde</p>							
 				<p>Mises à jour</p>
 				<p>Formation</p>
 				<p class="text"><span>24/7</span> Assistance</p>
 			</div>
+			<div class="buy-button">
+				<a class="subscribe" data-plan="social">Souscrire</a>
+			</div>
 		</div>
 	</div>
+	
    </div>
+	
 </div>
 </div>
 <script src="${js}/projects.js" defer></script>
