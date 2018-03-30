@@ -84,7 +84,7 @@ class ModuleAction extends ActionSupport {
           task.info = row.info ? row.info : "aucune information" 
           project.tasks << task
        })
-       if(project.status == "stand by" && project.plan != "plan social") {
+       if(project.status == "stand by" && project.plan != "plan social" && project.plan != "plan custom") {
          project.bill = connection.firstRow("select b.*,p.service from bills b, projects p where b.project_id = p.id and p.id = ?", [id])
          project.bill.user = user
 	  	 project.bill.date = new SimpleDateFormat("dd/MM/yyyy").format(project.bill.date)
