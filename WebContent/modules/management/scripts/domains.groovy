@@ -33,11 +33,11 @@ class ModuleAction extends ActionSupport {
 	   def id = getParameter("id")
 	   def connection = getConnection()
 	   def domain = connection.firstRow("select d.*,u.name as author from domains d, users u where d.id = ? and d.user_id = u.id", [id])
-	   domain.date = new SimpleDateFormat("dd/MM/yyyy").format(domain.date)
+	   domain.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(domain.date)
 	   domain.action = domain.action ? "Transfert" : "Achat"
 	   domain.eppCode = domain.eppCode ? domain.eppCode : "&nbsp;"
 	   if(domain.registeredOn) {
-	     domain.registeredOn = new SimpleDateFormat("dd/MM/yyyy").format(domain.registeredOn)
+	     domain.registeredOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(domain.registeredOn)
 	   }
 	   if(domain.status == "stand by") {
          domain.bill = connection.firstRow("select b.* from bills b, domains d where b.product_id = d.id and d.id = ?", [id])
