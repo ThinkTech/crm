@@ -48,9 +48,6 @@
 	<div class="chit-chat-layer1">
 		<div class="col-md-12 chit-chat-layer1-left">
 			<div class="work-progres">
-				<div class="chit-chat-heading">
-					<h3 class="tlt">Vos Projets</h3>
-				</div>
 				<div class="table-responsive">
 					      <table data-url="${url}/projects/info" class="projects table table-hover">
                                   <thead>
@@ -68,7 +65,7 @@
 	                                <tr id="${project.properties.id}">
 	                                  <td><span class="number">${status.index+1}</span></td>
 	                                  <td>${project.properties.subject}</td>
-	                                  <td><i class="fa fa-user" aria-hidden="true"></i> ${project.properties.author}</td>
+	                                  <td>${project.properties.author}</td>
 	                                  <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>                                        
 	                                  <td><span class="label ${project.properties.status=='in progress' ? 'label-danger' : '' } ${project.properties.status=='finished' ? 'label-success' : '' } ${project.properties.status=='stand by' ? 'label-info' : '' }">
 	                                  ${project.properties.status=='in progress' ? 'en cours' : '' } ${project.properties.status=='finished' ? 'terminé' : '' } ${project.properties.status=='stand by' ? 'en attente' : '' }

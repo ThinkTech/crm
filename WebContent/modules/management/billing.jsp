@@ -36,9 +36,6 @@
 <div class="chit-chat-layer1">
 	<div class="col-md-12 chit-chat-layer1-left">
                <div class="work-progres">
-                            <div class="chit-chat-heading">
-                                  <h3 class="tlt">Vos Factures</h3>
-                            </div>
                             <div class="table-responsive">
                                 <table data-url="${url}/billing/info" class="billing table table-hover">
                                   <thead>

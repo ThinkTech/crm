@@ -36,9 +36,6 @@
 <div class="chit-chat-layer1">
 	<div class="col-md-12 chit-chat-layer1-left">
                <div class="work-progres">
-                    <div class="chit-chat-heading">
-                        <h3 class="tlt">${activeItem.label}</h3>
-                    </div>
                     <div class="customers table-responsive">
                       <table data-url="${url}/customers/info" class="customers table table-hover">
                                   <thead>
@@ -56,7 +53,7 @@
                               <s:iterator value="#request.customers" var="customer" status="status">
 	                                <tr id="${customer.properties.id}">
 	                                  <td><span class="number">${status.index+1}</span></td>
-	                                  <td><i class="fa fa-user" aria-hidden="true"></i> ${customer.properties.name}</td>
+	                                  <td>${customer.properties.name}</td>
 	                                  <td>${customer.properties.structure}</td>
 	                                  <td><s:date name="properties.createdOn" format="dd/MM/yyyy" /></td>                                        
 	                                  <td>${customer.properties.profession}</td>

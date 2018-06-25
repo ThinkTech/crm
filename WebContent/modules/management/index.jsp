@@ -48,9 +48,6 @@
 <div class="chit-chat-layer1">
 	<div class="col-md-12 chit-chat-layer1-left">
                <div class="work-progres">
-                    <div class="chit-chat-heading">
-                        <h3 class="tlt">Vos Projets</h3>
-                    </div>
                     <div class="projects table-responsive">
                       <table data-url="${url}/projects/info" class="projects table table-hover">
                                   <thead>
