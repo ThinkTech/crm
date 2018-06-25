@@ -142,6 +142,7 @@
 			     name="plan" value="enterprise">
 			    <label for="enterprise">Plan Enterprise</label>
 			    <input type="text" placeholder="super administrateur" name="email"/>
+			    <a>Modifier</a> <a>Créér</a> 
 		    </fieldset>
 			</div>
 		</fieldset>
