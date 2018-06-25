@@ -1066,10 +1066,11 @@ label.tree_label:before {
      .info-tasks li span:first-of-type {width : 100%;padding-top: 4px;padding-bottom: 3px;}
      .window > div fieldset a {position: relative;top: 1px;}
      .window > div .entity-edition select {font-size: 11px;}
-     .domains th:nth-child(7), .domains td:nth-child(7) {display: block;}
-     .billing th:nth-child(6), .billing td:nth-child(6) {display: block;}
-	.projects th:nth-child(5), .projects td:nth-child(5) {display: block;}
-    .support th:nth-child(6), .support td:nth-child(6) {display: block;}
+     .domains th:nth-child(8), .domains td:nth-child(8) {display: block;}
+     .billing th:nth-child(7), .billing td:nth-child(7) {display: block;}
+	.projects th:nth-child(6), .projects td:nth-child(6) {display: block;}
+    .support th:nth-child(7), .support td:nth-child(7) {display: block;}
+    table th:nth-child(8), table td:nth-child(8) { display: none;}
 }
 
 @media (max-width:768px){
