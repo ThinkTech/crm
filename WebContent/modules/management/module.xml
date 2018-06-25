@@ -5,10 +5,6 @@
   <actions>
     <action url="customers" page="customers" method="showCustomers" script="customers.groovy"/>
     <action url="customers/info"  method="getCustomerInfo" script="customers.groovy"/>
-    <action url="prospects" page="prospects" method="showProspects" script="prospects.groovy"/>
-    <action url="prospects/info"  method="getProspectInfo" script="prospects.groovy"/>
-    <action url="partners" page="partners" method="showPartners" script="partners.groovy"/>
-    <action url="partners/info"  method="getPartnerInfo" script="partners.groovy"/>
     <action url="projects" page="projects" method="showProjects" script="projects.groovy"/>
     <action url="projects/open"  method="openProject" script="projects.groovy"/>
     <action url="projects/info"  method="getProjectInfo" script="projects.groovy"/>
@@ -37,11 +33,9 @@
   <menus>
 	<menu name="main">
 		<menuItem label="Dashboard" icon="television"/>
+		<menuItem label="Vos Domaines" url="domains" icon="globe"/>
 		<menuItem label="Vos Projets" url="projects" icon="briefcase"/>
 		<menuItem label="Vos Clients" url="customers" icon="address-book"/>
-		<menuItem label="Vos Prospects" url="prospects" icon="address-card"/>
-		<menuItem label="Vos Partenaires" url="partners" icon="handshake-o"/>
-		<menuItem label="Messagerie" url="messages" icon="envelope-o"/>
 		<menuItem label="Assistance" url="support" icon="question-circle-o"/>
 		<menuItem label="Facturation" url="billing" icon="money"/>
 	</menu>
