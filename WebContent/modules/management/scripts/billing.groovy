@@ -24,21 +24,21 @@ class ModuleAction extends ActionSupport {
        SUCCESS
     }
     
-    def getBillInfo() {
+     def getBillInfo() {
 	   def id = getParameter("id")
 	   def connection = getConnection()
-	   def bill = connection.firstRow("select b.*,p.subject,p.service, u.name as customer from bills b, projects p, users u where b.product_id = p.id and u.id = p.user_id and b.id = ?", [id])
+	   def bill = connection.firstRow("select * from bills where id = ?", [id])
 	   bill.date = new SimpleDateFormat("dd/MM/yyyy").format(bill.date)
 	   if(bill.paidOn) {
 	     bill.paidOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(bill.paidOn)
-	     def user = connection.firstRow("select u.name from users u, bills b where u.id = b.paidBy and b.id = ?", [id])
-	     bill.paidBy = user.name 
+	     bill.paidBy = connection.firstRow("select u.name from users u, bills b where u.id = b.paidBy and b.id = ?", [id]).name 
 	   }else{
 	   	 bill.user = user
 	   }
 	   connection.close()
 	   json([entity : bill])
 	}
+	
 	
 	def getConnection() {
 		new Sql(dataSource)
