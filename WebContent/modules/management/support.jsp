@@ -43,7 +43,8 @@
                                       <th></th>
                                       <th>Ticket</th>
                                       <th>Service</th>
-                                      <th>Client</th> 
+                                      <th>Auteur</th> 
+                                      <th>Structure</th>
                                       <th>Date Création</th>                                                             
                                       <th>Traitement</th>
                                       <th>Progression</th>
@@ -56,6 +57,7 @@
 	                                  <td>${ticket.properties.subject}</td>
 	                                  <td>${ticket.properties.service}</td>
                                       <td>${ticket.properties.author}</td>
+                                      <td>${ticket.properties.structure}</td>
                                       <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>                                       
 	                                  <td><span class="label ${ticket.properties.status=='in progress' ? 'label-danger' : '' } ${ticket.properties.status=='finished' ? 'label-success' : '' } ${ticket.properties.status=='stand by' ? 'label-info' : '' }">
 	                                  ${ticket.properties.status=='in progress' ? 'en cours' : '' } ${ticket.properties.status=='finished' ? 'terminé' : '' } ${ticket.properties.status=='stand by' ? 'en attente' : '' }
@@ -89,11 +91,12 @@
 		<span title="fermer" class="close">X</span>
 		<section>
 		 <template>
-		 <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Ticket : {subject}</h1>
+		  <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Details Du Ticket</h1>
 		<fieldset>
-		    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>{name}</span>
+		    <span class="text-right"><i class="fa fa-commenting" aria-hidden="true"></i> Sujet </span> <span>{subject|s}</span>
+		    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>{name}</span>
 		    <span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
-			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{date}</span>
+		    <span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{date}</span>
 			<span class="text-right"><i class="fa fa-product-hunt" aria-hidden="true"></i> Priorité </span> 
 			<span data-status="normal" class="status" style="display:none">normale</span>
 		    <span data-status="medium" class="status" style="display:none">moyenne</span>

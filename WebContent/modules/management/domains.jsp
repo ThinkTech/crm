@@ -55,6 +55,7 @@
                                       <th></th>
                                       <th>Domaine</th>
                                       <th>Auteur</th>
+                                      <th>Structure</th>
                                       <th>Date Création</th>  
                                       <th>Durée</th>
                                       <th>Montant</th>                                                          
@@ -67,6 +68,7 @@
 	                                  <td><span class="number">${status.index+1}</span></td>
 	                                  <td>${domain.properties.name}</td>
 	                                  <td>${domain.properties.author}</td>
+	                                  <td>${domain.properties.structure}</td>
 	                                  <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>
 	                                  <td>${domain.properties.year} an</td>
                                   	  <td><span class="digit">${domain.properties.price}</span> CFA</td>                                        

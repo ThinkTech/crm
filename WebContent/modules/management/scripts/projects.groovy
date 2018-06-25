@@ -7,14 +7,15 @@ class ModuleAction extends ActionSupport {
    def showProjects(){
        def connection = getConnection()
        def projects = []
-       connection.eachRow("select p.id,p.subject,p.date,p.status,p.progression,u.name from projects p, users u where p.user_id = u.id order by p.date DESC", [], { row -> 
+       connection.eachRow("select p.id,p.subject,p.date,p.status,p.progression, u.name as author, s.name as structure from projects p, users u, structures s where p.user_id = u.id and u.structure_id = s.id order by p.date DESC", [], { row -> 
           def project = new Expando()
           project.id = row.id
-          project.author =  row.name
           project.subject = row.subject
           project.date = row.date
           project.status = row.status
           project.progression = row.progression
+          project.author =  row.author
+          project.structure = row.structure
           projects << project
        })
        def active = connection.firstRow("select count(*) AS num from projects where status = 'in progress'").num

@@ -54,7 +54,8 @@
                                     <tr>
                                       <th></th>
                                       <th>Projet</th>
-                                      <th>Client</th>
+                                      <th>Auteur</th>
+                                      <th>Structure</th>
                                       <th>Date Création</th>                                                             
                                       <th>Traitement</th>
                                       <th>Progression</th>
@@ -66,6 +67,7 @@
 	                                  <td><span class="number">${status.index+1}</span></td>
 	                                  <td>${project.properties.subject}</td>
 	                                  <td>${project.properties.author}</td>
+	                                  <td>${project.properties.structure}</td>
 	                                  <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>                                        
 	                                  <td><span class="label ${project.properties.status=='in progress' ? 'label-danger' : '' } ${project.properties.status=='finished' ? 'label-success' : '' } ${project.properties.status=='stand by' ? 'label-info' : '' }">
 	                                  ${project.properties.status=='in progress' ? 'en cours' : '' } ${project.properties.status=='finished' ? 'terminé' : '' } ${project.properties.status=='stand by' ? 'en attente' : '' }
