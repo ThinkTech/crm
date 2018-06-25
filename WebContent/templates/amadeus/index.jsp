@@ -3,19 +3,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>ThinkTech - Portail</title>
+<title>ThinkTech - CRM</title>
 <!-- Meta tag Keywords -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="theme-color" content="#000000"> 
 <meta property="og:type" content="website">
-<meta name="description" content="Bienvenue sur le portail de ThinkTech"> 
+<meta name="description" content="Bienvenue sur le crm de ThinkTech"> 
 <meta name="twitter:card" content="summary">
  <meta name="twitter:site" content="@thinktech">
- <meta name="twitter:domain" property="og:site_name" content="app.thinktech.sn">
+ <meta name="twitter:domain" property="og:site_name" content="crm.thinktech.sn">
  <meta name="twitter:url" property="og:url" content="${baseUrl}">
- <meta name="twitter:title" property="og:title" content="ThinkTech - Portail"> 
- <meta name="twitter:description" property="og:description" content="Bienvenue sur le portail de ThinkTech"> 
+ <meta name="twitter:title" property="og:title" content="ThinkTech - CRM"> 
+ <meta name="twitter:description" property="og:description" content="Bienvenue sur le crm de ThinkTech"> 
  <meta name="twitter:image" property="og:image" content="${baseUrl}/images/banner.jpeg">
 <style type="text/css">
  <%@include file="/css/metamorphosis.css"%>
