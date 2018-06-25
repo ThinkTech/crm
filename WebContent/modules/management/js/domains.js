@@ -55,6 +55,11 @@ app.ready(function(){
 		}
 		$("input[type=button]",container).click(function(event) {
 			$(".window").hide();
+		});
+		$("input[type=submit]",container).click(function(event) {
+			confirm("&ecirc;tes vous s&ucirc;r de vouloir enregistrer ce domaine?",function(){
+				$(".window").hide();
+			});
 		})
 	};
 		
