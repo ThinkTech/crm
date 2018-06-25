@@ -27,7 +27,6 @@
     <action url="tickets/progression/update"  method="updateTicketProgression" script="support.groovy"/>
     <action url="billing"  page="billing" method="showBills" script="billing.groovy"/>
     <action url="billing/info"  method="getBillInfo" script="billing.groovy"/>
-    <action url="services" page="services" method="showServices"/>
   </actions>
   
   <menus>
