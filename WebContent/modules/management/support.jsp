@@ -43,7 +43,6 @@
                                       <th></th>
                                       <th>Ticket</th>
                                       <th>Service</th>
-                                      <th>Auteur</th> 
                                       <th>Structure</th>
                                       <th>Date Création</th>                                                             
                                       <th>Traitement</th>
@@ -56,7 +55,6 @@
 	                                  <td><span class="number">${status.index+1}</span></td>
 	                                  <td>${ticket.properties.subject}</td>
 	                                  <td>${ticket.properties.service}</td>
-                                      <td>${ticket.properties.author}</td>
                                       <td>${ticket.properties.structure}</td>
                                       <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>                                       
 	                                  <td><span class="label ${ticket.properties.status=='in progress' ? 'label-danger' : '' } ${ticket.properties.status=='finished' ? 'label-success' : '' } ${ticket.properties.status=='stand by' ? 'label-info' : '' }">

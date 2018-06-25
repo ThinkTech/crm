@@ -6,7 +6,7 @@ class ModuleAction extends ActionSupport {
    def showDomains(){
        def connection = getConnection()
        def domains = []
-       connection.eachRow("select d.id,d.name,d.year,d.date,d.price,d.status,d.emailOn,u.name as author, s.name as structure from domains d, users u, structures s where d.user_id = u.id and u.structure_id = s.id order by date DESC",[], { row -> 
+       connection.eachRow("select d.id,d.name,d.year,d.date,d.price,d.status,d.emailOn,d.emailActivatedOn,u.name as author, s.name as structure from domains d, users u, structures s where d.user_id = u.id and u.structure_id = s.id order by date DESC",[], { row -> 
           def domain = new Expando()
           domain.with {
             id = row.id
@@ -16,6 +16,7 @@ class ModuleAction extends ActionSupport {
             status = row.status
             date = row.date 
             emailOn = row.emailOn
+            emailActivatedOn = row.emailActivatedOn
             author = row.author
             structure = row.structure
           }
