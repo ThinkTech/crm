@@ -49,6 +49,16 @@ class ModuleAction extends ActionSupport {
 	   json([entity : domain])
 	}
 	
+	def registerDomain(){
+	    def domain = parse(request)
+	    Thread.start {
+	   	   def connection = getConnection()
+	       connection.executeUpdate "update domains set status = 'finished', registeredOn = Now() where id = ?", [domain.id] 
+	       connection.close()
+	    } 
+		json([status: 1])
+	}
+	
 	def getConnection()  {
 		new Sql(dataSource)
 	}

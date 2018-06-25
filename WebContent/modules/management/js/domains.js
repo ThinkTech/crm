@@ -58,8 +58,23 @@ app.ready(function(){
 		});
 		$("input[type=submit]",container).click(function(event) {
 			confirm("&ecirc;tes vous s&ucirc;r de vouloir enregistrer ce domaine?",function(){
-				$(".window").hide();
+				const top = $(".chit-chat-layer1").offset().top;
+				page.wait({top : top});
+				const url = $("form",container).attr("action");
+				app.post(url,domain,function(response){
+					if(response.status){
+						const tr = $(".table tr[id="+domain.id+"]");
+						$("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
+						$(".badge",tr).html("100%");
+						var h3 = $("h3.domainUnregistered");
+						h3.html(parseInt(h3.text())-1);
+						h3 = $("h3.domainRegistered");
+						h3.html(parseInt(h3.text())+1);
+						$(".window").hide();
+					}
+				});
 			});
+			return false;
 		})
 	};
 		

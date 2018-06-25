@@ -32,7 +32,7 @@
 			<div class="col-md-4 info-update-gd">
 				<div class="info-update-block clr-block-6">
 					<div class="col-md-8 info-update-left">
-						<h3>${registered}</h3>
+						<h3 class="domainRegistered">${registered}</h3>
 						<h4>domaines enregistrés</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
@@ -145,10 +145,12 @@
 		    </fieldset>
 			</div>
 		</fieldset>
-		<div class="submit">
-		   <input type="submit" value="Enregistrer">
-		   <input type="button" value="Annuler">
-		</div>
+		<form action="${url}/domains/register">
+			<div class="submit">
+			   <input type="submit" value="Enregistrer">
+			   <input type="button" value="Annuler">
+			</div>
+		</form>
 		</template>
 		</section>
 	</div>
