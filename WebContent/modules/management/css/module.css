@@ -814,58 +814,6 @@ legend a i.fa {
     border-top: 1px solid #3abfdd;
 }
 
-.tld-domain-search-wrapper {
-    width: 100%;
-    text-align: center;
-    padding: 5px;
-    padding-top: 0;
-    padding-bottom: 15px;
-}
-
-.tld-domain-search .input-container input {
-   display: inline-block;
-    height: 48px;
-    line-height: 48px;
-    border: 1px solid #08ccf7;
-    padding-left: 10px;
-    width : 300px;
-}
-
-.tld-domain-search .input-container span {
-    border: 2px solid transparent;
-    display: inline-block;
-    height: 48px;
-    line-height: 48px;
-    font-weight : bold;
-}
-
-.tld-domain-search .tld-search-button {
-    background-color: #ca2233;
-    z-index : 10;
-    display: inline-block;
-    height: 47px;
-    margin-left: 0px;
-    width: 70px;
-    vertical-align: top;
-    font-size: 1.6em;
-    padding-top: 7px;
-    margin-top: 2px;
-    color: #fff;
-    cursor : pointer;
-    text-align : center;
-}
-
-.tld-domain-search > div {
-	display : inline-block;
-}
-
-.tld-domain-search select {
-    width: auto;
-    height: 48px;
-    line-height: 48px;
-    padding-left: 10px;
-    border: 1px solid #08ccf7;
-}
 
 .businessEmail {
   background: #efebeb;
@@ -937,55 +885,6 @@ legend a i.fa {
    background : #fdffa4;
 }
 
-.project-wizard h2 {
-	margin-left : 10px;
-	margin-bottom : 10px;
-	margin-top : 10px;
-	font-size : 30px;
-	font-weight: bold;
-}
-
-.project-wizard p {
-	width: 90%;
-    margin: auto;
-    text-align: justify;
-    line-height: 1.5em;
-    margin-bottom: 10px;
-    margin-top: 0px;
-    font-size: 15px;
-}
-
-.project-wizard .number {
-    top: -2px;
-    width: 36px;
-    height: 36px;
-    text-align: center;
-    font-size: 87%;
-}
-
-.project-wizard h1{margin-left: -40px;}
-
-.project-wizard h5 {
-	font-size: 115%; 
-	margin-bottom: 5px;
-}
-
-.project-wizard section {
-	width: 90%; 
-	margin: auto; 
-	margin-top: 0px;
-	display : none;
-}
-
-.project-wizard section > span {
-    font-weight: bold;
-    display: block;
-    font-size : 30px;
-}
-
-.project-wizard .content-process {
-    margin-top: -20px;
-}
 
 .icons,.tree { display : none;padding-top :10px;padding-bottom : 10px;margin-top: -20px;}
 
