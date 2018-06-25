@@ -6,10 +6,10 @@
 <!--info updates updates-->
 	 <div class="info-updates">
 			<div class="col-md-4 info-update-gd">
-				<div class="info-update-block clr-block-1">
+				<div class="info-update-block clr-block-4">
 					<div class="col-md-8 info-update-left">
 						<h3>${projects_count}</h3>
-						<h4>nouveaux projets</h4>
+						<h4>projets en cours</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
 						<i class="fa fa-briefcase"> </i>
