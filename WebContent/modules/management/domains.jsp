@@ -141,12 +141,14 @@
 			    <input type="radio" id="enterprise"
 			     name="plan" value="enterprise">
 			    <label for="enterprise">Plan Enterprise</label>
-			    <input type="text" placeholder="super administrateur" name="email" value="${email}"/>
-			    <input type="hidden" name="user" value="${user.id}">
-			    <a class="activate">Activer</a>
+			    <input type="text" placeholder="super administrateur" name="email"/>
 		    </fieldset>
 			</div>
 		</fieldset>
+		<div class="submit">
+		   <input type="submit" value="Enregistrer">
+		   <input type="button" value="Annuler">
+		</div>
 		</template>
 		</section>
 	</div>

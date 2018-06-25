@@ -131,13 +131,13 @@
 }
 
 .window > div input[type="submit"],.window > div input[type="button"]{
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: #fff;
     cursor: pointer;
     outline: none;
     padding: 15px 15px;
-    width: 110px;
+    min-width: 110px;
     margin: auto;
     margin-right: 5px;
     display: inline-block;

@@ -3,15 +3,16 @@ app.ready(function(){
 		if(domain.status != "finished"){
 			$(".manage",container).hide();  
 		}
+		$(".submit",container).hide();
+		if(domain.status == "in progress"){
+			$(".submit",container).show();  
+		}
 		if(domain.action == "Transfert"){
 			$(".eppCode",container).show();
 		}else{
 			$(".eppCode",container).hide();
 		}
 		$(".businessEmail",container).hide();  
-		if(domain.status == "finished"){
-			$(".businessEmail",container).show(); 
-		}
 		if(domain.emailOn){
 			$(".businessEmail",container).show();
 			$(".businessEmail a.activate",container).hide();
@@ -52,6 +53,9 @@ app.ready(function(){
 			  	 });
 			});	
 		}
+		$("input[type=button]",container).click(function(event) {
+			$(".window").hide();
+		})
 	};
 		
 });
