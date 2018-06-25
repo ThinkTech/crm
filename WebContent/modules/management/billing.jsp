@@ -45,7 +45,6 @@
                                     <tr class="clr-block-6">
                                       <th></th>
                                       <th>Frais</th>
-                                      <th>Projet</th>
                                       <th>Service</th>
                                       <th>Client</th>
                                       <th>Date</th>  
@@ -58,8 +57,7 @@
 	                                <tr id="${bill.properties.id}" class="${bill.properties.status=='finished' ? 'paid' : ''}">
 	                                  <td><span class="number">${status.index+1}</span></td>
 	                                  <td>${bill.properties.fee}</td>
-	                                  <td>${bill.properties.project}</td>
-	                                  <td><i class="fa fa-ticket" aria-hidden="true"></i> ${bill.properties.service}</td>
+	                                  <td>${bill.properties.service}</td>
 	                                  <td>${bill.properties.customer}</td>
                                   	  <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>
                                   	  <td><span class="digit">${bill.properties.amount}</span> F</td>                                        

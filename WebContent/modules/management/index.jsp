@@ -68,7 +68,7 @@
 	                                <tr id="${project.properties.id}">
 	                                  <td><span class="number">${status.index+1}</span></td>
 	                                  <td>${project.properties.subject}</td>
-	                                  <td><i class="fa fa-user" aria-hidden="true"></i> ${project.properties.author}</td>
+	                                  <td>${project.properties.author}</td>
 	                                  <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>                                        
 	                                  <td><span class="label ${project.properties.status=='in progress' ? 'label-danger' : '' } ${project.properties.status=='finished' ? 'label-success' : '' } ${project.properties.status=='stand by' ? 'label-info' : '' }">
 	                                  ${project.properties.status=='in progress' ? 'en cours' : '' } ${project.properties.status=='finished' ? 'terminé' : '' } ${project.properties.status=='stand by' ? 'en attente' : '' }
@@ -89,45 +89,30 @@
 	<span title="fermer" class="close">X</span>
 	<section>
 	 <template>
-	 <h1><i class="fa fa-briefcase" aria-hidden="true"></i>Projet : {subject|s}</h1>
+	  <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Details Du Projet</h1>
 	<fieldset>
-	    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>{name}</span>
-	    <span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
-		<span class="text-right"><i class="fa fa-code" aria-hidden="true"></i> Plan </span> <span>{plan}</span> <a class="plan"><i class="fa fa-info" aria-hidden="true"></i></a> 
+	    <span class="text-right"><i class="fa fa-commenting" aria-hidden="true"></i> Sujet </span> <span>{subject|s}</span>
+	    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>{name}</span>
+	    <span class="text-right"><i class="fa fa-globe" aria-hidden="true"></i> Domaine </span> <span>{domain}</span>
+		<span class="text-right"><i class="fa fa-code" aria-hidden="true"></i> Plan </span> <span>{plan}</span>
 		<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{date}</span>
 		<span class="text-right"><i class="fa fa-product-hunt" aria-hidden="true"></i> Priorité </span> 
 		<span data-status="normal" class="status" style="display:none">normale</span>
 		<span data-status="medium" class="status" style="display:none">moyenne</span>
 		<span data-status="high" class="status" style="display:none">élevée</span> 
-		<div class="info-message entity-edition priority-edition">
-		   <select>
-			  <option value="normal">normale</option>
-		      <option value="medium">moyenne</option>
-		      <option value="high">élevée</option>
-		    </select>
-			<a href="${url}/projects/priority/update"><i class="fa fa-check" aria-hidden="true"></i></a>
-		</div>
-		<a class="priority-edit" style="display:none"><i class="fa fa-edit" aria-hidden="true"></i></a>
-		<span class="text-right"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span> <a class="duration"><i class="fa fa-info" aria-hidden="true"></i></a>
-		<div class="info-message">
-		   <p data-status="stand by">la durée maximale du projet est estimée à {duration} mois dans l'attente du paiement de la caution que vous devez effectuer</p>
-		   <p data-status="in progress">la durée maximale du projet est estimée à {duration} mois et dans les normes, il sera clôturé au plus tard le {end}</p>
-		   <p data-status="finished">la durée du projet fut de {duration} mois et il a été clôturé le {end}</p>
-		</div>
+		<span class="text-right"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
-		<span data-status="stand by" style="display:none" class="project-status"><span class="label label-info">en attente</span> <span class="label label-info">paiement caution</span> <span class="label label-success"><b class="digit">{bill.amount}</b> F</span> <a class="pay"><i class="fa fa-money"></i></a> <a href="${url}/projects/open" class="open" style="display:none"><i class="fa fa-play"></i></a></span>
-		<span data-status="in progress" style="display:none" class="project-status"><span class="label label-danger">en cours</span></span>  
-		<span data-status="finished" style="display:none" class="project-status"><span class="label label-success">terminé</span></span>
-		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info project-progression">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a> <a class="refresh"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">paiement</span></span>
+		<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>  
+		<span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
+		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a> <a class="refresh"><i class="fa fa-refresh" aria-hidden="true"></i></a>
 		<div class="info-tasks">
 		   <h1><i class="fa fa-tasks" aria-hidden="true"></i> Tâches&nbsp;&nbsp;
 			  <a class="task-list-ol"><i class="fa fa-list-ol" aria-hidden="true"></i></a>
 		  </h1>
 		  <ol data-template="tasks">
 		  </ol>
-		</div>
-	</fieldset>
-	<div class="col-md-12">
+		  <div class="col-md-12">
 		  <div class="content-process">
 			<div class="content3">
 				<div class="shipment">
@@ -163,6 +148,8 @@
 			</div>
 		   </div>	
 	   </div>
+		</div>
+	</fieldset>
 	   <div class="clearfix"></div>
 	<fieldset>
 	   <legend>
@@ -329,126 +316,6 @@
 	{/.}  
   </template>	
   </div>
-     <div class="plans">
-      <div class="pricing business" style="display:none">
-	        <span class="close">X</span>
-			<div class="pricing-top green-top">
-				<h3>Business</h3>
-				<p>25 000 F/mois</p>
-			</div>
-			<div class="pricing-bottom">
-				<div class="pricing-bottom-top">
-					<p>1 site web</p>
-					<p>progressive</p>
-					<p>http/2</p>
-				</div>
-				<div class="pricing-bottom-bottom">
-					<p><span>1</span> Nom de domaine</p>
-					<p><span>1 </span> Certificat</p>
-					<p><span>1</span> Base de données [1 GB]</p>  
-					<p>adresses emails [5 GB]</p>
-					<p>Référencement</p>
-					<p>Sauvegarde</p>
-					<p>Mises à jour</p>
-					<p>Formation</p>
-					<p class="text"><span>24/7</span> Assistance</p>
-				</div>
-				<div class="buy-button">
-					<a class="subscribe" data-plan="business">Souscrire</a>
-				</div>
-			</div>
-	 </div>
-
-    <div class="pricing corporate" style="display:none">
-	    <span class="close">X</span>
-		<div class="pricing-top blue-top">
-			<h3>Corporate</h3>
-			<p>20 000 F/mois</p>
-		</div>
-		<div class="pricing-bottom">
-			<div class="pricing-bottom-top">
-				<p>1 site web</p>
-				<p>responsive</p>
-				<p>http/2</p>
-			</div>
-			<div class="pricing-bottom-bottom">
-				<p><span>1</span> Nom de domaine</p>
-				<p><span>1 </span> Certificat</p>
-				<p><span>1</span> Base de données [1 GB]</p>  
-				<p>adresses emails [5 GB]</p>
-				<p>Référencement</p>
-				<p>Sauvegarde</p>
-				<p>Mises à jour</p>
-				<p>Formation</p>
-				<p class="text"><span>24/7</span> Assistance</p>
-			</div>
-			<div class="buy-button">
-				<a class="subscribe" data-plan="corporate">Souscrire</a>
-			</div>
-		</div>
-	</div>
-	
-	<div class="pricing personal" style="display:none">
-	    <span class="close">X</span>
-		<div class="pricing-top">
-			<h3>Personal</h3>
-			<p>15 000 F/mois</p>
-		</div>
-		<div class="pricing-bottom">
-			<div 
-			class="pricing-bottom-top">
-				<p>1 site web</p>
-				<p>responsive</p>
-				<p>http/2</p>
-			</div>
-			<div class="pricing-bottom-bottom">
-				<p><span>1</span> Nom de domaine</p>
-				<p><span>1 </span> Certificat</p>
-				<p><span>1</span> Base de données [1 GB]</p>
-				<p>adresses emails [5 GB]</p>
-				<p>Référencement</p>
-				<p>Sauvegarde</p>							
-				<p>Mises à jour</p>
-				<p>Formation</p>
-				<p class="text"><span>24/7</span> Assistance</p>
-			</div>
-			<div class="buy-button">
-				<a class="subscribe" data-plan="personal">Souscrire</a>
-			</div>
-		</div>
-	</div>
-	
-	<div class="pricing social" style="display:none">
-	    <span class="close">X</span>
-		<div class="pricing-top black-top">
-			<h3>Social</h3>
-			<p>Gratuit</p>
-		</div>
-		<div class="pricing-bottom">
-			<div class="pricing-bottom-top">
-				<p>1 site web</p>
-				<p>responsive</p>
-				<p>http/2</p>
-			</div>
-			<div class="pricing-bottom-bottom">
-				<p><span>1</span> Nom de domaine</p>
-				<p><span>1 </span> Certificat</p>
-				<p><span>1</span> Base de données [5 MB]</p>
-				<p>adresses emails [5 GB]</p>
-				<p>Référencement</p>
-				<p>Sauvegarde</p>							
-				<p>Mises à jour</p>
-				<p>Formation</p>
-				<p class="text"><span>24/7</span> Assistance</p>
-			</div>
-			<div class="buy-button">
-				<a class="subscribe" data-plan="social">Souscrire</a>
-			</div>
-		</div>
-	</div>
-	
-   </div>
-	
 </div>
 </div>
 <script src="${js}/projects.js" defer></script>

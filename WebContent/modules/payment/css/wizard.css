@@ -18,12 +18,14 @@
     margin-bottom: 3px;
     font-weight: bold;
     padding: 8px;
-    background: #000;
-    color: #fff;
+    background: #fff;
+    border: 1px solid #08ccf7;
+    color: #060606;
     border-radius: 50%;
     top: 2px;
     position: relative;
-    font-size: 12px;
+    font-size: 15px;
+    font-family: Tahoma;
 }
 
 #checkout-wizard .wizardForm  {
@@ -34,10 +36,9 @@
 	outline:none;
 	padding:12px 10px;
 	width:47.66%;
-	background:#fff;
 	font-size:14px;
 	color:#3a0b03;
-	border: 1px solid #08ccf7;
+	border: 1px solid #3abfdd;
 	border-radius: 5px;
 	font-family : Tahoma;
 	margin-bottom : 30px;
@@ -61,7 +62,7 @@
 		inset 0 0 0 18px #fff, 
 		inset 0 0 0 19px #fff, 
 		inset 0 0 0 20px #fff, 
-		inset 0 0 0 21px #08ccf7;
+		inset 0 0 0 21px #3abfdd;
 }
 
 #checkout-wizard fieldset > h3 {
@@ -75,7 +76,7 @@
 }
 
 #checkout-wizard fieldset h5 a,#checkout-wizard fieldset h5 a:visited {
-	color : #08ccf7;
+	color : #3abfdd;
 	display: inline-block;
     padding: 5px;
     padding-left: 0px;
@@ -88,7 +89,7 @@
     width: 82%;
     background: #fafafa;
     padding: 10px;
-    border: 1px solid #08ccf7;
+    border: 1px solid #3abfdd;
     border-radius: 6px;
     outline: 0;
     overflow : hidden;
@@ -150,7 +151,7 @@
     top: 0px;
     font-family: Tahoma;
     letter-spacing: 0;
-    color: #08ccf7;
+    color: #3abfdd;
     width: 165px;
 }
 
@@ -171,14 +172,13 @@
     position: relative;
     left: 4px;
     padding: 7px;
-    color: #08ccf7;
+    color: #3abfdd;
     font-weight: 600;
 }
 
 .payment > div {
     margin-top : 20px;
     margin-bottom : 20px;
-    margin-left: 20px;
 }
 
 .checkout-wizard-content fieldset .payment > div label {
@@ -191,11 +191,13 @@
 	margin-right: 5px;
     width: 90px;
     font-size: 14px;
+    padding: 7px;
     padding-left: 2px;
+    width: 130px;
 }
 
 .payment > div input[type="button"] {
-    border: 2px solid #08ccf7;
+    border: 2px solid #3abfdd;
     background: #212121;
     color: #fff;
     width: 90px;
@@ -226,6 +228,8 @@
    font-family : monospace;	
    float: right;
     margin-right: 15px;
+    white-space: nowrap;
+    width: 100%;
 }
 
 .shopping-amount > span {
@@ -254,10 +258,13 @@
 	width: auto;
 	min-width: 110px;
     display: inline-block;
-    text-align: center;
+    text-align: left;
     white-space: nowrap;
-    font-size: 14px;
-    background: #ffe;
+    background: #fdffa4;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    font-size: 80%;
 }
 
 
@@ -274,7 +281,7 @@
     margin : auto;
     height : 220px;
     background: #fff;
-    border: 1px solid #08ccf7;
+    border: 1px solid #3abfdd;
     border-radius: 6px;
     outline: 0;
     margin : auto;
@@ -290,7 +297,7 @@
 #order-confirmation h1 {
 	font-size: 1.2em;
     padding: 10px;
-    background: #08ccf7;
+    background: #3abfdd;
     color: white;
     font-family : Tahoma;
     font-weight : bold;
@@ -315,7 +322,7 @@
     top: 4px;
     margin-right: 5px;
     margin-left: -8px;
-    color: #08ccf7;
+    color: #3abfdd;
 }
 
 #order-confirmation a {
@@ -330,7 +337,7 @@
     cursor : pointer;
     font-family : Tahoma;
     user-select : none;
-    border: 2px solid #08ccf7;
+    border: 2px solid #3abfdd;
     border-radius: 25px;
     background: #180101;
     
@@ -360,7 +367,7 @@
     width : 200px;
     white-space: nowrap;
 }
-.easyWizardSteps li.current {color: #fff;background: #08ccf7;}
+.easyWizardSteps li.current {color: #fff;background: #3abfdd;}
 .easyWizardButtons {overflow:hidden;}
 .easyWizardButtons button, .easyWizardButtons .submit {margin-top : 20px;cursor:pointer;user-select : none;}
 .easyWizardButtons .prev {
@@ -370,7 +377,7 @@
     cursor: pointer;
     width: 80px;
     border-radius: 2px;
-    border: 2px solid #08ccf7;
+    border: 2px solid #3abfdd;
     border-radius: 5px;
     background: #180101;
     color: white;
@@ -388,7 +395,7 @@
 	width : 80px;
 	border-radius : 2px;
 	margin-bottom : 20px;
-	border: 2px solid #08ccf7;
+	border: 2px solid #3abfdd;
     border-radius: 5px;
     background: #180101;
     color: white;
@@ -509,12 +516,14 @@
     }
     .shipping-address,.shopping-payment{width:90%;padding:5px}
     .easyWizardSteps li {
-       height: 10px;
-    width: 37px;
-    font-size: 0px;
-    padding-top: 1px;
-    position: relative;
-    top: 1px;
+     height: 10px;
+     width: auto;
+     padding-left: 10px;
+     padding-right: 10px;
+     font-size: 0px;
+     padding-top: 1px;
+     position: relative;
+     top: 1px;
     }
     .easyWizardSteps li span{font-size : 11px;}
     .checkout-wizard-content p{
@@ -557,11 +566,11 @@
 	.shopping-payment .help {display:inline-block}
 	.shopping-payment{margin-top:-9px}
 	.checkout-wizard-content {width: 65%;padding:0px}
-	.payment > div input {font-size: 12px;padding-left : 2px}
+	.payment > div input {font-size: 12px;padding:6px;padding-left : 2px}
     .payment > div input[type="button"] {
-    	font-size: 9px;
+    	font-size: 11px;
    	    padding: 5px;
-        width: 65px;
+        width: 70px;
     }
 }
 @media (max-width: 600px){
@@ -587,17 +596,26 @@
 	.shopping-amount b{font-size: 11px;}
 }
 @media (max-width:480px){
+	.shopping-amount > span > span:last-of-type{
+	  word-break: break-word;
+      white-space: pre-wrap;
+      vertical-align: top;
+      margin-bottom: 10px;
+      width: 200px;
+      font-weight: bold;
+      font-size: 80%;
+	}
 	.checkout-wizard-content {width: 360px}
 	.payment-hide {display:none}
 	.wizard-title{padding-top: 2px;padding-left: 4px}
 	.easyWizardButtons .prev, .easyWizardButtons .next, .easyWizardButtons .submit, .checkout-wizard-content .register input[type="button"] {
 	   height: auto;
-       width: auto;
-       min-width: 85px;
-       font-size: 10px;
-       margin-top: 7px;
-       padding-top: 3px;
-       padding-bottom: 2px;
+	    width: auto;
+	    min-width: 85px;
+	    font-size: 11px;
+	    margin-top: 4px;
+	    padding-top: 3px;
+	    padding-bottom: 5px;
 	}
 	#checkout-wizard fieldset {min-height : 230px;}
 	.checkout-wizard-content fieldset > div > span {line-height: 1em;}

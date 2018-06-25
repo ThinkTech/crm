@@ -12,7 +12,7 @@
 
 .window > div {
 	width : 60%;
-	border : 1px solid #08ccf7;
+	border : 1px solid #3abfdd;
 	border-radius : 5px;
 	height: 600px;
 	overflow-x : hidden; 
@@ -33,6 +33,10 @@
      padding-right : 4px;
 	 position: relative;
 	 top: -1px;
+}
+
+.window > div .badge {
+	top : 2px;
 }
 
 .window > div h1 {
@@ -56,20 +60,20 @@
     display : none;
     width: 61%;
     margin-left: -10px;
-    border : 1px solid #08ccf7;
+    border : 1px solid #3abfdd;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .window > div a {
-	color : #000;
+	color : #180101;
 	cursor : pointer;
 }
 
 .window > div a.close-ticket {
-	color : #000000;
+	color : #180101;
 }
 
-.window > div a.pay,.window > div a.open {
+.window > div a.pay {
 	color : #5cb85c;
 }
 
@@ -83,11 +87,11 @@
 }
 
 .window > div .terms h1 i.fa {
-    color : #000000;
+    color : #180101;
 }
 
 .window > div .terms p {
-	color: #000000;
+	color: #180101;
     line-height: 2em;
     font-size: 15px;
     display: block;
@@ -99,7 +103,7 @@
 }
 
 .window > div .terms h1 {
-    color: #000000;
+    color: #180101;
     margin-top: 5px;
     font-size : 2em;
 }
@@ -108,7 +112,7 @@
 	font-size: 14px;
     display: block;
     margin-top: 10px;
-    background : #ffe;
+    background : #fdffa4;
     padding-left : 5px;
     padding-bottom : 5px;
     width : 200px;
@@ -127,48 +131,352 @@
 }
 
 .window > div input[type="submit"],.window > div input[type="button"]{
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: #fff;
     cursor: pointer;
     outline: none;
     padding: 15px 15px;
-    width: 34%;
+    width: 110px;
     margin: auto;
-    margin-right: 10px;
+    margin-right: 5px;
     display: inline-block;
     margin-top: 5px;
-    background: #000000;
+    margin-bottom: 5px;
+    background:#3abfdd;
     border-radius: 0.3em;
     text-transform: uppercase;
-}
-
-.window > div input[type="submit"]:hover,.window > div input[type="button"]:hover{
-  background: #fff;
-  color: #000;
 }
 
 .window > div fieldset input[type=file] {
     display: inline-block;
     font-weight: 600;
-    color : #000000;
+    color : #180101;
+    border : none;
+    vertical-align: bottom;
+}
+
+.modal {
+	position : absolute;
+	background: rgba(0,0,0,0.5);
+	z-index : 999;
+	width: 100%;
+	left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display : none;
+	
+}
+.modal-top {
+	z-index : 99999;
+}
+
+.search-results,.search-wizard {
+	position: absolute;
+    width: 75%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    border: 1px solid #08ccf7;
+    background: #fff;
+    z-index: 999;
+    padding: 20px;
+    padding-bottom : 0px;
+    display : none;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.search-wizard {
+    width: 65%;
+}
+
+.search-wizard div {
+	padding: 0px;
+    width: 92%;
+    margin: auto;
+    margin-top: 10px;
+    border: 1px solid #08ccf7;
+}
+
+.search div:first-of-type {
+	background: #fdffa4;
+	text-align: center;
+}
+
+.search tr:nth-child(even) {
+    background: #fdffa4;;
+}
+
+.search div.wizard-message {
+   background: #f3f3f3;
+}
+
+.search-wizard .domain-edit {
+	text-align: right;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    margin-right : 25px;
+}
+
+.search-wizard .domain-edit a {
+	cursor : pointer;
+}
+
+.search-wizard legend {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.7em;
+    border-bottom: none;
+    font-family: Tahoma;
+    background: #08ccf7;
+    color: #fff;
+    padding: 5px;
+}
+
+.search-wizard .buttons {
+	width: 95%;
+    text-align: right;
+    margin-top : 20px;
+    background : transparent;
     border : none;
 }
 
+.search-wizard .buttons a {
+	padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #08ccf7;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Tahoma;
+    margin-right: 12px;
+    cursor: pointer;
+    background: #3abfdd;
+    color: #fff;
+}
+
+.search-wizard .buttons a:first-of-type { 
+	margin-right: 3px;
+}
+
+.search tr {
+	text-align: center;
+}
+
+.search table>tbody>tr:nth-of-type(odd).unavailable{
+   background-color : #d13b2f;
+}
+
+.search table>tbody>tr.selected{
+  background-color: #d5fdd8;
+}
+
+.search table>tbody>tr:nth-of-type(even).unavailable{
+   background-color : #d13b2f;
+}
+
+.search table>tbody>tr.unavailable>td:first-of-type {
+    color : #fff;
+}
+
+.search table tbody tr {
+   display : block;
+   cursor: default;
+   padding: 7px;
+}
+
+.search table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.search table tr td:first-of-type {
+    min-width: 30px;
+    width : 62%;
+    vertical-align: middle;
+    font-size: 16px;
+    height: 50px;
+    font-weight: bold;
+}
+
+.search.search-wizard label {
+	position: relative;
+    top: -1px;
+    margin-bottom: 5px;
+    font-size: 17px;
+    cursor : pointer;
+    font-family : Tahoma;
+}
+
+.search.search-wizard p {
+   font-size: 16px;
+    margin-bottom: 0px;
+    padding: 10px;
+    width: 91%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+}
+
+.search.search-wizard h4 {
+    font-size: 19px;
+    font-weight: bold;
+    padding-left: 5px;
+    text-align: right;
+    margin-right: 35px;
+    margin-left: 35px;
+    display : inline-block;
+}
+
+.search.search-wizard h4.price {
+	text-align : left;
+}
+
+.search.search-wizard input[type=radio] {
+	margin-left : 30px;
+}
+
+.search.search-wizard h3 {
+	padding-bottom : 0;
+}
+
+.search h1{
+   font-size: 2em;
+    color: #180101;
+    text-transform: capitalize;
+    margin-bottom: 0;
+    position: relative;
+    font-weight: bold;
+    font-family: Tahoma;
+    text-align: left;
+}
+
+.search fieldset > span {
+    width: 59%;
+    max-width: 59%;
+    font-size : 13px;
+}
+
+.search fieldset > span.text-right {
+    width: 40%;
+    max-width: 40%;
+}
+
+.search h3{
+	text-align : center;
+	padding : 5px;
+	margin-bottom : 15px;
+	margin-top: 10px;
+	line-height: 1.5em;
+	font-weight: 600;
+	word-break: break-word;
+	font-size: 22px;
+}
+
+.search .fa-check-circle-o {
+	position: relative;
+    top: 1px;
+}
+
+.search span.close { 
+	z-index: 10;
+    float: right;
+    position: relative;
+    right: 1px;
+    top: -7px;
+    display: block;
+    padding: 8px;
+    width: 32px;
+    text-align: center;
+    border: 1px solid #2f1a1a;
+    border-radius: 50%;
+    color : #180101;
+    font-family: Tahoma;
+    font-size: 15px;
+    box-shadow: none;
+}
+
+.search-results a{
+	background: #3abfdd;
+    padding: 5px;
+    width: 90px;
+    display: inline-block;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    cursor : pointer;
+    border: 1px solid #08ccf7;
+    text-align: center;
+}
+
+.search-results select {
+	padding: 5px;
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    border: 1px solid #08ccf7;
+    background: #fff;
+}
+
+.search-results td span {
+   display: inline-block;
+    width: 100px;
+    font-weight: bold;
+    background: #fff;
+    color : green;
+    padding: 5px;
+    border: 1px solid #08ccf7;
+}
+
+.search-results .table-striped>tbody>tr {
+    border: 1px solid #fff;
+}
+
+.search-results .table-striped>tbody>tr td:nth-child(2) {
+   width : 55%;
+   white-space: nowrap;
+   overflow: visible;
+}
+
+.search-results .table-striped>tbody>tr:nth-of-type(odd).unavailable{
+   background-color : #d13b2f;
+}
+
+.search-results .table-striped>tbody>tr:nth-of-type(even).unavailable{
+   background-color : #d13b2f;
+}
+
+.search-results .table>tbody>tr.unavailable>td:first-of-type {
+    color : #fff;
+}
+
+.search-results table {
+	margin-bottom : 0px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
 legend {
-	font-size: 15px;
+	font-size: 14px;
     color: #fff;
     font-weight: bold;
     padding: 3px;
-    background: #000000;
+    background: #180101;
     border: 1px solid #2d1e1e;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-
 .window > div legend a i.fa,.window > div h1 a i.fa {
-	color : #fff;
+	color : #fdffa4;
 	font-size: 15px;
 }
 
@@ -177,7 +485,7 @@ legend {
 }
 
 .window > div ul, .window > div ol {
-    background: #ffe;
+    background: #fdffa4;
     margin-bottom: 0;
     font-size: 13px;
     list-style-position: outside;
@@ -189,7 +497,7 @@ legend {
 }
 
 .window > div ul.not-empty, .window > div ol.not-empty {
-	margin-top : -10px;
+	margin-top : -20px;
 	padding-top : 5px;
 	padding-bottom : 5px;
 }
@@ -206,7 +514,7 @@ legend {
 }
 
 .window > div ul a, .window > div ol a {
-	color : #000000;
+	color : #180101;
 	cursor : pointer;
 	font-size: 12px;
     font-weight: 500;
@@ -235,23 +543,6 @@ legend {
 	background : #fff;
 }
 
-.window > div div.info-tasks ol li a.start-task{top: -2px;left: -6px;}
-
-.window > div .task-info-edition h4{margin-bottom : 5px;font-weight: bold;}
-
-.window > div .task-info-edition .progression-edition input{display : inline-block;vertical-align: top;margin-top: 0px;}
-
-.window > div .task-info-edition .progression-edition span{display: inline-block;font-weight: bold;margin-top: 7px;width: auto;margin-right: 5px;vertical-align: top;}
-
-.window > div .task-info-edition .progression-edition label{display : inline-block;font-weight: bold;margin-top: 8px;vertical-align: top;}
-
-.window > div .task-info-edition .mce-caret {border-top: none;}
-
-.window > div .task-info-edition h4 i{
-  position: relative;
-  top: 1px;
-}
-
 .window > div .info-tasks ol li > span:first-of-type{
 	width:50%;
 	font-size : 12px;
@@ -273,9 +564,10 @@ legend {
 }
 
 .window > div .info-tasks .badge {
-	background : #000000;
+	background : #180101;
 	margin-left : 10px;
 	font-weight : bold;
+	vertical-align: top;
 }
 
 .window > div .message-list > div:first-of-type {
@@ -288,13 +580,17 @@ legend {
 	font-size: 13px;
 }
 
+.window > div .description p {
+    margin-bottom: 10px;
+}
+
 .window > div .message-list > div > div i {
 	display : inline-block;
 	vertical-align : top;
 	font-size : 2em;
 	position : relative;
 	top : -6px;
-	color : #08ccf7;
+	color : #3abfdd;
 	margin-right : 5px;
 	margin-left : 5px;
 }
@@ -314,7 +610,7 @@ legend {
 }
 
 .window > div .message-list > div > div span a i {
-	color : #000;
+	color : #180101;
 }
 
 .window > div .message-list > div > div div.message {
@@ -326,28 +622,16 @@ legend {
 	margin-left : 5px;
 }
 
-.window > div div.task-info-edition {
-	position : absolute;
-	z-index : 999999;
-	display : none;
-	background : #fafafa;
-	font-size : 12px;
-	padding : 5px;
-	border : 1px solid #08ccf7;
-	border-radius : 5px;
-	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-}
-
 .window > div div.info-message {
 	font-weight : bold;
 	position : absolute; 
 	z-index : 999999;
 	display : none;
-	background : #fafafa;
+	background : #fff;
 	font-size : 12px;
 	padding : 10px;
 	max-width : 250px;
-	border : 1px solid #08ccf7;
+	border : 1px solid #3abfdd;
 	border-radius : 5px;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
@@ -378,20 +662,22 @@ legend {
 .window > div .info-tasks{
 	background: #fff;
 	display : none;
+	margin-top: -4px;
 }
 
 .window > div .info-tasks h1 {
 	padding-left: 0px;
-    background: #000000;
+    background: #180101;
     color: #fff;
     margin-top: 5px;
     margin-bottom: 5px;
+    font-size: 14px;
 }
 
 .window > div .message-list > div > div {
-   border-left : 1px solid #08ccf7;
-   border-right : 1px solid #08ccf7;
-   border-bottom : 1px solid #08ccf7;
+   border-left : 1px solid #3abfdd;
+   border-right : 1px solid #3abfdd;
+   border-bottom : 1px solid #3abfdd;
    width: 100.3%;
 }
 
@@ -416,17 +702,17 @@ legend {
     position: relative;
     margin-right: 3px;
     margin-left: 3px;
-    
+    font-weight: bold;
 }
 
 .window > div h1 i.fa-briefcase {
-    top: 2px;
+    top: 1px;
 }
 
 .window > div h1 i.fa-money {top: 1px;}
 
 .text-right .fa {
-	color : #08ccf7;
+	color : #3abfdd;
 }
 
 .info-tasks ol {
@@ -450,10 +736,10 @@ h1 .fa-tasks {
 
 .window > div fieldset {
 	padding: 0px;
-	padding-left: 5px;
-    width: 100%;
+	width: 100%;
     margin: auto;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    margin-top: 1px;
 }
 
 .window > div .payment-info fieldset {
@@ -468,7 +754,7 @@ legend {
 legend a i.fa {
 	position: relative;
     top: 1px;
-    color: #08ccf7;
+    color: #3abfdd;
     margin-left: 2px;
 }
 
@@ -485,8 +771,12 @@ legend a i.fa {
 	margin-top: -8px;
 }
 
+.window > div .document-list h6 {
+	margin-bottom: 10px!important;
+}
+
 .window > div .document-upload {
-	margin-top: -20px;
+	margin-top: -15px;
 	display : none;
 }
 
@@ -499,6 +789,8 @@ legend a i.fa {
 	padding: 1px;
 	padding-left : 4px;
 	width : 50%;
+	vertical-align: bottom;
+	border-radius: 3px;
 }
 
 .window > div select {
@@ -512,14 +804,137 @@ legend a i.fa {
 
 .window > div h6 {
 	margin-top: -10px;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
     font-size: 13px;
 }
 
 .window > div hr {
 	margin-top: 0px;
     margin-bottom: 10px;
-    border-top: 1px solid #08ccf7;
+    border-top: 1px solid #3abfdd;
+}
+
+.tld-domain-search-wrapper {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    padding-top: 0;
+    padding-bottom: 15px;
+}
+
+.tld-domain-search .input-container input {
+   display: inline-block;
+    height: 48px;
+    line-height: 48px;
+    border: 1px solid #08ccf7;
+    padding-left: 10px;
+    width : 300px;
+}
+
+.tld-domain-search .input-container span {
+    border: 2px solid transparent;
+    display: inline-block;
+    height: 48px;
+    line-height: 48px;
+    font-weight : bold;
+}
+
+.tld-domain-search .tld-search-button {
+    background-color: #ca2233;
+    z-index : 10;
+    display: inline-block;
+    height: 47px;
+    margin-left: 0px;
+    width: 70px;
+    vertical-align: top;
+    font-size: 1.6em;
+    padding-top: 7px;
+    margin-top: 2px;
+    color: #fff;
+    cursor : pointer;
+    text-align : center;
+}
+
+.tld-domain-search > div {
+	display : inline-block;
+}
+
+.tld-domain-search select {
+    width: auto;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 10px;
+    border: 1px solid #08ccf7;
+}
+
+.businessEmail {
+  background: #efebeb;
+    line-height: 1.4em;
+    padding-bottom: 10px;
+}
+.businessEmail h1{
+	background: #fdffa4;
+    border: 1px solid #3abfdd;
+    margin-top: 4px;
+    border-radius: 3px;
+    margin-bottom : 5px;
+    font-size : 14px!important;
+}
+
+.businessEmail input{
+	margin-left : 11px;
+	border: 1px solid #676c6d;
+}
+
+.businessEmail input[type=text] {
+	padding: 5px!important;
+    width: 250px!important;
+    margin: 3px;
+    margin-left: 20px;
+    margin-bottom: 6px;
+    display: block;
+    font-size : 13px;
+}
+
+.businessEmail a {
+	display: block;
+    font-weight: 600;
+    color: #fff!important;
+    cursor: pointer;
+    outline: none;
+    padding: 7px;
+    width: 100px;
+    text-align: center;
+    margin-top: 4px;
+    margin-left: 20px;
+    background: #180101;
+    border-radius: 0.3em;
+    text-transform: uppercase;
+    font-size: 12px;
+    border: 1px solid #3abfdd;
+}
+
+.businessEmail h1 .fa {
+    color: #3abfdd;
+}
+
+.businessEmail label{ 
+	font-size: 12px;
+    font-weight: bold;
+    font-family: Tahoma;
+    position: relative;
+    top: -2px;
+    padding-left: 3px;
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+.businessEmail label:nth-of-type(odd){
+	background : #fff;
+}
+
+.businessEmail label:nth-of-type(even) {
+   background : #fdffa4;
 }
 
 .project-wizard h2 {
@@ -572,7 +987,7 @@ legend a i.fa {
     margin-top: -20px;
 }
 
-.icons,.tree { display : none;padding-top :10px;padding-bottom : 10px;margin-top: -10px;}
+.icons,.tree { display : none;padding-top :10px;padding-bottom : 10px;margin-top: -20px;}
 
 .icons > div {
 	display: inline-block;
@@ -590,7 +1005,7 @@ legend a i.fa {
 }
 
 .icons > div a {
-	color: #000000;
+	color: #180101;
     font-size: 11px;
     width: 91%;
     display: block;
@@ -598,7 +1013,7 @@ legend a i.fa {
     margin-top: 5px;
     height: 40px;
     overflow-y: hidden;
-    background: #ffe;
+    background: #fdffa4;
     padding: 5px;
     padding-top: 5px;
 }
@@ -643,7 +1058,7 @@ label.tree_label { cursor: pointer; }
 label.tree_label:hover { color: #666; }
 
 label.tree_label:before {
-  background: #000;
+  background: #180101;
     color: #fff;
     position: relative;
     z-index: 1;
@@ -668,14 +1083,16 @@ label.tree_label:before {
 }
 
 .service {
-	width : 100px;
-	text-align : center;
-	margin-top : 20px;
-	padding : 5px;
+	text-align: center;
+    margin-top: 20px;
+    margin-right: 5%;
+    padding: 5px;
+    display: inline-block;
+    width: 128px;
 }
 
 .service h3 {
-	font-size : 16px;
+	font-size : 13px;
 	font-weight : bold;
 }
 
@@ -700,18 +1117,40 @@ label.tree_label:before {
 	}
 }
 
+@media (max-width:1024px) {
+	.search-wizard .buttons a{
+	  font-size : 13px;
+	}
+	.search.search-wizard label,.search.search-wizard p {
+      font-size: 14px;
+	}
+	.search h3 {
+	   font-size: 16px;
+	}
+	.search-wizard legend,.search.search-wizard h4 {
+	  font-size: 15px;
+	}
+}
+
 @media (max-width:991px){
-	.window > div .task-info-edition .progression-edition label {margin-top: 12px;}
+	.search fieldset > span {
+    	width: 100%!important;
+    	max-width: 100%!important;
+    	font-size : 12px;
+    	padding-left: 3px;
+	}
+	.businessEmail input {margin-left: 4px;}
+	.search-wizard .domain-edit a {font-size: 12px;}
 	.window > div input[type=text],.window > div select, .window > div input[type=file] {
       width: 100%;
       text-align: left;
      }
-     .window > div textarea {
-      margin-top: 2px;
-     }
-     .window > div .label, .window > div .badge {
-      top: 0px;
-      position: relative;
+     .window > div textarea {margin-top: 2px;}
+     .window > div .label {
+     	top: 0px;
+	    padding: 3px;
+	    padding-right: 5px;
+	    margin-bottom: 1px;
      }
      .window > div a.plan,.window > div a.duration {
        top: -21px;
@@ -720,22 +1159,23 @@ label.tree_label:before {
       float : right;
      }
      .window > div fieldset a.priority-edit {position: relative; top: 3px;}
-     .window > div a.open,.window > div a.pay,.window > div a.close-ticket,.window > div a.open-ticket{position : relative; top : 0px}
+     .window > div a.pay,.window > div a.close-ticket{position : relative; top : 0px}
      .info-tasks li span:first-of-type {width : 100%;padding-top: 4px;padding-bottom: 3px;}
      .window > div fieldset a {position: relative;top: 1px;}
      .window > div .entity-edition select {font-size: 11px;}
-     .billing th:nth-child(7), .billing td:nth-child(7) {display: block;}
-	 .projects th:nth-child(5), .projects td:nth-child(5) {display: block;}
+     .domains th:nth-child(7), .domains td:nth-child(7) {display: block;}
+     .billing th:nth-child(6), .billing td:nth-child(6) {display: block;}
+	.projects th:nth-child(5), .projects td:nth-child(5) {display: block;}
     .support th:nth-child(6), .support td:nth-child(6) {display: block;}
 }
+
 @media (max-width:768px){
-	.window > div .task-info-edition .progression-edition label {margin-top: 11px;}
 	.window > div {width: 90%;}
 	.message {font-size : 70%}
 	.window > div input[type="submit"],.window > div input[type="button"] {
 	   font-size: 13px;
 	   padding: 10px 15px;
-	   width: 45%;
+	   width: 100px;
 	}
 	.window > div input[type=text], .window > div select, .window > div input[type=file] {
        font-size: 12px;
@@ -752,14 +1192,132 @@ label.tree_label:before {
 }
 
 @media(max-width:640px){
-	.window > div .task-info-edition h4{font-size : 13px}
-	.window > div div.task-info-edition {position: static;margin-top: -25px;margin-left: -5px;}
+	.search fieldset > span {
+    	font-size : 11px;
+	}
 	.window > div .terms {top:0px;height: 100%;width: 100%;margin-left: 0px;margin-left: -8px;}
 	.window {padding-top: 0px;}
 	.window > div {width: 100%;border-radius: 0px;height: 100%;}
 	.window > div img {width : 50%}
 	.message {font-size : 60%}
+	.businessEmail {line-height: 1em;padding-bottom: 10px;}
 	.window > div h1 {font-size: 1em;}
+	.businessEmail h1 {font-size: 13px!important}
+	.search h3 {margin: 0;font-size :13px}
+	.search-wizard div {margin-top: 5px;width: 100%;}
+	.search-wizard fieldset {margin-top: -4px;}
+	.tld-domain-search select {
+	    height: 36px;
+        line-height: 36px;
+        font-size: 11px;
+        margin-left: -1px;
+	}
+	.tld-domain-search .input-container input {
+	    height: 36px;
+        line-height: 36px;
+        width: 135px;
+        font-size: 11px;
+        margin-left: -5px;
+	}
+	.tld-domain-search .input-container span {
+      height: 36px;
+      line-height: 36px;
+      font-size: 11px;
+    }
+	.tld-domain-search .tld-search-button {
+	    height: 36px;
+        margin-left: -2px;
+        width: 45px;
+        font-size: 13px;
+        padding-top: 9px;
+        margin-top: 2.5px;
+	}
+	.search-results, .search-wizard {
+       width: 97%;
+       padding: 5px;
+       padding-top: 10px;
+       padding-bottom: 0px;
+    }
+    .search.search-wizard h4 {
+     font-size: 14px;
+     padding-left: 6px;
+     padding-bottom: 5px;
+    }
+    .search-wizard legend {
+     font-size: 15px;
+     padding-left: 2px;
+     margin-bottom: 3px;
+    }
+    .search.search-wizard label {
+     top: -2px;
+     margin-bottom: 0px;
+     font-size: 13px;
+    }
+    .search.search-wizard input[type=radio] {
+     margin-left: 5px;
+    }
+    .search-wizard .buttons {
+    	width: 100%;
+    	margin-bottom: -5px;
+    	margin-top: 15px;
+    }
+    .search-wizard .buttons a {
+     padding: 7px;
+     font-size: 12px;
+     padding-left: 10px;
+     padding-right: 10px;
+     margin-right: 0px;
+	}
+	.search.search-wizard div > p {
+      font-size: 12px;
+      padding: 3px;
+      width: 99%;
+      line-height: 15px;
+    }
+	.search-results {
+	  padding : 10px;
+	}
+	.search-results a {
+        margin-left: 15px;
+	}
+	table > tbody > tr > td:first-of-type {
+   	 	font-size: 13px;
+    }
+	table > tbody > tr > td, table > tfoot > tr > td {
+    	font-size: 12px;
+	}
+	.search-results .table-striped>tbody>tr td:nth-child(2) {
+    width: 100%;
+    text-align: left;
+	}
+	.search-results table > tbody > tr > td, table > tfoot > tr > td {
+    	display: inline-block;
+	}
+	.search-results table > tbody > tr > td:first-of-type {
+   	 	font-size: 13px;
+	    text-align: left;
+	    padding: 3px !important;
+	    padding-left: 0px !important;
+	    margin-bottom: -10px;
+	    width: 100%;
+	    display: block;
+	    display: inline;
+        height: auto;
+    	word-break: break-all;
+	}
+	.search tr {
+   	 text-align: left;
+     }
+	.search-results .table-striped>tbody>tr td:nth-child(2) {
+    	width: 100%;
+    	text-align: left;
+    	overflow: visible;
+	}
+    .search h1 {
+      font-size: 18px;
+      text-shadow: none;
+      padding-bottom: 10px;
+    }
 	.project-wizard h5 {font-size: 0.9em;}
 	.project-wizard section > span {font-size: 0.8em;font-weight: bold;}
 	.window > div fieldset {padding-left: 0px;}
@@ -775,30 +1333,69 @@ label.tree_label:before {
 	.project-wizard h1{margin-left: -16px;}
 	.window > div .terms-agreement {font-size: 13px;margin-top: 5px;}
 	.window > div .message-list > div > div span,.window > div ol li span {display : block;width:100%;text-align:right;margin-left:2px;top: 0px;}
-	.window > div div.info-tasks ol li a{top: -30px;margin-left: -10px;}
 	.window > div ol li a{margin-bottom : 2px;display:inline-block;width:90%;white-space:normal;word-break : break-word}
 	.window > div div.info-tasks ol li a{position: relative;top: -27px;}
-	.window > div div.info-tasks ol li a.task-info{top: -29px;margin-left: -20px;}
-	.window > div div.info-tasks ol li a.task-info-edit{top: -29px;}
-	.window > div div.info-tasks ol li a.start-task{top: -28px;left: -17px;}
 	.window > div ol li span{text-align:center;display:inline-block;width:auto}
 	.window > div ol li > span:first-of-type{text-align:left;width:100%;display:block;}
 	.window > div ol li span[data-status]{margin-bottom:5px}
-	.window > div .info-tasks ol li > span:last-of-type{position : relative;top : -2px;margin : 0;margin-left:9px;display : inline-block;width : 20px}
+	.window > div .info-tasks ol li > span:last-of-type{position : relative;top : -2px;margin : 0;margin-right:20px;display : inline-block;width : 20px}
 	.window > div ol li > span:last-of-type{width : 20px;display:inline-block;position : relative;}
 	.window > div ol li span{margin-top:0px}
 	.window > div ul, .window > div ol {padding-left: 0px;list-style: none;}
 	.window > div ul.tree {padding-left: 9px;list-style: none;}
 	.window > div ul.tree li{padding-left: 21px;}
 	.window > div .message-list > div > div div.message {width : 97%;}
-	.window > div ol li span.question{width:20px;margin-left: 70%;position: relative; top: -2px;}
-	legend a i.fa {position: relative;top: -1px;}
+	.window > div ol li span.question{width:20px;margin-left: 78%;position: relative; top: -2px;}
+	legend a i.fa {position: relative;top: 1px;}
+	.service h3 {font-size: 11px;}
+	.search.search-wizard h4 {font-size: 12px;}
 }
 
 @media(max-width:480px){
+	.businessEmail h1 {font-size: 12px!important;}
+    .businessEmail label {font-size: 11px;}
+	.service {margin-right: 5%; width: 43%;margin-top: 0;}
 	.project-wizard p {text-align : center}
 	.window p {word-break : break-word;}
-	legend {width: 100.5%;}
+	legend {width: 100.4%;font-size : 12px}
+	.search-results, .search-wizard { max-height: 100%;overflow-y: auto;}
+	.window > div fieldset a {top: 0px;font-size: 13px;}
+	.window > div fieldset a.tasks {margin-left:2px;top: -3px;}
+	.window > div fieldset a.refresh {margin-left : 6px;top: -3px;}
+	.window > div h6 {font-size: 11px;}
+	.window > div ul a, .window > div ol a {font-size: 11px;}
+	.window > div input[type="submit"], .window > div input[type="button"] {font-size: 10px;width: 85px;}
+	.window > div .message-list > div > div i.fa-info {font-size: 11px;margin-right: 10px}
+	.window p {font-size: 11px;}
+	.window > div .info-tasks ol li > span:first-of-type {font-size: 11px;}
+	.window > div .info-tasks h1 {font-size : 12px!important}
+	.window > div .info-tasks ol li { 
+		height: 60px;
+   	    padding-top: 7px;
+	}
+}
+
+@media(max-width:360px){
+	.tld-domain-search-wrapper {
+    	text-align: center;
+    	white-space: nowrap;
+    	padding : 0;
+    	margin-top: -10px;
+    	margin-bottom: 7px;
+	}
+	.tld-domain-search .input-container input {
+    	width: 127px;
+    	font-size : 10px;
+	}
+	.tld-domain-search .input-container select {
+	   font-size : 10px;
+	}
+}
+
+@media(max-width:320px){
+	.tld-domain-search .input-container input {
+    	width: 110px;
+	}
 }
 
 /*-- pricing --*/
@@ -830,11 +1427,11 @@ label.tree_label:before {
 }
 
 .blue-top{
-	background:#08ccf7;
+	background:#3abfdd;
 }
 
 .black-top {
-	background : #000000;
+	background : #180101;
 }
 
 .green-top{
@@ -926,14 +1523,14 @@ p.text {
 }
 
 .content-process{
-	margin-top: -30px;
+	margin-top: 0px;
 	min-height: 90px;
 	background : #fff;
 	margin-left: 40px;
 	margin-bottom: 10px;
 }
 .content1 {
-	background-color:#000000;
+	background-color:#180101;
 	text-align:center;
 	padding:2em;
 }
@@ -972,7 +1569,7 @@ p.text {
 span.line {
     height: 5px;
     width: 90px;
-    background-color:#000000;
+    background-color:#180101;
     display: block;
     position: absolute;
     top: 28%;
@@ -986,11 +1583,11 @@ span.line {
 	margin-left:3%;
 }
 .confirm .imgcircle , .process .imgcircle, .quality .imgcircle {
-	background-color:#000000;
+	background-color:#180101;
 }
 
 .confirm span.line, .process span.line {
-	background-color:#000000; 
+	background-color:#180101; 
 }
 
 .imgcircle.active, span.line.active{
@@ -998,7 +1595,7 @@ span.line {
 }
 
 .content3 p {
-	font-size: 13px;
+	font-size: 12px;
     font-weight: 600;
     text-align: left;
     background: transparent;
@@ -1006,15 +1603,17 @@ span.line {
     white-space: nowrap;
     font-family: Tahoma;
     border: none;
-} 
+}
+
 .content3 p.adjust{
 	margin-left: 2%;
 }
+ 
 .imgcircle {
 	height: 60px;
     width: 60px;
     border-radius: 50%;
-	background-color:#000000;
+	background-color:#180101;
 	position:relative;
 }
 .imgcircle img {
@@ -1204,18 +1803,18 @@ span.line {
 	.content-process {
     min-height: 670px;
     margin-left: -15px;
-    margin-top: -25px;
+    margin-top: -20px;
 	}
 	.content3 p {
 		margin-left: 10px;
 	}
     .content-process p {
       width: 50%;
-    margin: auto;
-    margin-left: 26%;
-    margin-top: 0px;
-    margin-bottom: 5px;
-    white-space: nowrap;
+      margin: auto;
+      margin-top: 0px;
+      margin-bottom: 5px;
+      white-space: nowrap;
+      font-size: 11px;
     }
     .content3 p.adjust {
      margin-left: 40%;
@@ -1287,20 +1886,17 @@ span.line {
 }
 
 @media (max-width: 375px){
-	.content-process p {
-		margin-left: 21%;
-	}
 	.content1 h2 {
-    font-size: 19px;
-}
+    	font-size: 19px;
+	}
 	span.line {
-   top: 98%;
-   left: 52.5%;
-    height: 64px;
-}
+   		top: 98%;
+   		left: 52.5%;
+    	height: 64px;
+	}
 	.shipment {
-    margin-left: 17%;
-}
+    	margin-left: 17%;
+	}
 }
 
 @media (max-width: 320px){

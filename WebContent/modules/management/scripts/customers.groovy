@@ -41,5 +41,3 @@ class ModuleAction extends ActionSupport {
 	}
 	
 }
-
-new ModuleAction()

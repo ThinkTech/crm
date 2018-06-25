@@ -40,67 +40,56 @@ class ModuleAction extends ActionSupport {
 	def getProjectInfo() {
 	   def id = getParameter("id")
 	   def connection = getConnection()
-	   def project = connection.firstRow("select p.*,u.name from projects p,users u where p.id = ? and p.user_id = u.id", [id])
+	   def project = connection.firstRow("select p.*,u.name,d.name as domain from projects p,users u, domains d where p.id = ? and p.user_id = u.id and p.domain_id = d.id", [id])
 	   if(project.status == 'finished'){
 	      project.end = project.closedOn
-	      project.duration = connection.firstRow("select TIMESTAMPDIFF(MONTH,startedOn,closedOn) as duration from projects where id = ?", [id]).duration
+	      project.duration = connection.firstRow("select TIMESTAMPDIFF(MONTH,startedOn,closedOn) as duration from projects where id = ?", [project.id]).duration
 	   }
 	   else if(project.status == 'in progress'){ 
-	   	project.end = connection.firstRow("select date_add(startedOn,interval duration month) as end from projects where id = ?", [id]).end
+	   	project.end = connection.firstRow("select date_add(startedOn,interval duration month) as end from projects where id = ?", [project.id]).end
 	   }
 	   else{ 
-	   	project.end = connection.firstRow("select date_add(date,interval duration month) as end from projects where id = ?", [id]).end
+	   	project.end = connection.firstRow("select date_add(date,interval duration month) as end from projects where id = ?", [project.id]).end
 	   }
-	   if(project.subject.length()>40) project.subject = project.subject.substring(0,40)+"..."
 	   project.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.date)
 	   project.end = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.end)
 	   project.comments = []
 	   connection.eachRow("select c.id, c.message, c.date, u.name from projects_comments c, users u where c.createdBy = u.id and c.project_id = ?", [project.id],{ row -> 
           def comment = new Expando()
-          comment.id = row.id
-          comment.author = row.name
-          comment.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
-          comment.message = row.message
+          comment.with{
+           id = row.id
+           author = row.name
+           date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
+           message = row.message  
+          }
           project.comments << comment
        })
        project.documents = []
 	   connection.eachRow("select d.project_id, d.name, d.size, d.date, u.name as author from documents d, users u where d.createdBy = u.id and d.project_id = ?", [project.id],{ row -> 
           def document = new Expando()
-          document.project_id = row.project_id
-          document.author = row.author
-          document.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
-          document.name = row.name
-          document.size = byteCount(row.size as long)
+          document.with{
+          	project_id = row.project_id
+            author = row.author
+            date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
+            name = row.name
+            size = byteCount(row.size as long) 
+          }
           project.documents << document
        })
        project.tasks = []
-	   connection.eachRow("select id,name,description,info,status,progression from projects_tasks where project_id = ?", [project.id],{ row -> 
+	   connection.eachRow("select name,description,info,status,progression from projects_tasks where project_id = ?", [project.id],{ row -> 
           def task = new Expando()
-          task.id = row.id
-          task.name = row.name
-          task.description = row.description
-          task.status = row.status
-          task.progression = row.progression
-          task.info = row.info ? row.info : "aucune information" 
+          task.with{
+            name = row.name
+            description = row.description
+            status = row.status
+            progression = row.progression
+            info = row.info ? row.info : "aucune information" 
+          }
           project.tasks << task
        })
-       if(project.status == "stand by" && project.plan != "plan social" && project.plan != "plan custom") {
-         project.bill = connection.firstRow("select b.*,p.service from bills b, projects p where b.project_id = p.id and p.id = ?", [id])
-         project.bill.user = user
-	  	 project.bill.date = new SimpleDateFormat("dd/MM/yyyy").format(project.bill.date)
-       }
 	   connection.close() 
 	   json([entity : project])
-	}
-	
-	def getProjectBill() {
-	   def id = getParameter("id")
-	   def connection = getConnection()
-       def bill = connection.firstRow("select b.*,p.service from bills b, projects p where b.project_id = p.id and p.id = ?", [id])
-	   bill.user = user
-	   bill.date = new SimpleDateFormat("dd/MM/yyyy").format(bill.date)
-	   json([entity : bill])
-	   connection.close()
 	}
 	
     def updateTask(){
@@ -196,5 +185,3 @@ class ModuleAction extends ActionSupport {
 	}
 	
 }
-
-new ModuleAction()
