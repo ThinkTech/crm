@@ -3,7 +3,7 @@ page.form = {};
 page.form.show = function(){
 	const form = $(".window.form");
 	const area = $('textarea',form);
-	if(area.length) tinymce.init({target:area[0],skin: "xenmce",height:"150",language: 'fr_FR',menubar:false,statusbar: false});
+	if(area.length) tinymce.init({target:area[0],skin: "lightgray",height:"150",language: 'fr_FR',menubar:false,statusbar: false});
 	setTimeout(function(){
 		form.show();
 	},1000);
@@ -61,14 +61,13 @@ page.details.show = function(entity) {
 			  $.each($(".digit",section),function(i,node){
 				 node = $(node);
 				 const val = parseInt(node.text());
-				 
 				 node.html(val.toLocaleString("fr-FR"));
 			  });
 			  const areas = $("textarea",div); 
 			  if(areas.length) {
 				  tinymce.remove();
 				  $.each(areas,function(i,node){
-					  tinymce.init({target:node,skin: "xenmce",height:"120",language: 'fr_FR',menubar:false,statusbar: false}); 
+					  tinymce.init({target:node,skin: "lightgray",height:"120",language: 'fr_FR',menubar:false,statusbar: false}); 
 				  });
 			  }
 		  });
@@ -79,20 +78,11 @@ page.details.show = function(entity) {
 
 page.details.refresh = function(callback){
 	page.wait({top : $(".window.details").offset().top});
-	const url = $(".table").data("url");
-	$.ajax({
-		  type: "GET",
-		  url: url+"?id="+page.details.entity.id+"&timestamp="+new Date().getTime(),
-		  success: function(response) {
-			  page.details.entity = response.entity;
-			  page.details.show(response.entity);
-			  if(callback) callback(response.entity);
-		  },
-		  error : function(){
-			  page.release();
-			  alert("erreur lors de la connexion au serveur");
-		  },
-		  dataType: "json"
+	const url = $(".table").data("url")+"?id="+page.details.entity.id+"&timestamp="+new Date().getTime();
+	app.get(url,function(response){
+		page.details.entity = response.entity;
+		page.details.show(response.entity);
+		if(callback) callback(response.entity);
 	});
 };
 
@@ -110,22 +100,13 @@ page.table.paginate = function() {
 	    var numPerPage = 5;
 	    const rows = $table.find('tbody tr').unbind("click").click(function(event) {
 	    	const id = $(this).attr("id");
-	    	const url = $table.data("url");
+	    	const url = $table.data("url")+"?id="+id;
 	    	if(url) {
 	    		page.wait({top : $table.offset().top});
-	    		$.ajax({
-					  type: "GET",
-					  url: url+"?id="+id,
-					  success: function(response) {
-						  page.details.entity = response.entity;
-						  page.details.show(response.entity);
-					  },
-					  error : function(){
-						  page.release();
-						  alert("erreur lors de la connexion au serveur");
-					  },
-					  dataType: "json"
-				});
+	    		app.get(url,function(response){
+	    		   page.details.entity = response.entity;
+				   page.details.show(response.entity);
+	    		});
 	    	}
 			rows.removeClass("active");
 			$(this).addClass("active");
@@ -135,11 +116,6 @@ page.table.paginate = function() {
 	    }else{
 	    	$table.next(".empty").hide();
 	    }
-	    $.each($(".digit",$table),function(i,node){
-			 node = $(node);
-			 const val = parseInt(node.text());
-			 node.html(val.toLocaleString("fr-FR"));
-		});
 	    $table.bind('repaginate', function() {
 	        rows.hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
 	    });
@@ -169,6 +145,11 @@ page.table.addRow = function(entity,callback) {
 	const tbody = $("tbody",table);
 	page.render(tbody, [entity], true, function(row) {
 		$("td:first-child span.number",row).html($("tr",tbody).removeClass("active").length);
+		$.each($(".digit",row),function(i,node){
+			 node = $(node);
+			 const val = parseInt(node.text());
+			 node.html(val.toLocaleString("fr-FR"));
+		});
 		row.attr("id",entity.id).addClass("active");
 		page.table.paginate();
 		$("span.page-number:last").click();
@@ -181,6 +162,11 @@ page.updateUserName = function(name){
 };
 
 $(document).ready(function(){
+	$.each($(".digit"),function(i,node){
+		 node = $(node);
+		 const val = parseInt(node.text());
+		 node.html(val.toLocaleString("fr-FR"));
+	});
 	page.table.paginate();
 	$(".window .close").click(function(event) {
 		const div = $(this).parent().parent().hide();

@@ -84,11 +84,12 @@ img {
 }
 /*end reset*/
 html {
-	background-color: #dadada;
+	background-color: #fafafa;
 	background-image: url(templates/amadeus/images/background.jpg);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
 	background-size: cover;
+	overflow : hidden;
 }
 
 body {
@@ -100,22 +101,24 @@ body {
 }
 
 .header-w3l h1 span {
-	color: #08ccf7;
+	color: #3abfdd;
 	display: inline-block;
 	border: 11px solid;
 	padding: 0 .2em;
 	text-shadow: none;
+	box-shadow: 0 2px 5px 0 #388696, 0 2px 10px 0 rgba(0,0,0,.12);
 }
 
 .header-w3l h1 {
 	font-size: 4.75em;
-	color: #000000;
-	text-shadow: 1px 1px #000000;
+	color: #180101;
+	text-shadow: 1px 1px #180101;
 	font-weight: bold;
 	letter-spacing: 4px;
 	text-transform: uppercase;
 	margin-top: 20px;
 	margin-bottom : 20px;
+	margin-left: 11px;
 	font-family: 'Tahoma', sans-serif;
 }
 /*--//header--*/
@@ -129,7 +132,7 @@ body {
 }
 
 .wthree-pro {
-	background: #08ccf7;
+	background: #3abfdd;
 	border: 1px solid #999;
 	background-size: cover;
 }
@@ -163,7 +166,7 @@ body {
 	outline: none;
 	font-size: 15px;
 	border: none;
-	border: 1px solid #08ccf7;
+	border: 1px solid #3abfdd;
 	background: none;
 	width: 75%;
 	color: #fff;
@@ -178,9 +181,9 @@ body {
 }
 
 .sub-main-w3 input[type="submit"] {
-	color: #000;
+	color: #180101;
 	background: #fff;
-	border: 1px solid #08ccf7;
+	border: 1px solid #3abfdd;
 	margin-bottom: 10px;
 	padding: .7em 3em;
 	outline: none;
@@ -191,12 +194,6 @@ body {
 	font-family: 'Tahoma', sans-serif;
 	margin-top: 1.6em;
 	width: 77.5%;
-}
-
-.sub-main-w3 input[type="submit"]:hover {
-	background: #08ccf7;
-	color: #fff;
-	border: 1px solid #c8ccd0;
 }
 
 span.icon1, span.icon2 {
@@ -262,29 +259,37 @@ a.w3-pass {
 }
 
 #confirm-dialog-container>div, #alert-dialog-container>div {
-	border: 1px solid #08ccf7;
+	border: 1px solid #3abfdd;
 }
 
-#confirm-dialog-container span:nth-child(1), #alert-dialog-container span:nth-child(1)
-{
-	background: #08ccf7;
+#confirm-dialog-container span:nth-child(1), #alert-dialog-container span:nth-child(1) {
+	background: #3abfdd;
 	width : 96%;
 	height : 25px;
 }
 
+#alert-dialog-container span:nth-child(2), #confirm-dialog-container span:nth-child(2) {
+    display: block;
+    font-size: 75%;
+    padding: 15px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
 #confirm-dialog-container a, #alert-dialog-container a,
 	#alert-dialog-container span:nth-child(1) {
-	background: #08ccf7;
-	background-color: #08ccf7;
+	background: #3abfdd;
+	background-color: #3abfdd;
 }
 
 #confirm-dialog-container a, #alert-dialog-container a{
 	height : 22px;
+	width : 60px;
 }
 
 #confirm-dialog-container a:hover, #alert-dialog-container a:hover,
 	#confirm-dialog-container a:focus, #alert-dialog-container a:focus {
-	color: #08ccf7;
+	color: #3abfdd;
 	background-color: #fff;
 	border: 1px solid;
 	text-decoration: none;
@@ -298,7 +303,7 @@ a.w3-pass {
 
 #loader {
 	border: 16px solid #eee;
-	border-top: 16px solid #08ccf7;
+	border-top: 16px solid #3abfdd;
 }
 
 /*--//main--*/
@@ -311,13 +316,13 @@ a.w3-pass {
 .footer p {
 	font-size: 12px;
 	font-weight: bold;
-	color: #000000;
+	color: #180101;
 	letter-spacing: 2px;
 	font-family: 'Tahoma', sans-serif;
 }
 
 .footer p a {
-	color: #08ccf7;
+	color: #3abfdd;
 }
 
 .footer p a:hover {
@@ -500,7 +505,7 @@ a.w3-pass {
 
 @media ( max-width : 480px) {
 	html {
-		background-color: #dadada;
+		background-color: #fafafa;
 		background-image: none;
 	}
 	.sub-main-w3 input[type="submit"] {

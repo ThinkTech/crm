@@ -3,18 +3,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>ThinkTech - CRM</title>
+<title>ThinkTech - Portail</title>
+<!-- Meta tag Keywords -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<meta name="theme-color" content="#08ccf7"> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="theme-color" content="#000000"> 
 <meta property="og:type" content="website">
-<meta name="description" content="Bienvenue sur le crm de ThinkTech"> 
+<meta name="description" content="Bienvenue sur le portail de ThinkTech"> 
 <meta name="twitter:card" content="summary">
  <meta name="twitter:site" content="@thinktech">
- <meta name="twitter:domain" property="og:site_name" content="crm.thinktech.sn">
+ <meta name="twitter:domain" property="og:site_name" content="app.thinktech.sn">
  <meta name="twitter:url" property="og:url" content="${baseUrl}">
- <meta name="twitter:title" property="og:title" content="ThinkTech - CRM"> 
- <meta name="twitter:description" property="og:description" content="Bienvenue sur le portail de CRM"> 
+ <meta name="twitter:title" property="og:title" content="ThinkTech - Portail"> 
+ <meta name="twitter:description" property="og:description" content="Bienvenue sur le portail de ThinkTech"> 
  <meta name="twitter:image" property="og:image" content="${baseUrl}/images/banner.jpeg">
 <style type="text/css">
  <%@include file="/css/metamorphosis.css"%>
@@ -53,7 +54,7 @@
 			   <input placeholder="email" name="email" type="email" required>
 			   <input type="submit" value="Réinitialiser">
 			   <div class="rem-w3">
-					<a class="w3-pass"><i class="fa fa-sign-out" aria-hidden="true"></i> retourner</a>
+					<a class="w3-pass"><i class="fa fa-sign-out" aria-hidden="true"></i> retourner à l'identification</a>
 					<div class="clear"></div>
 			  </div>
 			  </form>
@@ -65,6 +66,7 @@
 <script>
 <%@include file="/js/jquery-3.1.1.min.js"%>
 <%@include file="/js/metamorphosis.js"%>
+<%@include file="/js/app.js"%>
 <%@include file="/templates/amadeus/js/template.js"%>
 </script>
 </body>

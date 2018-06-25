@@ -1,8 +1,8 @@
 {
   "name": "ThinkTech CRM",
   "short_name": "ThinkTech CRM",
-  "theme_color": "#08ccf7",
-  "background_color": "#08ccf7",
+  "theme_color": "#3abfdd",
+  "background_color": "#3abfdd",
   "orientation": "portrait",
   "display": "standalone",
   "start_url": "/",

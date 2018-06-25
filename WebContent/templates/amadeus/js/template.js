@@ -1,36 +1,27 @@
-$(document).ready(function(){
-		const email = localStorage.getItem("user.email");
+app.ready(function(){
+	    const email = localStorage.getItem("user.email");
 	    if(email){
 	    	$('input[name=email]').val(email);
 	    	$('input[name=password]').focus();
 	    }else{
 	    	$('input[name=email]').focus();
 	    }
+	    $("#confirm-dialog-cancel").html("Annuler");
 		$(".login form").submit(function(event){
 			const form = $(this);
 			const user = {};
 			user.email = form.find("input[name=email]").val();
 			user.password = form.find("input[name=password]").val();
+			const url = form.attr("action");
 			page.wait({top : form.offset().top});
-			$.ajax({
-				  type: "POST",
-				  url: form.attr("action"),
-				  data: JSON.stringify(user),
-				  contentType : "application/json",
-				  success: function(response) {
-					  if(response.url) {
-						  localStorage.setItem("user.email",user.email);
-						  location.href = response.url;
-					  }else {
-						  page.release();
-						  alert("email ou mot de passe incorrect");
-					  }
-				  },
-				  error : function(){
-					page.release();
-					alert("erreur lors de la connexion au serveur");  
-				  },
-				  dataType: "json"
+			app.post(url,user,function(response){
+				if(response.url) {
+					  localStorage.setItem("user.email",user.email);
+					  location.href = response.url;
+				 }else {
+					  page.release();
+					  alert("email ou mot de passe incorrect");
+				 }
 			});
 			return false;
 		});
@@ -38,25 +29,17 @@ $(document).ready(function(){
 			const form = $(this);
 			const user = {};
 			user.email = form.find("input[name=email]").val();
-			page.wait({top : form.offset().top});
-			$.ajax({
-				  type: "POST",
-				  url: form.attr("action"),
-				  data: JSON.stringify(user),
-				  contentType : "application/json",
-				  success: function(response) {
-					  page.release();
+			confirm("&ecirc;tes vous s&ucirc;r de vouloir r&eacute;initialiser?",function(){
+				page.wait({top : form.offset().top});
+				const url = form.attr("action");
+				app.post(url,user,function(response){
+					page.release();
 					  if(response.status){
 						  alert("un message vous a &edot;t&edot; envoy&edot; &agrave; l'adresse fournie");
 					  }else{
 						  alert("l'adresse fournie est incorrecte.");
 					  }
-				  },
-				  error : function(){
-					page.release();
-					alert("erreur lors de la connexion au serveur");  
-				  },
-				  dataType: "json"
+				});
 			});
 			return false;
 		});
