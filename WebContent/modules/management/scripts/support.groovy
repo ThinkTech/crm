@@ -30,7 +30,6 @@ class ModuleAction extends ActionSupport {
 	   def id = getParameter("id")
 	   def connection = getConnection()
 	   def ticket = connection.firstRow("select t.*, u.name from tickets t,users u where t.id = ? and t.user_id = u.id", [id])
-	   if(ticket.subject.length()>40) ticket.subject = ticket.subject.substring(0,40)+"..."
 	   ticket.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.date)
 	   if(ticket.closedOn) {
 	   	ticket.closedOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.closedOn)
