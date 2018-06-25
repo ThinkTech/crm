@@ -12,6 +12,11 @@ app.ready(function(){
 		}else{
 			$(".eppCode",container).hide();
 		}
+		if(domain.emailActivatedOn){
+			$(".businessEmail .buttons",container).hide();
+		}else{
+			$(".businessEmail .buttons",container).show();
+		}
 		$(".businessEmail",container).hide();  
 		if(domain.emailOn){
 			$(".businessEmail",container).show();
