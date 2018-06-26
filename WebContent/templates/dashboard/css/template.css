@@ -202,6 +202,8 @@ td i.fa-user {
 
 .table tbody tr {
    display : none;
+   border-top: 1px solid #f7dddd;
+   border-bottom: 1px solid #f7dddd;
 }
 
 .table tbody tr:nth-child(1),.table tbody tr:nth-child(2),
