@@ -688,17 +688,17 @@ legend {
    border-right : 1px solid #3abfdd;
    border-bottom : 1px solid #3abfdd;
    width: 100.3%;
+   padding: 15px;
+   padding-top: 20px;
+   padding-bottom : 10px;
 }
 
 .window > div .message-list > div > div:nth-child(odd) {
 	background : #efebeb;
-	padding-top : 10px;
-	
 }
 
 .window > div .message-list > div > div:nth-child(even) {
 	background : #fff;
-	padding-top : 10px;
 }
 
 
