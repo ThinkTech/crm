@@ -50,54 +50,42 @@ class ModuleAction extends ActionSupport {
 	
 	def addTicketComment() {
 	   def comment = parse(request)
-	   def user_id = user.id
-	   Thread.start {
-	     def connection = getConnection()
-	     def params = [comment.message,comment.ticket,user_id]
-         connection.executeInsert 'insert into tickets_comments(message,ticket_id,createdBy) values (?,?,?)', params
-	     connection.close()
-	   } 
+	   def connection = getConnection()
+	   def params = [comment.message,comment.ticket,user.id]
+       connection.executeInsert 'insert into tickets_comments(message,ticket_id,createdBy) values (?,?,?)', params
+	   connection.close()
 	   json([status: 1])
 	}
 	
 	def updateTicketPriority(){
 	    def ticket = parse(request) 
-	    Thread.start {
-	   	   def connection = getConnection()
-	       connection.executeUpdate "update tickets set priority = ? where id = ?", [ticket.priority,ticket.id] 
-	       connection.close()
-	    }
+	    def connection = getConnection()
+	    connection.executeUpdate "update tickets set priority = ? where id = ?", [ticket.priority,ticket.id] 
+	    connection.close()
 		json([status: 1])
 	}
 	
 	def updateTicketProgression(){
 	    def ticket = parse(request) 
-	    Thread.start {
-	   	   def connection = getConnection()
-	       connection.executeUpdate "update tickets set progression = ? where id = ?", [ticket.progression,ticket.id] 
-	       connection.close()
-	    }
+	    def connection = getConnection()
+	    connection.executeUpdate "update tickets set progression = ? where id = ?", [ticket.progression,ticket.id] 
+	    connection.close()
 		json([status: 1])
 	}
 	
 	def openTicket() {
 	   def ticket = parse(request)
-	   Thread.start {
-	      def connection = getConnection()
-	      connection.executeUpdate "update tickets set status = 'in progress' where id = ?", [ticket.id] 
-	      connection.close()
-	   }
+	   def connection = getConnection()
+	   connection.executeUpdate "update tickets set status = 'in progress' where id = ?", [ticket.id] 
+	   connection.close()
 	   json([status : 1])
 	}
 	
 	def closeTicket() {
 	   def ticket = parse(request)
-	   def user_id = user.id 
-	   Thread.start {
-	      def connection = getConnection()
-	      connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where id = ?", [user_id,ticket.id] 
-	      connection.close()
-	   }
+	   def connection = getConnection()
+	   connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where id = ?", [user.id,ticket.id] 
+	   connection.close()
 	   json([status : 1])
 	}
 	

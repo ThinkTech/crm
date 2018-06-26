@@ -30,11 +30,9 @@ class ModuleAction extends ActionSupport {
     
     def openProject(){
        def project = parse(request)
-       Thread.start {
-	   	  def connection = getConnection()
-	      connection.executeUpdate "update projects set status = 'in progress' where id = ?", [project.id] 
-	      connection.close()
-	   }
+       def connection = getConnection()
+	   connection.executeUpdate "update projects set status = 'in progress' where id = ?", [project.id] 
+	   connection.close()
        json([status: 1])
     }
 	
@@ -57,8 +55,8 @@ class ModuleAction extends ActionSupport {
 	   project.comments = []
 	   connection.eachRow("select c.id, c.message, c.date, u.name from projects_comments c, users u where c.createdBy = u.id and c.project_id = ?", [project.id],{ row -> 
           def comment = new Expando()
+          comment.id = row.id
           comment.with{
-           id = row.id
            author = row.name
            date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
            message = row.message  
@@ -78,8 +76,9 @@ class ModuleAction extends ActionSupport {
           project.documents << document
        })
        project.tasks = []
-	   connection.eachRow("select name,description,info,status,progression from projects_tasks where project_id = ?", [project.id],{ row -> 
+	   connection.eachRow("select id,name,description,info,status,progression from projects_tasks where project_id = ?", [project.id],{ row -> 
           def task = new Expando()
+          task.id = row.id
           task.with{
             name = row.name
             description = row.description
@@ -95,66 +94,54 @@ class ModuleAction extends ActionSupport {
 	
     def updateTask(){
        def task = parse(request)
-       Thread.start {
-	   	  def connection = getConnection()
-	      connection.executeUpdate "update projects_tasks set status = ?, progression = ?, info = ?, closedOn = if(? = 100,NOW(),null) where id = ?", [task.status,task.progression,task.info,task.progression,task.id] 
-	      if(task.status == 'finished') {
-	        connection.executeUpdate "update projects set progression = (select (count(*) * 10) from projects_tasks p where p.status = 'finished' and p.project_id = ?) where id = ?", [task.project_id,task.project_id]
-	        connection.executeUpdate "update projects set status = if((select count(*) * 10 from projects_tasks p where p.status = 'finished' and p.project_id = ?) = 100, 'finished', status) where id = ?", [task.project_id,task.project_id]
-	        connection.executeUpdate "update projects set closedOn = if((select count(*) * 10 from projects_tasks p where p.status = 'finished' and p.project_id = ?) = 100, NOW(), null) where id = ?", [task.project_id,task.project_id]
-	       }else{
-	         connection.executeUpdate "update projects set progression = (select (count(*) * 10) from projects_tasks p where p.status = 'finished' and p.project_id = ?) where id = ?", [task.project_id,task.project_id]
-	         connection.executeUpdate "update projects set closedOn = null,status = 'in progress' where id = ?", [task.project_id]
-	       }
-	      connection.close()
+       def connection = getConnection()
+	   connection.executeUpdate "update projects_tasks set status = ?, progression = ?, info = ?, closedOn = if(? = 100,NOW(),null) where id = ?", [task.status,task.progression,task.info,task.progression,task.id] 
+	   if(task.status == 'finished') {
+	     connection.executeUpdate "update projects set progression = (select (count(*) * 10) from projects_tasks p where p.status = 'finished' and p.project_id = ?) where id = ?", [task.project_id,task.project_id]
+	     connection.executeUpdate "update projects set status = if((select count(*) * 10 from projects_tasks p where p.status = 'finished' and p.project_id = ?) = 100, 'finished', status) where id = ?", [task.project_id,task.project_id]
+	     connection.executeUpdate "update projects set closedOn = if((select count(*) * 10 from projects_tasks p where p.status = 'finished' and p.project_id = ?) = 100, NOW(), null) where id = ?", [task.project_id,task.project_id]
+	   }else{
+         connection.executeUpdate "update projects set progression = (select (count(*) * 10) from projects_tasks p where p.status = 'finished' and p.project_id = ?) where id = ?", [task.project_id,task.project_id]
+         connection.executeUpdate "update projects set closedOn = null,status = 'in progress' where id = ?", [task.project_id]
 	   }
+	   connection.close()
        json([status: 1])
     }
     
      def openTask(){
        def task = parse(request)
-       Thread.start {
-	   	  def connection = getConnection()
-	      connection.executeUpdate "update projects_tasks set status = 'in progress', startedOn = NOW() where id = ?", [task.id] 
-	      connection.close()
-	   }
+       def connection = getConnection()
+	   connection.executeUpdate "update projects_tasks set status = 'in progress', startedOn = NOW() where id = ?", [task.id] 
+	   connection.close()
        json([status: 1])
     }
     	
 	def updateProjectPriority(){
 	    def project = parse(request) 
-	    Thread.start {
-	   	   def connection = getConnection()
-	       connection.executeUpdate "update projects set priority = ? where id = ?", [project.priority,project.id] 
-	       connection.close()
-	    }
+	    def connection = getConnection()
+	    connection.executeUpdate "update projects set priority = ? where id = ?", [project.priority,project.id] 
+	    connection.close()
 		json([status: 1])
 	}
 	
 	def addComment() {
 	   def comment = parse(request) 
-	   def user_id = user.id
-	   Thread.start { 
-	   	 def connection = getConnection()
-	     def params = [comment.message,comment.project,user_id]
-         connection.executeInsert 'insert into projects_comments(message,project_id,createdBy) values (?,?,?)', params
-	     connection.close()
-	   }
+	   def connection = getConnection()
+	   def params = [comment.message,comment.project,user.id]
+       connection.executeInsert 'insert into projects_comments(message,project_id,createdBy) values (?,?,?)', params
+	   connection.close()
 	   json([status: 1])
 	}
 	
 	def saveDocuments() {
 	   def upload = parse(request) 
 	   def id = upload.id
-	   def user_id = user.id
-	   Thread.start {
-	     def connection = getConnection()
-	     def query = 'insert into documents(name,size,project_id,createdBy) values (?,?,?,?)'
-         connection.withBatch(query){ ps ->
-           for(def document : upload.documents) ps.addBatch(document.name,document.size,id,user_id)
-         }
-	     connection.close()
-	   }
+	   def connection = getConnection()
+	   def query = 'insert into documents(name,size,project_id,createdBy) values (?,?,?,?)'
+       connection.withBatch(query){ ps ->
+         for(def document : upload.documents) ps.addBatch(document.name,document.size,id,user.id)
+       }
+	   connection.close()
 	   json([status: 1])
 	}
 	
@@ -173,11 +160,9 @@ class ModuleAction extends ActionSupport {
 	
 	def updateProjectDescription() {
 	   def project = parse(request)
-	   Thread.start {
-	   	 def connection = getConnection()
-	     connection.executeUpdate "update projects set description = ? where id = ?", [project.description,project.id] 
-	     connection.close()
-	   }
+	   def connection = getConnection()
+	   connection.executeUpdate "update projects set description = ? where id = ?", [project.description,project.id] 
+	   connection.close()
 	   json([status: 1])
 	}
 	

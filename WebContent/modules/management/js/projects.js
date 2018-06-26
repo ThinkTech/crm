@@ -221,35 +221,7 @@ $(document).ready(function(){
 				}
 			});
 		}
-		$("a.pay",container).click(function(event) {
-			page.details.hide();
-			const top = $(this).offset().top;
-			page.wait({top : top});
-			head.load("modules/payment/js/wizard.js",function() {
-			    page.wizard.show(project.bill,top,function(){
-			    	const tr = $(".table tr[id="+project.id+"]");
-					$("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
-					$(".badge",tr).html("10%");
-					var h3 = $("h3.unactive");
-					h3.html(parseInt(h3.text())-1);
-					h3 = $("h3.active");
-					h3.html(parseInt(h3.text())+1);
-					h3 = $("h3.unpayed");
-					h3.html(parseInt(h3.text())-1);
-					const wizard = $(".project-wizard");
-					page.render(wizard, project, false, function() {
-						$("> div section:nth-child(1)",wizard).hide();
-						$("> div section:nth-child(2)",wizard).show();
-						$("> div section:nth-child(2) input[type=button]",wizard).click(function(event) {
-							  wizard.hide();
-						}); 
-					});
-					wizard.show();
-			    });
-			});
-		});
 	    if(project.plan == "plan social") {
-	    	$("a.pay",container).hide().prev().hide().prev().hide();
 	    	if(project.status == "stand by"){
 	    		$("a.open",container).click(function(){
 	    			const url = $(this).attr("href");
