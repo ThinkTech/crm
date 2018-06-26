@@ -38,6 +38,7 @@ a:focus {
 	color : #502626;
 	opacity : 1;
 }
+
 tr:nth-child(even) {
 	background : #efebeb;
 }
