@@ -93,10 +93,7 @@ $(document).ready(function(){
 						$(".task-info-edit",li).click(function(event){
 							 $(".task-info-edition").hide();
 							 const div = $(".task-info-edition",li);
-							 var left = event.pageX-div.width()-50;
-							 if(left<0) left = 10;
-							 var top = ol.position().top;
-							 div.css({top : top,left : left}).show();
+							 div.show();
 							 return false;
 						});
 						$(".progression-edition input[type=range]",li).on("change",{task : project.tasks[i]},function(event){
