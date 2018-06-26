@@ -13,8 +13,16 @@ app.ready(function(){
 			$(".eppCode",container).hide();
 		}
 		$(".businessEmail input[name=email]",container).attr("disabled","disabled");
+		if(domain.emailOn && domain.status == "finished"){
+			$(".businessEmail",container).show();
+			$(".businessEmail input[type=radio]",container).val([domain.plan]);
+			$(".businessEmail input[name=email]",container).val(domain.email);
+		}else{
+			$(".businessEmail",container).hide();
+		}
 		if(domain.emailActivatedOn){
 			$(".businessEmail .buttons",container).hide();
+			$(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
 		}else{
 			$(".businessEmail .buttons",container).show();
 			if(domain.billStatus == "stand by"){
@@ -47,6 +55,7 @@ app.ready(function(){
 						 app.post(url,order,function(response){
 							 if(response.status){
 								 $(".businessEmail input[name=email]",container).attr("disabled","disabled");
+								 $(".businessEmail input[name=email]",container).val(order.email+"@"+domain.name);
 								 $(".businessEmail .buttons",container).hide();
 								 const tr = $(".table tr[id="+domain.id+"]");
 								 $(".fa-envelope",tr).removeClass("stand-by").addClass("success");
@@ -56,14 +65,6 @@ app.ready(function(){
 					 return false;
 				});	
 			}
-		}
-		if(domain.emailOn && domain.status == "finished"){
-			$(".businessEmail",container).show();
-			$(".businessEmail input[type=radio]",container).val([domain.plan]);
-			const input = $(".businessEmail input[name=email]",container);
-			input.val(domain.email);
-		}else{
-			$(".businessEmail",container).hide();
 		}
 		$("input[type=button]",container).click(function(event) {
 			$(".window").hide();
