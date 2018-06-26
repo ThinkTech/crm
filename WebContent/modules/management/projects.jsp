@@ -283,13 +283,10 @@
       <span><a class="task-info"><i class="fa fa-info" aria-hidden="true"></i></a></span>
       <span><a class="task-info-edit"><i class="fa fa-edit" aria-hidden="true"></i></a></span>
       <span><a class="start-task" href="${url}/projects/tasks/open" style="display:none"><i class="fa fa-play-circle-o"></i></a></span>
-      <div class="task-info-edition">
+     <div class="task-info-edition">
          <form action="${url}/projects/tasks/update">
-          <h4><i class="fa fa-tasks" aria-hidden="true"></i> {name|s}</h4>
           <div class="progression-edition">
-               <span>Progression : </span>
-               <label>{progression}%</label>&nbsp;&nbsp;
-			   <input type="range" min="0" max="100" step="10" value="{progression}" list="tickmarks">
+               <input type="range" min="0" max="100" step="10" value="{progression}" list="tickmarks">
 			   <datalist id="tickmarks">
 				  <option value="0" label="0%">
 				  <option value="10">
@@ -303,6 +300,7 @@
 				  <option value="90">
 				  <option value="100" label="100%">
 				</datalist>
+				<label>{progression}%</label>&nbsp;&nbsp;
 		  </div>
           <textarea style="height:150px">{info}</textarea>
           <div class="submit">
