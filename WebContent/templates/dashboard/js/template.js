@@ -97,7 +97,7 @@ page.table.paginate = function() {
 		const $table = $(this);
 		$(".pager").remove();
 	    var currentPage = 0;
-	    var numPerPage = 5;
+	    var numPerPage = 6;
 	    const rows = $table.find('tbody tr').unbind("click").click(function(event) {
 	    	const id = $(this).attr("id");
 	    	const url = $table.data("url")+"?id="+id;

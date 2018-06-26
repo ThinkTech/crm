@@ -206,7 +206,7 @@ td i.fa-user {
 
 .table tbody tr:nth-child(1),.table tbody tr:nth-child(2),
 .table tbody tr:nth-child(3),.table tbody tr:nth-child(4),
-.table tbody tr:nth-child(5) {
+.table tbody tr:nth-child(5),.table tbody tr:nth-child(6) {
 	display: table-row;
 }
 
@@ -850,8 +850,8 @@ h3 .fa-question-circle-o {
 }
 .work-progres {
     padding: 0.2em 0.2em;
-    background: #fff;
-    min-height : 300px;
+    background: #fffafa;
+    padding-bottom : 15px;
 }
 #confirm-dialog-container, #alert-dialog-container {
     font-family: Tahoma;
@@ -1235,11 +1235,7 @@ fieldset > span {
     font-size : 11px;
 }
 .table-responsive {
-    min-height: 200px;
-}
-.work-progres {
-	min-height: 260px;
-	padding: 2px;
+    min-height: 180px;
 }
 .info-updates {
     margin-bottom: -10px;
