@@ -774,6 +774,7 @@ legend a i.fa {
 
 .window p {
 	font-size : 13px;
+	user-select: text;
 }
 
 .window > div .document-list > div p {
