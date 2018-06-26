@@ -596,7 +596,7 @@ legend {
 .window > div .message-list > div > div i {
 	display : inline-block;
 	vertical-align : top;
-	font-size : 2em;
+	font-size : 1.3em;
 	position : relative;
 	top : -6px;
 	color : #3abfdd;
@@ -608,7 +608,7 @@ legend {
 	background : transparent;
 	display : inline-block;
 	width : 13%;
-	font-size : 7px;
+	font-size : 11px;
 	white-space : nowrap;
 	border : none;
 	vertical-align : top;
