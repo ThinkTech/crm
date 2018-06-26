@@ -61,7 +61,7 @@ class ModuleAction extends ActionSupport {
 	
 	def activateMailOffer(){
 	     def order = parse(request)
-	     connection.executeUpdate "update domains set emailActivatedOn = Now() where id = ?", [order.id] 
+	     connection.executeUpdate "update domains set email = ?, emailActivatedOn = Now() where id = ?", [order.email,order.id] 
 	     json([status: 1])
 	}
 

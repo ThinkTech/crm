@@ -1,7 +1,7 @@
 app.ready(function(){
 	page.details.bind = function(container,domain) {
 		if(domain.status != "finished"){
-			$(".manage,.businessEmail",container).hide();  
+			$(".manage",container).hide();  
 		}
 		$(".submit",container).hide();
 		if(domain.status == "in progress"){
@@ -20,8 +20,8 @@ app.ready(function(){
 			if(domain.billStatus == "stand by"){
 				$(".businessEmail .buttons a",container).hide();
 			}else if(domain.billStatus == "finished"){
-				$(".businessEmail input[name=email]",container).removeAttr("disabled");
 				$(".businessEmail a",container).show();
+				$(".businessEmail input[name=email]",container).removeAttr("disabled");
 				$(".businessEmail a",container).click(function(){
 					const button = $(this);
 					const url = $(this).attr("href");
@@ -37,6 +37,11 @@ app.ready(function(){
 								 $(".businessEmail input[name=email]",container).val("").focus();
 							 });
 							 return false;
+						 }else if(order.email.indexOf("@")!=-1){
+							 alert("vous devez supprimer le caract&eacute;re @",function(){
+								 $(".businessEmail input[name=email]",container).focus();
+							 });
+							 return false
 						 }
 						 page.wait();
 						 app.post(url,order,function(response){
@@ -52,11 +57,13 @@ app.ready(function(){
 				});	
 			}
 		}
-		if(domain.emailOn){
-			$(".businessEmail a.activate",container).hide();
-			$(".businessEmail input[type=radio]",container).val([domain.plan]).attr("disabled","disabled");
+		if(domain.emailOn && domain.status == "finished"){
+			$(".businessEmail",container).show();
+			$(".businessEmail input[type=radio]",container).val([domain.plan]);
 			const input = $(".businessEmail input[name=email]",container);
-			input.val(domain.email+"@"+domain.name);
+			input.val(domain.email);
+		}else{
+			$(".businessEmail",container).hide();
 		}
 		$("input[type=button]",container).click(function(event) {
 			$(".window").hide();
