@@ -55,7 +55,7 @@ class ModuleAction extends ActionSupport {
 	    connection.executeUpdate "update domains set status = 'finished', registeredOn = Now() where id = ?", [domain.id] 
 	    def user = connection.firstRow("select * from users where id = ?", [domain.user_id])
 	    connection.close()
-	    sendMail(user.name,user.email,"Enregistrement du domaine ${domain.name} pour ${domain.year} an termin&eacute;",getConfirmationTemplate(domain))
+	    sendMail(user.name,user.email,"Enregistrement du domaine ${domain.name} pour ${domain.year} an termin&eacute;",getRegistrationTemplate(domain))
 		json([status: 1])
 	}
 	
@@ -69,7 +69,7 @@ class ModuleAction extends ActionSupport {
 	}
 
 	
-	 def getConfirmationTemplate(domain) {
+	 def getRegistrationTemplate(domain) {
 		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
