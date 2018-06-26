@@ -1307,6 +1307,11 @@ label.tree_label:before {
 		height: 60px;
    	    padding-top: 7px;
 	}
+	.window > div .message-list > div > div {
+      padding: 3px;
+      padding-top: 15px;
+      padding-bottom: 0px;
+	}
 }
 
 @media(max-width:360px){
