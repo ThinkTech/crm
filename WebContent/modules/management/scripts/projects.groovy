@@ -135,11 +135,10 @@ class ModuleAction extends ActionSupport {
 	
 	def saveDocuments() {
 	   def upload = parse(request) 
-	   def id = upload.id
 	   def connection = getConnection()
 	   def query = 'insert into documents(name,size,project_id,createdBy) values (?,?,?,?)'
        connection.withBatch(query){ ps ->
-         for(def document : upload.documents) ps.addBatch(document.name,document.size,id,user.id)
+         for(def document : upload.documents) ps.addBatch(document.name,document.size,upload.id,user.id)
        }
 	   connection.close()
 	   json([status: 1])
