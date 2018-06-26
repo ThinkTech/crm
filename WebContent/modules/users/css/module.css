@@ -15,7 +15,7 @@
 
 .window > div {
 	width : 95%;
-	border : 1px solid #08ccf7;
+	border : 1px solid #3abfdd;
 	border-radius : 5px;
 	height: auto;
 	overflow-x : hidden; 
@@ -32,8 +32,15 @@
 	height: 220px;
 }
 
+fieldset > span {
+    width: 59%;
+    max-width: 59%;
+    padding : 3px;
+}
+
 .window > div input[type=email],.window.form > div fieldset > span {
     width: 100%;
+    max-width: 100%;
     text-align: left;
     padding : 10px;
     margin-top: 10px;
@@ -63,7 +70,7 @@
 }
 
 .window.details > div a{
-	color : #000000;
+	color : #180101;
 	cursor : pointer;
 	display: inline-block;
     width: auto;
@@ -79,7 +86,7 @@
 }
 
 .window > div h1 i {
-	color: #000000;
+	color: #180101;
 }
 
 .first-one-inner {
@@ -88,7 +95,7 @@
 }
 
 .password-area {
-	background: #ffe;
+	background: #fdffa4;
 }
 
 h3.tittle {
@@ -96,12 +103,12 @@ h3.tittle {
     margin-bottom: 1em;
     text-transform: uppercase;
     color: #171819;
-    text-shadow: 1px 0px #000000;
+    text-shadow: 1px 0px #180101;
     font-size: 1.6em;
 }
 
 .first-one .table-responsive {
-	min-height : 100px;
+	min-height : 104px;
 	background: #fff;
 }
 
@@ -118,12 +125,12 @@ td span {
     font-size: 16px;
     outline: none;
     font-weight: 500;
-    border: 2px solid #08ccf7;
+    border: 2px solid #3abfdd;
     border-radius: 0.3em;
     margin: 0.7em 0;
 }
   .first-one input[type="password"]:hover{
-   border: 2px solid #08ccf7;
+   border: 2px solid #3abfdd;
   }
 .submit {
     text-align: center;
@@ -132,39 +139,43 @@ td span {
     margin-left: auto;
     margin-right: auto;
 }
+
 .first-one input[type="submit"],.first-one input[type="button"]{
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 600;
     color: #fff;
     cursor: pointer;
     outline: none;
-    padding: 15px 15px;
-    width: 48%;
-    background: #000000;
+    padding: 16px 15px;
+    width: 47%;
+    background: #3abfdd;
     border-radius: 0.3em;
     text-transform: uppercase;
 }
-.first-one input[type="submit"]:hover,.first-one input[type="button"]:hover{
-  background:#fff;
-  color : #000000;
-}
+
 .profile-edition {
 	display : none;
 }
 
-.profile-edition input[type=text], .profile-edition input[type=email] {
-	padding: 2px;
+.profile-edition input[type=text], .profile-edition input[type=email], .profile-edition select {
+	padding: 3px;
 	width : 50%;
 	padding-left : 2px;
+	vertical-align: bottom;
+	border-radius: 3px;
 }
 
-.first-one .profile-edition input[type="submit"] {
-	margin-top : 5px;
+.profile-edition select {
+	padding-left : 0px
 }
 
-.first-one .profile-edition input[type="submit"]:hover {
-	background : #fff;
-	color : #000000;
+.profile-edition .submit {
+	margin-top : 15px;
+}
+
+.first-one .profile-edition input[type="submit"],.first-one .profile-edition input[type="button"]{
+	width: 130px;
+    font-size: 14px;
 }
 
 .profile {
@@ -174,14 +185,22 @@ td span {
     min-height: 459px;
     padding-top: 1em;
     margin-left: -17px;
-    background : #08ccf7;
+    background : #3abfdd;
 }
 .profile a {
 	position: relative;
-    top: 12px;
+    top: 16px;
+    cursor: pointer;
+    font-size: 14px;
     font-weight: bold;
     color: #fff;
-    cursor : pointer;
+    cursor: pointer;
+    outline: none;
+    padding: 13px 20px;
+    border-radius: 0.3em;
+    text-transform: uppercase;
+    border: 1px solid #337ab7;
+    font-family: Tahoma;
 }
 
 .profile fieldset {
@@ -197,7 +216,7 @@ legend {
  border: none;
  margin-bottom: 0;
  text-align: center;
- background: #08ccf7;
+ background: #3abfdd;
  width : 100%;
 }
 
@@ -208,7 +227,7 @@ legend a {
 legend a i.fa {
 	position: relative;
     top: 1px;
-    color: #000000;
+    color: #fdffa4;
     margin-left: 2px;
 }
 
@@ -225,7 +244,7 @@ legend a i.fa {
     margin-bottom: 20px;
     margin-top: -20px;
     font-size : 10em;
-    color : #000;
+    color : #180101;
 }
 .profile-bottom h4 {
 	color: #fff;
@@ -247,9 +266,7 @@ legend a i.fa {
 }
 @media (max-width:1280px){
 	.profile a {
-    	top: -10px;
     	font-size: 13px;
-    	left: 14%;
 	}
 	.first-one input[type="password"] {
        margin: 0.5em 0;
@@ -266,6 +283,9 @@ legend a i.fa {
 		padding: 11px 15px;
 		width: 56%;
 	}
+	.first-one .profile-edition input[type="submit"],.first-one .profile-edition input[type="button"] {
+		width : 120px;
+	}
 	.first-one input[type="password"] {
 		width: 100%;
 		padding: 0.8em 4em 0.8em 1em;
@@ -275,14 +295,34 @@ legend a i.fa {
 	.window > div h1 {font-size: 1em}
 }
 @media (max-width:991px){
+	.first-one .profile-edition input[type="submit"],.first-one .profile-edition input[type="button"] {
+		width : 100px;
+	}
+	.profile-edition .submit {
+    	margin-top: 10px;
+	}
+	.first-one .profile-edition input[type="submit"],.first-one .profile-edition input[type="button"] {
+		font-size : 12px;
+	}
+	fieldset > span {
+	   width : 100%;
+	   max-width : 100%;
+	}
+	.profile-details {
+    	margin-bottom: 15px;
+	}
 	.profile a {
-    	left: 0%;
+       font-size: 11px;
+	   padding: 10px;
+	   padding-left: 13px;
+	   padding-right: 13px;
+	   top: -14px;
 	}
 	fieldset > span.text-right {
     margin-bottom: 0px;
 }
 	.window{padding-top : 2%}
-	.profile-edition input[type=text], .profile-edition input[type=email] {
+	.profile-edition input[type=text], .profile-edition input[type=email], .profile-edition select {
       width: 100%;
       text-align: left;
       margin-bottom: 0px;
@@ -290,7 +330,7 @@ legend a i.fa {
       font-size: 12px;
      }
 	.first-one {
-		width: 71%;
+		width: 88%;
 		padding: 0;
 		margin: 0 auto 4%;
 	}
@@ -304,14 +344,14 @@ legend a i.fa {
 		font-size: 15px;
 	}
 	.first-one input[type="submit"],.first-one input[type="button"] {
-		font-size: 15px;
-		padding: 14px 15px;
-		width: 42%;
+		font-size: 12px;
+    	padding: 13px 9px;
+    	width: 22%;
 	}
 }
 @media (max-width:768px){
 	.first-one {
-		width: 71%;
+		width: 88%;
 		padding: 0;
 		margin: 0 auto 4%;
 	}
@@ -354,10 +394,10 @@ legend a i.fa {
 		color: #858282;
 		font-size: 15px;
 	}
-	.window > div h1 {
-    font-size: 13px;
-	}
 	.window.form > div {height: 205px;}
+	.first-one .profile-edition input[type="submit"],.first-one .profile-edition input[type="button"] {
+		font-size : 11px;
+	}
 }
 @media (max-width:600px){
 	.first-one {
@@ -380,6 +420,9 @@ legend a i.fa {
 	}
 }
 @media (max-width:480px){
+	legend {
+    	font-size: 1.1em;
+	}
 	.first-one {
 		width: 100%;
 		padding: 0;
@@ -400,17 +443,20 @@ legend a i.fa {
 		font-size: 15px;
 	}
 	.first-one input[type="submit"],.first-one input[type="button"] {
-		font-size: 13px;
+		font-size: 11px;
         padding: 10px 15px;
         padding-left: 11px;
         width: 47%;
     }
 	h3.tittle {
 		margin-bottom: 1em;
-		font-size: 1.2em;
+		font-size: 1.1em;
 	}
 }
 @media (max-width:320px){
+	.window > div h1 {
+     font-size: 0.95em;
+	}
 	.first-one-inner {
 		padding: 1em 1em;
 	}

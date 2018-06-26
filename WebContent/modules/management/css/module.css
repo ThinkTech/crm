@@ -2,6 +2,10 @@
     color: #5cb85c;
 }
 
+.stand-by {
+	color : #3abfdd;
+}
+
 .window  {
 	position : absolute;
 	width: 100%;
@@ -860,11 +864,17 @@ legend a i.fa {
     text-align: center;
     margin-top: 4px;
     margin-left: 20px;
-    background: #180101;
+    background: #3abfdd;
     border-radius: 0.3em;
     text-transform: uppercase;
     font-size: 12px!important;
-    border: 1px solid #3abfdd;
+    margin-bottom : 5px;
+}
+
+.businessEmail a[disabled] {
+	background : #ddd;
+	color : #000!important;
+	border : 1px solid #000;
 }
 
 .businessEmail a:last-of-type {

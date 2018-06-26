@@ -93,7 +93,7 @@
 					    <div class="first-one-inner lost">
 						    <div class="user profile">
 								<div class="profile-bottom">
-									<i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>
+									<i class="fa fa-user" aria-hidden="true"></i>
 								</div>
 								<div>
 								   <fieldset class="profile-details">
@@ -101,19 +101,56 @@
 										<span id="name">&nbsp;${user.name}</span>
 									    <span class="text-right">&nbsp;Email </span>
 										<span id="email">&nbsp;${user.email}</span>
+										<span class="text-right">&nbsp;Profession </span>
+   										<span id="profession">&nbsp;${user.profession}</span>
+										<span class="text-right">&nbsp;Téléphone </span>
+										<span id="telephone">&nbsp;${user.telephone}</span>
 										<span class="text-right">&nbsp;Role </span>
    										<span id="role">&nbsp;${user.role}</span>
+   										<span class="text-right" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">&nbsp;Structure </span>
+   										<span id="structure" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">&nbsp;${user.structure.name}</span>
+   										<span class="text-right" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">&nbsp;Secteur Activité </span>
+   										<span id="business" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">&nbsp;${user.structure.business}</span>
    								 </fieldset>
-   								 <a class="text-center">[ modifier ]</a>
+   								 <a class="text-center">modifier</a>
    								 <form action="${url}/profile/update">
    								 <fieldset class="profile-edition">
    								    	<span class="text-right">Prénom et Nom </span>
 										<input type="text" name="name" value="${user.name}" required>
 									    <span class="text-right">Email </span>
 										<input type="email" name="email" value="${user.email}" required>
+										<span class="text-right">Profession </span>
+   										<input name="profession" type="text" value="${user.profession}">
+										<span class="text-right">Téléphone </span>
+										<input name="telephone" value="${user.telephone}" type="text">
+										<span class="text-right" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">Structure </span>
+   										<input name="structure" value="${user.structure.name}" type="text" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">
+   										<span class="text-right" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">Secteur Activité</span>
+   										<select name="business"  style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">
+											<option value="administrations publiques">Administrations publiques</option>
+											<option value="agrobusiness et autres">Agriculture, foresterie, pêche et chasse</option><option value="1324805540">Arts, spectacles et loisirs</option>
+											<option value="autres services">Autres services (sauf les administrations publiques)</option>
+											<option value="commerce de détail">Commerce de détail</option>
+											<option value="commerce de gros">Commerce de gros</option>
+											<option value="Construction">Construction</option>
+											<option value="extraction et exploitation">Extraction minière, exploitation en carrière, et extraction de pétrole et de gaz</option>
+											<option value="fabrication">Fabrication</option>
+											<option value="finance et assurances">Finance et assurances</option>
+											<option value="management">Gestion de sociétés et d'entreprises</option>
+											<option value="services informatiques">Services informatiques</option>
+											<option value="culture">Services culturelles</option>
+											<option value="assainissement<">Services d'assainissement</option>
+											<option value="enseignement">Services d'enseignement</option>
+											<option value="hébergement et restauration">Services d'hébergement et de restauration</option>
+											<option value="services immobiliers">Services immobiliers et services de location</option>
+											<option value="services professionnels">Services professionnels, scientifiques et techniques</option>
+											<option value="services publics">Services publics</option>
+											<option value="santé">Soins de santé et assistance sociale</option>
+											<option value="transport">Transport et entreposage</option>
+											</select>
    								    <div class="submit">
    								      <input type="button" value="Annuler">
-   								      <input type="submit" value="Modifier">
+   								      <input type="submit" value="Confirmer">
    								    </div>
    								 </fieldset>
    								</form>

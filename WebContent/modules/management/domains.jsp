@@ -143,7 +143,7 @@
 			    <label for="enterprise">Plan Enterprise</label>
 			    <input type="text" placeholder="super administrateur" name="email"/>
 			    <div class="buttons">
-			     <a class="update">Modifier</a> <a class="create">Créér</a>
+			     <a href="${url}/domains/activateMailOffer" class="create">Créér</a>
 			    </div> 
 		    </fieldset>
 			</div>

@@ -1,7 +1,7 @@
 app.ready(function(){
 	page.details.bind = function(container,domain) {
 		if(domain.status != "finished"){
-			$(".manage",container).hide();  
+			$(".manage,.businessEmail",container).hide();  
 		}
 		$(".submit",container).hide();
 		if(domain.status == "in progress"){
@@ -12,51 +12,51 @@ app.ready(function(){
 		}else{
 			$(".eppCode",container).hide();
 		}
+		$(".businessEmail input[name=email]",container).attr("disabled","disabled");
 		if(domain.emailActivatedOn){
 			$(".businessEmail .buttons",container).hide();
 		}else{
 			$(".businessEmail .buttons",container).show();
+			if(domain.billStatus == "stand by"){
+				$(".businessEmail .buttons a",container).hide();
+			}else if(domain.billStatus == "finished"){
+				$(".businessEmail input[name=email]",container).removeAttr("disabled");
+				$(".businessEmail a",container).show();
+				$(".businessEmail a",container).click(function(){
+					const button = $(this);
+					const url = $(this).attr("href");
+					confirm("&ecirc;tes vous s&ucirc;r de vouloir activer cette offre email?",function(){
+						 const order = {};
+						 order.id = domain.id
+						 order.service = "mailhosting";
+						 order.domain = domain.name;
+						 order.plan = $(".businessEmail input:checked",container).val();
+						 order.email = $(".businessEmail input[name=email]",container).val().toLowerCase().replace(/\s+/g, '');
+						 if(!order.email){
+							 alert("vous devez choisir le business email",function(){
+								 $(".businessEmail input[name=email]",container).val("").focus();
+							 });
+							 return false;
+						 }
+						 page.wait();
+						 app.post(url,order,function(response){
+							 if(response.status){
+								 $(".businessEmail input[name=email]",container).attr("disabled","disabled");
+								 $(".businessEmail .buttons",container).hide();
+								 const tr = $(".table tr[id="+domain.id+"]");
+								 $(".fa-envelope",tr).removeClass("stand-by").addClass("success");
+							  }
+						 });
+				  	 });
+					 return false;
+				});	
+			}
 		}
-		$(".businessEmail",container).hide();  
 		if(domain.emailOn){
-			$(".businessEmail",container).show();
 			$(".businessEmail a.activate",container).hide();
 			$(".businessEmail input[type=radio]",container).val([domain.plan]).attr("disabled","disabled");
-			const input = $(".businessEmail input[name=email]",container).attr("disabled","disabled");
+			const input = $(".businessEmail input[name=email]",container);
 			input.val(domain.email+"@"+domain.name);
-		}else{
-			$(".businessEmail a.activate",container).click(function(){
-				const button = $(this); 
-				confirm("&ecirc;tes vous s&ucirc;r de vouloir activer cette offre email?",function(){
-					 const order = {};
-					 order.service = "mailhosting";
-					 order.domain = domain.name;
-					 order.plan = $(".businessEmail input:checked",container).val();
-					 order.email = $(".businessEmail input[name=email]",container).val().toLowerCase().replace(/\s+/g, '');
-					 if(!order.email){
-						 alert("vous devez choisir votre business email",function(){
-							 $(".businessEmail input[name=email]",container).val("").focus();
-						 });
-						 return false;
-					 }else if(order.email.indexOf("@")!=-1){
-						 alert("vous devez supprimer le caract&eacute;re @",function(){
-							 $(".businessEmail input[name=email]",container).focus();
-						 });
-						 return false
-					 }
-					 order.user_id = $(".businessEmail input[name=user]",container).val();
-					 order.product_id = domain.id;
-					 order.domainCreated = true;
-					 page.details.addEmail(order,function(){
-						 const tr = $(".table tr[id="+order.product_id+"]");
-						 $(".fa-envelope",tr).show();
-						 button.hide();
-						 const input = $(".businessEmail input[name=email]",container).attr("disabled","disabled");
-						 input.val(order.email+"@"+order.domain);
-						 alert("Votre business email est en attente de configuration");
-					 });
-			  	 });
-			});	
 		}
 		$("input[type=button]",container).click(function(event) {
 			$(".window").hide();

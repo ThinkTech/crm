@@ -42,10 +42,8 @@ class ModuleAction extends ActionSupport {
 	   if(domain.registeredOn) {
 	     domain.registeredOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(domain.registeredOn)
 	   }
-	   if(domain.status == "stand by") {
-         domain.bill = connection.firstRow("select b.* from bills b, domains d where b.product_id = d.id and d.id = ?", [id])
-         domain.bill.user = user
-	  	 domain.bill.date = new SimpleDateFormat("dd/MM/yyyy").format(domain.bill.date)
+	   if(domain.status == "finished" && domain.emailOn && !domain.emailActivatedOn) {
+         domain.billStatus = connection.firstRow("select b.status as status from bills b, domains d where b.product_id = d.id and d.id = ? and b.service = 'mailhosting'", [id]).status
        }
 	   connection.close()
 	   json([entity : domain])
@@ -60,6 +58,13 @@ class ModuleAction extends ActionSupport {
 	    sendMail(user.name,user.email,"Enregistrement du domaine ${domain.name} pour ${domain.year} an termin&eacute;",getConfirmationTemplate(domain))
 		json([status: 1])
 	}
+	
+	def activateMailOffer(){
+	     def order = parse(request)
+	     connection.executeUpdate "update domains set emailActivatedOn = Now() where id = ?", [order.id] 
+	     json([status: 1])
+	}
+
 	
 	 def getConfirmationTemplate(domain) {
 		MarkupTemplateEngine engine = new MarkupTemplateEngine()
