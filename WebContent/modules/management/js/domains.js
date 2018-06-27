@@ -28,11 +28,12 @@ app.ready(function(){
 			$(".businessEmail .buttons",container).show();
 			if(domain.billStatus == "stand by"){
 				$(".businessEmail .buttons a",container).hide();
+				$(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
 			}else if(domain.billStatus == "finished"){
 				if(domain.emailAccountCreated){
 					$(".businessEmail a.create",container).hide();
 					$(".businessEmail input[name=email]",container).attr("disabled","disabled");
-					 $(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
+					$(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
 				}else{
 					$(".businessEmail a.activate",container).hide();
 					$(".businessEmail input[name=email]",container).removeAttr("disabled");

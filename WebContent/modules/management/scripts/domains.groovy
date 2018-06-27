@@ -33,7 +33,7 @@ class ModuleAction extends ActionSupport {
     }
     
     def getDomainInfo() {
-	   def id = getParameter("id")
+       def id = getParameter("id")
 	   def connection = getConnection()
 	   def domain = connection.firstRow("select d.*,u.name as author from domains d, users u where d.id = ? and d.user_id = u.id", [id])
 	   domain.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(domain.date)
@@ -42,8 +42,9 @@ class ModuleAction extends ActionSupport {
 	   if(domain.registeredOn) {
 	     domain.registeredOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(domain.registeredOn)
 	   }
-	   if(domain.status == "finished" && domain.emailOn && !domain.emailActivatedOn) {
-         domain.billStatus = connection.firstRow("select b.status as status from bills b, domains d where b.product_id = d.id and d.id = ? and b.service = 'mailhosting'", [id]).status
+	   if(domain.status == "finished" && domain.emailOn && !domain.emailAccountCreated) {
+         def bill = connection.firstRow("select status from bills where status !='finished'", [])
+         domain.billStatus = bill ? bill.status : "finished"; 
        }
 	   connection.close()
 	   json([entity : domain])
