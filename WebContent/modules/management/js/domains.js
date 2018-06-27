@@ -32,7 +32,7 @@ app.ready(function(){
 				if(domain.emailAccountCreated){
 					$(".businessEmail a.create",container).hide();
 					$(".businessEmail input[name=email]",container).attr("disabled","disabled");
-					 $(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name)
+					 $(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
 				}else{
 					$(".businessEmail a.activate",container).hide();
 					$(".businessEmail input[name=email]",container).removeAttr("disabled");
@@ -64,6 +64,8 @@ app.ready(function(){
 								 $(".businessEmail input[name=email]",container).val(order.email+"@"+domain.name);
 								 $(".businessEmail .buttons a.create",container).hide();
 								 $(".businessEmail .buttons a.activate",container).show();
+								 const tr = $(".table tr[id="+domain.id+"]");
+								 $(".fa-envelope",tr).addClass("stand-by").show();
 							  }
 						 });
 				  	 });
@@ -78,12 +80,13 @@ app.ready(function(){
 						 order.service = "mailhosting";
 						 order.domain = domain.name;
 						 order.plan = $(".businessEmail input:checked",container).val();
+						 order.email = $(".businessEmail input[name=email]",container).val();
 						 page.wait();
 						 app.post(url,order,function(response){
 							 if(response.status){
 								$(".businessEmail .buttons",container).hide();
 								 const tr = $(".table tr[id="+domain.id+"]");
-								 $(".fa-envelope",tr).removeClass("stand-by").addClass("success");
+								 $(".fa-envelope",tr).removeClass("stand-by").addClass("success").show();
 							  }
 						 });
 				  	 });
