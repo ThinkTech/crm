@@ -100,7 +100,7 @@
 		    <span data-status="medium" class="status" style="display:none">moyenne</span>
 		    <span data-status="high" class="status" style="display:none">élevée</span> 
 			<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
-			<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">équipe technique</span> <a href="${url}/support/tickets/close" class="close-ticket"><i class="fa fa-window-close"></i></a> <a href="${url}/support/tickets/open" class="open-ticket"><i class="fa fa-play-circle-o"></i></a></span>
+			<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <a href="${url}/support/tickets/close" class="close-ticket"><i class="fa fa-window-close"></i></a> <a href="${url}/support/tickets/open" class="open-ticket"><i class="fa fa-play-circle-o"></i></a></span>
 			<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span> <a href="${url}/support/tickets/close" class="close-ticket"><i class="fa fa-window-close"></i></a></span>  
 			<span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
 			<span class="text-right" data-status="finished" style="display:none"><i class="fa fa-calendar" aria-hidden="true"></i> Date Fermeture </span> <span data-status="finished" style="display:none">{closedOn}</span>

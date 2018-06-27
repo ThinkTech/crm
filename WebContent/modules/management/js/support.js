@@ -22,6 +22,9 @@ $(document).ready(function(){
 			page.details.openTicket($(this).attr("href"),ticket);
 			return false;
 		});
+		if(ticket.autoClose){
+			$(".open-ticket,.close-ticket",container).hide();
+		}
 		$("a.refresh",container).click(function(){
 			page.details.refresh(function(ticket){
 				const tr = $(".table tr[id="+ticket.id+"]");

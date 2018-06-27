@@ -42,7 +42,7 @@ class ModuleAction extends ActionSupport {
 	   if(domain.registeredOn) {
 	     domain.registeredOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(domain.registeredOn)
 	   }
-	   if(domain.status == "finished" && domain.emailOn && !domain.emailAccountCreated) {
+	   if(domain.status == "finished" && domain.emailOn && !domain.emailActivatedOn) {
          def bill = connection.firstRow("select status from bills where status !='finished'", [])
          domain.billStatus = bill ? bill.status : "finished"; 
        }
