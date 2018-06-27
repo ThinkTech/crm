@@ -848,10 +848,18 @@ legend a i.fa {
 	padding: 5px!important;
     width: 250px!important;
     margin: 3px;
-    margin-left: 20px;
+    margin-left: 10px;
     margin-bottom: 6px;
-    display: block;
-    font-size : 13px;
+    margin-top: 5px;
+    display: inline-block;
+    font-size: 13px;
+    vertical-align: top!important;
+}
+
+.businessEmail .fa-user {
+	position : relative;
+	left : 10px;
+	top : 9px;
 }
 
 .businessEmail a {
@@ -1074,7 +1082,12 @@ label.tree_label:before {
     	font-size : 12px;
     	padding-left: 3px;
 	}
-	.businessEmail input {margin-left: 4px;}
+	.businessEmail .fa-user {
+	 position: relative;
+     left: 4px;
+     top: 9px;
+    }
+	.businessEmail input {margin-left: 4px!important;}
 	.search-wizard .domain-edit a {font-size: 12px;}
 	.window > div input[type=text],.window > div select, .window > div input[type=file] {
       width: 100%;
@@ -1299,7 +1312,7 @@ label.tree_label:before {
 	.window p {word-break : break-word;}
 	legend {width: 100.4%;font-size : 12px}
 	.search-results, .search-wizard { max-height: 100%;overflow-y: auto;}
-	.window > div fieldset a {top: 0px;font-size: 13px;}
+	.window > div fieldset a {top: 0px;font-size: 11px;}
 	.window > div fieldset a.tasks {margin-left:2px;top: -3px;}
 	.window > div fieldset a.refresh {margin-left : 6px;top: -3px;}
 	.window > div h6 {font-size: 11px;}

@@ -141,7 +141,9 @@
 			    <input type="radio" id="enterprise"
 			     name="plan" value="enterprise">
 			    <label for="enterprise">Plan Enterprise</label>
-			    <input type="text" placeholder="super administrateur" name="email"/>
+			    <div>
+			     <i class="fa fa-user" aria-hidden="true"></i> <input type="text" placeholder="super administrateur" name="email"/>
+			    </div>
 			    <div class="buttons">
 			     <a href="${url}/domains/activateMailOffer">Activer</a>
 			    </div> 
