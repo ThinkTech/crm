@@ -108,25 +108,6 @@
 										<span class="text-right">&nbsp;Role </span>
    										<span id="role">&nbsp;${user.role}</span>
    								 </fieldset>
-   								 <a class="text-center">modifier</a>
-   								 <form action="${url}/profile/update">
-   								 <fieldset class="profile-edition">
-   								    	<span class="text-right">Prénom et Nom </span>
-										<input type="text" name="name" value="${user.name}" required>
-									    <span class="text-right">Email </span>
-										<input type="email" name="email" value="${user.email}" required>
-										<span class="text-right">Profession </span>
-   										<input name="profession" type="text" value="${user.profession}">
-										<span class="text-right">Téléphone </span>
-										<input name="telephone" value="${user.telephone}" type="text">
-										<span class="text-right" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">Structure </span>
-   										<input name="structure" value="${user.structure.name}" type="text" style="display:${user.role == 'administrateur' ? 'inline-block' : 'none'}">
-   								    <div class="submit">
-   								      <input type="button" value="Annuler">
-   								      <input type="submit" value="Confirmer">
-   								    </div>
-   								 </fieldset>
-   								</form>
 								</div>
 							</div>
 					     </div>
