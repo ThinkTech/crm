@@ -869,7 +869,7 @@ legend a i.fa {
     cursor: pointer;
     outline: none;
     padding: 7px;
-    width: 100px;
+    min-width: 100px;
     text-align: center;
     margin-top: 4px;
     margin-left: 20px;

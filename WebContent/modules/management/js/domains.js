@@ -20,6 +20,7 @@ app.ready(function(){
 		}else{
 			$(".businessEmail",container).hide();
 		}
+		$(".businessEmail input",container).attr("disabled","disabled");
 		if(domain.emailActivatedOn){
 			$(".businessEmail .buttons",container).hide();
 			$(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
@@ -28,8 +29,14 @@ app.ready(function(){
 			if(domain.billStatus == "stand by"){
 				$(".businessEmail .buttons a",container).hide();
 			}else if(domain.billStatus == "finished"){
-				$(".businessEmail a",container).show();
-				$(".businessEmail input[name=email]",container).removeAttr("disabled");
+				if(domain.emailAccountCreated){
+					$(".businessEmail a.create",container).hide();
+					$(".businessEmail input[name=email]",container).attr("disabled","disabled");
+					 $(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name)
+				}else{
+					$(".businessEmail a.activate",container).hide();
+					$(".businessEmail input[name=email]",container).removeAttr("disabled");
+				}
 				$(".businessEmail a.create",container).click(function(){
 					const button = $(this);
 					const url = $(this).attr("href");
