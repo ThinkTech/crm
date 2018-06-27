@@ -145,7 +145,8 @@
 			     <i class="fa fa-user" aria-hidden="true"></i> <input type="text" placeholder="super administrateur" name="email"/>
 			    </div>
 			    <div class="buttons">
-			     <a href="${url}/domains/activateMailOffer">Activer</a>
+			     <a class="create" href="${url}/domains/createMailAccount">Créér</a>
+			     <a class="activate" href="${url}/domains/activateMailOffer">Activer</a>
 			    </div> 
 		    </fieldset>
 			</div>

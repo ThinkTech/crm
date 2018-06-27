@@ -30,13 +30,12 @@ app.ready(function(){
 			}else if(domain.billStatus == "finished"){
 				$(".businessEmail a",container).show();
 				$(".businessEmail input[name=email]",container).removeAttr("disabled");
-				$(".businessEmail a",container).click(function(){
+				$(".businessEmail a.create",container).click(function(){
 					const button = $(this);
 					const url = $(this).attr("href");
-					confirm("&ecirc;tes vous s&ucirc;r de vouloir activer cette offre email?",function(){
+					confirm("&ecirc;tes vous s&ucirc;r de vouloir cr&eacute;&eacute;r ce compte email?",function(){
 						 const order = {};
 						 order.id = domain.id
-						 order.service = "mailhosting";
 						 order.domain = domain.name;
 						 order.plan = $(".businessEmail input:checked",container).val();
 						 order.email = $(".businessEmail input[name=email]",container).val().toLowerCase().replace(/\s+/g, '');
@@ -56,7 +55,26 @@ app.ready(function(){
 							 if(response.status){
 								 $(".businessEmail input[name=email]",container).attr("disabled","disabled");
 								 $(".businessEmail input[name=email]",container).val(order.email+"@"+domain.name);
-								 $(".businessEmail .buttons",container).hide();
+								 $(".businessEmail .buttons a.create",container).hide();
+								 $(".businessEmail .buttons a.activate",container).show();
+							  }
+						 });
+				  	 });
+					 return false;
+				});
+				$(".businessEmail a.activate",container).click(function(){
+					const button = $(this);
+					const url = $(this).attr("href");
+					confirm("&ecirc;tes vous s&ucirc;r de vouloir activer cette offre email?",function(){
+						 const order = {};
+						 order.id = domain.id
+						 order.service = "mailhosting";
+						 order.domain = domain.name;
+						 order.plan = $(".businessEmail input:checked",container).val();
+						 page.wait();
+						 app.post(url,order,function(response){
+							 if(response.status){
+								$(".businessEmail .buttons",container).hide();
 								 const tr = $(".table tr[id="+domain.id+"]");
 								 $(".fa-envelope",tr).removeClass("stand-by").addClass("success");
 							  }

@@ -62,7 +62,7 @@ class ModuleAction extends ActionSupport {
 	def activateMailOffer(){
 	     def order = parse(request)
 	     def connection = getConnection()
-	     connection.executeUpdate "update domains set email = ?, emailActivatedOn = Now() where id = ?", [order.email,order.id]
+	     connection.executeUpdate "update domains set emailActivatedOn = Now() where id = ?", [order.id]
 	     connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where service = 'mailhosting' and product_id = ?", [user.id,order.id]
 	     def user_id = connection.firstRow("select user_id from domains where id = ?", [order.id]).user_id
 	     def user = connection.firstRow("select * from users where id = ?", [user_id])
@@ -70,7 +70,16 @@ class ModuleAction extends ActionSupport {
 		 connection.close()
 	     json([status: 1])
 	}
-
+	
+	def createMailAccount(){
+	     def order = parse(request)
+	     def connection = getConnection()
+	     connection.executeUpdate "update domains set email = ?, emailAccountCreated = true where id = ?", [order.email,order.id]
+	     def user_id = connection.firstRow("select user_id from domains where id = ?", [order.id]).user_id
+	     def user = connection.firstRow("select * from users where id = ?", [user_id])
+	     connection.close()
+	     json([status: 1])
+	}
 	
 	 def getRegistrationTemplate(domain) {
 		MarkupTemplateEngine engine = new MarkupTemplateEngine()

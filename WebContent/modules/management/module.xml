@@ -18,6 +18,7 @@
     <action url="domains"  page="domains" method="showDomains" script="domains.groovy"/>
     <action url="domains/info"  method="getDomainInfo" script="domains.groovy"/>
     <action url="domains/register"  method="registerDomain" script="domains.groovy"/>
+     <action url="domains/createMailAccount"  method="createMailAccount" script="domains.groovy"/>
     <action url="domains/activateMailOffer"  method="activateMailOffer" script="domains.groovy"/>
     <action url="support"  page="support" method="showTickets" script="support.groovy"/>
     <action url="support/tickets/open"  method="openTicket" script="support.groovy"/>
