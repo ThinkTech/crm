@@ -29,7 +29,7 @@ class ModuleAction extends ActionSupport {
 	def getTicketInfo() {
 	   def id = getParameter("id")
 	   def connection = getConnection()
-	   def ticket = connection.firstRow("select t.*, u.name from tickets t,users u where t.id = ? and t.user_id = u.id", [id])
+	   def ticket = connection.firstRow("select t.*, u.name as author from tickets t,users u where t.id = ? and t.user_id = u.id", [id])
 	   ticket.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.date)
 	   if(ticket.closedOn) {
 	   	ticket.closedOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.closedOn)
@@ -87,10 +87,44 @@ class ModuleAction extends ActionSupport {
 	
 	def closeTicket() {
 	   def ticket = parse(request)
+	   println ticket
 	   def connection = getConnection()
-	   connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where id = ?", [user.id,ticket.id] 
+	   connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where id = ?", [user.id,ticket.id]
+	   def user = connection.firstRow("select name,email from users  where id = ?", [ticket.user_id])
+       sendMail(user.name,user.email,"Ticket : ${ticket.subject} r&eacute;solu",getTicketTemplate(ticket)) 
 	   connection.close()
 	   json([status : 1])
+	}
+	
+    def getTicketTemplate(ticket) {
+		MarkupTemplateEngine engine = new MarkupTemplateEngine()
+		def text = '''\
+		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
+		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
+		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
+		    div(style : "margin-top:10px;padding-bottom:2%;padding-top:2%;text-align:center;background:#05d2ff") {
+		      h4(style : "font-size: 120%;color: #fff;margin: 3px") {
+		        span("Votre ticket a &eacute;t&eacute; bien r&eacute;solu")
+		      }
+		    }
+		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-bottom: 0px") {
+		         span("Description")
+		     }
+		     p("$ticket.message")
+             p("le ticket a &eacute;t&eacute; ferm&eacute; et nous restons &agrave; votre disposition pour toute nouvelle assistance")
+		    }
+		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
+			    a(href : "$url/dashboard/support",style : "font-size:130%;width:140px;margin:auto;text-decoration:none;background: #05d2ff;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
+			        span("Voir")
+			    }
+			}
+		  }
+		  
+		 }
+		'''
+		def template = engine.createTemplate(text).make([ticket:ticket,url : "https://thinktech-app.herokuapp.com"])
+		template.toString()
 	}
 	
 	def getCommentTemplate(comment) {
