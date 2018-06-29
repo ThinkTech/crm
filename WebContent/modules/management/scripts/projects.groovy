@@ -1,6 +1,3 @@
-import app.FileManager
-import groovy.sql.Sql
-import groovy.text.markup.MarkupTemplateEngine
 import static org.apache.commons.io.FileUtils.byteCountToDisplaySize as byteCount
 
 class ModuleAction extends ActionSupport {

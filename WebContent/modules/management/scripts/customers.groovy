@@ -1,6 +1,3 @@
-import groovy.sql.Sql
-
-
 class ModuleAction extends ActionSupport {
 
    def showCustomers(){

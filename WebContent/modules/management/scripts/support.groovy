@@ -1,6 +1,3 @@
-import groovy.text.markup.MarkupTemplateEngine
-import groovy.sql.Sql
-
 class ModuleAction extends ActionSupport {
 	
 	def showTickets(){
