@@ -6,7 +6,7 @@
 <!--info updates updates-->
 	 <div class="info-updates">
 			<div class="col-md-4 info-update-gd">
-				<div class="info-update-block clr-block-1">
+				<div class="info-update-block clr-block-6">
 					<div class="col-md-8 info-update-left">
 						<h3 class="active">${total}</h3>
 						<h4>clients</h4>
@@ -18,7 +18,7 @@
 				</div>
 			</div>
 			<div class="col-md-4 info-update-gd">
-				<div class="info-update-block clr-block-1">
+				<div class="info-update-block clr-block-2">
 					<div class="col-md-8 info-update-left">
 						<h3 class="active">${unactive}</h3>
 						<h4>nouveaux clients</h4>
@@ -74,7 +74,7 @@
 		<span title="fermer" class="close">X</span>
 		<section>
 		 <template>
-		 <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Client</h1>
+		 <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Details Du Client</h1>
 		<fieldset>
 			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Client </span> <span>{name}</span> 
 			<span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Structure </span> <span>{structure|s}</span>
