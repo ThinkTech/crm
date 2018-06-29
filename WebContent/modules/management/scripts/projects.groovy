@@ -101,6 +101,11 @@ class ModuleAction extends ActionSupport {
 	     connection.executeUpdate "update projects set progression = (select (count(*) * 10) from projects_tasks p where p.status = 'finished' and p.project_id = ?) where id = ?", [task.project_id,task.project_id]
 	     connection.executeUpdate "update projects set status = if((select count(*) * 10 from projects_tasks p where p.status = 'finished' and p.project_id = ?) = 100, 'finished', status) where id = ?", [task.project_id,task.project_id]
 	     connection.executeUpdate "update projects set closedOn = if((select count(*) * 10 from projects_tasks p where p.status = 'finished' and p.project_id = ?) = 100, NOW(), null) where id = ?", [task.project_id,task.project_id]
+	     def project = connection.firstRow("select * from projects  where id = ?", [task.project_id])
+	     if(project.status == "finished"){
+	       def user = connection.firstRow("select name,email from users  where id = ?", [project.user_id])
+           sendMail(user.name,user.email,"Projet : ${project.subject} termin&eacute;",getProjectTemplate(project))                     
+	     } 
 	   }else{
          connection.executeUpdate "update projects set progression = (select (count(*) * 10) from projects_tasks p where p.status = 'finished' and p.project_id = ?) where id = ?", [task.project_id,task.project_id]
          connection.executeUpdate "update projects set closedOn = null,status = 'in progress' where id = ?", [task.project_id]
@@ -167,6 +172,37 @@ class ModuleAction extends ActionSupport {
 	   connection.executeUpdate "update projects set description = ? where id = ?", [project.description,project.id] 
 	   connection.close()
 	   json([status: 1])
+	}
+	
+	def getProjectTemplate(project) {
+		MarkupTemplateEngine engine = new MarkupTemplateEngine()
+		def text = '''\
+		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
+		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
+		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
+		    div(style : "margin-top:10px;padding-bottom:2%;padding-top:2%;text-align:center;background:#05d2ff") {
+		      h4(style : "font-size: 120%;color: #fff;margin: 3px") {
+		        span("Votre projet est bien termin&eacute;")
+		      }
+		    }
+		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-bottom: 0px") {
+		         span("Description")
+		     }
+		     p("$project.description")
+             p("le traitement de votre projet est bien termin&eacute; et nous remercions pour votre confiance et restons &agrave; votre enti&eacute;re disposition pour tout autre projet")
+		    }
+		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
+			    a(href : "$url/dashboard/projects",style : "font-size:130%;width:140px;margin:auto;text-decoration:none;background: #05d2ff;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
+			        span("Voir")
+			    }
+			}
+		  }
+		  
+		 }
+		'''
+		def template = engine.createTemplate(text).make([project:project,url : "https://thinktech-app.herokuapp.com"])
+		template.toString()
 	}
 	
 	def getCommentTemplate(comment) {
