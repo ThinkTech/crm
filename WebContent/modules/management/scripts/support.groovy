@@ -87,7 +87,6 @@ class ModuleAction extends ActionSupport {
 	
 	def closeTicket() {
 	   def ticket = parse(request)
-	   println ticket
 	   def connection = getConnection()
 	   connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where id = ?", [user.id,ticket.id]
 	   def user = connection.firstRow("select name,email from users  where id = ?", [ticket.user_id])
@@ -112,7 +111,7 @@ class ModuleAction extends ActionSupport {
 		         span("Description")
 		     }
 		     p("$ticket.message")
-             p("le ticket a &eacute;t&eacute; ferm&eacute; et nous restons &agrave; votre disposition pour toute nouvelle assistance")
+             p("le ticket a &eacute;t&eacute; bien ferm&eacute; et nous restons &agrave; votre enti&eacute;re disposition pour toute nouvelle assistance")
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
 			    a(href : "$url/dashboard/support",style : "font-size:130%;width:140px;margin:auto;text-decoration:none;background: #05d2ff;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
