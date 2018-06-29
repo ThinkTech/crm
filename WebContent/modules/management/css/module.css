@@ -831,7 +831,8 @@ legend a i.fa {
     padding-bottom: 10px;
 }
 .businessEmail h1{
-	background: #fdffa4;
+	background: #180101;
+    color: #fff;
     border: 1px solid #3abfdd;
     margin-top: 4px;
     border-radius: 3px;
