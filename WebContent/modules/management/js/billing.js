@@ -17,8 +17,10 @@ $(document).ready(function(){
 			    	const tr = $(".table tr[id="+bill.id+"]");
 					$("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
 					$(".badge",tr).html("100%");
-					const h3 = $("h3.unpayed");
+					var h3 = $("h3.unpayed");
 					h3.html(parseInt(h3.text())-1);
+					h3 = $("h3.payed");
+					h3.html(parseInt(h3.text())+1);
 			    });
 			});
 			return false;

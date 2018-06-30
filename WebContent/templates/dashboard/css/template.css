@@ -203,8 +203,8 @@ td i.fa-user {
 
 .table tbody tr {
    display : none;
-   border-top: 1px solid #f7dddd;
-   border-bottom: 1px solid #f7dddd;
+   border-top: 1px solid #d6d4d4;
+   border-bottom: 1px solid #d6d4d4;
 }
 
 .table tbody tr:nth-child(1),.table tbody tr:nth-child(2),
@@ -754,6 +754,7 @@ ul.dropdown-menu.drp-mnu li {
 
 .info-update-block.clr-block-4 {
 	background: #d9534f;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .info-update-right i.fa {
@@ -1326,7 +1327,7 @@ fieldset > span {
 }
 @media (max-width:384px){
 .user-name p {
-    font-size: 12px;
+    font-size: 13px;
 }
 .left-content {
     width: 91%;
