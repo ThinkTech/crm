@@ -15,10 +15,12 @@ class ModuleAction extends ActionSupport {
           ticket.progression = row.progression
           tickets << ticket
        })
+       def solved = connection.firstRow("select count(*) AS num from tickets where status = 'finished'").num
        def unsolved = connection.firstRow("select count(*) AS num from tickets where status != 'finished'").num
        connection.close() 
        request.setAttribute("tickets",tickets)  
        request.setAttribute("total",tickets.size())
+       request.setAttribute("solved",solved)
        request.setAttribute("unsolved",unsolved)
        SUCCESS
     }

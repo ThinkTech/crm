@@ -30,9 +30,10 @@ $(document).ready(function(){
 				const tr = $(".table tr[id="+ticket.id+"]");
 				if(ticket.status == "finished"){
 					 $("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
-					 const h3 = $("h3.unsolved");
-					 const count = parseInt(h3.text());
-					 h3.html(count-1);
+					 var h3 = $("h3.unsolved");
+					 h3.html(parseInt(h3.text())-1);
+					 h3 = $("h3.solved");
+					 h3.html(parseInt(h3.text())+1);
 				}else if(ticket.status == "in progress"){
 					$("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
 				}
@@ -196,9 +197,10 @@ $(document).ready(function(){
 						  $("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
 						  $(".badge",tr).html("100%");
 						  alert("votre ticket a &edot;t&edot; bien ferm&edot;");
-						  const h3 = $("h3.unsolved");
-						  const count = parseInt(h3.text());
-						  h3.html(count-1);
+						  var h3 = $("h3.unsolved");
+						  h3.html(parseInt(h3.text())-1);
+						  h3 = $("h3.solved");
+						  h3.html(parseInt(h3.text())+1);
 					  }
 				  },
 				  error : function(){
