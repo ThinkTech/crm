@@ -18,10 +18,22 @@
 				</div>
 			</div>
 			<div class="col-md-4 info-update-gd">
+				<div class="info-update-block clr-block-6">
+					<div class="col-md-8 info-update-left">
+						<h3 class="active">${active}</h3>
+						<h4>clients actifs</h4>
+					</div>
+					<div class="col-md-4 info-update-right">
+						<i class="fa fa-${activeItem.icon}"> </i>
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-4 info-update-gd">
 				<div class="info-update-block clr-block-2">
 					<div class="col-md-8 info-update-left">
 						<h3 class="active">${unactive}</h3>
-						<h4>nouveaux clients</h4>
+						<h4>clients inactifs</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
 						<i class="fa fa-${activeItem.icon}"> </i>

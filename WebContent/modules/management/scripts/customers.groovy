@@ -14,10 +14,12 @@ class ModuleAction extends ActionSupport {
           customer.profession = row.profession
           customers << customer
        })
+       def active = connection.firstRow("select count(*) AS num from users u, accounts c where u.type = 'customer' and u.owner = true and c.activated = true and u.id = c.user_id").num
        def unactive = connection.firstRow("select count(*) AS num from users u, accounts c where u.type = 'customer' and u.owner = true and c.activated = false and u.id = c.user_id").num
        connection.close() 
        request.setAttribute("customers",customers)  
        request.setAttribute("total",customers.size())
+       request.setAttribute("active",active)
        request.setAttribute("unactive",unactive)
        SUCCESS
     }
