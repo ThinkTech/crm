@@ -79,7 +79,7 @@ class ModuleAction extends ActionSupport {
 	def openTicket() {
 	   def ticket = parse(request)
 	   def connection = getConnection()
-	   connection.executeUpdate "update tickets set status = 'in progress' where id = ?", [ticket.id] 
+	   connection.executeUpdate "update tickets set status = 'in progress', startedOn = Now() where id = ?", [ticket.id] 
 	   connection.close()
 	   json([status : 1])
 	}
