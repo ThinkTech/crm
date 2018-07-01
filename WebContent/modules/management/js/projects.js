@@ -13,8 +13,11 @@ $(document).ready(function(){
 		}else if(project.status == "stand by") {
 			$(".plan-edit,.priority-edit",container).show();
 			$(".document-add",container).hide();
-			if(project.plan == 'social' || project.plan == 'customer'){
-				$(".open-project",container).show();
+			if(project.plan == 'social' || project.plan == 'custom'){
+				$(".open-project",container).click(function(event){
+					page.details.openProject($(this).attr("href"),project);
+					return false;
+				}).show();
 			}else{
 				$(".open-project",container).hide();
 			}
@@ -335,6 +338,34 @@ $(document).ready(function(){
 			page.details.createProject($(this));
 			return false;
 	});
+	page.details.openProject = function(url,project){
+		confirm("&ecirc;tes vous s&ucirc;r de vouloir ouvrir ce projet?",function(){
+			page.wait();
+			$.ajax({
+				  type: "POST",
+				  url: url,
+				  data: JSON.stringify(project),
+				  contentType : "application/json",
+				  success: function(response) {
+					  if(response.status){
+						  page.release();
+						  page.details.refresh();
+						  const tr = $(".table tr[id="+project.id+"]");
+						  $("span.label",tr).html("en cours").removeClass().addClass("label label-danger");
+						  var h3 = $("h3.unactive");
+						  h3.html(parseInt(h3.text())-1);
+						  h3 = $("h3.active");
+						  h3.html(parseInt(h3.text())+1);
+					  }
+				  },
+				  error : function(){
+					  page.release();
+					  alert("erreur lors de la connexion au serveur");
+				  },
+				  dataType: "json"
+			});
+		});
+	 };
 	page.details.updateDescription = function(form){
 		const project = page.details.entity;
 		project.description =  tinyMCE.get("textarea-description").getContent();

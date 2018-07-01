@@ -29,7 +29,7 @@ class ModuleAction extends ActionSupport {
     def openProject(){
        def project = parse(request)
        def connection = getConnection()
-	   connection.executeUpdate "update projects set status = 'in progress' where id = ?", [project.id] 
+	   connection.executeUpdate "update projects set status = 'in progress', startedOn = Now() where id = ?", [project.id] 
 	   connection.close()
        json([status: 1])
     }
