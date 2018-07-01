@@ -119,15 +119,14 @@ app.ready(function(){
 			return false;
 		})
 	};
-		
+	
+	page.details.addEmail = function(order,callback){
+		page.wait({top : top});
+		app.post("https://thinktech-platform.herokuapp.com/services/order",order,function(response){
+			 if(response.entity){
+				  page.release();
+				  if(callback) callback();
+			  }
+		});
+	};
 });
-
-page.details.addEmail = function(order,callback){
-	page.wait({top : top});
-	app.post("https://thinktech-platform.herokuapp.com/services/order",order,function(response){
-		 if(response.entity){
-			  page.release();
-			  if(callback) callback();
-		  }
-	});
-};
