@@ -101,7 +101,7 @@
 		<span data-status="high" class="status" style="display:none">élevée</span> 
 		<span class="text-right"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
-		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <span class="label label-info">paiement</span></span>
+		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span></span>
 		<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>  
 		<span data-status="finished" style="display:none"><span class="label label-success">terminé</span></span>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Progression </span> <span class="badge badge-info">{progression}%</span> <a class="tasks"><i class="fa fa-info" aria-hidden="true"></i></a> <a class="refresh"><i class="fa fa-refresh" aria-hidden="true"></i></a>
