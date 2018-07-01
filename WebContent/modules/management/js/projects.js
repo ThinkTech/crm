@@ -13,7 +13,13 @@ $(document).ready(function(){
 		}else if(project.status == "stand by") {
 			$(".plan-edit,.priority-edit",container).show();
 			$(".document-add",container).hide();
+			if(project.plan == 'social' || project.plan == 'customer'){
+				$(".open-project",container).show();
+			}else{
+				$(".open-project",container).hide();
+			}
 		}else{
+			$(".open-project",container).hide();
 			$("a.refresh",container).hide();
 			$("legend a",container).hide();
 			$(".imgcircle,.line",container).addClass("active");
