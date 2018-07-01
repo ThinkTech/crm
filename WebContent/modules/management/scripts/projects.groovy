@@ -41,6 +41,7 @@ class ModuleAction extends ActionSupport {
 	   if(project.status == 'finished'){
 	      project.end = project.closedOn
 	      project.duration = connection.firstRow("select TIMESTAMPDIFF(MONTH,startedOn,closedOn) as duration from projects where id = ?", [project.id]).duration
+	      project.duration = project.duration > 0 ? project.duration : 1;
 	   }
 	   else if(project.status == 'in progress'){ 
 	   	project.end = connection.firstRow("select date_add(startedOn,interval duration month) as end from projects where id = ?", [project.id]).end
