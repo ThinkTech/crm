@@ -143,7 +143,7 @@
 			     name="plan" value="enterprise">
 			    <label for="enterprise">Plan Enterprise</label>
 			    <div>
-			     <i class="fa fa-user" aria-hidden="true"></i> <input type="text" placeholder="super administrateur" name="email"/>
+			     <i class="fa fa-user" aria-hidden="true"></i> <input type="text" placeholder="super administrateur" name="email" maxlength="200"/>
 			    </div>
 			    <div class="buttons">
 			     <a class="create" href="${url}/domains/createMailAccount">Créér Compte</a>
