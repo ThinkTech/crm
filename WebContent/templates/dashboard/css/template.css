@@ -67,6 +67,9 @@ th {
     border-bottom: none;
 }
 
+.fa-remove {
+	color : red!important;
+}
 
 div.empty {
 	display : none;
