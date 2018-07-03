@@ -69,7 +69,7 @@
 	                                  <td>${bill.properties.service}</td>
 	                                  <td>${bill.properties.customer}</td>
                                   	  <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>
-                                  	  <td><span class="digit">${bill.properties.amount}</span> F</td>                                        
+                                  	  <td><span class="digit">${bill.properties.amount}</span> CFA</td>                                        
 	                                  <td><span class="label ${bill.properties.status=='in progress' ? 'label-danger' : '' } ${bill.properties.status=='finished' ? 'label-success' : '' } ${bill.properties.status=='stand by' ? 'label-info' : '' }">
 	                                  ${bill.properties.status=='in progress' ? 'en cours' : '' } ${bill.properties.status=='finished' ? 'terminé' : '' } ${bill.properties.status=='stand by' ? 'en attente' : '' }
 	                                  </span></td>
