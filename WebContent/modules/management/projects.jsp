@@ -62,17 +62,17 @@
                                   </tr>
                               </thead>
                               <tbody>
-                              <s:iterator value="#request.projects" var="project" status="status">
-	                                <tr id="${project.properties.id}">
-	                                  <td><span class="number">${status.index+1}</span></td>
-	                                  <td>${project.properties.subject}</td>
-	                                  <td>${project.properties.author}</td>
-	                                  <td>${project.properties.structure}</td>
-	                                  <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>                                        
-	                                  <td><span class="label ${project.properties.status=='in progress' ? 'label-danger' : '' } ${project.properties.status=='finished' ? 'label-success' : '' } ${project.properties.status=='stand by' ? 'label-info' : '' }">
-	                                  ${project.properties.status=='in progress' ? 'en cours' : '' } ${project.properties.status=='finished' ? 'terminé' : '' } ${project.properties.status=='stand by' ? 'en attente' : '' }
+                              <s:iterator value="#request.projects" var="project" status="counter">
+	                                <tr id="${project.id}">
+	                                  <td><span class="number">${counter.index+1}</span></td>
+	                                  <td>${project.subject}</td>
+	                                  <td>${project.author}</td>
+	                                  <td>${project.structure}</td>
+	                                  <td><s:date name="date" format="dd/MM/yyyy" /></td>                                        
+	                                  <td><span class="label ${project.status=='in progress' ? 'label-danger' : '' } ${project.status=='finished' ? 'label-success' : '' } ${project.status=='stand by' ? 'label-info' : '' }">
+	                                  ${project.status=='in progress' ? 'en cours' : '' } ${project.status=='finished' ? 'terminé' : '' } ${project.status=='stand by' ? 'en attente' : '' }
 	                                  </span></td>
-	                                  <td><span class="badge badge-info">${project.properties.progression}%</span></td>
+	                                  <td><span class="badge badge-info">${project.progression}%</span></td>
 	                              </tr>
 	                          </s:iterator>
                           </tbody>

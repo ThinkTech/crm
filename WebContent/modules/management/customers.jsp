@@ -62,15 +62,15 @@
                                   </tr>
                               </thead>
                               <tbody>
-                              <s:iterator value="#request.customers" var="customer" status="status">
-	                                <tr id="${customer.properties.id}">
-	                                  <td><span class="number">${status.index+1}</span></td>
-	                                  <td>${customer.properties.name}</td>
-	                                  <td>${customer.properties.structure}</td>
-	                                  <td><s:date name="properties.createdOn" format="dd/MM/yyyy" /></td>                                        
-	                                  <td>${customer.properties.profession}</td>
-	                                  <td>${customer.properties.email}</td>
-	                                  <td>${customer.properties.telephone}</td>
+                              <s:iterator value="#request.customers" var="customer" status="counter">
+	                                <tr id="${customer.id}">
+	                                  <td><span class="number">${counter.index+1}</span></td>
+	                                  <td>${customer.name}</td>
+	                                  <td>${customer.structure}</td>
+	                                  <td><s:date name="createdOn" format="dd/MM/yyyy" /></td>                                        
+	                                  <td>${customer.profession}</td>
+	                                  <td>${customer.email}</td>
+	                                  <td>${customer.telephone}</td>
 	                              </tr>
 	                          </s:iterator>
                           </tbody>

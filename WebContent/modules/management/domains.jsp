@@ -63,18 +63,18 @@
                                   </tr>
                               </thead>
                               <tbody>
-                               <s:iterator value="#request.domains" var="domain" status="status">
-	                                <tr id="${domain.properties.id}" class="${domain.properties.status=='finished' ? 'paid' : ''}">
-	                                  <td><span class="number">${status.index+1}</span></td>
-	                                  <td>${domain.properties.name}</td>
-	                                  <td>${domain.properties.author}</td>
-	                                  <td>${domain.properties.structure}</td>
-	                                  <td><s:date name="properties.date" format="dd/MM/yyyy" /></td>
-	                                  <td>${domain.properties.year} an</td>
-                                  	  <td><span class="digit">${domain.properties.price}</span> CFA</td>                                        
-	                                  <td><span class="label ${domain.properties.status=='in progress' ? 'label-danger' : '' } ${domain.properties.status=='finished' ? 'label-success' : '' } ${domain.properties.status=='stand by' ? 'label-info' : '' }">
-	                                  ${domain.properties.status=='in progress' ? 'en cours' : '' } ${domain.properties.status=='finished' ? 'terminé' : '' } ${domain.properties.status=='stand by' ? 'en attente' : '' }
-	                                  </span> <i class="fa fa-envelope ${domain.properties.emailActivatedOn!=null ? 'success' : 'stand-by' }" aria-hidden="true" style="display : ${domain.properties.emailOn ? 'inline-block' : 'none' }"></i></td>
+                               <s:iterator value="#request.domains" var="domain" status="counter">
+	                                <tr id="${domain.id}" class="${domain.status=='finished' ? 'paid' : ''}">
+	                                  <td><span class="number">${counter.index+1}</span></td>
+	                                  <td>${domain.name}</td>
+	                                  <td>${domain.author}</td>
+	                                  <td>${domain.structure}</td>
+	                                  <td><s:date name="date" format="dd/MM/yyyy" /></td>
+	                                  <td>${domain.year} an</td>
+                                  	  <td><span class="digit">${domain.price}</span> CFA</td>                                        
+	                                  <td><span class="label ${domain.status=='in progress' ? 'label-danger' : '' } ${domain.status=='finished' ? 'label-success' : '' } ${domain.status=='stand by' ? 'label-info' : '' }">
+	                                  ${domain.status=='in progress' ? 'en cours' : '' } ${domain.status=='finished' ? 'terminé' : '' } ${domain.status=='stand by' ? 'en attente' : '' }
+	                                  </span> <i class="fa fa-envelope ${domain.emailActivatedOn!=null ? 'success' : 'stand-by' }" aria-hidden="true" style="display : ${domain.emailOn ? 'inline-block' : 'none' }"></i></td>
 	                              </tr>
 	                          </s:iterator>
 	                          <template>

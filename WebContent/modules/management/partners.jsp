@@ -39,13 +39,13 @@
                                   </tr>
                               </thead>
                               <tbody>
-                              <s:iterator value="#request.partners" var="partner" status="status">
-	                                <tr id="${partner.properties.id}">
-	                                  <td><span class="number">${status.index+1}</span></td>
-	                                  <td><i class="fa fa-building" aria-hidden="true"></i> ${partner.properties.name}</td>
-	                                  <td><s:date name="properties.createdOn" format="dd/MM/yyyy" /></td>                                        
-	                                  <td>${partner.properties.email}</td>
-	                                  <td>${partner.properties.telephone}</td>
+                              <s:iterator value="#request.partners" var="partner" status="counter">
+	                                <tr id="${partner.id}">
+	                                  <td><span class="number">${counter.index+1}</span></td>
+	                                  <td><i class="fa fa-building" aria-hidden="true"></i> ${partner.name}</td>
+	                                  <td><s:date name="createdOn" format="dd/MM/yyyy" /></td>                                        
+	                                  <td>${partner.email}</td>
+	                                  <td>${partner.telephone}</td>
 	                              </tr>
 	                          </s:iterator>
                           </tbody>

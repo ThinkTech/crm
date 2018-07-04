@@ -51,13 +51,13 @@
                                   </tr>
                               </thead>
                               <tbody>
-                              <s:iterator value="#request.prospects" var="prospect" status="status">
-	                                <tr id="${prospect.properties.id}">
-	                                  <td><span class="number">${status.index+1}</span></td>
-	                                  <td><i class="fa fa-building" aria-hidden="true"></i> ${prospect.properties.name}</td>
-	                                  <td><s:date name="properties.createdOn" format="dd/MM/yyyy" /></td>                                        
-	                                  <td>${prospect.properties.email}</td>
-	                                  <td>${prospect.properties.telephone}</td>
+                              <s:iterator value="#request.prospects" var="prospect" status="counter">
+	                                <tr id="${prospect.id}">
+	                                  <td><span class="number">${counter.index+1}</span></td>
+	                                  <td><i class="fa fa-building" aria-hidden="true"></i> ${prospect.name}</td>
+	                                  <td><s:date name="createdOn" format="dd/MM/yyyy" /></td>                                        
+	                                  <td>${prospect.email}</td>
+	                                  <td>${prospect.telephone}</td>
 	                              </tr>
 	                          </s:iterator>
                           </tbody>
