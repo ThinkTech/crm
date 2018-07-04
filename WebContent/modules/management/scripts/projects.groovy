@@ -6,15 +6,7 @@ class ModuleAction extends ActionSupport {
        def connection = getConnection()
        def projects = []
        connection.eachRow("select p.id,p.subject,p.date,p.status,p.progression, u.name as author, s.name as structure from projects p, users u, structures s where p.user_id = u.id and u.structure_id = s.id order by p.date DESC", [], { row -> 
-          def project = new Expando()
-          project.id = row.id
-          project.subject = row.subject
-          project.date = row.date
-          project.status = row.status
-          project.progression = row.progression
-          project.author =  row.author
-          project.structure = row.structure
-          projects << project
+          projects << new Expando(row.toRowResult())
        })
        def active = connection.firstRow("select count(*) AS num from projects where status = 'in progress'").num
        def unactive = connection.firstRow("select count(*) AS num from projects where status = 'stand by'").num
@@ -53,39 +45,22 @@ class ModuleAction extends ActionSupport {
 	   project.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.date)
 	   project.end = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.end)
 	   project.comments = []
-	   connection.eachRow("select c.id, c.message, c.date, u.name from projects_comments c, users u where c.createdBy = u.id and c.project_id = ?", [project.id],{ row -> 
-          def comment = new Expando()
-          comment.id = row.id
-          comment.with{
-           author = row.name
-           date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
-           message = row.message  
-          }
+	   connection.eachRow("select c.id, c.message, c.date, u.name as author from projects_comments c, users u where c.createdBy = u.id and c.project_id = ?", [project.id],{ row -> 
+          def comment = new Expando(row.toRowResult())
+          comment.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(comment.date)
           project.comments << comment
        })
        project.documents = []
 	   connection.eachRow("select d.project_id, d.name, d.size, d.date, u.name as author from documents d, users u where d.createdBy = u.id and d.project_id = ?", [project.id],{ row -> 
-          def document = new Expando()
-          document.with{
-          	project_id = row.project_id
-            author = row.author
-            date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(row.date)
-            name = row.name
-            size = byteCount(row.size as long) 
-          }
+          def document = new Expando(row.toRowResult())
+          document.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(document.date)
+          document.size = byteCount(document.size as long) 
           project.documents << document
        })
        project.tasks = []
 	   connection.eachRow("select id,name,description,info,status,progression from projects_tasks where project_id = ?", [project.id],{ row -> 
-          def task = new Expando()
-          task.id = row.id
-          task.with{
-            name = row.name
-            description = row.description
-            status = row.status
-            progression = row.progression
-            info = row.info ? row.info : "aucune information" 
-          }
+          def task = new Expando(row.toRowResult())
+          task.info = task.info ? task.info : "aucune information" 
           project.tasks << task
        })
 	   connection.close() 

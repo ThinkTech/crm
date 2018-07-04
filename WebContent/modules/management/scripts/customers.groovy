@@ -4,15 +4,7 @@ class ModuleAction extends ActionSupport {
 	   def connection = getConnection()
        def customers = []
        connection.eachRow("select u.*, s.name as structure from users u, structures s where u.type = 'customer' and u.owner = true and u.structure_id = s.id order by u.createdOn DESC",[], { row -> 
-          def customer = new Expando()
-          customer.id = row.id
-          customer.name = row.name
-          customer.createdOn = row.createdOn
-          customer.structure = row.structure
-          customer.email = row.email
-          customer.telephone = row.telephone
-          customer.profession = row.profession
-          customers << customer
+          customers << new Expando(row.toRowResult())
        })
        def active = connection.firstRow("select count(*) AS num from users u, accounts c where u.type = 'customer' and u.owner = true and c.activated = true and u.id = c.user_id").num
        def unactive = connection.firstRow("select count(*) AS num from users u, accounts c where u.type = 'customer' and u.owner = true and c.activated = false and u.id = c.user_id").num
