@@ -26,9 +26,4 @@ class ModuleAction extends ActionSupport {
 	   connection.close()
 	   json([entity : partner])
 	}
-    	
-	def getConnection() {
-		new Sql(dataSource)
-	}
-	
 }

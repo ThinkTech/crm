@@ -161,10 +161,4 @@ class ModuleAction extends ActionSupport {
 		def template = engine.createTemplate(text).make([order:order])
 		template.toString()
 	}
-	
-	
-	def getConnection()  {
-		new Sql(dataSource)
-	}
-	
 }

@@ -24,9 +24,4 @@ class ModuleAction extends ActionSupport {
        request.setAttribute("bills_count",bills_count)
    	   SUCCESS
    }
-     	
-	def getConnection() {
-		new Sql(dataSource)
-	}
-	
 }

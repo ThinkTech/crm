@@ -234,9 +234,4 @@ class ModuleAction extends ActionSupport {
 		def template = engine.createTemplate(text).make([comment:comment,user:user,url : "https://thinktech-app.herokuapp.com"])
 		template.toString()
 	}
-	
-	def getConnection() {
-		new Sql(dataSource)
-	}
-	
 }

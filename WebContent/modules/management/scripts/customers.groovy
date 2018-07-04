@@ -34,9 +34,5 @@ class ModuleAction extends ActionSupport {
 	   connection.close()
 	   json([entity : customer])
 	}
-    	
-	def getConnection() {
-		new Sql(dataSource)
-	}
 	
 }

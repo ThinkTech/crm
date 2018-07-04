@@ -39,9 +39,4 @@ class ModuleAction extends ActionSupport {
 	   json([entity : bill])
 	}
 	
-	
-	def getConnection() {
-		new Sql(dataSource)
-	}
-	
 }
