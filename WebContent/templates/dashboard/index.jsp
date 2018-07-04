@@ -8,7 +8,7 @@
 <!-- Meta tag Keywords -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="theme-color" content="#000000"> 
+<meta name="theme-color" content="#3abfdd"> 
 <meta property="og:type" content="website">
 <meta name="description" content="Bienvenue sur le crm de ThinkTech"> 
 <meta name="twitter:card" content="summary">
