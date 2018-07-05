@@ -621,6 +621,7 @@ legend {
 	position : relative;
 	text-align : right;
 	font-weight : normal;
+	float: right;
 }
 
 .window > div .message-list > div > div span a i {
@@ -1152,6 +1153,7 @@ label.tree_label:before {
 	.search fieldset > span {
     	font-size : 11px;
 	}
+	.window > div .message-list > div > div i.fa-info {top: -25px;}
 	.window > div .terms {top:0px;height: 100%;width: 100%;margin-left: 0px;margin-left: -8px;}
 	.window {padding-top: 0px;}
 	.window > div {width: 100%;border-radius: 0px;height: 100%;}
@@ -1320,6 +1322,8 @@ label.tree_label:before {
 	.project-wizard p {text-align : center}
 	.window p {word-break : break-word;}
 	legend {width: 100.4%;font-size : 12px}
+	.window > div fieldset a.refresh {top: -3px;}
+	.window > div fieldset a.progression-edit {top: -3px;}
 	.search-results, .search-wizard { max-height: 100%;overflow-y: auto;}
 	.window > div fieldset a {top: 0px;font-size: 11px;}
 	.window > div fieldset a.tasks {margin-left:2px;top: -3px;}
