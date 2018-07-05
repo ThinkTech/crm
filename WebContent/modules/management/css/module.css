@@ -1115,7 +1115,7 @@ label.tree_label:before {
      .window > div .entity-edition select {font-size: 11px;}
      .domains th:nth-child(8), .domains td:nth-child(8) {display: block;}
      .billing th:nth-child(7), .billing td:nth-child(7) {display: block;}
-	.projects th:nth-child(6), .projects td:nth-child(6) {display: block;}
+	.projects th:nth-child(7), .projects td:nth-child(7) {display: block;}
     .support th:nth-child(6), .support td:nth-child(6) {display: block;}
     table th:nth-child(8), table td:nth-child(8) { display: none;}
 }
