@@ -673,6 +673,7 @@ legend {
 	top : 0px;
 	width: auto;
     display: inline-block;
+    color: green;
 }
 
 .window > div .info-tasks{
