@@ -691,12 +691,12 @@ legend {
 }
 
 .window > div .message-list > div > div {
-   border-left : 1px solid #3abfdd;
-   border-right : 1px solid #3abfdd;
-   border-bottom : 1px solid #3abfdd;
+   border-left: 1px solid #e8e3e3;
+   border-right: 1px solid #e4dede;
+   border-bottom: 1px solid #c2c7c7;
    width: 100.3%;
    padding: 15px;
-   padding-left : 0!important;
+   padding-left : 5px!important;
    padding-top: 20px;
    padding-bottom : 10px;
 }
