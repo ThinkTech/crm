@@ -175,7 +175,7 @@
 	<template id="template-messages">
    	  {#.}
 	      <div>
-	        <i class="fa fa-user" aria-hidden="true"></i> 
+	        <i class="fa fa-{icon}" aria-hidden="true"></i> 
 	   	  	<div class="message">{message|s}</div>
 	   	  	<div class="info-message">
 	   	  	    <b>Auteur :</b> {author}<br>

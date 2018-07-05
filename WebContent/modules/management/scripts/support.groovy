@@ -27,9 +27,10 @@ class ModuleAction extends ActionSupport {
 	    ticket.closedBy = user.name 
 	   }
 	   ticket.comments = []
-	   connection.eachRow("select c.id, c.message, c.date, u.name as author from tickets_comments c, users u where c.createdBy = u.id and c.ticket_id = ?", [ticket.id],{ row -> 
+	   connection.eachRow("select c.id, c.message, c.date, u.name as author, u.type from tickets_comments c, users u where c.createdBy = u.id and c.ticket_id = ?", [ticket.id],{ row -> 
           def comment = row.toRowResult()
           comment.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(comment.date)
+          comment.icon = comment.type == 'customer' ? 'user' : 'address-book'
           ticket.comments << comment
        })
 	   connection.close()

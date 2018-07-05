@@ -112,6 +112,7 @@ $(document).ready(function(){
 		const date = new Date();
 		comment.date = (date.getDate()>=10?date.getDate():("0"+date.getDate()))+"/"+(date.getMonth()>=10?(date.getMonth()+1):("0"+(date.getMonth()+1)))+"/"+date.getFullYear();
 		comment.date+=" "+(date.getHours()<10 ? "0"+date.getHours() : date.getHours())+":"+(date.getMinutes()<10 ? "0"+date.getMinutes() : date.getMinutes())+":"+(date.getSeconds()<10 ? "0"+date.getSeconds() : date.getSeconds());
+		comment.icon = "address-book";
 		page.wait({top : form.offset().top});
 		$.ajax({
 			  type: "POST",

@@ -45,9 +45,10 @@ class ModuleAction extends ActionSupport {
 	   project.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.date)
 	   project.end = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.end)
 	   project.comments = []
-	   connection.eachRow("select c.id, c.message, c.date, u.name as author from projects_comments c, users u where c.createdBy = u.id and c.project_id = ?", [project.id],{ row -> 
+	   connection.eachRow("select c.id, c.message, c.date, u.name as author, u.type from projects_comments c, users u where c.createdBy = u.id and c.project_id = ?", [project.id],{ row -> 
           def comment = row.toRowResult()
           comment.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(comment.date)
+          comment.icon = comment.type == 'customer' ? 'user' : 'address-book'
           project.comments << comment
        })
        project.documents = []
