@@ -23,14 +23,14 @@
 					      <table data-url="${url}/collaborators/info" class="table table-hover">
                               <tbody> 
                              	 <s:iterator value="#request.collaborators" var="collaborator" status="status">
-	                                <tr id="${collaborator.properties.id}">
+	                                <tr id="${collaborator.id}">
 	                                   <td><span class="number">${status.index+1}</span></td>
-	                                   <td>${collaborator.properties.name}
+	                                   <td>${collaborator.name}
 	                                     <span>
-	                                   	 <i class="fa fa-check" style="display:${collaborator.properties.active ? 'inline-block' : 'none'}"></i>
-	                                   	 <i class="fa fa-envelope" style="display:${collaborator.properties.active ? 'none' : 'inline-block'}"></i>
-	                                   	 <a href="${url}/collaborators/remove?id=${collaborator.properties.id}"><i class="fa fa-remove" style="display:${collaborator.properties.active ? 'none' : 'inline-block'}"></i></a>
-	                                   	 <i class="fa fa-lock" style="display:${collaborator.properties.locked ? 'inline-block' : 'none'}"></i>
+	                                   	 <i class="fa fa-check" style="display:${collaborator.active ? 'inline-block' : 'none'}"></i>
+	                                   	 <i class="fa fa-envelope" style="display:${collaborator.active ? 'none' : 'inline-block'}"></i>
+	                                   	 <a href="${url}/collaborators/remove?id=${collaborator.id}"><i class="fa fa-remove" style="display:${collaborator.active ? 'none' : 'inline-block'}"></i></a>
+	                                   	 <i class="fa fa-lock" style="display:${collaborator.locked ? 'inline-block' : 'none'}"></i>
 	                                   	 </span>
 	                                   </td>
 	                          	   </tr>
