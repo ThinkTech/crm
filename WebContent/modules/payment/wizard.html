@@ -11,10 +11,12 @@
 							<div>
 								<span>
 									<label><i class="fa fa-money" aria-hidden="true"></i> Payer avec</label> <select name="method">
+										<option value="cash">Cash</option>
 										<option value="visa">Visa</option>
 										<option value="mastercard">MasterCard</option>
 										<option value="wari">Wari</option>
-										<option value="cash">Cash</option>
+									    <option value="orange">Orange Money</option>
+										<option value="tigo">Tigo Cash</option>
 								</select>
 								</span>
 							</div>
@@ -44,6 +46,16 @@
 									<img alt="Visa Checkout" class="v-button img-responsive" role="button"
 										 src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png"/>
 								</div>
+								<div class="payment cash-payment">
+									<h4><b>Paiement Cash</b>
+									</h4>
+									<ol>
+										<li>Cliquer sur le bouton Valider</li>
+									</ol>
+									<div>
+									 <input type="button" value="Valider"/>
+									</div>
+								</div>
 								<div class="payment wari-payment">
 									<h4><b>Paiement Wari</b>
 									</h4>
@@ -56,14 +68,28 @@
 									 <input type="button" value="Envoyer"/>
 									</div>
 								</div>
-								<div class="payment cash-payment">
-									<h4><b>Paiement Cash</b>
+								<div class="payment orange-payment">
+									<h4><b>Paiement Orange Money</b>
 									</h4>
 									<ol>
-										<li>Cliquer sur le bouton Valider</li>
+										<li>Entrer le code de paiement</li>
+										<li>Cliquer sur le bouton Envoyer</li>
 									</ol>
 									<div>
-									 <input type="button" value="Valider"/>
+									 <label>Code : </label> <input type="text" maxlength="100" required/>
+									 <input type="button" value="Envoyer"/>
+									</div>
+								</div>
+								<div class="payment tigo-payment">
+									<h4><b>Paiement Tigo Cash</b>
+									</h4>
+									<ol>
+										<li>Entrer le code de paiement</li>
+										<li>Cliquer sur le bouton Envoyer</li>
+									</ol>
+									<div>
+									 <label>Code : </label> <input type="text" maxlength="100" required/>
+									 <input type="button" value="Envoyer"/>
 									</div>
 								</div>
 								<div class="shopping-amount">
