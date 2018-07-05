@@ -635,8 +635,7 @@ legend {
 	display : inline-block;
 	width : 77%;
 	vertical-align : top;
-	margin-right : 2%;
-	margin-left : 5px;
+	margin-left : 0px;
 }
 
 .window > div div.info-message {
