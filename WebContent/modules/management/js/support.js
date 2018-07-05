@@ -159,7 +159,7 @@ $(document).ready(function(){
 	   });
 	};
 	page.details.openTicket = function(url,ticket){
-		confirm("&ecirc;tes vous s&ucirc;r de vouloir ouvrir ce ticket?",function(){
+		confirm("&ecirc;tes vous s&ucirc;r de vouloir traiter ce ticket?",function(){
 			page.wait();
 			$.ajax({
 				  type: "POST",

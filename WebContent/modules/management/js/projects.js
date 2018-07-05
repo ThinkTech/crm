@@ -203,7 +203,7 @@ $(document).ready(function(){
 						$(".start-task",li).on('click',{task : project.tasks[i]},function(event){
 							const task = event.data.task;
 							const url = $(this).attr("href");
-							confirm("&ecirc;tes vous s&ucirc;r de vouloir ouvrir cette t&acirc;che?",function(){
+							confirm("&ecirc;tes vous s&ucirc;r de vouloir traiter cette t&acirc;che?",function(){
 								$.ajax({
 									  type: "POST",
 									  url: url,
@@ -339,7 +339,7 @@ $(document).ready(function(){
 			return false;
 	});
 	page.details.openProject = function(url,project){
-		confirm("&ecirc;tes vous s&ucirc;r de vouloir ouvrir ce projet?",function(){
+		confirm("&ecirc;tes vous s&ucirc;r de vouloir traiter ce projet?",function(){
 			page.wait();
 			$.ajax({
 				  type: "POST",
