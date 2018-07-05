@@ -606,7 +606,9 @@ legend {
 
 .window > div .message-list > div > div i.fa-address-book {
 	color : #d9534f!important;
-	margin-left : 5px!important;
+	margin-left: 1px!important;
+    position: relative;
+    left: 3px;
 }
 
 .window > div .message-list > div > div span {
