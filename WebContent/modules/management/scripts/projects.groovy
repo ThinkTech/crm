@@ -6,7 +6,7 @@ class ModuleAction extends ActionSupport {
        def connection = getConnection()
        def projects = []
        connection.eachRow("select p.id,p.subject,p.date,p.status,p.progression, u.name as author, s.name as structure from projects p, users u, structures s where p.user_id = u.id and u.structure_id = s.id order by p.date DESC", [], { row -> 
-          projects << new Expando(row.toRowResult())
+          projects << row.toRowResult()
        })
        def active = connection.firstRow("select count(*) AS num from projects where status = 'in progress'").num
        def unactive = connection.firstRow("select count(*) AS num from projects where status = 'stand by'").num
@@ -46,20 +46,20 @@ class ModuleAction extends ActionSupport {
 	   project.end = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.end)
 	   project.comments = []
 	   connection.eachRow("select c.id, c.message, c.date, u.name as author from projects_comments c, users u where c.createdBy = u.id and c.project_id = ?", [project.id],{ row -> 
-          def comment = new Expando(row.toRowResult())
+          def comment = row.toRowResult()
           comment.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(comment.date)
           project.comments << comment
        })
        project.documents = []
 	   connection.eachRow("select d.project_id, d.name, d.size, d.date, u.name as author from documents d, users u where d.createdBy = u.id and d.project_id = ?", [project.id],{ row -> 
-          def document = new Expando(row.toRowResult())
+          def document = row.toRowResult()
           document.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(document.date)
           document.size = byteCount(document.size as long) 
           project.documents << document
        })
        project.tasks = []
 	   connection.eachRow("select id,name,description,info,status,progression from projects_tasks where project_id = ?", [project.id],{ row -> 
-          def task = new Expando(row.toRowResult())
+          def task = row.toRowResult()
           task.info = task.info ? task.info : "aucune information" 
           project.tasks << task
        })

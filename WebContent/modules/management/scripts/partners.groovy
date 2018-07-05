@@ -4,7 +4,7 @@ class ModuleAction extends ActionSupport {
 	   def connection = getConnection()
        def partners = []
        connection.eachRow("select * from others where type = 'partner' order by createdOn DESC",[], { row -> 
-          partners << new Expando(row.toRowResult())
+          partners << row.toRowResult()
        })
        connection.close() 
        request.setAttribute("partners",partners)  

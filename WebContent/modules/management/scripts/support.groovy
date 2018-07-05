@@ -4,7 +4,7 @@ class ModuleAction extends ActionSupport {
        def connection = getConnection()
        def tickets = []
        connection.eachRow("select t.id,t.subject,t.message,t.date,t.service,t.status,t.progression, s.name as structure from tickets t, users u, structures s where t.user_id = u.id  and u.structure_id = s.id order by t.date DESC", [], { row -> 
-          tickets << new Expando(row.toRowResult())
+          tickets << row.toRowResult()
        })
        def solved = connection.firstRow("select count(*) AS num from tickets where status = 'finished'").num
        def unsolved = connection.firstRow("select count(*) AS num from tickets where status != 'finished'").num
@@ -28,7 +28,7 @@ class ModuleAction extends ActionSupport {
 	   }
 	   ticket.comments = []
 	   connection.eachRow("select c.id, c.message, c.date, u.name as author from tickets_comments c, users u where c.createdBy = u.id and c.ticket_id = ?", [ticket.id],{ row -> 
-          def comment = new Expando(row.toRowResult())
+          def comment = row.toRowResult()
           comment.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(comment.date)
           ticket.comments << comment
        })

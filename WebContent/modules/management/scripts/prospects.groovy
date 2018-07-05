@@ -4,7 +4,7 @@ class ModuleAction extends ActionSupport {
 	   def connection = getConnection()
        def prospects = []
        connection.eachRow("select * from others where type = 'prospect' order by createdOn DESC",[], { row -> 
-          prospects << new Expando(row.toRowResult())
+          prospects << row.toRowResult()
        })
        def converted = connection.firstRow("select count(*) AS num from others where type = 'prospect' and converted = true").num
        connection.close() 
