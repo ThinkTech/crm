@@ -2,10 +2,7 @@ class ModuleAction extends ActionSupport {
 	
 	def showTickets(){
        def connection = getConnection()
-       def tickets = []
-       connection.eachRow("select t.id,t.subject,t.message,t.date,t.service,t.status,t.progression, s.name as structure from tickets t, users u, structures s where t.user_id = u.id  and u.structure_id = s.id order by t.date DESC", [], { row -> 
-          tickets << row.toRowResult()
-       })
+       def tickets = connection.rows("select t.id,t.subject,t.message,t.date,t.service,t.status,t.progression, s.name as structure from tickets t, users u, structures s where t.user_id = u.id  and u.structure_id = s.id order by t.date DESC", [])
        def solved = connection.firstRow("select count(*) AS num from tickets where status = 'finished'").num
        def unsolved = connection.firstRow("select count(*) AS num from tickets where status != 'finished'").num
        connection.close() 

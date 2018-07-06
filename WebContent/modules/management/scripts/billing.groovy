@@ -2,10 +2,7 @@ class ModuleAction extends ActionSupport {
 
    def showBills(){
        def connection = getConnection()
-       def bills = []
-       connection.eachRow("select b.id,b.fee,b.amount,b.date,b.status,b.service,s.name as customer from bills b, structures s where s.id = b.structure_id order by b.date DESC",[], { row -> 
-          bills << row.toRowResult()
-       })
+       def bills = connection.rows("select b.id,b.fee,b.amount,b.date,b.status,b.service,s.name as customer from bills b, structures s where s.id = b.structure_id order by b.date DESC",[])
        def payed = connection.firstRow("select count(*) AS num from bills where status = 'finished'").num
        def unpayed = connection.firstRow("select count(*) AS num from bills where status = 'stand by'").num
        connection.close() 

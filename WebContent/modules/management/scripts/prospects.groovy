@@ -2,10 +2,7 @@ class ModuleAction extends ActionSupport {
 
    def showProspects(){
 	   def connection = getConnection()
-       def prospects = []
-       connection.eachRow("select * from others where type = 'prospect' order by createdOn DESC",[], { row -> 
-          prospects << row.toRowResult()
-       })
+       def prospects = connection.rows("select * from others where type = 'prospect' order by createdOn DESC",[])
        def converted = connection.firstRow("select count(*) AS num from others where type = 'prospect' and converted = true").num
        connection.close() 
        request.setAttribute("prospects",prospects)  

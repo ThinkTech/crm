@@ -2,10 +2,7 @@ class ModuleAction extends ActionSupport {
 
    def showPartners(){
 	   def connection = getConnection()
-       def partners = []
-       connection.eachRow("select * from others where type = 'partner' order by createdOn DESC",[], { row -> 
-          partners << row.toRowResult()
-       })
+       def partners = connection.rows("select * from others where type = 'partner' order by createdOn DESC",[])
        connection.close() 
        request.setAttribute("partners",partners)  
        request.setAttribute("total",partners.size())
