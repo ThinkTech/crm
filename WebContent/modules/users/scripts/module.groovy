@@ -3,16 +3,7 @@ class ModuleAction extends ActionSupport {
     def String execute(){
        if(user){
          def connection = getConnection()
-         def collaborators = []
-         def structure_id = user.structure.id
-         connection.eachRow("select u.id, u.name,a.activated,a.locked from users u, accounts a where u.structure_id = ? and u.owner = false and a.user_id = u.id", [structure_id], { row -> 
-           def collaborator = new Expando()
-           collaborator.id = row.id
-           collaborator.name = row.name
-           collaborator.active = row.activated
-           collaborator.locked = row.locked
-           collaborators << collaborator
-         })
+         def collaborators = connection.rows("select u.id, u.name,a.activated as active,a.locked from users u, accounts a where u.structure_id = ? and u.owner = false and a.user_id = u.id", [user.structure.id])
          connection.close()
          request.setAttribute("collaborators",collaborators)
          SUCCESS
