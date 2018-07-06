@@ -101,7 +101,8 @@
 		<span data-status="normal" class="status" style="display:none">normale</span>
 		<span data-status="medium" class="status" style="display:none">moyenne</span>
 		<span data-status="high" class="status" style="display:none">élevée</span> 
-		<span class="text-right"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span>
+		<span class="text-right startedOn"><i class="fa fa-calendar" aria-hidden="true"></i> Démarré le </span> <span>{startedOn}</span>
+		<span class="text-right startedOn"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Durée </span> <span>{duration} mois</span>
 		<span class="text-right"><i class="fa fa-tasks" aria-hidden="true"></i> Traitement </span> 
 		<span data-status="stand by" style="display:none"><span class="label label-info">en attente</span> <a href="${url}/projects/open" class="open-project"><i class="fa fa-play-circle-o"></i></a></span>
 		<span data-status="in progress" style="display:none"><span class="label label-danger">en cours</span></span>  

@@ -6,6 +6,7 @@ $(document).ready(function(){
 		}else if(ticket.status == "stand by"){
 			$(".priority-edit,.service-edit",container).show();
 			$("legend a,.close-ticket",container).hide();
+			$(".startedOn",container).hide().next().hide();
 		}else{
 			$("legend a,.progression-edit",container).show();
 		}

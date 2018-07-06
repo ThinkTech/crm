@@ -18,6 +18,9 @@ class ModuleAction extends ActionSupport {
 	   def connection = getConnection()
 	   def ticket = connection.firstRow("select t.*, u.name as author from tickets t,users u where t.id = ? and t.user_id = u.id", [id])
 	   ticket.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.date)
+	   if(ticket.status == "in progress" || ticket.status == "finished"){
+	     ticket.startedOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.startedOn)                                                      
+	   }
 	   if(ticket.closedOn) {
 	   	ticket.closedOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.closedOn)
 	   	def user = connection.firstRow("select u.name from users u, tickets t where u.id = t.closedBy and t.id = ?", [id])

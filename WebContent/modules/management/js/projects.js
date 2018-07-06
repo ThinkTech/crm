@@ -12,6 +12,7 @@ $(document).ready(function(){
 		    }
 		}else if(project.status == "stand by") {
 			$(".plan-edit,.priority-edit",container).show();
+			$(".startedOn",container).hide().next().hide();
 			$(".document-add",container).hide();
 			if(project.plan == 'social' || project.plan == 'custom'){
 				$(".open-project",container).click(function(event){
