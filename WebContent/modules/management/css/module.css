@@ -703,7 +703,7 @@ legend {
 }
 
 .window > div .message-list > div > div:nth-child(odd) {
-	background : #efebeb;
+	background : #f1f1f1;
 }
 
 .window > div .message-list > div > div:nth-child(even) {
