@@ -9,7 +9,7 @@ $(document).ready(function(){
 		}else{
 			$("legend a,.progression-edit",container).show();
 		}
-		if(ticket.comments.length) page.details.showComments(ticket.comments);
+		if(ticket.comments && ticket.comments.length) page.details.showComments(ticket.comments);
 		$(".messages form",container).submit(function(event){
 			page.details.addComment($(this));
 			return false;

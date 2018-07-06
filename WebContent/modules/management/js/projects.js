@@ -78,8 +78,8 @@ $(document).ready(function(){
 			list.find("h6").hide();
 			$("> div",list).html(project.description);
 		}
-		if(project.comments.length) page.details.showComments(project.comments);
-		if(project.documents.length) page.details.showDocuments(project.documents);
+		if(project.comments && project.comments.length) page.details.showComments(project.comments);
+		if(project.documents && project.documents.length) page.details.showDocuments(project.documents);
 		if(project.tasks) {
 			const showMessage = function(link){
 				 $(".info-message").hide();
