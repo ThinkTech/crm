@@ -10,7 +10,7 @@ class ModuleAction extends ActionSupport {
     }
     
     def getPartnerInfo() {
-	    def id = getParameter("id")
+	   def id = getParameter("id")
 	   def connection = getConnection()
 	   def partner = connection.firstRow("select * from partners where id = ?", [id])
 	   partner.createdOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(partner.createdOn)
