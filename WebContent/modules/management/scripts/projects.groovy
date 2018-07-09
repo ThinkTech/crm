@@ -175,7 +175,7 @@ class ModuleAction extends ActionSupport {
 		  
 		 }
 		'''
-		def template = engine.createTemplate(text).make([project:project,url : "https://thinktech-app.herokuapp.com"])
+		def template = engine.createTemplate(text).make([project:project,url : "https://app.thinktech.sn"])
 		template.toString()
 	}
 	
@@ -206,7 +206,7 @@ class ModuleAction extends ActionSupport {
 		  
 		 }
 		'''
-		def template = engine.createTemplate(text).make([comment:comment,user:user,url : "https://thinktech-app.herokuapp.com"])
+		def template = engine.createTemplate(text).make([comment:comment,user:user,url : "https://app.thinktech.sn"])
 		template.toString()
 	}
 }
