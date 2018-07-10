@@ -89,8 +89,9 @@ app.ready(function(){
 						 app.post(url,order,function(response){
 							 if(response.status){
 								$(".businessEmail .buttons",container).hide();
-								 const tr = $(".table tr[id="+domain.id+"]");
-								 $(".fa-envelope",tr).removeClass("stand-by").addClass("success").show();
+								$(".businessEmail .info-success",container).show();
+								const tr = $(".table tr[id="+domain.id+"]");
+								$(".fa-envelope",tr).removeClass("stand-by").addClass("success").show();
 							  }
 						 });
 				  	 });
