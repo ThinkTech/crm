@@ -148,6 +148,10 @@
 			    <div class="buttons">
 			     <a class="create" href="${url}/domains/createMailAccount">Créér Compte</a>
 			     <a class="activate" href="${url}/domains/activateMailOffer">Activer</a>
+			    </div>
+			    <div>
+			      <span class="info info-payment">la configuration du business email est en attente et le client doit d'abord s'acquiter de toutes ses factures.</span>
+			      <span class="info info-success">la configuration du business email de ce client est maintenant terminée.</span>
 			    </div> 
 		    </fieldset>
 			</div>

@@ -924,6 +924,17 @@ legend a i.fa {
    background : #fdffa4;
 }
 
+.businessEmail .info {
+	color : red;
+	font-size : 12.5px;
+	padding : 5px;
+	margin-top: 5px;
+    display: block;
+}
+
+.businessEmail .info-success {
+	color : green;
+}
 
 .icons,.tree { display : none;padding-top :10px;padding-bottom : 10px;margin-top: -20px;}
 

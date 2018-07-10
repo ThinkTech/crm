@@ -12,6 +12,7 @@ app.ready(function(){
 		}else{
 			$(".eppCode",container).hide();
 		}
+		$(".businessEmail .info",container).hide();
 		$(".businessEmail input[name=email]",container).attr("disabled","disabled");
 		if(domain.emailOn && domain.status == "finished"){
 			$(".businessEmail",container).show();
@@ -24,11 +25,13 @@ app.ready(function(){
 		if(domain.emailActivatedOn){
 			$(".businessEmail .buttons",container).hide();
 			$(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
+			$(".businessEmail .info-success",container).show();
 		}else{
 			$(".businessEmail .buttons",container).show();
 			if(domain.billStatus == "stand by"){
 				$(".businessEmail .buttons a",container).hide();
 				$(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
+				$(".businessEmail .info-payment",container).show();
 			}else if(domain.billStatus == "finished"){
 				if(domain.emailAccountCreated){
 					$(".businessEmail a.create",container).hide();
