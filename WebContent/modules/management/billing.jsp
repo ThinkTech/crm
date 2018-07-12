@@ -63,7 +63,7 @@
                               </thead>
                               <tbody>
                                <s:iterator value="#request.bills" var="bill" status="counter">
-	                                <tr id="${bill.id}" class="${bill.status=='finished' ? 'paid' : ''}">
+	                                <tr id="${bill.id}">
 	                                  <td><span class="number">${counter.index+1}</span></td>
 	                                  <td>${bill.fee}</td>
 	                                  <td>${bill.service}</td>
