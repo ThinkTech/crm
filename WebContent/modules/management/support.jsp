@@ -58,7 +58,7 @@
                                       <th>Structure</th>
                                       <th>Date Création</th>                                                             
                                       <th>Traitement</th>
-                                      <th>Progression</th>
+                                      <th style="width:40px">Progression</th>
                                   </tr>
                               </thead>
                               <tbody>

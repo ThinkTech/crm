@@ -58,7 +58,7 @@
                                       <th>Date Création</th> 
                                       <th>Profession</th>                                                            
                                       <th>Email</th>
-                                      <th>Téléphone</th>
+                                      <th style="width:60px">Téléphone</th>
                                   </tr>
                               </thead>
                               <tbody>
