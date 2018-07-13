@@ -18,7 +18,7 @@
  <meta name="twitter:description" property="og:description" content="Bienvenue sur le crm de ThinkTech"> 
  <meta name="twitter:image" property="og:image" content="${baseUrl}/images/banner.jpeg">
 <style type="text/css">
- <%@include file="/css/metamorphosis.css"%>
+ <%@include file="/css/metamorphosis.min.css"%>
  <%@include file="/templates/amadeus/css/template.css"%>
 </style>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
@@ -65,7 +65,7 @@
 </div>
 <script>
 <%@include file="/js/jquery-3.1.1.min.js"%>
-<%@include file="/js/metamorphosis.js"%>
+<%@include file="/js/metamorphosis.min.js"%>
 <%@include file="/js/app.js"%>
 <%@include file="/templates/amadeus/js/template.js"%>
 </script>
