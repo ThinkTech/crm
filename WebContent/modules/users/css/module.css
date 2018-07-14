@@ -38,6 +38,10 @@ fieldset > span {
     padding : 3px;
 }
 
+.fa-check {
+  color : green;	
+}
+
 .window > div input[type=email],.window.form > div fieldset > span {
     width: 100%;
     max-width: 100%;
@@ -55,6 +59,7 @@ fieldset > span {
 }
 .window.details > div fieldset > span,.window.details > div fieldset > span.text-right {
     width: 100%;
+    max-width: 100%;
     margin-right : 5px;
     text-align : left;
 }
@@ -91,7 +96,6 @@ fieldset > span {
 
 .first-one-inner {
     padding: 2em;
-    padding-bottom : 1.5em;
 }
 
 .password-area {
@@ -113,9 +117,22 @@ h3.tittle {
 }
 
 td span {
-	float: right;
+	float: left;
     position: relative;
     top: -2px;
+}
+
+.table tbody tr td:nth-child(2) span:first-of-type {
+    width: 85%;
+    float: left;
+}
+
+td span.number {
+	float : none;
+}
+
+.table tr td:first-of-type {
+    width: 20px;
 }
 
 .first-one input[type="password"]{
@@ -146,7 +163,7 @@ td span {
     color: #fff;
     cursor: pointer;
     outline: none;
-    padding: 16px 15px;
+    padding: 12px 12px;
     width: 47%;
     background: #3abfdd;
     border-radius: 0.3em;
@@ -196,7 +213,7 @@ td span {
     color: #fff;
     cursor: pointer;
     outline: none;
-    padding: 13px 20px;
+    padding: 12px 12px;
     border-radius: 0.3em;
     text-transform: uppercase;
     border: 1px solid #337ab7;
@@ -420,6 +437,9 @@ legend a i.fa {
 	}
 }
 @media (max-width:480px){
+	.table tbody tr td:nth-child(2) {
+      white-space: normal;
+    }
 	legend {
     	font-size: 1.1em;
 	}
