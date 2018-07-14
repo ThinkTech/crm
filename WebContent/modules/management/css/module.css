@@ -562,10 +562,6 @@ legend {
 	width : 63px;
 }
 
-.window > div ol li > span > .label-success,.window > div ol li > span > .label-danger {
-	margin-right : 4px;
-}
-
 .window > div textarea { 
 	width : 100%;
 	height : 150px;
