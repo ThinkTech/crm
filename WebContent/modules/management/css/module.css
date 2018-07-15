@@ -156,12 +156,13 @@
     text-transform: uppercase;
 }
 
-.window > div fieldset input[type=file] {
+.window > div input[type=file] {
     display: inline-block;
     font-weight: 600;
     color : #180101;
     border : none;
     vertical-align: bottom;
+    width: 59.4%;
 }
 
 .modal {
@@ -1147,10 +1148,7 @@ label.tree_label:before {
        font-size: 12px;
        padding-left: 2px!important;
 	}
-	.window > div input[type=file] {
-       position : relative;
-       top : -3px;
-	}
+	.window>div input[type=file] {margin-left: -3px;}
 	.window > div textarea { 
 		height : 110px;
 		font-size: 12px;
