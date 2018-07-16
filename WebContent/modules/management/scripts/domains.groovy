@@ -86,7 +86,7 @@ class ModuleAction extends ActionSupport {
 		         span("Action : transfert")
 		     	}                                
 		     }
-		     p("l\'enregistrement de votre domaine web est maintenant termin&eacute;. Cliquer sur le bouton Voir pour visualiser les details.")
+		     p("l\'enregistrement de votre domaine web est maintenant termin&eacute;e. Cliquer sur le bouton Voir pour visualiser les details.")
 
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
