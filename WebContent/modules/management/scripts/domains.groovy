@@ -34,7 +34,7 @@ class ModuleAction extends ActionSupport {
 	def registerDomain(){
 	    def domain = parse(request)
 	    def connection = getConnection()
-	    connection.executeUpdate "update domains set status = 'finished', registeredOn = Now() where id = ?", [domain.id] 
+	    connection.executeUpdate "update domains set status = 'finished', active = true, registeredOn = Now() where id = ?", [domain.id] 
 	    def user = connection.firstRow("select * from users where id = ?", [domain.user_id])
 	    sendMail(user.name,user.email,"Enregistrement du domaine ${domain.name} pour ${domain.year} an termin&eacute;",getRegistrationTemplate(domain))
 	    connection.close()
