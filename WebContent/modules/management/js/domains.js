@@ -116,7 +116,7 @@ app.ready(function(){
 						h3.html(parseInt(h3.text())-1);
 						h3 = $("h3.domainRegistered");
 						h3.html(parseInt(h3.text())+1);
-						$(".window").hide();
+						page.details.refresh();
 					}
 				});
 			});
