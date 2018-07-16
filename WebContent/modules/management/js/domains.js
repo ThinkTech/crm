@@ -116,7 +116,9 @@ app.ready(function(){
 						h3.html(parseInt(h3.text())-1);
 						h3 = $("h3.domainRegistered");
 						h3.html(parseInt(h3.text())+1);
-						page.details.refresh();
+						page.details.refresh(function(){
+							alert("le domaine a &edot;t&edot; bien enregistr&edot;");
+						});
 					}
 				});
 			});
