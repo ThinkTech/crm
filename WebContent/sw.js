@@ -1,6 +1,6 @@
 const assets = ["/",".","js/dust-full.min.js","js/tinymce/tinymce.min.js",
 	"js/tinymce/themes/modern/theme.min.js","js/tinymce/langs/fr_FR.js","js/tinymce/skins/lightgray/skin.min.css",
-	"js/tinymce/skins/lightgray/content.min.css"];
+	"js/tinymce/skins/lightgray/content.min.css","templates/amadeus/images/background.jpg"];
 const cacheName = "assets-v-1";
 self.addEventListener('install', function(event) {
   event.waitUntil(
