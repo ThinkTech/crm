@@ -75,14 +75,14 @@ class ModuleAction extends ActionSupport {
 		      }
 		    }
 		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
-		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-bottom: 0px") {
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Domaine : $domain.name")
 		     }
-		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-bottom: 0px") {
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Dur&eacute;e : $domain.year an")
 		     }
 		     if(domain.action == "transfer"){
-		        h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-bottom: 0px") {
+		        h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Action : transfert")
 		     	}                                
 		     }
@@ -119,10 +119,10 @@ class ModuleAction extends ActionSupport {
 		      }
 		    }
 		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
-		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-bottom: 0px") {
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Plan : $order.plan")
 		     }
-		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-bottom: 0px") {
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Email : $order.email")
 		     }
 		     p("la configuration de votre business email est maintenant termin&eacute;e. Cliquer sur le bouton Connecter pour consulter votre nouvelle messagerie ou vous pouvez aussi choisir d\'installer l\'application Zoho mail sur votre smartphone.")
