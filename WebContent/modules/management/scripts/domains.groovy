@@ -103,7 +103,7 @@ class ModuleAction extends ActionSupport {
 		  
 		 }
 		'''
-		def template = engine.createTemplate(text).make([domain:domain,url : "https://thinktech-app.herokuapp.com"])
+		def template = engine.createTemplate(text).make([domain:domain,url : "https://app.thinktech.sn"])
 		template.toString()
 	}
 	
