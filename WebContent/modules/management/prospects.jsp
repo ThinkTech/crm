@@ -86,5 +86,3 @@
 		</div>
 	</div>
 </div>
-<script src="${js}/prospects.js" defer></script>
-<script src="js/tinymce/tinymce.min.js" defer></script> 

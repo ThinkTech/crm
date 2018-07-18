@@ -74,5 +74,3 @@
 		</div>
 	</div>
 </div>
-<script src="${js}/partners.js" defer></script>
-<script src="js/tinymce/tinymce.min.js" defer></script> 
