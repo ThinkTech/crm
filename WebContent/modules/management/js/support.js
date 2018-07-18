@@ -1,4 +1,4 @@
-$(document).ready(function(){
+document.addEventListener("DOMContentLoaded", function(event) {
 	page.details.bind = function(container,ticket) {
 		$("[data-status='"+ticket.priority+"']",container).show();
 		if(ticket.status == "finished"){
@@ -213,4 +213,5 @@ $(document).ready(function(){
 			});
 		});
 	};
+	head.load("js/tinymce/tinymce.min.js");
 });

@@ -318,5 +318,6 @@
   </div>
 </div>
 </div>
-<script src="${js}/projects.js" defer></script>
-<script src="js/tinymce/tinymce.min.js" defer></script> 
+<script>
+ <%@include file="/modules/management/js/projects.js"%>
+</script>

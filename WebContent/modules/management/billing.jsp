@@ -113,4 +113,6 @@
 	</div>
 </div>
 </div>
-<script src="${js}/billing.js" defer></script>
+<script>
+ <%@include file="/modules/management/js/billing.js"%>
+</script>

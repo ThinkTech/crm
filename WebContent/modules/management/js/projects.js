@@ -1,4 +1,4 @@
-$(document).ready(function(){
+document.addEventListener("DOMContentLoaded", function(event) {
 	page.details.bind = function(container,project) {
 		$("[data-status='"+project.priority+"']",container).show();
 		if(project.plan == "plan social") $(".confirm p",container).html("Contrat").addClass("adjust");
@@ -634,4 +634,5 @@ $(document).ready(function(){
 		$(".plans").hide();
 		$(".modal").remove();
 	});
+	head.load("js/tinymce/tinymce.min.js");
 });
