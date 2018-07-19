@@ -125,7 +125,7 @@ class ModuleAction extends ActionSupport {
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Email : $order.email")
 		     }
-		     p("la configuration de votre business email est maintenant termin&eacute;e. Cliquer sur le bouton Connecter pour consulter votre nouvelle messagerie ou vous pouvez aussi choisir d\'installer l\'application Zoho mail sur votre smartphone.")
+		     p("L\'email d\'activation de votre compte Zoho vous a &eacute;t&eacute;e envoy&eacute; et la configuration de votre business email est maintenant termin&eacute;e. Une fois que vous aurez activ&eacute; votre compte email, cliquer sur le bouton Connecter en bas pour consulter votre nouvelle messagerie ou vous pouvez aussi choisir d\'installer l\'application native Zoho mail sur votre smartphone.")
 
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
