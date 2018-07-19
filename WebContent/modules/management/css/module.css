@@ -608,7 +608,7 @@ legend {
     left: 3px;
 }
 
-.window > div .message-list > div > div span {
+.window > div .message-list > div > div > span {
 	background : transparent;
 	display : inline-block;
 	width : 13%;
@@ -1298,7 +1298,7 @@ label.tree_label:before {
 	.project-wizard p {font-size: 13px;width : 89%}
 	.project-wizard h1{margin-left: -16px;}
 	.window > div .terms-agreement {font-size: 13px;margin-top: 5px;}
-	.window > div .message-list > div > div span,.window > div ol li span {display : block;width:100%;text-align:right;margin-left:2px;top: 0px;}
+	.window > div .message-list > div > div > span,.window > div ol li span {display : block;width:100%;text-align:right;margin-left:2px;top: 0px;}
 	.window > div ol li a{margin-bottom : 2px;display:inline-block;width:90%;white-space:normal;word-break : break-word}
 	.window > div div.info-tasks ol li a{position: relative;top: -27px;}
 	.window > div ol li span{text-align:center;display:inline-block;width:auto}
