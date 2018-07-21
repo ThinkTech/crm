@@ -620,6 +620,7 @@ ul.dropdown-menu {
     margin-right: -45px;
     position: relative;
     top: -10px;
+    text-align : right;
 }
 .profile_details_drop .fa.fa-angle-up{
 	display:none;
