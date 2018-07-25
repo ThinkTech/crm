@@ -57,8 +57,10 @@ class ModuleAction extends ActionSupport {
 	     def order = parse(request)
 	     def connection = getConnection()
 	     connection.executeUpdate "update domains set email = ?, emailAccountCreated = true where id = ?", [order.email,order.id]
+	     connection.executeUpdate "update tickets set progression = 50 where service = 'mailhosting' and product_id = ?", [order.id]
 	     def user_id = connection.firstRow("select user_id from domains where id = ?", [order.id]).user_id
 	     def user = connection.firstRow("select * from users where id = ?", [user_id])
+	     sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",getEmailAccountTemplate(order))
 	     connection.close()
 	     json([status: 1])
 	}
@@ -146,6 +148,48 @@ class ModuleAction extends ActionSupport {
 		 }
 		'''
 		def template = engine.createTemplate(text).make([order:order])
+		template.toString()
+	}
+	
+	def getEmailAccountTemplate(order) {
+		MarkupTemplateEngine engine = new MarkupTemplateEngine()
+		def text = '''\
+		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
+		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
+		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
+		    div(style : "margin-top:10px;padding-bottom:2%;padding-top:2%;text-align:center;background:#05d2ff") {
+		      h4(style : "font-size: 120%;color: #fff;margin: 3px") {
+		        span("La cr&eacute;ation de votre compte email est en cours;")
+		      }
+		    }
+		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
+		         span("Plan : $order.plan")
+		     }
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
+		         span("Domaine : $order.domain")
+		     }
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
+		         span("Email : $order.email")
+		     }
+		     p("Un email pour l\'activation de votre compte Zoho vous sera envoy&eacute; une fois que la configuration de votre business email sera termin&eacute;e. Vous pourrez ainsi choisir votre mot de passe. Si vous ne le recevez, veuillez nous le faire savoir en ajoutant un commentaire au ticket correspondant.")
+
+		    }
+		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
+			    a(href : "$url/dashboard/support",style : "font-size:130%;width:140px;margin:auto;text-decoration:none;background: #05d2ff;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
+			        span("Commenter")
+			    }
+			}
+		  }
+		  
+		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
+		      p("Vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
+		      p("a souscrit au service domainhosting en utilisant cette adresse")
+		  }
+		  
+		 }
+		'''
+		def template = engine.createTemplate(text).make([order:order,url : "https://app.thinktech.sn"])
 		template.toString()
 	}
 }
