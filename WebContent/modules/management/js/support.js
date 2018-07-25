@@ -140,18 +140,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	page.details.showComments = function(comments){
 		const list = $(".message-list");
 		list.find("h6").hide();
-		const showMessage = function(link){
+		const showMessage = function(link,event){
 			 $(".info-message").hide();
 			 const info = link.parent().prev();
 			 info.css({top : event.pageY-20,left : event.pageX-info.width()-50}).toggle();
 		};
 		page.render($("> div",list), comments, true, function(div) {
 			$("a",div).click(function(event){
-				 showMessage($(this));
+				 showMessage($(this),event);
 				 return false;
 			});
 			$("a",div).on("mouseover",function(event){
-				 showMessage($(this));
+				 showMessage($(this),event);
 				 return false;
 			});
 			$("a",div).on("mouseout",function(event){

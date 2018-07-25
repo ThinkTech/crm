@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		if(project.comments && project.comments.length) page.details.showComments(project.comments);
 		if(project.documents && project.documents.length) page.details.showDocuments(project.documents);
 		if(project.tasks) {
-			const showMessage = function(link){
+			const showMessage = function(link,event){
 				 $(".info-message").hide();
 				 const info = link.parent().prev();
 				 var left = event.pageX-info.width()-50;
@@ -97,8 +97,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 						const li = $('li[data-name="'+project.tasks[i].name+'"]',ol);
 						$("span[data-status='"+project.tasks[i].status+"']",li).show();
 						$("a",li).click(function(event){
-							 showMessage($(this));
+							 showMessage($(this),event);
 							 return false;
+						}).on("mouseover",function(event){
+							 showMessage($(this),event);
+						}).on("mouseout",function(event){
+							$(".info-message").hide();
 						});
 						$(".task-info-edit",li).click(function(event){
 							 $(".task-info-edition").hide();
@@ -481,18 +485,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		 const list = $(".documents .document-list");
 		 $(".document-list-ol,.document-list-tree,.document-list-icons").show();
 		 list.find("h6").hide();
-		 const showMessage = function(link){
+		 const showMessage = function(link,event){
 			 $(".info-message").hide();
 			 const info = link.parent().prev();
 			 info.css({top : event.pageY-20,left : event.pageX-info.width()-50}).toggle(); 
 		 };
 		 page.render($("ol",list).addClass("not-empty"),documents,true,function(li){
 		    $("> span > a",li).click(function(event){
-		    	showMessage($(this));
+		    	showMessage($(this),event);
 		    	return false;
 			});
 		    $("> span > a",li).on("mouseover",function(event){
-		    	 showMessage($(this));
+		    	 showMessage($(this),event);
 			});
 		    $("> span > a",li).on("mouseout",function(event){
 		    	$(".info-message").hide();
@@ -610,18 +614,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	page.details.showComments = function(comments){
 		const list = $(".comments .message-list");
 		list.find("h6").hide();
-		const showMessage = function(link){
+		const showMessage = function(link,event){
 			$(".info-message").hide();
 			 const info = link.parent().prev();
 			 info.css({top : event.pageY-20,left : event.pageX-info.width()-50}).toggle();
 		};
 		page.render($("> div",list), comments, true, function(div) {
 			$("a",div).click(function(event){
-				 showMessage($(this));
+				 showMessage($(this),event);
 				 return false;
 			});
 			$("a",div).on("mouseover",function(event){
-				 showMessage($(this));
+				 showMessage($(this),event);
 				 return false;
 			});
 			$("a",div).on("mouseout",function(event){
