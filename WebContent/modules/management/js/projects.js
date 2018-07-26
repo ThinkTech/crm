@@ -187,7 +187,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 									  }
 									  if(task.status == "finished") {
 										  const next = project.tasks[event.data.index+1];
-										  if(next)$(".start-task",li.next()).show();
+										  if(next && next.status =='stand by'){
+											  $(".start-task",li.next()).show();
+										  }
 									  }else{
 										  if(project.status == "finished"){
 											  const h3 = $("h3.active");
