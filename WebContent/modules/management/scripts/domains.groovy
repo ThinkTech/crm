@@ -99,7 +99,7 @@ class ModuleAction extends ActionSupport {
 		  }
 		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
-		      p("Vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
+		      p(" recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
 		      p("a souscrit au service domainhosting en utilisant cette adresse")
 		  }
 		  
@@ -130,7 +130,7 @@ class ModuleAction extends ActionSupport {
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Business Email : $order.email")
 		     }
-		     p("L\'email pour l\'activation de votre compte Zoho vous a &eacute;t&eacute; envoy&eacute; et la configuration de votre business email est maintenant termin&eacute;e. Une fois que vous aurez activ&eacute; votre compte email, cliquer sur le bouton Connecter en bas pour consulter votre nouvelle messagerie ou vous pouvez tout aussi choisir d\'installer l\'application native Zoho mail sur votre smartphone en la t&eacute;l&eacute;chargeant sur Play store ou sur App store.")
+		     p("L\'email pour l\'activation de votre compte Zoho vous a &eacute;t&eacute; envoy&eacute; et la configuration de votre business email est maintenant termin&eacute;e. une fois que vous aurez activ&eacute; votre compte email, cliquer sur le bouton Connecter en bas pour consulter votre nouvelle messagerie ou vous pouvez tout aussi choisir d\'installer l\'application native Zoho mail sur votre smartphone en la t&eacute;l&eacute;chargeant sur Play store ou sur App store.")
 
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
@@ -141,7 +141,7 @@ class ModuleAction extends ActionSupport {
 		  }
 		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
-		      p("Vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
+		      p(" recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
 		      p("a souscrit au service domainhosting en utilisant cette adresse")
 		  }
 		  
@@ -172,7 +172,7 @@ class ModuleAction extends ActionSupport {
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Business Email : $order.email@$order.domain")
 		     }
-		     p("Un email pour l\'activation de votre compte Zoho vous sera envoy&eacute; une fois que la configuration de votre business email sera termin&eacute;e. Vous pourrez ainsi choisir votre mot de passe. Si vous ne le recevez pas, veuillez nous le faire savoir en ajoutant un commentaire au ticket correspondant.")
+		     p("un email pour l\'activation de votre compte Zoho vous sera envoy&eacute; une fois que la configuration de votre business email sera termin&eacute;e.  pourrez ainsi choisir votre mot de passe. Si vous ne le recevez pas, veuillez nous le faire savoir en ajoutant un commentaire au ticket correspondant.")
 
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
@@ -183,7 +183,7 @@ class ModuleAction extends ActionSupport {
 		  }
 		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
-		      p("Vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
+		      p(" recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
 		      p("a souscrit au service domainhosting en utilisant cette adresse")
 		  }
 		  
