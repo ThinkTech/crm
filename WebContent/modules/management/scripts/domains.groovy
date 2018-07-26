@@ -142,7 +142,7 @@ class ModuleAction extends ActionSupport {
 		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
 		      p(" recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
-		      p("a souscrit au service domainhosting en utilisant cette adresse")
+		      p("a souscrit au service mailhosting en utilisant cette adresse")
 		  }
 		  
 		 }
@@ -184,7 +184,7 @@ class ModuleAction extends ActionSupport {
 		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
 		      p(" recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
-		      p("a souscrit au service domainhosting en utilisant cette adresse")
+		      p("a souscrit au service mailhosting en utilisant cette adresse")
 		  }
 		  
 		 }
