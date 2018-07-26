@@ -1128,7 +1128,7 @@ fieldset > span {
 .sidebar-menu {
 	position:absolute;
 	float: left;
-	width: 45px;
+	width: 40px;
 }
 
 .left-content {
@@ -1139,9 +1139,9 @@ fieldset > span {
     height: 3em;
 }
 #menu li a {
-    padding: 20px 20px;
+   padding: 15px 10px;
     text-align: left !important;
-    padding-left: 10px!important;
+    padding-left: 7px!important;
 }
 #menu .fa {
     margin-bottom: 9px;
@@ -1290,9 +1290,6 @@ fieldset > span {
     margin-right : auto;
     margin-bottom: 6px;	
 }
-.left-content {
-    width: 91%;
-}
 .chit-chat-layer1 {
     margin: 0.5em 0em;
 }
@@ -1333,9 +1330,6 @@ fieldset > span {
 .user-name p {
     font-size: 13px;
 }
-.left-content {
-    width: 91%;
-}
 .header-main {
     padding: 1em 0em;	
     margin-right: 2px;
@@ -1357,7 +1351,8 @@ ul.dropdown-menu {
 }
 @media (max-width:320px){
 .left-content {
-    width: 88%;
+    width: 91%;
+    margin-right: 0%;
 }
 .header-main {
     padding: 1em 0.5em;	
@@ -1381,13 +1376,6 @@ li.dropdown.head-dpdn a.dropdown-toggle {
     font-size: 1em;
 }
 h3.tlt {
-    font-size: 1em;
-}
-.sidebar-menu {
-    width: 45px;
-}
-#menu li a {
-    padding: 15px 10px;
     font-size: 1em;
 }
 ul.dropdown-menu {
