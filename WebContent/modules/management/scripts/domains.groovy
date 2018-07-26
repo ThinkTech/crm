@@ -128,7 +128,7 @@ class ModuleAction extends ActionSupport {
 		         span("Domaine : $order.domain")
 		     }
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
-		         span("Email : $order.email")
+		         span("Business Email : $order.email")
 		     }
 		     p("L\'email pour l\'activation de votre compte Zoho vous a &eacute;t&eacute; envoy&eacute; et la configuration de votre business email est maintenant termin&eacute;e. Une fois que vous aurez activ&eacute; votre compte email, cliquer sur le bouton Connecter en bas pour consulter votre nouvelle messagerie ou vous pouvez tout aussi choisir d\'installer l\'application native Zoho mail sur votre smartphone en la t&eacute;l&eacute;chargeant sur Play store ou sur App store.")
 
@@ -170,7 +170,7 @@ class ModuleAction extends ActionSupport {
 		         span("Domaine : $order.domain")
 		     }
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
-		         span("Email : $order.email")
+		         span("Business Email : $order.email")
 		     }
 		     p("Un email pour l\'activation de votre compte Zoho vous sera envoy&eacute; une fois que la configuration de votre business email sera termin&eacute;e. Vous pourrez ainsi choisir votre mot de passe. Si vous ne le recevez pas, veuillez nous le faire savoir en ajoutant un commentaire au ticket correspondant.")
 
