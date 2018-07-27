@@ -15,6 +15,6 @@ class ModuleAction extends ActionSupport {
 	   def partner = connection.firstRow("select * from partners where id = ?", [id])
 	   partner.createdOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(partner.createdOn)
 	   connection.close()
-	   json([entity : partner])
+	   json(partner)
 	}
 }

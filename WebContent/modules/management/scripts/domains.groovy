@@ -34,7 +34,7 @@ class ModuleAction extends ActionSupport {
          domain.billStatus = bill ? bill.status : "finished"; 
        }
 	   connection.close()
-	   json([entity : domain])
+	   json(domain)
 	}
 	
 	def registerDomain(){

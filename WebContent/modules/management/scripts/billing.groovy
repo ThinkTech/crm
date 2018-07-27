@@ -25,7 +25,7 @@ class ModuleAction extends ActionSupport {
 	   	 bill.user = connection.firstRow("select u.* from users u, bills b where u.structure_id = b.structure_id and u.owner = true and b.id = ?", [id])
 	   }
 	   connection.close()
-	   json([entity : bill])
+	   json(bill)
 	}
 	
 }

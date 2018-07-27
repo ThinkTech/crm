@@ -79,10 +79,10 @@ page.details.show = function(entity) {
 page.details.refresh = function(callback){
 	page.wait({top : $(".window.details").offset().top});
 	const url = $(".table").data("url")+"?id="+page.details.entity.id+"&timestamp="+new Date().getTime();
-	app.get(url,function(response){
-		page.details.entity = response.entity;
-		page.details.show(response.entity);
-		if(callback) callback(response.entity);
+	app.get(url,function(entity){
+		page.details.entity = entity;
+		page.details.show(entity);
+		if(callback) callback(entity);
 	});
 };
 
@@ -103,9 +103,9 @@ page.table.paginate = function() {
 	    	const url = $table.data("url")+"?id="+id;
 	    	if(url) {
 	    		page.wait({top : $table.offset().top});
-	    		app.get(url,function(response){
-	    		   page.details.entity = response.entity;
-				   page.details.show(response.entity);
+	    		app.get(url,function(entity){
+	    		   page.details.entity = entity;
+				   page.details.show(entity);
 	    		});
 	    	}
 			rows.removeClass("active");

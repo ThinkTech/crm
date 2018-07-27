@@ -21,7 +21,7 @@ class ModuleAction extends ActionSupport {
        customer.profession = customer.profession ? customer.profession : "&nbsp;"
 	   customer.createdOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(customer.createdOn)
 	   connection.close()
-	   json([entity : customer])
+	   json(customer)
 	}
 	
 }

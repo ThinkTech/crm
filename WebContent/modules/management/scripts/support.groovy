@@ -34,7 +34,7 @@ class ModuleAction extends ActionSupport {
           ticket.comments << comment
        })
 	   connection.close()
-	   json([entity : ticket])
+	   json(ticket)
 	}
 	
 	def addTicketComment() {

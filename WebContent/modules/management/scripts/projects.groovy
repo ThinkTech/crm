@@ -64,7 +64,7 @@ class ModuleAction extends ActionSupport {
           project.tasks << task
        })
 	   connection.close() 
-	   json([entity : project])
+	   json(project)
 	}
 	
     def updateTask(){

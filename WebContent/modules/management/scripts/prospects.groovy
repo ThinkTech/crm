@@ -17,6 +17,6 @@ class ModuleAction extends ActionSupport {
 	   def prospect = connection.firstRow("select * from prospects where id = ?", [id])
 	   prospect.createdOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(prospect.createdOn)
 	   connection.close()
-	   json([entity : prospect])
+	   json(prospect)
 	}
 }
