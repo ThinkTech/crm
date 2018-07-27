@@ -94,6 +94,7 @@
 	<fieldset>
 	    <span class="text-right"><i class="fa fa-commenting" aria-hidden="true"></i> Sujet </span> <span>{subject|s}</span>
 	    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>{name}</span>
+	     <span class="text-right"><i class="fa fa-envelope" aria-hidden="true"></i> Email </span> <span>{email}</span>
 	    <span class="text-right"><i class="fa fa-globe" aria-hidden="true"></i> Domaine </span> <span>{domain}</span>
 		<span class="text-right"><i class="fa fa-code" aria-hidden="true"></i> Plan </span> <span>{plan}</span>
 		<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{date}</span>
