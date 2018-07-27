@@ -1,3 +1,9 @@
+import org.apache.http.HttpResponse
+import org.apache.http.client.HttpClient
+import org.apache.http.impl.client.HttpClientBuilder
+import org.apache.http.client.methods.HttpPost
+import org.apache.http.entity.StringEntity
+
 class ModuleAction extends ActionSupport {
 
    def showDomains(){
@@ -56,10 +62,27 @@ class ModuleAction extends ActionSupport {
 	def createMailAccount(){
 	     def order = parse(request)
 	     def connection = getConnection()
-	     connection.executeUpdate "update domains set email = ?, emailAccountCreated = true where id = ?", [order.email,order.id]
-	     connection.executeUpdate "update tickets set progression = 50 where service = 'mailhosting' and product_id = ?", [order.id]
 	     def user_id = connection.firstRow("select user_id from domains where id = ?", [order.id]).user_id
-	     def user = connection.firstRow("select * from users where id = ?", [user_id])
+	     def user = connection.firstRow("select u.*, s.name as structure from users u, structures s where u.id = ? and s.id = u.structure_id", [user_id])
+	     def client = HttpClientBuilder.create().build()
+		 def url = "https://mail.zoho.com/api/organization"
+		 def post = new HttpPost(url)
+		 post.setHeader("Accept", "application/json")
+		 post.setHeader("Content-Type", "application/json")
+		 post.setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
+		 def body = new Expando()
+		 body.with {
+		     orgName = user.structure
+		     domainName = order.domain
+		     emailId = user.email
+		     firstName = user.name.substring(0,user.name.lastIndexOf(" "))
+		     lastName =  user.name.substring(user.name.lastIndexOf(" "),user.name.length())
+		 }
+         def requestEntity = new StringEntity(stringify(body))
+         post.setEntity(requestEntity);
+         /*client.execute(post)*/
+         connection.executeUpdate "update domains set email = ?, emailAccountCreated = true where id = ?", [order.email,order.id]
+	     connection.executeUpdate "update tickets set progression = 50 where service = 'mailhosting' and product_id = ?", [order.id]
 	     sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",getEmailAccountTemplate(order))
 	     connection.close()
 	     json([status: 1])
@@ -141,7 +164,7 @@ class ModuleAction extends ActionSupport {
 		  }
 		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
-		      p(" recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
+		      p("vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
 		      p("a souscrit au service mailhosting en utilisant cette adresse")
 		  }
 		  
@@ -183,7 +206,7 @@ class ModuleAction extends ActionSupport {
 		  }
 		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
-		      p(" recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
+		      p("vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
 		      p("a souscrit au service mailhosting en utilisant cette adresse")
 		  }
 		  
