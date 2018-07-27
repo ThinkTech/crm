@@ -130,7 +130,7 @@ class ModuleAction extends ActionSupport {
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Business Email : $order.email")
 		     }
-		     p("L\'email pour l\'activation de votre compte Zoho vous a &eacute;t&eacute; envoy&eacute; et la configuration de votre business email est maintenant termin&eacute;e. une fois que vous aurez activ&eacute; votre compte email, cliquer sur le bouton Connecter en bas pour consulter votre nouvelle messagerie ou vous pouvez tout aussi choisir d\'installer l\'application native Zoho mail sur votre smartphone en la t&eacute;l&eacute;chargeant sur Play store ou sur App store.")
+		     p("l\'email pour l\'activation de votre compte Zoho vous a &eacute;t&eacute; envoy&eacute; et la configuration de votre business email est maintenant termin&eacute;e. une fois que vous aurez activ&eacute; votre compte email, cliquer sur le bouton Connecter en bas pour consulter votre nouvelle messagerie ou vous pouvez tout aussi choisir d\'installer l\'application native Zoho mail sur votre smartphone en la t&eacute;l&eacute;chargeant sur Play store ou sur App store.")
 
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
