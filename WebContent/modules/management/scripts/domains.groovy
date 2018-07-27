@@ -67,9 +67,11 @@ class ModuleAction extends ActionSupport {
 	     def index = user.name.lastIndexOf(" ")
 	     def client = HttpClientBuilder.create().build()
 		 def post = new HttpPost("https://mail.zoho.com/api/organization")
-		 post.setHeader("Accept", "application/json")
-		 post.setHeader("Content-Type", "application/json")
-		 post.setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
+		 post.with {
+		    setHeader("Accept", "application/json")
+		    setHeader("Content-Type", "application/json")
+		    setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
+		 }
 		 def body = new Expando()
 		 body.with {
 		     orgName = user.structure
