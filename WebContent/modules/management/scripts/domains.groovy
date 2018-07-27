@@ -80,7 +80,12 @@ class ModuleAction extends ActionSupport {
 		 }
          def requestEntity = new StringEntity(stringify(body))
          post.setEntity(requestEntity);
-         /*client.execute(post)*/
+         /* def response = client.execute(post)
+            def code = response.statusLine.statusCode
+            if(code == 200){
+                        
+            }
+          */
          connection.executeUpdate "update domains set email = ?, emailAccountCreated = true where id = ?", [order.email,order.id]
 	     connection.executeUpdate "update tickets set progression = 50 where service = 'mailhosting' and product_id = ?", [order.id]
 	     sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",getEmailAccountTemplate(order))
