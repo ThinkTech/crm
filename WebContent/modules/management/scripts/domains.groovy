@@ -103,7 +103,7 @@ class ModuleAction extends ActionSupport {
 		        span("Enregistrement du domaine web termin&eacute;")
 		      }
 		    }
-		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
+		    div(style : "width:90%;margin:auto;margin-top : 20px;margin-bottom:30px") {
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Domaine : $domain.name")
 		     }
@@ -147,7 +147,7 @@ class ModuleAction extends ActionSupport {
 		        span("Configuration business email termin&eacute;e")
 		      }
 		    }
-		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
+		    div(style : "width:90%;margin:auto;margin-top : 20px;margin-bottom:30px") {
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Plan : $order.plan")
 		     }
@@ -189,7 +189,7 @@ class ModuleAction extends ActionSupport {
 		        span("Cr&eacute;ation compte email en cours")
 		      }
 		    }
-		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
+		    div(style : "width:90%;margin:auto;margin-top : 20px;margin-bottom:30px") {
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Plan : $order.plan")
 		     }
