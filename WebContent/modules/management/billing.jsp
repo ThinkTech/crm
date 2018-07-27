@@ -53,7 +53,7 @@
                                   <thead>
                                     <tr class="clr-block-6">
                                       <th></th>
-                                      <th>Frais</th>
+                                      <th>Facture</th>
                                       <th>Service</th>
                                       <th>Structure</th>
                                       <th>Date</th>  
