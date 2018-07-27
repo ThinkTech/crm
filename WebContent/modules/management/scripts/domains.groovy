@@ -70,15 +70,15 @@ class ModuleAction extends ActionSupport {
 		 post.setHeader("Content-Type", "application/json")
 		 post.setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
 		 def body = new Expando()
+		 def index = user.name.lastIndexOf(" ")
 		 body.with {
 		     orgName = user.structure
 		     domainName = order.domain
 		     emailId = user.email
-		     firstName = user.name.substring(0,user.name.lastIndexOf(" "))
-		     lastName =  user.name.substring(user.name.lastIndexOf(" "),user.name.length())
+		     firstName = user.name.substring(0,index)
+		     lastName =  user.name.substring(index,user.name.length())
 		 }
-         def requestEntity = new StringEntity(stringify(body))
-         post.setEntity(requestEntity);
+         post.setEntity(new StringEntity(stringify(body)));
          /* def response = client.execute(post)
             def code = response.statusLine.statusCode
             if(code == 200){
