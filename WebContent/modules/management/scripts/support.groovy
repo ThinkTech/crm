@@ -16,7 +16,7 @@ class ModuleAction extends ActionSupport {
 	def getTicketInfo() {
 	   def id = getParameter("id")
 	   def connection = getConnection()
-	   def ticket = connection.firstRow("select t.*, u.name as author from tickets t,users u where t.id = ? and t.user_id = u.id", [id])
+	   def ticket = connection.firstRow("select t.*, u.email,u.name as author from tickets t,users u where t.id = ? and t.user_id = u.id", [id])
 	   ticket.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.date)
 	   if(ticket.status == "in progress" || ticket.status == "finished"){
 	     ticket.startedOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.startedOn)                                                      
