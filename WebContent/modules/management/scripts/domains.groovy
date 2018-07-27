@@ -65,8 +65,7 @@ class ModuleAction extends ActionSupport {
 	     def user_id = connection.firstRow("select user_id from domains where id = ?", [order.id]).user_id
 	     def user = connection.firstRow("select u.*, s.name as structure from users u, structures s where u.id = ? and s.id = u.structure_id", [user_id])
 	     def client = HttpClientBuilder.create().build()
-		 def url = "https://mail.zoho.com/api/organization"
-		 def post = new HttpPost(url)
+		 def post = new HttpPost("https://mail.zoho.com/api/organization")
 		 post.setHeader("Accept", "application/json")
 		 post.setHeader("Content-Type", "application/json")
 		 post.setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
