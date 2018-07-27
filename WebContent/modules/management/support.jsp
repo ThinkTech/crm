@@ -104,7 +104,7 @@
 		  <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Details Du Ticket</h1>
 		<fieldset>
 		    <span class="text-right"><i class="fa fa-commenting" aria-hidden="true"></i> Sujet </span> <span>{subject|s}</span>
-		     <span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
+		     <span class="text-right"><i class="fa fa-cog" aria-hidden="true"></i> Service </span> <span>{service}</span>
 		    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>{author}</span>
 		    <span class="text-right"><i class="fa fa-envelope" aria-hidden="true"></i> Email </span> <span>{email}</span>
 		    <span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création </span> <span>{date}</span>
