@@ -64,21 +64,21 @@ class ModuleAction extends ActionSupport {
 	     def connection = getConnection()
 	     def user_id = connection.firstRow("select user_id from domains where id = ?", [order.id]).user_id
 	     def user = connection.firstRow("select u.*, s.name as structure from users u, structures s where u.id = ? and s.id = u.structure_id", [user_id])
+	     def index = user.name.lastIndexOf(" ")
 	     def client = HttpClientBuilder.create().build()
 		 def post = new HttpPost("https://mail.zoho.com/api/organization")
 		 post.setHeader("Accept", "application/json")
 		 post.setHeader("Content-Type", "application/json")
 		 post.setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
 		 def body = new Expando()
-		 def index = user.name.lastIndexOf(" ")
 		 body.with {
 		     orgName = user.structure
 		     domainName = order.domain
 		     emailId = user.email
 		     firstName = user.name.substring(0,index)
-		     lastName =  user.name.substring(index,user.name.length())
+		     lastName =  user.name.substring(index+1,user.name.length())
 		 }
-         post.setEntity(new StringEntity(stringify(body)));
+		 post.setEntity(new StringEntity(stringify(body)));
          /* def response = client.execute(post)
             def code = response.statusLine.statusCode
             if(code == 200){
