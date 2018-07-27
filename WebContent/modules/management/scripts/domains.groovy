@@ -22,7 +22,7 @@ class ModuleAction extends ActionSupport {
     def getDomainInfo() {
        def id = getParameter("id")
 	   def connection = getConnection()
-	   def domain = connection.firstRow("select d.*,u.name as author from domains d, users u where d.id = ? and d.user_id = u.id", [id])
+	   def domain = connection.firstRow("select d.*,u.email as authorEmail,u.name as author from domains d, users u where d.id = ? and d.user_id = u.id", [id])
 	   domain.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(domain.date)
 	   domain.action = domain.action ? "Transfert" : "Achat"
 	   domain.eppCode = domain.eppCode ? domain.eppCode : "&nbsp;"
