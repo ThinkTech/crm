@@ -161,7 +161,7 @@ class ModuleAction extends ActionSupport {
 		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
 		    div(style : "margin-top:10px;padding-bottom:2%;padding-top:2%;text-align:center;background:#05d2ff") {
 		      h4(style : "font-size: 120%;color: #fff;margin: 3px") {
-		        span("Votre projet est maintenant termin&eacute;")
+		        span("votre projet est maintenant termin&eacute;")
 		      }
 		    }
 		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
