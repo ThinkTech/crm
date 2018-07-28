@@ -136,7 +136,7 @@ class ModuleAction extends ActionSupport {
 	   user.active = user.activated ? "oui" : "non"
 	   user.locked = user.locked ? "oui" : "non"
 	   connection.close()
-	   json([entity : user])
+	   json(user)
 	}
 	
 	def lockAccount(){
@@ -188,7 +188,7 @@ class ModuleAction extends ActionSupport {
 		  }
 		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 11px;text-align:center") {
-		      p("Vous recevez cet email parce que vous (ou quelqu'un utilisant cet email)")
+		      p("Vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
 		      p("a envoy&eacute; une demande en utilisant cette adresse")
 		  }
 		  
