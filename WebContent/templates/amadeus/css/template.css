@@ -642,7 +642,7 @@ a.w3-pass {
 		font-size: 1.05em;
 	}
 	.sub-main-w3 input[type="email"], .sub-main-w3 input[type="password"] {
-		width: 87%;
+		width: 95%;
 	}
 	.sub-main-w3 input[type="password"] {
 		margin-top: 1em;
@@ -669,7 +669,7 @@ a.w3-pass {
 		font-size: 14px;
 		padding: .7em 2.5em;
 		margin-top: 22px;
-		width: 92%;
+		width: 100%;
 	}
 	span.check-w3 {
 		font-size: .8em;
