@@ -170,7 +170,7 @@ class ModuleAction extends ActionSupport {
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
 		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
-		    div(style : "margin-top:10px;padding-top:2%;height:100px;text-align:center;background:#05d2ff") {
+		    div(style : "margin-top:10px;padding-top:2%;height:100px;text-align:center;background:#3abfdd") {
 		      h4(style : "font-size: 200%;color: #fff;margin: 3px") {
 		        span("R&eacute;initialisation de votre mot de passe")
 		      }
@@ -205,7 +205,7 @@ class ModuleAction extends ActionSupport {
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
 		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
-		    div(style : "margin-top:10px;padding-top:2%;height:100px;text-align:center;background:#05d2ff") {
+		    div(style : "margin-top:10px;padding-top:2%;height:100px;text-align:center;background:#3abfdd") {
 		      h4(style : "font-size: 200%;color: #fff;margin: 3px") {
 		        span("Demande de collaboration")
 		      }
@@ -219,7 +219,7 @@ class ModuleAction extends ActionSupport {
 		      br()
 		      p("Vous pouvez le modifier en vous connectant &aacute; votre compte")
 		       div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
-		       a(href : "$url/users/registration/confirm?activationCode=$user.activationCode",style : "font-size:150%;width:180px;margin:auto;text-decoration:none;background: #05d2ff;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
+		       a(href : "$url/users/registration/confirm?activationCode=$user.activationCode",style : "font-size:150%;width:180px;margin:auto;text-decoration:none;background: #3abfdd;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
 		         span("Confirmer")
 		       }
 		     }
