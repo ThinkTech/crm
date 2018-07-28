@@ -55,7 +55,7 @@
                                       <th></th>
                                       <th>Prénom et Nom</th>
                                       <th>Structure</th>
-                                      <th>Date Création</th> 
+                                      <th>Date Souscription</th> 
                                       <th>Profession</th>                                                            
                                       <th>Email</th>
                                       <th style="width:60px">Téléphone</th>
