@@ -92,7 +92,7 @@
 		 <h1><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i>Facture du {date}</h1>
 		<fieldset>
 			<span class="text-right"><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i> Frais </span> <span>{fee|s}</span>
-			<span class="text-right"><i class="fa fa-ticket" aria-hidden="true"></i> Service </span> <span>{service}</span>
+			<span class="text-right"><i class="fa fa-cog" aria-hidden="true"></i> Service </span> <span>{service}</span>
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date </span> <span>{date}</span>
 			<span class="text-right"><i class="fa fa-${activeItem.icon}" aria-hidden="true"></i> Montant </span> <span><b class="digit">{amount}</b> CFA</span>
 			<div class="payment-info">
