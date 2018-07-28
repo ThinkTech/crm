@@ -65,7 +65,7 @@
                               <s:iterator value="#request.customers" var="customer" status="counter">
 	                                <tr id="${customer.id}">
 	                                  <td><span class="number">${counter.index+1}</span></td>
-	                                  <td>${customer.name}</td>
+	                                  <td>${customer.name} <i class="fa fa-check" aria-hidden="true" style="display : ${customer.activated ? 'inline-block' : 'none' }"></i></td>
 	                                  <td>${customer.structure}</td>
 	                                  <td><s:date name="createdOn" format="dd/MM/yyyy" /></td>                                        
 	                                  <td>${customer.profession}</td>

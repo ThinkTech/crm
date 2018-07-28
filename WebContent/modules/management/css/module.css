@@ -6,6 +6,10 @@
     color: #5cb85c;
 }
 
+.fa-check {
+	color : green;
+}
+
 .window  {
 	position : absolute;
 	width: 100%;
@@ -1133,6 +1137,7 @@ label.tree_label:before {
      .billing th:nth-child(7), .billing td:nth-child(7) {display: block;}
 	.projects th:nth-child(7), .projects td:nth-child(7) {display: block;}
     .support th:nth-child(6), .support td:nth-child(6) {display: block;}
+    .customers th:nth-child(3), .customers td:nth-child(3) {display: block;}
     table th:nth-child(8), table td:nth-child(8) { display: none;}
 }
 
