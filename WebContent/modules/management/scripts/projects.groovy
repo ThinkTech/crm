@@ -169,7 +169,7 @@ class ModuleAction extends ActionSupport {
 		         span("Description du projet")
 		     }
 		     p("$project.description")
-             p("le traitement de votre projet est maintenant termin&eacute; et nous remercions pour votre confiance et restons &agrave; votre enti&eacute;re disposition pour tout autre projet")
+             p("le traitement de votre projet est maintenant termin&eacute; et nous remercions pour votre confiance et restons &agrave; votre enti&eacute;re disposition")
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
 			    a(href : "$url/dashboard/projects",style : "font-size:130%;width:140px;margin:auto;text-decoration:none;background: #05d2ff;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {

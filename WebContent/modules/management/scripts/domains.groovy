@@ -117,7 +117,7 @@ class ModuleAction extends ActionSupport {
 		         span("Action : transfert")
 		     	}                                
 		     }
-		     p("l\'enregistrement de votre domaine web est maintenant termin&eacute;. cliquer sur le bouton Voir pour visualiser les details.")
+		     p("l\'enregistrement de votre domaine web est maintenant termin&eacute;. cliquer sur le bouton Voir pour visualiser les details. nous remercions pour votre confiance et restons &agrave; votre enti&eacute;re disposition")
 
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
@@ -159,7 +159,7 @@ class ModuleAction extends ActionSupport {
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Business Email : $order.email")
 		     }
-		     p("la configuration de votre business email est maintenant termin&eacute;e. si vous avez activ&eacute; votre compte Zoho, cliquer maintenant sur le bouton Connecter en bas pour consulter votre nouvelle messagerie via le webmail ou vous pouvez tout simplement choisir d\'installer l\'application native Zoho mail sur votre smartphone en la t&eacute;l&eacute;chargeant sur Play store ou sur App store. nous remercions pour votre confiance et restons &agrave; votre enti&eacute;re disposition.")
+		     p("la configuration de votre business email est maintenant termin&eacute;e. si vous avez activ&eacute; votre compte Zoho, cliquer maintenant sur le bouton Connecter en bas pour consulter votre nouvelle messagerie via le webmail ou vous pouvez tout simplement choisir d\'installer l\'application native Zoho mail sur votre smartphone en la t&eacute;l&eacute;chargeant sur Play store ou sur App store. nous remercions pour votre confiance et restons &agrave; votre enti&eacute;re disposition")
 
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
