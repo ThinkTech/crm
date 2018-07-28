@@ -5,6 +5,18 @@
 </div>
 <!--info updates updates-->
 	 <div class="info-updates">
+	        <div class="col-md-4 info-update-gd">
+				<div class="info-update-block clr-block-3">
+					<div class="col-md-8 info-update-left">
+						<h3 class="unpayed">${domains_count}</h3>
+						<h4>domaines non enregistrés</h4>
+					</div>
+					<div class="col-md-4 info-update-right">
+						<i class="fa fa-globe"> </i>
+					</div>
+				  <div class="clearfix"> </div>
+				</div>
+			</div>
 			<div class="col-md-4 info-update-gd">
 				<div class="info-update-block clr-block-4">
 					<div class="col-md-8 info-update-left">
@@ -25,18 +37,6 @@
 					</div>
 					<div class="col-md-4 info-update-right">
 						<i class="fa fa-question-circle-o"></i>
-					</div>
-				  <div class="clearfix"> </div>
-				</div>
-			</div>
-			<div class="col-md-4 info-update-gd">
-				<div class="info-update-block clr-block-6">
-					<div class="col-md-8 info-update-left">
-						<h3 class="unpayed">${bills_count}</h3>
-						<h4>factures impayées</h4>
-					</div>
-					<div class="col-md-4 info-update-right">
-						<i class="fa fa-money"> </i>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
