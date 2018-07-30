@@ -78,7 +78,7 @@ class ModuleAction extends ActionSupport {
 	     def project = connection.firstRow("select * from projects  where id = ?", [task.project_id])
 	     def user = connection.firstRow("select name,email from users  where id = ?", [project.user_id])
 	     if(project.status == "finished"){
-	       sendMail(user.name,user.email,"Projet : ${project.subject} termin&eacute;",getProjectTemplate(project))                     
+	       sendMail(user.name,user.email,"${project.subject} termin&eacute;e",getProjectTemplate(project))                     
 	     }else{
 	         sendMail(user.name,user.email,"Projet : ${project.subject}",getTaskClosedTemplate(task)) 
 	     }
