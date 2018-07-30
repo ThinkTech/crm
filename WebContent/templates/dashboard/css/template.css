@@ -20,11 +20,11 @@ a {
   color: #08ccf7;
 }
 a:hover {
-  transition: 0.5s all;
   text-decoration:none;
 }
 a:focus {
     outline: none;
+    text-decoration:none;
 }
 ::placeholder {
 	color : #502626;
