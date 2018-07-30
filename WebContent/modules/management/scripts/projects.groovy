@@ -263,7 +263,7 @@ class ModuleAction extends ActionSupport {
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-bottom: 0px") {
 		         span("T&agrave;che : $task.name")
 		     }
-		     h5(style : "font-size: 85%;color: rgb(0, 0, 0);margin-top:2px;margin-bottom: 0px") {
+		     h5(style : "font-size: 85%;font-weight:normal;color: rgb(0, 0, 0);margin-top:2px;margin-bottom: 0px") {
 		         span("$task.description")
 		     }
 		     p("$task.info")
