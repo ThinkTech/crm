@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 						}else{
 							$(".start-task",li).hide();
 						}
-						if(project.tasks[i].status == "in progress" || project.tasks[i].status == "finished" && project.status == "in progress"){
+						if(project.tasks[i].status == "in progress" && project.status == "in progress"){
 							$(".task-info-edit",li).show();
 						}else{
 							$(".task-info-edit",li).hide();
@@ -158,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 									  $("span[data-status]",li).hide();
 									  $("span[data-status='"+task.status+"']",li).show();
 									  $(".task-info-edition",li).hide();
+									  $(".task-info-edit",li).hide();
 									  project.progression = 0; 
 									  for(var j = 0; j<project.tasks.length;j++){
 										if(project.tasks[j].status =="finished"){
