@@ -230,7 +230,7 @@ class ModuleAction extends ActionSupport {
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-bottom: 0px") {
 		         span("T&agrave;che : $task.name")
 		     }
-		     h5(style : "font-size: 85%;color: rgb(0, 0, 0);margin-top:2px;margin-bottom: 0px") {
+		     h5(style : "font-size: 85%;font-weight:normal;color: rgb(0, 0, 0);margin-top:2px;margin-bottom: 0px") {
 		         span("$task.description")
 		     }
 		     p("cette t&agrave;che est en cours de traitement par notre &eacute;quipe de d&eacute;veloppement et nous vous contacterons au besoin pour des informations compl&eacute;mentaires.")
