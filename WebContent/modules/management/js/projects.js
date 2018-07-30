@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 									  $("span[data-status]",li).hide();
 									  $("span[data-status='"+task.status+"']",li).show();
 									  $(".task-info-edition",li).hide();
-									  $(".task-info-edit",li).hide();
+									  if(task.status == "finished")$(".task-info-edit",li).hide();
 									  project.progression = 0; 
 									  for(var j = 0; j<project.tasks.length;j++){
 										if(project.tasks[j].status =="finished"){
