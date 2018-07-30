@@ -117,7 +117,7 @@ class ModuleAction extends ActionSupport {
 		         span("Action : transfert")
 		     	}                                
 		     }
-		     p("l\'enregistrement de votre domaine web est maintenant termin&eacute;. cliquer sur le bouton Voir pour visualiser les details et vous pourrez l\'administrer en cliquant sur le lien manage une fois que votre compte sera activ&eacute;. nous vous remercions pour votre confiance et restons &agrave; votre enti&eacute;re disposition")
+		     p("l\'enregistrement de votre domaine web est maintenant termin&eacute;. cliquer sur le bouton Voir pour visualiser les details et vous pourrez l\'administrer en cliquant sur le lien manage une fois que votre compte ResellersPanel sera activ&eacute;. nous vous remercions pour votre confiance et restons &agrave; votre enti&eacute;re disposition")
 
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
