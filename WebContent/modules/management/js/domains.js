@@ -14,10 +14,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 		$(".businessEmail .info",container).hide();
 		$(".businessEmail input[name=email]",container).attr("disabled","disabled");
+		$(".businessEmail .domain-manage",container).hide();
 		if(domain.emailOn && domain.status == "finished"){
 			$(".businessEmail",container).show();
 			$(".businessEmail input[type=radio]",container).val([domain.plan]);
 			$(".businessEmail input[name=email]",container).val(domain.email);
+			$(".businessEmail .domain-manage",container).show();
 		}else{
 			$(".businessEmail",container).hide();
 		}
@@ -32,14 +34,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				$(".businessEmail .buttons a",container).hide();
 				$(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
 				$(".businessEmail .info-payment",container).show();
+				$(".businessEmail .domain-manage",container).hide();
 			}else if(domain.billStatus == "finished"){
 				if(domain.emailAccountCreated){
 					$(".businessEmail a.create",container).hide();
 					$(".businessEmail input[name=email]",container).attr("disabled","disabled");
 					$(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
+					$(".businessEmail .domain-manage",container).show();
 				}else{
 					$(".businessEmail a.activate",container).hide();
 					$(".businessEmail input[name=email]",container).removeAttr("disabled");
+					$(".businessEmail .domain-manage",container).hide();
 				}
 				$(".businessEmail a.create",container).click(function(){
 					const button = $(this);
@@ -67,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 								 $(".businessEmail input[name=email]",container).attr("disabled","disabled");
 								 $(".businessEmail input[name=email]",container).val(order.email+"@"+domain.name);
 								 $(".businessEmail .buttons a.create",container).hide();
+								 $(".businessEmail .domain-manage",container).show();
 								 $(".businessEmail .buttons a.activate",container).show();
 								 const tr = $(".table tr[id="+domain.id+"]");
 								 $(".fa-envelope",tr).addClass("stand-by").show();

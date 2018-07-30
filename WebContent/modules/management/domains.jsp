@@ -146,6 +146,7 @@
 			    <label for="enterprise">Plan Enterprise</label>
 			    <div>
 			     <i class="fa fa-user" aria-hidden="true"></i> <input type="text" placeholder="super administrateur" name="email" maxlength="200"/>
+			     <a class="domain-manage" href="https://mailadmin.zoho.com/cpanel/index.do#managecustomers" target="_blank">Manage</a>
 			    </div>
 			    <div class="buttons">
 			     <a class="create" href="${url}/domains/createMailAccount">Créér Compte</a>

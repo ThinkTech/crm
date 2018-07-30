@@ -201,7 +201,7 @@ class ModuleAction extends ActionSupport {
 		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
 		         span("Business Email : $order.email@$order.domain")
 		     }
-		     p("l\'email pour l\'activation de votre compte Zoho vous a &eacute;t&eacute; envoy&eacute; et vous pouvez maintenant choisir votre mot de passe. Par mesure de s&eacute;curit&eacute;, vous devez aussi associer votre num&eacute;ro de t&eacute;l&eacute;phone &agrave; ce compte et le v&eacute;rifier pour continuer. si vous ne l\'avez pas re&ccedil;u, veuillez nous le faire savoir en ajoutant un commentaire au ticket correspondant.")
+		     p("l\'email pour l\'activation de votre compte Zoho vous a &eacute;t&eacute; envoy&eacute; et vous pouvez maintenant choisir votre mot de passe. Par mesure de s&eacute;curit&eacute;, vous devez aussi associer votre num&eacute;ro de t&eacute;l&eacute;phone &agrave; ce compte et le v&eacute;rifier. si vous ne l\'avez pas re&ccedil;u, veuillez nous le faire savoir en ajoutant un commentaire au ticket correspondant.")
 
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
