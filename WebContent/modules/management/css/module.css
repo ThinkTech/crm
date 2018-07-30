@@ -860,7 +860,7 @@ legend a i.fa {
     width: 250px!important;
     margin: 3px;
     margin-left: 10px;
-    margin-top: 5px;
+    margin-top: 10px;
     display: inline-block;
     font-size: 13px;
     vertical-align: top!important;
@@ -869,7 +869,7 @@ legend a i.fa {
 .businessEmail .fa-user {
 	position : relative;
 	left : 10px;
-	top : 9px;
+	top : 2px;
 }
 
 .businessEmail a {
