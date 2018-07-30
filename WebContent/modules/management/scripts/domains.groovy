@@ -102,7 +102,7 @@ class ModuleAction extends ActionSupport {
 		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
 		    div(style : "margin-top:10px;padding-bottom:2%;padding-top:2%;text-align:center;background:#3abfdd") {
 		      h4(style : "font-size: 120%;color: #fff;margin: 3px") {
-		        span("Enregistrement du domaine web termin&eacute;")
+		        span("Enregistrement domaine web termin&eacute;")
 		      }
 		    }
 		    div(style : "width:90%;margin:auto;margin-top : 20px;margin-bottom:30px") {
@@ -146,7 +146,7 @@ class ModuleAction extends ActionSupport {
 		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
 		    div(style : "margin-top:10px;padding-bottom:2%;padding-top:2%;text-align:center;background:#3abfdd") {
 		      h4(style : "font-size: 120%;color: #fff;margin: 3px") {
-		        span("Configuration business email termin&eacute;e")
+		        span("Configuration email termin&eacute;e")
 		      }
 		    }
 		    div(style : "width:90%;margin:auto;margin-top : 20px;margin-bottom:30px") {
