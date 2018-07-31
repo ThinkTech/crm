@@ -882,10 +882,10 @@ legend a i.fa {
     cursor: pointer;
     outline: none;
     padding: 7px;
-    width: 100px;
+    width: 120px;
     text-align: center;
     position: relative;
-    top: -3px;
+    top: -4px;
     margin-left: 10px;
     background: #3abfdd;
     border-radius: 0.3em;
