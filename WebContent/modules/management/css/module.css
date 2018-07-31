@@ -860,17 +860,20 @@ legend a i.fa {
     width: 250px!important;
     margin: 3px;
     margin-left: 10px;
-    margin-top: 10px;
+    position : relative;
+    top: -2px;
     display: inline-block;
     font-size: 13px;
     vertical-align: top!important;
 }
 
 .businessEmail .fa-user {
-	position : relative;
-	left : 10px;
-	top : 2px;
+	position: relative;
+    left: 10px;
+    top: 5px;
+    vertical-align: super;
 }
+
 
 .businessEmail a {
 	display: inline-block;
@@ -879,17 +882,18 @@ legend a i.fa {
     cursor: pointer;
     outline: none;
     padding: 7px;
-    min-width: 120px;
+    width: 100px;
     text-align: center;
-    margin-top: 4px;
-    margin-left: 20px;
+    position: relative;
+    top: -3px;
+    margin-left: 10px;
     background: #3abfdd;
     border-radius: 0.3em;
     text-transform: uppercase;
-    font-size: 12px!important;
-    margin-bottom : 5px;
+    font-size: 12px;
     border: 1px solid #3abfdd;
 }
+
 
 .businessEmail a[disabled] {
 	background : #ddd;
