@@ -1157,7 +1157,7 @@ label.tree_label:before {
        font-size: 12px;
        padding-left: 2px!important;
 	}
-	.window>div input[type=file] {margin-left: -3px;}
+	.window>div input[type=file] {margin-left: -3px;width : 100.5%}
 	.window > div textarea { 
 		height : 110px;
 		font-size: 12px;
