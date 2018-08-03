@@ -146,11 +146,11 @@
 			    <label for="enterprise">Plan Enterprise</label>
 			    <div>
 			     <i class="fa fa-user" aria-hidden="true"></i> <input type="text" placeholder="super administrateur" name="email" maxlength="200"/>
-			      <a class="domain-manage" href="https://mailadmin.zoho.com/cpanel/index.do#managecustomers" target="_blank">Manage</a>
 			     <div class="buttons" style="display:inline-block;padding-left:0px;top:0px">
 			     <a class="create" href="${url}/domains/createMailAccount">Créér Compte</a>
 			     <a class="activate" href="${url}/domains/activateMailOffer">Activer</a>
 			    </div>
+			    <a class="domain-manage" href="https://mailadmin.zoho.com/cpanel/index.do#managecustomers" target="_blank">Manage</a>
 			    </div>
 			    <div>
 			      <span class="info info-payment">la configuration du business email est en attente et le client doit d'abord s'acquiter de toutes ses factures.</span>
