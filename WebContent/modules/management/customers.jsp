@@ -21,7 +21,7 @@
 				<div class="info-update-block clr-block-6">
 					<div class="col-md-8 info-update-left">
 						<h3 class="active">${active}</h3>
-						<h4>clients actifs</h4>
+						<h4>comptes actifs</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
 						<i class="fa fa-${activeItem.icon}"> </i>
@@ -33,7 +33,7 @@
 				<div class="info-update-block clr-block-2">
 					<div class="col-md-8 info-update-left">
 						<h3 class="active">${unactive}</h3>
-						<h4>clients inactifs</h4>
+						<h4>comptes inactifs</h4>
 					</div>
 					<div class="col-md-4 info-update-right">
 						<i class="fa fa-${activeItem.icon}"> </i>
