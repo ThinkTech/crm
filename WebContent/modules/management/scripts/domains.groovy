@@ -88,8 +88,6 @@ class ModuleAction extends ActionSupport {
             sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",getDomainTemplate(order))
            }
 	       else{         
-			println "error"
-			println EntityUtils.toString(response.getEntity())   
 			status = 0
 			message = "erreur lors de l'ajout du domaine"                  
            }
