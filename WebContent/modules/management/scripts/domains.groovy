@@ -127,7 +127,6 @@ class ModuleAction extends ActionSupport {
              status = 0
              message = "erreur lors de la cr&eacute;ation de la structure"
          }
-
 		 }
 		 if(status){
 		   connection.executeUpdate "update domains set email = ?, emailAccountCreated = true where id = ?", [order.email,order.id]
@@ -139,7 +138,6 @@ class ModuleAction extends ActionSupport {
 	     }else{
 	        json([message: message])
 	     }
-
 	 }
 	
 	 def getRegistrationTemplate(domain) {
