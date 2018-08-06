@@ -130,7 +130,6 @@ class ModuleAction extends ActionSupport {
 
 		 }
 		 if(status){
-		   println "update"
 		   connection.executeUpdate "update domains set email = ?, emailAccountCreated = true where id = ?", [order.email,order.id]
 	       connection.executeUpdate "update tickets set progression = 50 where service = 'mailhosting' and product_id = ?", [order.id] 
 		 }
