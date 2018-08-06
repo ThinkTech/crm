@@ -2,7 +2,9 @@ import org.apache.http.HttpResponse
 import org.apache.http.client.HttpClient
 import org.apache.http.impl.client.HttpClientBuilder
 import org.apache.http.client.methods.HttpPost
+import org.apache.http.client.methods.HttpGet
 import org.apache.http.entity.StringEntity
+import org.apache.http.util.EntityUtils
 
 class ModuleAction extends ActionSupport {
 
@@ -64,15 +66,39 @@ class ModuleAction extends ActionSupport {
 	     def connection = getConnection()
 	     def user_id = connection.firstRow("select user_id from domains where id = ?", [order.id]).user_id
 	     def user = connection.firstRow("select u.*, s.name as structure from users u, structures s where u.id = ? and s.id = u.structure_id", [user_id])
-	     def index = user.name.lastIndexOf(" ")
+	     def status = 1
 	     def client = HttpClientBuilder.create().build()
+		 def body = new Expando()
+	     def info = connection.firstRow("select zoid from structures_infos where id = ?", [user.structure_id])
+	     if(info){
+	       def post = new HttpPost("https://mail.zoho.com/api/organization/$info.zoid/domains")
+		   post.with {
+			 setHeader("Accept", "application/json")
+			 setHeader("Content-Type", "application/json")
+			 setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
+		   }
+	       body.with {
+		     domainName = order.domain
+		   }
+		   post.setEntity(new StringEntity(stringify(body)))
+		   def response = client.execute(post)
+		   def code = response.statusLine.statusCode
+           if(code == 200){
+            sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",getDomainTemplate(order))
+           }
+	       else{         
+			println "error"
+			println EntityUtils.toString(response.getEntity())   
+			status = 0                  
+           }
+		}else{  
+		 def index = user.name.lastIndexOf(" ")
 		 def post = new HttpPost("https://mail.zoho.com/api/organization")
 		 post.with {
-		    setHeader("Accept", "application/json")
-		    setHeader("Content-Type", "application/json")
-		    setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
+		   setHeader("Accept", "application/json")
+		   setHeader("Content-Type", "application/json")
+		   setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
 		 }
-		 def body = new Expando()
 		 body.with {
 		     orgName = user.structure
 		     domainName = order.domain
@@ -80,19 +106,36 @@ class ModuleAction extends ActionSupport {
 		     firstName = user.name.substring(0,index)
 		     lastName =  user.name.substring(index+1,user.name.length())
 		 }
-		 post.setEntity(new StringEntity(stringify(body)));
-         /* def response = client.execute(post)
-            def code = response.statusLine.statusCode
-            if(code == 200){
-                        
-            }
-          */
-         connection.executeUpdate "update domains set email = ?, emailAccountCreated = true where id = ?", [order.email,order.id]
-	     connection.executeUpdate "update tickets set progression = 50 where service = 'mailhosting' and product_id = ?", [order.id]
-	     sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",getEmailAccountTemplate(order))
+		 post.setEntity(new StringEntity(stringify(body)))
+		 def response = client.execute(post)
+         def code = response.statusLine.statusCode
+         if(code == 200){
+            def get = new HttpGet("https://mail.zoho.com/api/organization?mode=getCustomerOrgDetails")
+		    get.setHeader("Accept", "application/json")
+		    get.setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
+            response = client.execute(get)
+            def structures = parse(response.entity.content).data
+            structures.each {
+              if(order.domain == it.domainName){
+                def params = [user.structure_id,it.zoid]
+       			connection.executeInsert 'insert into structures_infos(id,zoid) values (?,?)', params         
+              }
+            }  
+            sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",getEmailAccountTemplate(order))
+         }
+         else {
+             status = 0
+         }
+
+		 }
+		 if(status){
+		   println "update"
+		   connection.executeUpdate "update domains set email = ?, emailAccountCreated = true where id = ?", [order.email,order.id]
+	       connection.executeUpdate "update tickets set progression = 50 where service = 'mailhosting' and product_id = ?", [order.id] 
+		 }
 	     connection.close()
-	     json([status: 1])
-	}
+	     json([status: status])
+	 }
 	
 	 def getRegistrationTemplate(domain) {
 		MarkupTemplateEngine engine = new MarkupTemplateEngine()
@@ -202,6 +245,49 @@ class ModuleAction extends ActionSupport {
 		         span("Business Email : $order.email@$order.domain")
 		     }
 		     p("l\'email pour l\'activation de votre compte Zoho vous a &eacute;t&eacute; envoy&eacute; et vous pouvez maintenant choisir votre mot de passe. Par mesure de s&eacute;curit&eacute;, vous devez aussi associer votre num&eacute;ro de t&eacute;l&eacute;phone &agrave; ce compte et le v&eacute;rifier. si vous ne l\'avez pas re&ccedil;u ou ne le recevez pas dans les minutes qui suivent, veuillez nous le faire savoir en ajoutant un commentaire au ticket correspondant.")
+
+		    }
+		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
+			    a(href : "$url/dashboard/support",style : "font-size:130%;width:140px;margin:auto;text-decoration:none;background: #3abfdd;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
+			        span("Commenter")
+			    }
+			}
+		  }
+		  
+		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
+		      p("vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
+		      p("a souscrit au service mailhosting en utilisant cette adresse")
+		  }
+		  
+		 }
+		'''
+		def template = engine.createTemplate(text).make([order:order,url : "https://app.thinktech.sn"])
+		template.toString()
+	}
+	
+	
+	def getDomainTemplate(order) {
+		MarkupTemplateEngine engine = new MarkupTemplateEngine()
+		def text = '''\
+		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
+		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
+		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
+		    div(style : "margin-top:10px;padding-bottom:2%;padding-top:2%;text-align:center;background:#3abfdd") {
+		      h4(style : "font-size: 120%;color: #fff;margin: 3px") {
+		        span("Cr&eacute;ation compte email en cours")
+		      }
+		    }
+		    div(style : "width:90%;margin:auto;margin-top : 20px;margin-bottom:30px") {
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
+		         span("Plan : $order.plan")
+		     }
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
+		         span("Domaine : $order.domain")
+		     }
+		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-top:5px;margin-bottom: 0px") {
+		         span("Business Email : $order.email@$order.domain")
+		     }
+		     p("le domaine a &eacute;t&eacute; bien ajout&eacute; aux domaines de votre structure et la cr&eacute;ation de votre business email pour ce domaine en cours.")
 
 		    }
 		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {

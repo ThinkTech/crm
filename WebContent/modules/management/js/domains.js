@@ -36,14 +36,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				$(".businessEmail .info-payment",container).show();
 				$(".businessEmail .domain-manage",container).hide();
 			}else if(domain.billStatus == "finished"){
-				$(".businessEmail .domain-manage",container).show();
 				if(domain.emailAccountCreated){
 					$(".businessEmail a.create",container).hide();
 					$(".businessEmail input[name=email]",container).attr("disabled","disabled");
 					$(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
+					$(".businessEmail .domain-manage",container).show();
 				}else{
 					$(".businessEmail a.activate",container).hide();
 					$(".businessEmail input[name=email]",container).removeAttr("disabled");
+					$(".businessEmail .domain-manage",container).hide();
 				}
 				$(".businessEmail a.create",container).click(function(){
 					const button = $(this);
@@ -67,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 						 }
 						 page.wait();
 						 app.post(url,order,function(response){
-							 if(response.status){
+							if(response.status){
 								 $(".businessEmail input[name=email]",container).attr("disabled","disabled");
 								 $(".businessEmail input[name=email]",container).val(order.email+"@"+domain.name);
 								 $(".businessEmail .buttons a.create",container).hide();
@@ -75,7 +76,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 								 $(".businessEmail .buttons a.activate",container).show();
 								 const tr = $(".table tr[id="+domain.id+"]");
 								 $(".fa-envelope",tr).addClass("stand-by").show();
-							  }
+							 }
+							else{
+								alert("erreur lors de la cr&eacute;ation du compte email");
+							}
 						 });
 				  	 });
 					 return false;
