@@ -112,8 +112,7 @@ class ModuleAction extends ActionSupport {
             def structures = parse(response.entity.content).data
             structures.find {
              if(order.domain == it.domainName){
-                def params = [user.structure_id,it.zoid]
-       			connection.executeInsert 'insert into structures_infos(id,zoid) values (?,?)', params  
+                connection.executeInsert 'insert into structures_infos(id,zoid) values (?,?)', [user.structure_id,it.zoid]  
        			return true     
               }
               return false
