@@ -82,8 +82,7 @@ class ModuleAction extends ActionSupport {
 		   }
 		   post.setEntity(new StringEntity(stringify(body)))
 		   def response = client.execute(post)
-		   def code = response.statusLine.statusCode
-           if(code == 200){
+		   if(response.statusLine.statusCode == 200){
             sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",getDomainTemplate(order))
            }
 	       else{         
@@ -107,19 +106,20 @@ class ModuleAction extends ActionSupport {
 		 }
 		 post.setEntity(new StringEntity(stringify(body)))
 		 def response = client.execute(post)
-         def code = response.statusLine.statusCode
-         if(code == 200){
+         if(response.statusLine.statusCode == 200){
             def get = new HttpGet("https://mail.zoho.com/api/organization?mode=getCustomerOrgDetails")
 		    get.setHeader("Accept", "application/json")
 		    get.setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
             response = client.execute(get)
             def structures = parse(response.entity.content).data
-            structures.each {
-              if(order.domain == it.domainName){
+            structures.find {
+             if(order.domain == it.domainName){
                 def params = [user.structure_id,it.zoid]
-       			connection.executeInsert 'insert into structures_infos(id,zoid) values (?,?)', params         
+       			connection.executeInsert 'insert into structures_infos(id,zoid) values (?,?)', params  
+       			return true     
               }
-            }  
+              return false
+            }   
             sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",getEmailAccountTemplate(order))
          }
          else {
