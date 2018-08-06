@@ -36,14 +36,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				$(".businessEmail .info-payment",container).show();
 				$(".businessEmail .domain-manage",container).hide();
 			}else if(domain.billStatus == "finished"){
-				$(".businessEmail .domain-manage",container).show();
 				if(domain.emailAccountCreated){
 					$(".businessEmail a.create",container).hide();
 					$(".businessEmail input[name=email]",container).attr("disabled","disabled");
 					$(".businessEmail input[name=email]",container).val(domain.email+"@"+domain.name);
+					$(".businessEmail .domain-manage",container).show();
 				}else{
 					$(".businessEmail a.activate",container).hide();
 					$(".businessEmail input[name=email]",container).removeAttr("disabled");
+					$(".businessEmail .domain-manage",container).hide();
 				}
 				$(".businessEmail a.create",container).click(function(){
 					const button = $(this);
@@ -78,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 							 }
 							else{
 								alert(response.message);
+								$(".businessEmail .domain-manage",container).show();
 							}
 						 });
 				  	 });
