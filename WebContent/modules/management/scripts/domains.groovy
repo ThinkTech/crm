@@ -67,6 +67,7 @@ class ModuleAction extends ActionSupport {
 	     def user_id = connection.firstRow("select user_id from domains where id = ?", [order.id]).user_id
 	     def user = connection.firstRow("select u.*, s.name as structure from users u, structures s where u.id = ? and s.id = u.structure_id", [user_id])
 	     def status = 1
+	     def message
 	     def client = HttpClientBuilder.create().build()
 		 def body = new Expando()
 	     def info = connection.firstRow("select zoid from structures_infos where id = ?", [user.structure_id])
@@ -89,7 +90,8 @@ class ModuleAction extends ActionSupport {
 	       else{         
 			println "error"
 			println EntityUtils.toString(response.getEntity())   
-			status = 0                  
+			status = 0
+			message = "erreur lors de l'ajout du domaine"                  
            }
 		}else{  
 		 def index = user.name.lastIndexOf(" ")
@@ -125,6 +127,7 @@ class ModuleAction extends ActionSupport {
          }
          else {
              status = 0
+             message = "erreur lors de la cr&eacute;ation de la structure"
          }
 
 		 }
@@ -134,7 +137,12 @@ class ModuleAction extends ActionSupport {
 	       connection.executeUpdate "update tickets set progression = 50 where service = 'mailhosting' and product_id = ?", [order.id] 
 		 }
 	     connection.close()
-	     json([status: status])
+	     if(status){
+	        json([status: status]) 
+	     }else{
+	        json([message: message])
+	     }
+
 	 }
 	
 	 def getRegistrationTemplate(domain) {
