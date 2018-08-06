@@ -77,9 +77,7 @@ class ModuleAction extends ActionSupport {
 			 setHeader("Content-Type", "application/json")
 			 setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
 		   }
-	       body.with {
-		     domainName = order.domain
-		   }
+	       body.domainName = order.domain
 		   post.setEntity(new StringEntity(stringify(body)))
 		   def response = client.execute(post)
 		   if(response.statusLine.statusCode == 200){
