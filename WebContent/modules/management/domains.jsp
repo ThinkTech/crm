@@ -66,7 +66,7 @@
                                <s:iterator value="#request.domains" var="domain" status="counter">
 	                                <tr id="${domain.id}" class="${domain.status=='finished' ? 'paid' : ''}">
 	                                  <td><span class="number">${counter.index+1}</span></td>
-	                                  <td>${domain.name}</td>
+	                                  <td>${domain.name}  <i class="fa fa-check" aria-hidden="true" style="display : ${domain.verified ? 'inline-block' : 'none' }"></i></td>
 	                                  <td>${domain.author}</td>
 	                                  <td>${domain.structure}</td>
 	                                  <td><s:date name="date" format="dd/MM/yyyy" /></td>

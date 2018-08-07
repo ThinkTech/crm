@@ -13,6 +13,23 @@ class ModuleAction extends ActionSupport {
        def registered = connection.firstRow("select count(*) AS num from domains where status = 'finished'").num
        def unregistered = connection.firstRow("select count(*) AS num from domains where status != 'finished'").num
        connection.close() 
+       def client = HttpClientBuilder.create().build()
+	   def authorization = "0e78c9a51720fac862571b6bffd79f83" 
+       def get = new HttpGet("https://mail.zoho.com/api/organization?mode=getCustomerOrgDetails")
+	   get.setHeader("Accept", "application/json")
+	   get.setHeader("Authorization",authorization)
+       def response = client.execute(get)
+       if(response.statusLine.statusCode == 200){
+          def data = parse(response.entity.content).data
+          domains.each { domain ->
+            domain.verified = false
+            data.each { result ->
+              if(domain.name == result.domainName){
+                  domain.verified = result.isVerified
+               }
+            }
+         }  
+       }
        request.setAttribute("domains",domains)  
        request.setAttribute("total",domains.size())
        request.setAttribute("registered",registered)
