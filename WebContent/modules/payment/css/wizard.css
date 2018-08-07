@@ -208,6 +208,10 @@
     cursor : pointer;
 }
 
+.payment > div input[type="button"].cash {
+    margin-left : 30px;
+}
+
 .shopping-payment {
 	width: 51%;
 }
