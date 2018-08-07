@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}else{
 			$(".eppCode",container).hide();
 		}
+		if(domain.zoid){
+			$(".zoid",container).show();
+		}else{
+			$(".zoid",container).hide();
+		}
 		$(".businessEmail .info",container).hide();
 		$(".businessEmail input[name=email]",container).attr("disabled","disabled");
 		$(".businessEmail .domain-manage",container).hide();

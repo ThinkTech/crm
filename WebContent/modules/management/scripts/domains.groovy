@@ -41,6 +41,8 @@ class ModuleAction extends ActionSupport {
        def id = getParameter("id")
 	   def connection = getConnection()
 	   def domain = connection.firstRow("select d.*,u.email as authorEmail,u.name as author, s.name as structure from domains d, users u, structures s where s.id = u.structure_id and d.id = ? and d.user_id = u.id", [id])
+	   def info = connection.firstRow("select zoid from structures_infos where id = ?", [domain.structure_id])
+	   if(info) domain.zoid = info.zoid
 	   domain.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(domain.date)
 	   domain.action = domain.action ? "Transfert" : "Achat"
 	   domain.eppCode = domain.eppCode ? domain.eppCode : "&nbsp;"

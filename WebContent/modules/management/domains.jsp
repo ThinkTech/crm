@@ -110,6 +110,7 @@
 		    <span class="text-right"><i class="fa fa-user" aria-hidden="true"></i> Auteur </span> <span>{author}</span>
 		    <span class="text-right"><i class="fa fa-envelope" aria-hidden="true"></i> Email </span> <span>{authorEmail}</span>
 		    <span class="text-right"><i class="fa fa-building" aria-hidden="true"></i> Structure </span> <span>{structure}</span>
+		    <span class="text-right zoid"><i class="fa fa-building" aria-hidden="true"></i> Zoid </span> <span class="zoid">{zoid}</span>
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Date Création</span> <span>{date}</span>
 			<span class="text-right"><i class="fa fa-calendar" aria-hidden="true"></i> Durée </span> <span>{year} an</span>
 			<span class="text-right"><i class="fa fa-money" aria-hidden="true"></i> Montant </span> <span><b class="digit">{price}</b> CFA</span>
