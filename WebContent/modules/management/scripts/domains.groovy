@@ -110,8 +110,8 @@ class ModuleAction extends ActionSupport {
 		    get.setHeader("Accept", "application/json")
 		    get.setHeader("Authorization",authorization)
             response = client.execute(get)
-            def structures = parse(response.entity.content).data
-            structures.find {
+            def domains = parse(response.entity.content).data
+            domains.find {
              if(order.domain == it.domainName){
                 connection.executeInsert 'insert into structures_infos(id,zoid) values (?,?)', [user.structure_id,it.zoid]  
        			return true     
