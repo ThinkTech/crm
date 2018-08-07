@@ -68,6 +68,7 @@ class ModuleAction extends ActionSupport {
 	     def status = 1
 	     def message
 	     def client = HttpClientBuilder.create().build()
+	     def authorization = "0e78c9a51720fac862571b6bffd79f83"
 		 def body = new Expando()
 	     def info = connection.firstRow("select zoid from structures_infos where id = ?", [user.structure_id])
 	     if(info){
@@ -75,7 +76,7 @@ class ModuleAction extends ActionSupport {
 		   post.with {
 			 setHeader("Accept", "application/json")
 			 setHeader("Content-Type", "application/json")
-			 setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
+			 setHeader("Authorization",authorization)
 		   }
 	       body.domainName = order.domain
 		   post.setEntity(new StringEntity(stringify(body)))
@@ -93,7 +94,7 @@ class ModuleAction extends ActionSupport {
 		 post.with {
 		   setHeader("Accept", "application/json")
 		   setHeader("Content-Type", "application/json")
-		   setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
+		   setHeader("Authorization",authorization)
 		 }
 		 body.with {
 		     orgName = user.structure
@@ -107,7 +108,7 @@ class ModuleAction extends ActionSupport {
          if(response.statusLine.statusCode == 200){
             def get = new HttpGet("https://mail.zoho.com/api/organization?mode=getCustomerOrgDetails")
 		    get.setHeader("Accept", "application/json")
-		    get.setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
+		    get.setHeader("Authorization",authorization)
             response = client.execute(get)
             def structures = parse(response.entity.content).data
             structures.find {
