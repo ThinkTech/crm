@@ -54,10 +54,10 @@
                                     <tr>
                                       <th></th>
                                       <th>Prénom et Nom</th>
+                                       <th>Email</th>
                                       <th>Structure</th>
                                       <th>Date Souscription</th> 
                                       <th>Profession</th>                                                            
-                                      <th>Email</th>
                                       <th style="width:60px">Téléphone</th>
                                   </tr>
                               </thead>
@@ -66,10 +66,10 @@
 	                                <tr id="${customer.id}">
 	                                  <td><span class="number">${counter.index+1}</span></td>
 	                                  <td>${customer.name} <i class="fa fa-check" aria-hidden="true" style="display : ${customer.activated ? 'inline-block' : 'none' }"></i></td>
+	                                   <td>${customer.email}</td>
 	                                  <td>${customer.structure}</td>
 	                                  <td><s:date name="createdOn" format="dd/MM/yyyy" /></td>                                        
 	                                  <td>${customer.profession}</td>
-	                                  <td>${customer.email}</td>
 	                                  <td>${customer.telephone}</td>
 	                              </tr>
 	                          </s:iterator>
