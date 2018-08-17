@@ -72,6 +72,69 @@
 				</configuration>
 			</plugin>
 			<plugin>
+				<groupId>com.samaxes.maven</groupId>
+				<artifactId>minify-maven-plugin</artifactId>
+				<version>1.7.2</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>minify</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<charset>ISO-8859-1</charset>
+					<skipMerge>true</skipMerge>
+					<webappSourceDir>WebContent</webappSourceDir>
+					<cssSourceDir>.</cssSourceDir>
+					<cssSourceFiles>
+					    <cssSourceFile>templates/amadeus/css/template.css</cssSourceFile>
+						<cssSourceFile>templates/dashboard/css/template.css</cssSourceFile>
+						<cssSourceFile>modules/management/css/module.css</cssSourceFile>
+						<cssSourceFile>modules/users/css/module.css</cssSourceFile>
+						<cssSourceFile>modules/payment/css/wizard.css</cssSourceFile>
+					</cssSourceFiles>
+					<jsSourceDir>.</jsSourceDir>
+					<jsSourceFiles>
+					    <jsSourceFile>js/app.js</jsSourceFile>
+						<jsSourceFile>templates/amadeus/js/template.js</jsSourceFile>
+						<jsSourceFile>templates/dashboard/js/template.js</jsSourceFile>
+						<jsSourceFile>modules/management/js/billing.js</jsSourceFile>
+						<jsSourceFile>modules/management/js/domains.js</jsSourceFile>
+						<jsSourceFile>modules/management/js/projects.js</jsSourceFile>
+						<jsSourceFile>modules/management/js/support.js</jsSourceFile>
+						<jsSourceFile>modules/users/js/account.js</jsSourceFile>
+						<jsSourceFile>modules/payment/js/wizard.js</jsSourceFile>
+					</jsSourceFiles>
+					<nosuffix>true</nosuffix>
+					<webappTargetDir>${project.build.directory}/minify</webappTargetDir>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.tunyk.mvn.plugins.htmlcompressor</groupId>
+				<artifactId>htmlcompressor-maven-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>html</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<srcFolder>WebContent</srcFolder>
+					<targetFolder>${project.build.directory}/minify</targetFolder>
+					<javascriptHtmlSprite>false</javascriptHtmlSprite>
+					<encoding>ISO-8859-1</encoding>
+					<fileExt>
+						<fileext>jsp</fileext>
+						<fileext>html</fileext>
+					</fileExt>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>com.heroku.sdk</groupId>
 				<artifactId>heroku-maven-plugin</artifactId>
 				<version>1.2.1</version>
