@@ -50,7 +50,7 @@ payment.init = function(){
                     		  });
                       });
       	    		}else if (val == "wari"){
-      	    			const button = currentStep.find("input[type='button']");
+      	    			var button = currentStep.find("input[type='button']");
       	    			button.unbind("click").click(function(){
       	    				payment.bill.code = currentStep.find("input[type='text']").val();
       	    				if(payment.bill.code){
@@ -64,7 +64,7 @@ payment.init = function(){
       	    			});
       	    		}
       	    		else if (val == "cash"){
-      	    			const button = currentStep.find("input[type='button']");
+      	    			var button = currentStep.find("input[type='button']");
       	    			button.unbind("click").click(function(){
       	    				payment.bill.paidWith = "Cash";
       	    				confirm("&ecirc;tes vous s&ucirc;r de vouloir effectuer ce paiement?",function(){

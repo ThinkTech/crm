@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 									  if(project.progression==100){
 										  project.status = "finished";
 										  $("span.label",tr).html("termin&edot;").removeClass().addClass("label label-success");
-										  const h3 = $("h3.active");
+										  var h3 = $("h3.active");
 										  h3.html(parseInt(h3.text())-1);
 										  $("a.refresh",container).trigger("click");
 									  }else{
@@ -187,16 +187,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
 										  $("fieldset > [data-status='"+project.status+"']",container).show();  
 									  }
 									  if(task.status == "finished") {
-										  const next = project.tasks[event.data.index+1];
+										  var next = project.tasks[event.data.index+1];
 										  if(next && next.status =='stand by'){
 											  $(".start-task",li.next()).show();
 										  }
 									  }else{
 										  if(project.status == "finished"){
-											  const h3 = $("h3.active");
+											  var h3 = $("h3.active");
 											  h3.html(parseInt(h3.text())-1);
 										  }
-										  const next = project.tasks[event.data.index+1];
+										  var next = project.tasks[event.data.index+1];
 										  if(next)$(".start-task",li.next()).hide();
 									  }
 								  },
