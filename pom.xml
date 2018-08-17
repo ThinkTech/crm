@@ -69,6 +69,11 @@
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<webResources>
+						<resource>
+							<directory>${project.build.directory}/minify</directory>
+						</resource>
+					</webResources>
 				</configuration>
 			</plugin>
 			<plugin>
