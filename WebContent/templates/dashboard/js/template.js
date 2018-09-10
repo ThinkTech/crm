@@ -193,12 +193,7 @@ $(document).ready(function(){
 	}
 	else if (Notification.permission !== 'denied') {
 	    Notification.requestPermission(function (permission) {
-	      if (permission === "granted") {
-	    	  var n = new Notification('Notification', { 
-	    			body: 'Activation reussie!',
-	    			icon: 'images/favicon.png' // optional
-	    		});
-	      }
+	      if (permission === "granted") {}
 	    });
 	}
  });
