@@ -189,7 +189,7 @@ class ModuleAction extends ActionSupport {
 		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 11px;text-align:center") {
 		      p("Vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
-		      p("a envoy&eacute; une demande en utilisant cette adresse")
+		      p("a envoy&eacute; une demande de modification de mot de passe en utilisant cette adresse")
 		  }
 		  
 		   
