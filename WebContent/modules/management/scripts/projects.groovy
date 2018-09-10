@@ -5,13 +5,11 @@ class ModuleAction extends ActionSupport {
    def showProjects(){
        def connection = getConnection()
        def projects = connection.rows("select p.id,p.subject,p.plan,p.date,p.status,p.progression, u.name as author, s.name as structure from projects p, users u, structures s where p.user_id = u.id and u.structure_id = s.id order by p.date DESC", [])
-       def active = connection.firstRow("select count(*) AS num from projects where status = 'in progress'").num
-       def unactive = connection.firstRow("select count(*) AS num from projects where status = 'stand by'").num
-       connection.close() 
        request.setAttribute("projects",projects)  
        request.setAttribute("total",projects.size())
-       request.setAttribute("active",active)
-       request.setAttribute("unactive",unactive)
+       request.setAttribute("active",connection.firstRow("select count(*) AS num from projects where status = 'in progress'").num)
+       request.setAttribute("unactive",connection.firstRow("select count(*) AS num from projects where status = 'stand by'").num)
+       connection.close()
        SUCCESS
     }
     

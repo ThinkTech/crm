@@ -3,13 +3,11 @@ class ModuleAction extends ActionSupport {
    def showCustomers(){
 	   def connection = getConnection()
        def customers = connection.rows("select u.*, s.name as structure,a.activated from users u, structures s,accounts a where a.user_id = u.id and u.type = 'customer' and u.owner = true and u.structure_id = s.id order by u.createdOn DESC",[])
-       def active = connection.firstRow("select count(*) AS num from users u, accounts c where u.type = 'customer' and u.owner = true and c.activated = true and u.id = c.user_id").num
-       def unactive = connection.firstRow("select count(*) AS num from users u, accounts c where u.type = 'customer' and u.owner = true and c.activated = false and u.id = c.user_id").num
-       connection.close() 
        request.setAttribute("customers",customers)  
        request.setAttribute("total",customers.size())
-       request.setAttribute("active",active)
-       request.setAttribute("unactive",unactive)
+       request.setAttribute("active",connection.firstRow("select count(*) AS num from users u, accounts c where u.type = 'customer' and u.owner = true and c.activated = true and u.id = c.user_id").num)
+       request.setAttribute("unactive",connection.firstRow("select count(*) AS num from users u, accounts c where u.type = 'customer' and u.owner = true and c.activated = false and u.id = c.user_id").num)
+       connection.close()  
        SUCCESS
     }
     

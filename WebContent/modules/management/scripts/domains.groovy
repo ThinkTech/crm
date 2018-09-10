@@ -10,9 +10,6 @@ class ModuleAction extends ActionSupport {
    def showDomains(){
        def connection = getConnection()
        def domains = connection.rows("select d.id,d.name,d.year,d.date,d.price,d.status,d.emailOn,d.emailActivatedOn,u.name as author, s.name as structure from domains d, users u, structures s where d.user_id = u.id and u.structure_id = s.id order by date DESC",[])
-       def registered = connection.firstRow("select count(*) AS num from domains where status = 'finished'").num
-       def unregistered = connection.firstRow("select count(*) AS num from domains where status != 'finished'").num
-       connection.close() 
        def client = HttpClientBuilder.create().build()
 	   def authorization = "0e78c9a51720fac862571b6bffd79f83" 
        def get = new HttpGet("https://mail.zoho.com/api/organization?mode=getCustomerOrgDetails")
@@ -32,8 +29,9 @@ class ModuleAction extends ActionSupport {
        }
        request.setAttribute("domains",domains)  
        request.setAttribute("total",domains.size())
-       request.setAttribute("registered",registered)
-       request.setAttribute("unregistered",unregistered)
+       request.setAttribute("registered",connection.firstRow("select count(*) AS num from domains where status = 'finished'").num)
+       request.setAttribute("unregistered",connection.firstRow("select count(*) AS num from domains where status != 'finished'").num)
+       connection.close()
        SUCCESS
     }
     
