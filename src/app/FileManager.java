@@ -12,8 +12,7 @@ public class FileManager {
     private DbxClientV2 client;
     
     public FileManager(){
-    	DbxRequestConfig config = new DbxRequestConfig("dropbox/thinktech-app");
-        client = new DbxClientV2(config, ACCESS_TOKEN);
+        client = new DbxClientV2(new DbxRequestConfig("dropbox/thinktech-app"), ACCESS_TOKEN);
     }
     
     public void upload(String name,InputStream in) throws Exception {
