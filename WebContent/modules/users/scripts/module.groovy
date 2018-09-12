@@ -3,9 +3,8 @@ class ModuleAction extends ActionSupport {
     def String execute(){
        if(user){
          def connection = getConnection()
-         def collaborators = connection.rows("select u.id, u.name,a.activated as active,a.locked from users u, accounts a where u.structure_id = ? and u.owner = false and a.user_id = u.id", [user.structure.id])
+         request.setAttribute("collaborators",connection.rows("select u.id, u.name,a.activated as active,a.locked from users u, accounts a where u.structure_id = ? and u.owner = false and a.user_id = u.id", [user.structure.id]))
          connection.close()
-         request.setAttribute("collaborators",collaborators)
          SUCCESS
        }else{
          ERROR
@@ -13,15 +12,20 @@ class ModuleAction extends ActionSupport {
     }
     
 	def login() {
-	   def user = parse(request) 
+	   def info = parse(request) 
 	   def connection = getConnection()
-	   user = connection.firstRow("select u.* from users u, accounts a where u.email = ? and u.password = sha(?) and u.type = 'staff' and a.activated = true and a.locked = false and a.user_id = u.id", [user.email,user.password])
+	   def user = connection.firstRow("select u.* from users u, accounts a where u.email = ? and u.password = sha(?) and u.type = 'staff' and a.activated = true and a.locked = false and a.user_id = u.id", [info.email,info.password])
 	   if(user) {
 	    user.structure = connection.firstRow("select * from structures where id = ?", [user.structure_id])
-        session.setAttribute("user",user)
-	   	json([url: request.contextPath+"/dashboard"])
+        if(user.activated){
+           session.setAttribute("user",user)
+          json([url: request.contextPath+"/dashboard"])   
+        }
+	   	else {
+	   	 json([status : 1])
+	   	}
 	   }else{
-	    json([status : 1])
+	    json([status : 0])
 	   }
 	   connection.close()
 	}
@@ -47,7 +51,7 @@ class ModuleAction extends ActionSupport {
 	   	connection.close()
 	   	def mailConfig = new MailConfig(getInitParameter("smtp.email"),getInitParameter("smtp.password"),getInitParameter("smtp.host"),getInitParameter("smtp.port"))
 	   	def mailSender = new MailSender(mailConfig)
-	   	def mail = new Mail("$user.name","$user.email","Changement de votre mot de passe",getPasswordTemplate(user))
+	   	def mail = new Mail(user.name,user.email,"Changement de votre mot de passe",getPasswordTemplate(user))
 	   	mailSender.sendMail(mail)
 	   	json([status: 1])
 	   }else {
@@ -95,7 +99,7 @@ class ModuleAction extends ActionSupport {
        	  def template = getCollaborationTemplate(user) 
 	      def mailConfig = new MailConfig(getInitParameter("smtp.email"),getInitParameter("smtp.password"),getInitParameter("smtp.host"),getInitParameter("smtp.port"))
 	   	  def mailSender = new MailSender(mailConfig)
-	   	  def mail = new Mail("$user.email","$user.email","Veuillez confirmer cette demande de collaboration",template)
+	   	  def mail = new Mail(user.email,user.email,"Veuillez confirmer cette demande de collaboration",template)
 	   	  mailSender.sendMail(mail)
           json([id : id])
  	   }
@@ -113,7 +117,7 @@ class ModuleAction extends ActionSupport {
  		connection.close() 
 	    def mailConfig = new MailConfig(getInitParameter("smtp.email"),getInitParameter("smtp.password"),getInitParameter("smtp.host"),getInitParameter("smtp.port"))
 	   	def mailSender = new MailSender(mailConfig)
-	   	def mail = new Mail("$user.email","$user.email","Veuillez confirmer cette demande de collaboration",getCollaborationTemplate(user))
+	   	def mail = new Mail(user.email,user.email,"Veuillez confirmer cette demande de collaboration",getCollaborationTemplate(user))
 	   	mailSender.sendMail(mail)
 	    json([status : 1])
 	}

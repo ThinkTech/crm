@@ -20,7 +20,11 @@ app.ready(function(){
 					  location.href = response.url;
 				 }else {
 					  page.release();
-					  alert("email ou mot de passe incorrect");
+					  if(response.status){
+						  alert("vous devez activer votre compte");
+					  }else{
+						  alert("email ou mot de passe incorrect");
+					  }
 				 }
 			});
 			return false;
