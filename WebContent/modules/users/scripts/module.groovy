@@ -124,12 +124,10 @@ class ModuleAction extends ActionSupport {
 	
 	def removeCollaborator(){
 	   def id = getParameter("id")
-	   Thread.start{
-	   	 def connection = getConnection()
-      	 connection.execute 'delete from users where id = ?',[id]
-         connection.execute 'delete from accounts where user_id = ?',[id]
-         connection.close()
-       } 
+	   def connection = getConnection()
+       connection.execute 'delete from users where id = ?',[id]
+       connection.execute 'delete from accounts where user_id = ?',[id]
+       connection.close()
 	   json([id : id])
 	}
 	
@@ -146,20 +144,16 @@ class ModuleAction extends ActionSupport {
 	def lockAccount(){
 	    def user = parse(request)
 	    def connection = getConnection()
-	    Thread.start{
-	      connection.executeUpdate 'update accounts set locked = true  where user_id = ?', [user.id] 
-	      connection.close()
-	    }
+	    connection.executeUpdate 'update accounts set locked = true  where user_id = ?', [user.id] 
+	    connection.close()
 		json([status: 1])
 	}
 	
 	def unlockAccount(){
 	    def user = parse(request)
 	    def connection = getConnection()
-	    Thread.start{
-	      connection.executeUpdate 'update accounts set locked = false  where user_id = ?', [user.id] 
-	      connection.close()
-	    }
+	    connection.executeUpdate 'update accounts set locked = false  where user_id = ?', [user.id] 
+	    connection.close()
 		json([status: 1])
 	}
 	
@@ -188,14 +182,11 @@ class ModuleAction extends ActionSupport {
 		      br()
 		      p("Vous pouvez le modifier en vous connectant &aacute; votre compte")
 		    }
-		  }
-		  
+		  }  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 11px;text-align:center") {
 		      p("Vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
 		      p("a envoy&eacute; une demande de modification de mot de passe en utilisant cette adresse")
 		  }
-		  
-		   
 		 }
 		'''
 		MarkupTemplateEngine engine = new MarkupTemplateEngine()
