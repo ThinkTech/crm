@@ -14,7 +14,7 @@ class ModuleAction extends ActionSupport {
 	def login() {
 	   def info = parse(request) 
 	   def connection = getConnection()
-	   def user = connection.firstRow("select u.* from users u, accounts a where u.email = ? and u.password = sha(?) and u.type = 'staff' and a.activated = true and a.locked = false and a.user_id = u.id", [info.email,info.password])
+	   def user = connection.firstRow("select u.*, a.activated from users u, accounts a where u.email = ? and u.password = sha(?) and u.type = 'staff' and a.locked = false and a.user_id = u.id", [info.email,info.password])
 	   if(user) {
 	    user.structure = connection.firstRow("select * from structures where id = ?", [user.structure_id])
         if(user.activated){
