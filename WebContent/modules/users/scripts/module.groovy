@@ -169,7 +169,6 @@ class ModuleAction extends ActionSupport {
 	}
 	  
 	def getPasswordTemplate(user) {
-		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
@@ -199,13 +198,13 @@ class ModuleAction extends ActionSupport {
 		   
 		 }
 		'''
+		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def template = engine.createTemplate(text).make([user:user,url : baseUrl])
 		template.toString()
 	}
 	
 	def getCollaborationTemplate(user) {
-	   MarkupTemplateEngine engine = new MarkupTemplateEngine()
-		def text = '''\
+	   def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
 		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
@@ -233,9 +232,9 @@ class ModuleAction extends ActionSupport {
 		      p("Vous recevez cet email parce que $name ")
 		      p("a envoy&eacute; une demande de collaboration en utilisant cette adresse")
 		  }
-		  
 		 }
 		'''
+		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def template = engine.createTemplate(text).make([user:user,url : baseUrl,name : session.getAttribute("user").name])
 		template.toString()
 	}

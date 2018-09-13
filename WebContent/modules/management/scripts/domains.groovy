@@ -154,7 +154,6 @@ class ModuleAction extends ActionSupport {
 	     }
 	 }
 	 def getRegistrationTemplate(domain) {
-		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
@@ -193,12 +192,12 @@ class ModuleAction extends ActionSupport {
 		  
 		 }
 		'''
+		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def template = engine.createTemplate(text).make([domain:domain,url : "https://app.thinktech.sn"])
 		template.toString()
 	}
 	
 	def getEmailTemplate(order) {
-		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
@@ -227,20 +226,18 @@ class ModuleAction extends ActionSupport {
 			    }
 			}
 		  }
-		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
 		      p("vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
 		      p("a souscrit au service mailhosting en utilisant cette adresse")
 		  }
-		  
 		 }
 		'''
+		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def template = engine.createTemplate(text).make([order:order])
 		template.toString()
 	}
 	
 	def getEmailAccountTemplate(order) {
-		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
@@ -269,21 +266,19 @@ class ModuleAction extends ActionSupport {
 			    }
 			}
 		  }
-		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
 		      p("vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
 		      p("a souscrit au service mailhosting en utilisant cette adresse")
 		  }
-		  
 		 }
 		'''
+		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def template = engine.createTemplate(text).make([order:order,url : "https://app.thinktech.sn"])
 		template.toString()
 	}
 	
 	
 	def getDomainTemplate(order) {
-		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
@@ -312,14 +307,13 @@ class ModuleAction extends ActionSupport {
 			    }
 			}
 		  }
-		  
 		  div(style :"margin: 10px;margin-top:10px;font-size : 80%;text-align:center") {
 		      p("vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
 		      p("a souscrit au service mailhosting en utilisant cette adresse")
 		  }
-		  
 		 }
 		'''
+		MarkupTemplateEngine engine = new MarkupTemplateEngine()
 		def template = engine.createTemplate(text).make([order:order,url : "https://app.thinktech.sn"])
 		template.toString()
 	}
