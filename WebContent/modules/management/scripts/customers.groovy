@@ -11,7 +11,7 @@ class ModuleAction extends ActionSupport {
        SUCCESS
     }
     
-    def getCustomerInfo() {
+    def getCustomerInfo(){
 	   def id = getParameter("id")
 	   def connection = getConnection()
 	   def customer = connection.firstRow("select u.*, s.name as structure from users u, structures s where u.id = ? and u.structure_id = s.id", [id])

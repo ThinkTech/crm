@@ -22,7 +22,7 @@ class ModuleAction extends ActionSupport {
        json([status: 1])
     }
 	
-	def getProjectInfo() {
+	def getProjectInfo(){
 	   def id = getParameter("id")
 	   def connection = getConnection()
 	   def project = connection.firstRow("select p.*,u.name,u.email,d.name as domain from projects p,users u, domains d where p.id = ? and p.user_id = u.id and p.domain_id = d.id", [id])
@@ -107,7 +107,7 @@ class ModuleAction extends ActionSupport {
 		json([status: 1])
 	}
 	
-	def addComment() {
+	def addComment(){
 	   def comment = parse(request) 
 	   def connection = getConnection()
 	   def params = [comment.message,comment.project,user.id]
@@ -119,7 +119,7 @@ class ModuleAction extends ActionSupport {
 	   json([status: 1])
 	}
 	
-	def saveDocuments() {
+	def saveDocuments(){
 	   def upload = parse(request) 
 	   def connection = getConnection()
 	   def query = 'insert into documents(name,size,project_id,createdBy) values (?,?,?,?)'
@@ -143,7 +143,7 @@ class ModuleAction extends ActionSupport {
 	   fileManager.download(dir+"/"+name,response.outputStream)
 	}
 	
-	def updateProjectDescription() {
+	def updateProjectDescription(){
 	   def project = parse(request)
 	   def connection = getConnection()
 	   connection.executeUpdate "update projects set description = ? where id = ?", [project.description,project.id] 
@@ -151,7 +151,7 @@ class ModuleAction extends ActionSupport {
 	   json([status: 1])
 	}
 	
-	def getProjectTemplate(project) {
+	def getProjectTemplate(project){
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
@@ -181,7 +181,7 @@ class ModuleAction extends ActionSupport {
 		template.toString()
 	}
 	
-	def getCommentTemplate(comment) {
+	def getCommentTemplate(comment){
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
@@ -212,7 +212,7 @@ class ModuleAction extends ActionSupport {
 		template.toString()
 	}
 	
-	def getTaskOpenedTemplate(task) {
+	def getTaskOpenedTemplate(task){
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
@@ -244,7 +244,7 @@ class ModuleAction extends ActionSupport {
 		template.toString()
 	}
 	
-	def getTaskClosedTemplate(task) {
+	def getTaskClosedTemplate(task){
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {

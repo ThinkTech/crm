@@ -11,7 +11,7 @@ class ModuleAction extends ActionSupport {
        SUCCESS
     }
     
-     def getBillInfo() {
+     def getBillInfo(){
 	   def id = getParameter("id")
 	   def connection = getConnection()
 	   def bill = connection.firstRow("select * from bills where id = ?", [id])

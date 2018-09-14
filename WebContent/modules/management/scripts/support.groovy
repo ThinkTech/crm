@@ -11,7 +11,7 @@ class ModuleAction extends ActionSupport {
        SUCCESS
     }
 	
-	def getTicketInfo() {
+	def getTicketInfo(){
 	   def id = getParameter("id")
 	   def connection = getConnection()
 	   def ticket = connection.firstRow("select t.*, u.email,u.name as author from tickets t,users u where t.id = ? and t.user_id = u.id", [id])
@@ -35,7 +35,7 @@ class ModuleAction extends ActionSupport {
 	   json(ticket)
 	}
 	
-	def addTicketComment() {
+	def addTicketComment(){
 	   def comment = parse(request)
 	   def connection = getConnection()
 	   def params = [comment.message,comment.ticket,user.id]
@@ -63,7 +63,7 @@ class ModuleAction extends ActionSupport {
 		json([status: 1])
 	}
 	
-	def openTicket() {
+	def openTicket(){
 	   def ticket = parse(request)
 	   def connection = getConnection()
 	   connection.executeUpdate "update tickets set status = 'in progress', startedOn = Now() where id = ?", [ticket.id] 
@@ -71,7 +71,7 @@ class ModuleAction extends ActionSupport {
 	   json([status : 1])
 	}
 	
-	def closeTicket() {
+	def closeTicket(){
 	   def ticket = parse(request)
 	   def connection = getConnection()
 	   connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where id = ?", [user.id,ticket.id]
@@ -81,7 +81,7 @@ class ModuleAction extends ActionSupport {
 	   json([status : 1])
 	}
 	
-    def getTicketTemplate(ticket) {
+    def getTicketTemplate(ticket){
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
@@ -111,7 +111,7 @@ class ModuleAction extends ActionSupport {
 		template.toString()
 	}
 	
-	def getCommentTemplate(comment) {
+	def getCommentTemplate(comment){
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {

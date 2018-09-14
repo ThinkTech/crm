@@ -34,7 +34,7 @@ class ModuleAction extends ActionSupport {
        SUCCESS
     }
     
-    def getDomainInfo() {
+    def getDomainInfo(){
        def id = getParameter("id")
 	   def connection = getConnection()
 	   def domain = connection.firstRow("select d.*,u.email as authorEmail,u.name as author, s.name as structure from domains d, users u, structures s where s.id = u.structure_id and d.id = ? and d.user_id = u.id", [id])
@@ -152,7 +152,8 @@ class ModuleAction extends ActionSupport {
 	        json([message: message])
 	     }
 	 }
-	 def getRegistrationTemplate(domain) {
+	 
+	 def getRegistrationTemplate(domain){
 		def text = '''\
 		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
 		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
@@ -275,7 +276,6 @@ class ModuleAction extends ActionSupport {
 		def template = engine.createTemplate(text).make([order:order,url : "https://app.thinktech.sn"])
 		template.toString()
 	}
-	
 	
 	def getDomainTemplate(order) {
 		def text = '''\
