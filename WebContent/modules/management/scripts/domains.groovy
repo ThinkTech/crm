@@ -11,10 +11,9 @@ class ModuleAction extends ActionSupport {
        def connection = getConnection()
        def domains = connection.rows("select d.id,d.name,d.year,d.date,d.price,d.status,d.emailOn,d.emailActivatedOn,u.name as author, s.name as structure from domains d, users u, structures s where d.user_id = u.id and u.structure_id = s.id order by date DESC",[])
        def client = HttpClientBuilder.create().build()
-	   def authorization = "0e78c9a51720fac862571b6bffd79f83" 
-       def get = new HttpGet("https://mail.zoho.com/api/organization?mode=getCustomerOrgDetails")
+	   def get = new HttpGet("https://mail.zoho.com/api/organization?mode=getCustomerOrgDetails")
 	   get.setHeader("Accept", "application/json")
-	   get.setHeader("Authorization",authorization)
+	   get.setHeader("Authorization","0e78c9a51720fac862571b6bffd79f83")
        def response = client.execute(get)
        if(response.statusLine.statusCode == 200){
           def data = parse(response.entity.content).data
