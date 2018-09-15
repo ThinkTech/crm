@@ -857,8 +857,10 @@ h3 .fa-question-circle-o {
    font-family: Tahoma, sans-serif;
 }
 .work-progres {
-    padding: 0.2em 0.2em;
     background: #ffffff;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
     padding-bottom : 15px;
 }
 #confirm-dialog-container, #alert-dialog-container {
