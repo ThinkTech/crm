@@ -152,8 +152,4 @@ class ModuleAction extends ActionSupport {
 		response.sendRedirect(request.contextPath+"/")
 	}
 	
-	def getConnection() {
-		new Sql(dataSource)
-	}
-	
 }
