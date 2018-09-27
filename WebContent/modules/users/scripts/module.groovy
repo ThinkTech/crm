@@ -49,10 +49,7 @@ class ModuleAction extends ActionSupport {
         user.structure = connection.firstRow("select * from structures where id = ?", [user.structure_id])
 	   	connection.executeUpdate 'update users set password = sha(?) where email = ?', [user.password,user.email]
 	   	connection.close()
-	   	def mailConfig = new MailConfig(getInitParameter("smtp.email"),getInitParameter("smtp.password"),getInitParameter("smtp.host"),getInitParameter("smtp.port"))
-	   	def mailSender = new MailSender(mailConfig)
-	   	def mail = new Mail(user.name,user.email,"Changement de votre mot de passe",getPasswordTemplate(user))
-	   	mailSender.sendMail(mail)
+	   	sendMail(user.name,user.email,"Changement de votre mot de passe",parseTemplate("password",[user:user,url : baseUrl]))
 	   	json([status: 1])
 	   }else {
 	   	json([status: 0])
@@ -96,12 +93,8 @@ class ModuleAction extends ActionSupport {
           def id = result[0][0]
           params = [user.activationCode,id]
        	  connection.executeInsert 'insert into accounts(activation_code,user_id) values (?, ?)', params
-       	  def template = getCollaborationTemplate(user) 
-	      def mailConfig = new MailConfig(getInitParameter("smtp.email"),getInitParameter("smtp.password"),getInitParameter("smtp.host"),getInitParameter("smtp.port"))
-	   	  def mailSender = new MailSender(mailConfig)
-	   	  def mail = new Mail(user.email,user.email,"Veuillez confirmer cette demande de collaboration",template)
-	   	  mailSender.sendMail(mail)
-          json([id : id])
+       	  sendMail(user.email,user.email,"Veuillez confirmer cette demande de collaboration",parseTemplate("collaboration",[user:user,url : baseUrl,name : session.getAttribute("user").name]))
+	   	  json([id : id])
  	   }
  	   connection.close()
 	}
@@ -115,11 +108,8 @@ class ModuleAction extends ActionSupport {
  		def params = [user.activationCode,user.id]
        	connection.executeUpdate 'update accounts set activated = false,activation_code = ? where user_id = ?', params 
  		connection.close() 
-	    def mailConfig = new MailConfig(getInitParameter("smtp.email"),getInitParameter("smtp.password"),getInitParameter("smtp.host"),getInitParameter("smtp.port"))
-	   	def mailSender = new MailSender(mailConfig)
-	   	def mail = new Mail(user.email,user.email,"Veuillez confirmer cette demande de collaboration",getCollaborationTemplate(user))
-	   	mailSender.sendMail(mail)
-	    json([status : 1])
+	    sendMail(user.email,user.email,"Veuillez confirmer cette demande de collaboration",parseTemplate("collaboration",[user:user,url : baseUrl,name : session.getAttribute("user").name]))
+	   	json([status : 1])
 	}
 	
 	def removeCollaborator(){
@@ -160,74 +150,6 @@ class ModuleAction extends ActionSupport {
 	def logout() {
 	    session.invalidate()
 		response.sendRedirect(request.contextPath+"/")
-	}
-	  
-	def getPasswordTemplate(user) {
-		def text = '''\
-		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
-		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
-		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
-		    div(style : "margin-top:10px;padding-top:2%;height:100px;text-align:center;background:#3abfdd") {
-		      h4(style : "font-size: 200%;color: #fff;margin: 3px") {
-		        span("R&eacute;initialisation de votre mot de passe")
-		      }
-		      p(style : "font-size:150%;color:#fff"){
-		         span("r&eacute;initialisation reussie")
-		      }
-		    }
-		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
-		      p("Votre mot de passe a &eacute;t&eacute; bien r&eacute;initialis&eacute;")
-		      br()
-		      p("Mot de passe : <b>$user.password</b>")
-		      br()
-		      p("Vous pouvez le modifier en vous connectant &aacute; votre compte")
-		    }
-		  }  
-		  div(style :"margin: 10px;margin-top:10px;font-size : 11px;text-align:center") {
-		      p("Vous recevez cet email parce que vous (ou quelqu\'un utilisant cet email)")
-		      p("a envoy&eacute; une demande de modification de mot de passe en utilisant cette adresse")
-		  }
-		 }
-		'''
-		MarkupTemplateEngine engine = new MarkupTemplateEngine()
-		def template = engine.createTemplate(text).make([user:user,url : baseUrl])
-		template.toString()
-	}
-	
-	def getCollaborationTemplate(user) {
-	   def text = '''\
-		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
-		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
-		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
-		    div(style : "margin-top:10px;padding-top:2%;height:100px;text-align:center;background:#3abfdd") {
-		      h4(style : "font-size: 200%;color: #fff;margin: 3px") {
-		        span("Demande de collaboration")
-		      }
-		      p(style : "font-size:150%;color:#fff"){
-		         span("cliquer sur le bouton pour confirmer")
-		      }
-		    }
-		    div(style : "width:90%;margin:auto;margin-top : 30px;margin-bottom:30px") {
-		      br()
-		      p("Mot de passe : <b>$user.password</b>")
-		      br()
-		      p("Vous pouvez le modifier en vous connectant &aacute; votre compte")
-		       div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
-		       a(href : "$url/users/registration/confirm?activationCode=$user.activationCode",style : "font-size:150%;width:180px;margin:auto;text-decoration:none;background: #3abfdd;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
-		         span("Confirmer")
-		       }
-		     }
-		    }
-		  }
-		  div(style :"margin: 10px;margin-top:10px;font-size : 11px;text-align:center") {
-		      p("Vous recevez cet email parce que $name ")
-		      p("a envoy&eacute; une demande de collaboration en utilisant cette adresse")
-		  }
-		 }
-		'''
-		MarkupTemplateEngine engine = new MarkupTemplateEngine()
-		def template = engine.createTemplate(text).make([user:user,url : baseUrl,name : session.getAttribute("user").name])
-		template.toString()
 	}
 	
 	def getConnection() {
