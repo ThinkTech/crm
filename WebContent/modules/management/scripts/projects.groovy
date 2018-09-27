@@ -76,9 +76,9 @@ class ModuleAction extends ActionSupport {
 	     def project = connection.firstRow("select * from projects  where id = ?", [task.project_id])
 	     def user = connection.firstRow("select name,email from users  where id = ?", [project.user_id])
 	     if(project.status == "finished"){
-	       sendMail(user.name,user.email,"${project.subject} termin&eacute;e",getProjectTemplate(project))                     
+	       sendMail(user.name,user.email,"${project.subject} termin&eacute;e",parseTemplate("project",[project:project,url : "https://app.thinktech.sn"]))                     
 	     }else{
-	         sendMail(user.name,user.email,"Projet : ${project.subject}",getTaskClosedTemplate(task)) 
+	         sendMail(user.name,user.email,"Projet : ${project.subject}",parseTemplate("task_closed",[task:task,user:user,url : "https://app.thinktech.sn"])) 
 	     }
  
 	   }else{
@@ -94,7 +94,7 @@ class ModuleAction extends ActionSupport {
        def connection = getConnection()
 	   connection.executeUpdate "update projects_tasks set status = 'in progress', startedOn = NOW() where id = ?", [task.id]
 	   def info = connection.firstRow("select u.name,u.email, p.subject from users u, projects_tasks t, projects p where u.id = p.user_id and p.id = t.project_id and t.id = ?", [task.id])
-	   sendMail(info.name,info.email,"Projet : ${info.subject}",getTaskOpenedTemplate(task))
+	   sendMail(info.name,info.email,"Projet : ${info.subject}",parseTemplate("task_opened",[task:task,user:user,url : "https://app.thinktech.sn"]))
 	   connection.close()
        json([status: 1])
     }
@@ -114,7 +114,7 @@ class ModuleAction extends ActionSupport {
        connection.executeInsert 'insert into projects_comments(message,project_id,createdBy) values (?,?,?)', params
        def project = connection.firstRow("select user_id,subject from projects  where id = ?", [comment.project])
        def user = connection.firstRow("select name,email from users  where id = ?", [project.user_id])
-       sendMail(user.name,user.email,"Projet : ${project.subject}",getCommentTemplate(comment))
+       sendMail(user.name,user.email,"Projet : ${project.subject}",parseTemplate("project_comment",[comment:comment,user:user,url : "https://app.thinktech.sn"]))
 	   connection.close()
 	   json([status: 1])
 	}
@@ -151,128 +151,4 @@ class ModuleAction extends ActionSupport {
 	   json([status: 1])
 	}
 	
-	def getProjectTemplate(project){
-		def text = '''\
-		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
-		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
-		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
-		    div(style : "margin-top:10px;padding-bottom:2%;padding-top:2%;text-align:center;background:#3abfdd") {
-		      h4(style : "font-size: 120%;color: #fff;margin: 3px") {
-		        span("Traitement projet termin&eacute;")
-		      }
-		    }
-		    div(style : "width:90%;margin:auto;margin-top : 20px;margin-bottom:30px") {
-		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-bottom: 0px") {
-		         span("Description du projet")
-		     }
-		     p("$project.description")
-             p("le traitement de votre projet est maintenant termin&eacute; et nous vous remercions pour votre confiance et restons &agrave; votre enti&eacute;re disposition")
-		    }
-		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
-			    a(href : "$url/dashboard/projects",style : "font-size:130%;width:140px;margin:auto;text-decoration:none;background: #3abfdd;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
-			        span("Voir")
-			    }
-			}
-		  }
-		 }
-		'''
-		MarkupTemplateEngine engine = new MarkupTemplateEngine()
-		def template = engine.createTemplate(text).make([project:project,url : "https://app.thinktech.sn"])
-		template.toString()
-	}
-	
-	def getCommentTemplate(comment){
-		def text = '''\
-		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
-		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
-		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
-		    div(style : "margin-top:10px;padding-bottom:2%;padding-top:2%;text-align:center;background:#3abfdd") {
-		      h4(style : "font-size: 120%;color: #fff;margin: 3px") {
-		        span("Nouveau commentaire ajout&eacute;")
-		      }
-		    }
-		    div(style : "width:90%;margin:auto;margin-top : 20px;margin-bottom:30px") {
-		     h5(style : "font-size: 90%;color: rgb(0, 0, 0);margin-bottom: 0px") {
-		         span("Auteur : $user.name")
-		     }
-		     p("$comment.message")
-
-		    }
-		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
-			    a(href : "$url/dashboard/support",style : "font-size:130%;width:140px;margin:auto;text-decoration:none;background: #3abfdd;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
-			        span("R&eacute;pondre")
-			    }
-			}
-		  }
-		  
-		 }
-		'''
-		MarkupTemplateEngine engine = new MarkupTemplateEngine()
-		def template = engine.createTemplate(text).make([comment:comment,user:user,url : "https://app.thinktech.sn"])
-		template.toString()
-	}
-	
-	def getTaskOpenedTemplate(task){
-		def text = '''\
-		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
-		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
-		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
-		    div(style : "margin-top:10px;padding-bottom:2%;padding-top:2%;text-align:center;background:#3abfdd") {
-		      h4(style : "font-size: 120%;color: #fff;margin: 3px") {
-		        span("Traitement T&agrave;che en cours")
-		      }
-		    }
-		    div(style : "width:90%;margin:auto;margin-top : 20px;margin-bottom:30px") {
-		     h5(style : "font-size: 100%;color: rgb(0, 0, 0);margin-bottom: 0px") {
-		         span("T&agrave;che : $task.name")
-		     }
-		     h5(style : "font-size: 85%;font-weight:normal;color: rgb(0, 0, 0);margin-top:2px;margin-bottom: 0px") {
-		         span("$task.description")
-		     }
-		     p("cette t&agrave;che est en cours de traitement par notre &eacute;quipe de d&eacute;veloppement et nous vous contacterons au besoin pour des informations compl&eacute;mentaires.")
-		    }
-		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
-			    a(href : "$url/dashboard/projects",style : "font-size:130%;width:140px;margin:auto;text-decoration:none;background: #3abfdd;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
-			        span("Voir")
-			    }
-			}
-		  }
-		 }
-		'''
-		MarkupTemplateEngine engine = new MarkupTemplateEngine()
-		def template = engine.createTemplate(text).make([task:task,user:user,url : "https://app.thinktech.sn"])
-		template.toString()
-	}
-	
-	def getTaskClosedTemplate(task){
-		def text = '''\
-		 div(style : "font-family:Tahoma;background:#fafafa;padding-bottom:16px;padding-top: 25px"){
-		 div(style : "padding-bottom:12px;margin-left:auto;margin-right:auto;width:80%;background:#fff") {
-		    img(src : "https://www.thinktech.sn/images/logo.png", style : "display:block;margin : 0 auto")
-		    div(style : "margin-top:10px;padding-bottom:2%;padding-top:2%;text-align:center;background:#3abfdd") {
-		      h4(style : "font-size: 120%;color: #fff;margin: 3px") {
-		        span("Traitement t&agrave;che termin&eacute;e")
-		      }
-		    }
-		    div(style : "width:90%;margin:auto;margin-top : 20px;margin-bottom:30px") {
-		     h5(style : "font-size: 100%;color: rgb(0, 0, 0);margin-bottom: 0px") {
-		         span("T&agrave;che : $task.name")
-		     }
-		     h5(style : "font-size: 85%;font-weight:normal;color: rgb(0, 0, 0);margin-top:2px;margin-bottom: 0px") {
-		         span("$task.description")
-		     }
-		     p("$task.info")
-		    }
-		    div(style : "text-align:center;margin-top:30px;margin-bottom:10px") {
-			    a(href : "$url/dashboard/projects",style : "font-size:130%;width:140px;margin:auto;text-decoration:none;background: #3abfdd;display:block;padding:10px;border-radius:2px;border:1px solid #eee;color:#fff;") {
-			        span("Voir")
-			    }
-			}
-		  }  
-		 }
-		'''
-		MarkupTemplateEngine engine = new MarkupTemplateEngine()
-		def template = engine.createTemplate(text).make([task:task,user:user,url : "https://app.thinktech.sn"])
-		template.toString()
-	}
 }
