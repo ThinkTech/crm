@@ -49,7 +49,7 @@ class ModuleAction extends ActionSupport {
         user.structure = connection.firstRow("select * from structures where id = ?", [user.structure_id])
 	   	connection.executeUpdate 'update users set password = sha(?) where email = ?', [user.password,user.email]
 	   	connection.close()
-	   	sendMail(user.name,user.email,"Changement de votre mot de passe",parseTemplate("password",[user:user,url : baseUrl]))
+	   	sendMail(user.name,user.email,"Changement de votre mot de passe",parseTemplate("password",[user:user,url:baseUrl]))
 	   	json([status: 1])
 	   }else {
 	   	json([status: 0])
@@ -93,7 +93,7 @@ class ModuleAction extends ActionSupport {
           def id = result[0][0]
           params = [user.activationCode,id]
        	  connection.executeInsert 'insert into accounts(activation_code,user_id) values (?, ?)', params
-       	  sendMail(user.email,user.email,"Veuillez confirmer cette demande de collaboration",parseTemplate("collaboration",[user:user,url : baseUrl,name : session.getAttribute("user").name]))
+       	  sendMail(user.email,user.email,"Veuillez confirmer cette demande de collaboration",parseTemplate("collaboration",[user:user,url:baseUrl,name:session.getAttribute("user").name]))
 	   	  json([id : id])
  	   }
  	   connection.close()
@@ -108,7 +108,7 @@ class ModuleAction extends ActionSupport {
  		def params = [user.activationCode,user.id]
        	connection.executeUpdate 'update accounts set activated = false,activation_code = ? where user_id = ?', params 
  		connection.close() 
-	    sendMail(user.email,user.email,"Veuillez confirmer cette demande de collaboration",parseTemplate("collaboration",[user:user,url : baseUrl,name : session.getAttribute("user").name]))
+	    sendMail(user.email,user.email,"Veuillez confirmer cette demande de collaboration",parseTemplate("collaboration",[user:user,url:baseUrl,name:session.getAttribute("user").name]))
 	   	json([status : 1])
 	}
 	
