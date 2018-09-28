@@ -17,5 +17,13 @@ public class ActionSupport extends org.metamorphosis.core.ActionSupport {
 	public String parseTemplate(String template, Map map) throws Exception {
 		return new MarkupTemplateEngine().createTemplate(readFile("templates/"+template+".groovy")).make(map).toString();
 	}
+	
+	public String getAppURL() {
+		return "https://app.thinktech.sn";
+	}
+	
+	public String getCrmURL() {
+		return "https://thinktech-crm.herokuapp.com";
+	}
 
 }

@@ -42,7 +42,7 @@ class ModuleAction extends ActionSupport {
        connection.executeInsert 'insert into tickets_comments(message,ticket_id,createdBy) values (?,?,?)', params
        def ticket = connection.firstRow("select user_id,subject from tickets  where id = ?", [comment.ticket])
        def user = connection.firstRow("select name,email from users  where id = ?", [ticket.user_id])
-       sendMail(user.name,user.email,"Ticket : ${ticket.subject}",parseTemplate("ticket_comment",[comment:comment,user:user,url : "https://app.thinktech.sn"]))
+       sendMail(user.name,user.email,"Ticket : ${ticket.subject}",parseTemplate("ticket_comment",[comment:comment,user:user,url : appURL]))
 	   connection.close()
 	   json([status: 1])
 	}
@@ -76,7 +76,7 @@ class ModuleAction extends ActionSupport {
 	   def connection = getConnection()
 	   connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where id = ?", [user.id,ticket.id]
 	   def user = connection.firstRow("select name,email from users  where id = ?", [ticket.user_id])
-       sendMail(user.name,user.email,"Ticket : ${ticket.subject} r&eacute;solu",parseTemplate("ticket",[ticket:ticket,url : "https://app.thinktech.sn"])) 
+       sendMail(user.name,user.email,"Ticket : ${ticket.subject} r&eacute;solu",parseTemplate("ticket",[ticket:ticket,url:appURL])) 
 	   connection.close()
 	   json([status : 1])
 	}

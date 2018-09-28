@@ -76,9 +76,9 @@ class ModuleAction extends ActionSupport {
 	     def project = connection.firstRow("select * from projects  where id = ?", [task.project_id])
 	     def user = connection.firstRow("select name,email from users  where id = ?", [project.user_id])
 	     if(project.status == "finished"){
-	       sendMail(user.name,user.email,"${project.subject} termin&eacute;e",parseTemplate("project",[project:project,url : "https://app.thinktech.sn"]))                     
+	       sendMail(user.name,user.email,"${project.subject} termin&eacute;e",parseTemplate("project",[project:project,url:appURL]))                     
 	     }else{
-	         sendMail(user.name,user.email,"Projet : ${project.subject}",parseTemplate("task_closed",[task:task,user:user,url : "https://app.thinktech.sn"])) 
+	         sendMail(user.name,user.email,"Projet : ${project.subject}",parseTemplate("task_closed",[task:task,user:user,url:appURL])) 
 	     }
  
 	   }else{
@@ -94,7 +94,7 @@ class ModuleAction extends ActionSupport {
        def connection = getConnection()
 	   connection.executeUpdate "update projects_tasks set status = 'in progress', startedOn = NOW() where id = ?", [task.id]
 	   def info = connection.firstRow("select u.name,u.email, p.subject from users u, projects_tasks t, projects p where u.id = p.user_id and p.id = t.project_id and t.id = ?", [task.id])
-	   sendMail(info.name,info.email,"Projet : ${info.subject}",parseTemplate("task_opened",[task:task,user:user,url : "https://app.thinktech.sn"]))
+	   sendMail(info.name,info.email,"Projet : ${info.subject}",parseTemplate("task_opened",[task:task,user:user,url:appURL]))
 	   connection.close()
        json([status: 1])
     }
@@ -114,7 +114,7 @@ class ModuleAction extends ActionSupport {
        connection.executeInsert 'insert into projects_comments(message,project_id,createdBy) values (?,?,?)', params
        def project = connection.firstRow("select user_id,subject from projects  where id = ?", [comment.project])
        def user = connection.firstRow("select name,email from users  where id = ?", [project.user_id])
-       sendMail(user.name,user.email,"Projet : ${project.subject}",parseTemplate("project_comment",[comment:comment,user:user,url : "https://app.thinktech.sn"]))
+       sendMail(user.name,user.email,"Projet : ${project.subject}",parseTemplate("project_comment",[comment:comment,user:user,url:appURL]))
 	   connection.close()
 	   json([status: 1])
 	}

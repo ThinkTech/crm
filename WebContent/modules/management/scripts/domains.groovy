@@ -59,7 +59,7 @@ class ModuleAction extends ActionSupport {
 	    def connection = getConnection()
 	    connection.executeUpdate "update domains set status = 'finished', active = true, registeredOn = Now() where id = ?", [domain.id] 
 	    def user = connection.firstRow("select * from users where id = ?", [domain.user_id])
-	    sendMail(user.name,user.email,"Enregistrement du domaine ${domain.name} pour ${domain.year} an termin&eacute;",parseTemplate("domain_registration",[domain:domain,url : "https://app.thinktech.sn"]))
+	    sendMail(user.name,user.email,"Enregistrement du domaine ${domain.name} pour ${domain.year} an termin&eacute;",parseTemplate("domain_registration",[domain:domain,url : appURL]))
 	    connection.close()
 	    json([status: 1])
 	}
@@ -98,7 +98,7 @@ class ModuleAction extends ActionSupport {
 		   post.setEntity(new StringEntity(stringify(body)))
 		   def response = client.execute(post)
 		   if(response.statusLine.statusCode == 200){
-            sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",parseTemplate("domain",[order:order,url : "https://app.thinktech.sn"]))
+            sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",parseTemplate("domain",[order:order,url:appURL]))
            }
 	       else{         
 			status = 0
@@ -134,7 +134,7 @@ class ModuleAction extends ActionSupport {
               }
               return false
             }   
-            sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",parseTemplate("email_creation",[order:order,url : "https://app.thinktech.sn"]))
+            sendMail(user.name,user.email,"Cr&eacute;ation compte email pour le domaine ${order.domain} en cours",parseTemplate("email_creation",[order:order,url:appURL]))
          }
          else {
              status = 0
