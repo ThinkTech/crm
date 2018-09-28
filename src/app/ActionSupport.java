@@ -23,7 +23,7 @@ public class ActionSupport extends org.metamorphosis.core.ActionSupport {
 	}
 	
 	public String getCrmURL() {
-		return "https://thinktech-crm.herokuapp.com";
+		return getBaseUrl();
 	}
 
 }
