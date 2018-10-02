@@ -1,8 +1,6 @@
 package app;
 
 import java.util.Map;
-
-import javax.sql.DataSource;
 import groovy.sql.Sql;
 import groovy.text.markup.MarkupTemplateEngine;
 
@@ -10,7 +8,7 @@ import groovy.text.markup.MarkupTemplateEngine;
 public class ActionSupport extends org.metamorphosis.core.ActionSupport {
 	
 	public Object getConnection()  {
-		 return new Sql((DataSource) getDataSource());	
+		 return new Sql(getDataSource());	
     }
 	
 	@SuppressWarnings("rawtypes")
