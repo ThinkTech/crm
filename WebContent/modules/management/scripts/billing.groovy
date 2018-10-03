@@ -6,7 +6,6 @@ class ModuleAction extends ActionSupport {
        request.setAttribute("total",bills.size())
        request.setAttribute("payed",connection.firstRow("select count(*) AS num from bills where status = 'finished'").num)
        request.setAttribute("unpayed",connection.firstRow("select count(*) AS num from bills where status = 'stand by'").num)
-       connection.close()
        SUCCESS
     }
     
@@ -20,7 +19,6 @@ class ModuleAction extends ActionSupport {
 	   }else{
 	   	 bill.user = connection.firstRow("select u.* from users u, bills b where u.structure_id = b.structure_id and u.owner = true and b.id = ?", [id])
 	   }
-	   connection.close()
 	   json(bill)
 	}
 	

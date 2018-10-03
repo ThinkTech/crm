@@ -29,13 +29,11 @@ class ModuleAction extends ActionSupport {
        request.setAttribute("total",domains.size())
        request.setAttribute("registered",connection.firstRow("select count(*) AS num from domains where status = 'finished'").num)
        request.setAttribute("unregistered",connection.firstRow("select count(*) AS num from domains where status != 'finished'").num)
-       connection.close()
        SUCCESS
     }
     
     def getDomainInfo(){
        def id = getParameter("id")
-	   
 	   def domain = connection.firstRow("select d.*,u.email as authorEmail,u.name as author, s.name as structure from domains d, users u, structures s where s.id = u.structure_id and d.id = ? and d.user_id = u.id", [id])
 	   def info = connection.firstRow("select zoid from structures_infos where id = ?", [domain.structure_id])
 	   if(info) domain.zoid = info.zoid
@@ -49,29 +47,24 @@ class ModuleAction extends ActionSupport {
 	     def bill = connection.firstRow("select status from bills where status !='finished' and structure_id = ?", [domain.structure_id])
          domain.billStatus = bill ? bill.status : "finished"; 
        }
-	   connection.close()
 	   json(domain)
 	}
 	
 	def registerDomain(){
 	    def domain = parse(request)
-	    
 	    connection.executeUpdate "update domains set status = 'finished', active = true, registeredOn = Now() where id = ?", [domain.id] 
 	    def user = connection.firstRow("select * from users where id = ?", [domain.user_id])
 	    sendMail(user.name,user.email,"Enregistrement du domaine ${domain.name} pour ${domain.year} an termin&eacute;",parseTemplate("domain_registration",[domain:domain,url : appURL]))
-	    connection.close()
 	    json([status: 1])
 	}
 	
 	def activateMailOffer(){
 	     def order = parse(request)
-	     
 	     connection.executeUpdate "update domains set emailActivatedOn = Now() where id = ?", [order.id]
 	     connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where service = 'mailhosting' and product_id = ?", [user.id,order.id]
 	     def user_id = connection.firstRow("select user_id from domains where id = ?", [order.id]).user_id
 	     def user = connection.firstRow("select * from users where id = ?", [user_id])
 	     sendMail(user.name,user.email,"Configuration email pour le domaine ${order.domain} termin&eacute;e",parseTemplate("email_activation",[order:order]))
-		 connection.close()
 	     json([status: 1])
 	}
 	
@@ -143,7 +136,6 @@ class ModuleAction extends ActionSupport {
 		   connection.executeUpdate "update domains set email = ?, emailAccountCreated = true where id = ?", [order.email,order.id]
 	       connection.executeUpdate "update tickets set progression = 50 where service = 'mailhosting' and product_id = ?", [order.id] 
 		 }
-	     connection.close()
 	     if(status){
 	        json([status: status]) 
 	     }else{

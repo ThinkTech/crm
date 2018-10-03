@@ -8,7 +8,6 @@ class ModuleAction extends ActionSupport {
        request.setAttribute("total",projects.size())
        request.setAttribute("active",connection.firstRow("select count(*) AS num from projects where status = 'in progress'").num)
        request.setAttribute("unactive",connection.firstRow("select count(*) AS num from projects where status = 'stand by'").num)
-       connection.close()
        SUCCESS
     }
     
@@ -16,7 +15,6 @@ class ModuleAction extends ActionSupport {
        def project = parse(request)
 	   connection.executeUpdate "update projects set status = 'in progress', startedOn = Now() where id = ?", [project.id]
 	   connection.executeUpdate "update domains set status = if(status = 'stand by', 'in progress', status) where id = ?", [project.domain_id] 
-	   connection.close()
        json([status: 1])
     }
 	
@@ -58,7 +56,6 @@ class ModuleAction extends ActionSupport {
           task.info = task.info ? task.info : "aucune information" 
           project.tasks << task
        })
-	   connection.close() 
 	   json(project)
 	}
 	
@@ -76,12 +73,10 @@ class ModuleAction extends ActionSupport {
 	     }else{
 	         sendMail(user.name,user.email,"Projet : ${project.subject}",parseTemplate("task_closed",[task:task,user:user,url:appURL])) 
 	     }
- 
 	   }else{
          connection.executeUpdate "update projects set progression = (select (count(*) * 10) from projects_tasks p where p.status = 'finished' and p.project_id = ?) where id = ?", [task.project_id,task.project_id]
          connection.executeUpdate "update projects set closedOn = null,status = 'in progress' where id = ?", [task.project_id]
 	   }
-	   connection.close()
        json([status: 1])
     }
     
@@ -90,14 +85,12 @@ class ModuleAction extends ActionSupport {
 	   connection.executeUpdate "update projects_tasks set status = 'in progress', startedOn = NOW() where id = ?", [task.id]
 	   def info = connection.firstRow("select u.name,u.email, p.subject from users u, projects_tasks t, projects p where u.id = p.user_id and p.id = t.project_id and t.id = ?", [task.id])
 	   sendMail(info.name,info.email,"Projet : ${info.subject}",parseTemplate("task_opened",[task:task,user:user,url:appURL]))
-	   connection.close()
        json([status: 1])
     }
     	
 	def updateProjectPriority(){
 	    def project = parse(request) 
-	    connection.executeUpdate "update projects set priority = ? where id = ?", [project.priority,project.id] 
-	    connection.close()
+	    connection.executeUpdate "update projects set priority = ? where id = ?", [project.priority,project.id]
 		json([status: 1])
 	}
 	
@@ -108,7 +101,6 @@ class ModuleAction extends ActionSupport {
        def project = connection.firstRow("select user_id,subject from projects  where id = ?", [comment.project])
        def user = connection.firstRow("select name,email from users  where id = ?", [project.user_id])
        sendMail(user.name,user.email,"Projet : ${project.subject}",parseTemplate("project_comment",[comment:comment,user:user,url:appURL]))
-	   connection.close()
 	   json([status: 1])
 	}
 	
@@ -118,14 +110,12 @@ class ModuleAction extends ActionSupport {
        connection.withBatch(query){ ps ->
          for(def document : upload.documents) ps.addBatch(document.name,document.size,upload.id,user.id)
        }
-	   connection.close()
 	   json([status: 1])
 	}
 	
 	def downloadDocument(){
 	   def project_id = getParameter("project_id")
 	   def structure_id = connection.firstRow("select structure_id from projects where id = "+project_id).structure_id
-       connection.close()
 	   def folder = "structure_"+structure_id+"/"+"project_"+project_id
 	   def name = getParameter("name")
 	   response.contentType = context.getMimeType(name)
@@ -137,7 +127,6 @@ class ModuleAction extends ActionSupport {
 	def updateProjectDescription(){
 	   def project = parse(request)
 	   connection.executeUpdate "update projects set description = ? where id = ?", [project.description,project.id] 
-	   connection.close()
 	   json([status: 1])
 	}
 	

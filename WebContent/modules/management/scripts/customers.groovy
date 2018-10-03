@@ -6,7 +6,6 @@ class ModuleAction extends ActionSupport {
        request.setAttribute("total",customers.size())
        request.setAttribute("active",connection.firstRow("select count(*) AS num from users u, accounts c where u.type = 'customer' and u.owner = true and c.activated = true and u.id = c.user_id").num)
        request.setAttribute("unactive",connection.firstRow("select count(*) AS num from users u, accounts c where u.type = 'customer' and u.owner = true and c.activated = false and u.id = c.user_id").num)
-       connection.close()  
        SUCCESS
     }
     
@@ -16,7 +15,6 @@ class ModuleAction extends ActionSupport {
 	   customer.telephone = customer.telephone ? customer.telephone : "&nbsp;" 
        customer.profession = customer.profession ? customer.profession : "&nbsp;"
 	   customer.createdOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(customer.createdOn)
-	   connection.close()
 	   json(customer)
 	}
 	

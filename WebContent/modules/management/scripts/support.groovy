@@ -6,7 +6,6 @@ class ModuleAction extends ActionSupport {
        request.setAttribute("total",tickets.size())
        request.setAttribute("solved",connection.firstRow("select count(*) AS num from tickets where status = 'finished'").num)
        request.setAttribute("unsolved",connection.firstRow("select count(*) AS num from tickets where status != 'finished'").num)
-       connection.close()
        SUCCESS
     }
 	
@@ -29,7 +28,6 @@ class ModuleAction extends ActionSupport {
           comment.icon = comment.type == 'customer' ? 'user' : 'address-book'
           ticket.comments << comment
        })
-	   connection.close()
 	   json(ticket)
 	}
 	
@@ -40,28 +38,24 @@ class ModuleAction extends ActionSupport {
        def ticket = connection.firstRow("select user_id,subject from tickets  where id = ?", [comment.ticket])
        def user = connection.firstRow("select name,email from users  where id = ?", [ticket.user_id])
        sendMail(user.name,user.email,"Ticket : ${ticket.subject}",parseTemplate("ticket_comment",[comment:comment,user:user,url : appURL]))
-	   connection.close()
 	   json([status: 1])
 	}
 	
 	def updateTicketPriority(){
 	    def ticket = parse(request) 
-	    connection.executeUpdate "update tickets set priority = ? where id = ?", [ticket.priority,ticket.id] 
-	    connection.close()
+	    connection.executeUpdate "update tickets set priority = ? where id = ?", [ticket.priority,ticket.id]
 		json([status: 1])
 	}
 	
 	def updateTicketProgression(){
 	    def ticket = parse(request)
 	    connection.executeUpdate "update tickets set progression = ? where id = ?", [ticket.progression,ticket.id] 
-	    connection.close()
 		json([status: 1])
 	}
 	
 	def openTicket(){
 	   def ticket = parse(request)
-	   connection.executeUpdate "update tickets set status = 'in progress', startedOn = Now() where id = ?", [ticket.id] 
-	   connection.close()
+	   connection.executeUpdate "update tickets set status = 'in progress', startedOn = Now() where id = ?", [ticket.id]
 	   json([status : 1])
 	}
 	
@@ -70,7 +64,6 @@ class ModuleAction extends ActionSupport {
 	   connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where id = ?", [user.id,ticket.id]
 	   def user = connection.firstRow("select name,email from users  where id = ?", [ticket.user_id])
        sendMail(user.name,user.email,"Ticket : ${ticket.subject} r&eacute;solu",parseTemplate("ticket",[ticket:ticket,url:appURL])) 
-	   connection.close()
 	   json([status : 1])
 	}
 	

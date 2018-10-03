@@ -5,7 +5,6 @@ class ModuleAction extends ActionSupport {
        request.setAttribute("projects_count",connection.firstRow("select count(*) AS num from projects where status = 'in progress'").num)
        request.setAttribute("tickets_unsolved",connection.firstRow("select count(*) AS num from tickets where status != 'finished'").num)
        request.setAttribute("domains_count",connection.firstRow("select count(*) AS num from domains where status != 'finished'").num)
-       connection.close()
    	   SUCCESS
    }
 }
