@@ -16,7 +16,7 @@ public class ActionSupport extends org.metamorphosis.core.ActionSupport {
 			 request.setAttribute("connection",connection);
 		 }
 		 return connection;	
-   }
+    }
 	
 	@SuppressWarnings("rawtypes")
 	public String parseTemplate(String template, Map map) throws Exception {
