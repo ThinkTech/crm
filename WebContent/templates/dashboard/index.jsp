@@ -33,7 +33,7 @@
      <h1><a><span>T</span>hinkTech</a></h1>  
 		    <div class="menu">
 		      <ul id="menu">
-		      <s:iterator value="modules" var="module">
+		      <s:iterator value="#request.modules" var="module">
 		      <s:iterator value="#module.getMenus('main')" var="menu">
 		   	         <s:iterator value="#menu.menuItems" var="item">
 						<li><a href="${item.url}" class="${item == activeItem ? 'active' : ''}"><i class="fa fa-${item.icon}"></i><span>${item.label}</span></a></li>
