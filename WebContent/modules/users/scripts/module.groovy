@@ -15,7 +15,7 @@ class ModuleAction extends ActionSupport {
 	   if(user) {
 	    user.structure = connection.firstRow("select * from structures where id = ?", [user.structure_id])
         if(user.activated){
-           session.user = user
+          session.user = user
           json([url: contextPath+"/dashboard"])   
         }
 	   	else {
