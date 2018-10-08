@@ -3,24 +3,22 @@ import static org.apache.commons.io.FileUtils.byteCountToDisplaySize as byteCoun
 class ModuleAction extends ActionSupport {
 
    def showProjects(){
-       def projects = connection.rows("select p.id,p.subject,p.plan,p.date,p.status,p.progression, u.name as author, s.name as structure from projects p, users u, structures s where p.user_id = u.id and u.structure_id = s.id order by p.date DESC", [])
-       request.setAttribute("projects",projects)  
-       request.setAttribute("total",projects.size())
-       request.setAttribute("active",connection.firstRow("select count(*) AS num from projects where status = 'in progress'").num)
-       request.setAttribute("unactive",connection.firstRow("select count(*) AS num from projects where status = 'stand by'").num)
+       request.projects = connection.rows("select p.id,p.subject,p.plan,p.date,p.status,p.progression, u.name as author, s.name as structure from projects p, users u, structures s where p.user_id = u.id and u.structure_id = s.id order by p.date DESC", [])
+       request.total = request.projects.size()
+       request.active = connection.firstRow("select count(*) AS num from projects where status = 'in progress'").num
+       request.unactive = connection.firstRow("select count(*) AS num from projects where status = 'stand by'").num
        SUCCESS
     }
     
     def openProject(){
-       def project = parse(request)
+       def project = request.body
 	   connection.executeUpdate "update projects set status = 'in progress', startedOn = Now() where id = ?", [project.id]
 	   connection.executeUpdate "update domains set status = if(status = 'stand by', 'in progress', status) where id = ?", [project.domain_id] 
        json([status: 1])
     }
 	
 	def getProjectInfo(){
-	   def id = getParameter("id")
-	   def project = connection.firstRow("select p.*,u.name,u.email,d.name as domain from projects p,users u, domains d where p.id = ? and p.user_id = u.id and p.domain_id = d.id", [id])
+	   def project = connection.firstRow("select p.*,u.name,u.email,d.name as domain from projects p,users u, domains d where p.id = ? and p.user_id = u.id and p.domain_id = d.id", [request.id])
 	   if(project.status == 'finished'){
 	      project.startedOn = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(project.startedOn)
 	      project.end = project.closedOn
@@ -60,7 +58,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
     def updateTask(){
-       def task = parse(request)
+       def task = request.body
 	   connection.executeUpdate "update projects_tasks set status = ?, progression = ?, info = ?, closedOn = if(? = 100,NOW(),null) where id = ?", [task.status,task.progression,task.info,task.progression,task.id] 
 	   if(task.status == 'finished') {
 	     connection.executeUpdate "update projects set progression = (select (count(*) * 10) from projects_tasks p where p.status = 'finished' and p.project_id = ?) where id = ?", [task.project_id,task.project_id]
@@ -81,7 +79,7 @@ class ModuleAction extends ActionSupport {
     }
     
      def openTask(){
-       def task = parse(request)
+       def task = request.body
 	   connection.executeUpdate "update projects_tasks set status = 'in progress', startedOn = NOW() where id = ?", [task.id]
 	   def info = connection.firstRow("select u.name,u.email, p.subject from users u, projects_tasks t, projects p where u.id = p.user_id and p.id = t.project_id and t.id = ?", [task.id])
 	   sendMail(info.name,info.email,"Projet : ${info.subject}",parseTemplate("task_opened",[task:task,user:user,url:appURL]))
@@ -89,13 +87,13 @@ class ModuleAction extends ActionSupport {
     }
     	
 	def updateProjectPriority(){
-	    def project = parse(request) 
+	    def project = request.body 
 	    connection.executeUpdate "update projects set priority = ? where id = ?", [project.priority,project.id]
 		json([status: 1])
 	}
 	
 	def addComment(){
-	   def comment = parse(request) 
+	   def comment = request.body 
 	   def params = [comment.message,comment.project,user.id]
        connection.executeInsert 'insert into projects_comments(message,project_id,createdBy) values (?,?,?)', params
        def project = connection.firstRow("select user_id,subject from projects  where id = ?", [comment.project])
@@ -105,7 +103,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def saveDocuments(){
-	   def upload = parse(request) 
+	   def upload = request.body 
 	   def query = 'insert into documents(name,size,project_id,createdBy) values (?,?,?,?)'
        connection.withBatch(query){ ps ->
          for(def document : upload.documents) ps.addBatch(document.name,document.size,upload.id,user.id)
@@ -114,10 +112,10 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def downloadDocument(){
-	   def project_id = getParameter("project_id")
+	   def project_id = request.project_id
 	   def structure_id = connection.firstRow("select structure_id from projects where id = "+project_id).structure_id
 	   def folder = "structure_"+structure_id+"/"+"project_"+project_id
-	   def name = getParameter("name")
+	   def name = request.name
 	   response.contentType = context.getMimeType(name)
 	   response.setHeader("Content-disposition","attachment; filename=$name")
 	   def fileManager = new FileManager()
@@ -125,7 +123,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def updateProjectDescription(){
-	   def project = parse(request)
+	   def project = request.body
 	   connection.executeUpdate "update projects set description = ? where id = ?", [project.description,project.id] 
 	   json([status: 1])
 	}

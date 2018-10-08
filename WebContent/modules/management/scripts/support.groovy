@@ -1,16 +1,15 @@
 class ModuleAction extends ActionSupport {
 	
 	def showTickets(){
-       def tickets = connection.rows("select t.id,t.subject,t.message,t.date,t.service,t.status,t.progression, s.name as structure from tickets t, users u, structures s where t.user_id = u.id  and u.structure_id = s.id order by t.date DESC", [])
-       request.setAttribute("tickets",tickets)  
-       request.setAttribute("total",tickets.size())
-       request.setAttribute("solved",connection.firstRow("select count(*) AS num from tickets where status = 'finished'").num)
-       request.setAttribute("unsolved",connection.firstRow("select count(*) AS num from tickets where status != 'finished'").num)
+       request.tickets = connection.rows("select t.id,t.subject,t.message,t.date,t.service,t.status,t.progression, s.name as structure from tickets t, users u, structures s where t.user_id = u.id  and u.structure_id = s.id order by t.date DESC", [])
+       request.total = request.tickets.size()
+       request.solved = connection.firstRow("select count(*) AS num from tickets where status = 'finished'").num
+       request.unsolved = connection.firstRow("select count(*) AS num from tickets where status != 'finished'").num
        SUCCESS
     }
 	
 	def getTicketInfo(){
-	   def id = getParameter("id")
+	   def id = request.id
 	   def ticket = connection.firstRow("select t.*, u.email,u.name as author from tickets t,users u where t.id = ? and t.user_id = u.id", [id])
 	   ticket.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(ticket.date)
 	   if(ticket.status == "in progress" || ticket.status == "finished"){
@@ -32,7 +31,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def addTicketComment(){
-	   def comment = parse(request)
+	   def comment = request.body
 	   def params = [comment.message,comment.ticket,user.id]
        connection.executeInsert 'insert into tickets_comments(message,ticket_id,createdBy) values (?,?,?)', params
        def ticket = connection.firstRow("select user_id,subject from tickets  where id = ?", [comment.ticket])
@@ -42,25 +41,25 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def updateTicketPriority(){
-	    def ticket = parse(request) 
+	    def ticket = request.body 
 	    connection.executeUpdate "update tickets set priority = ? where id = ?", [ticket.priority,ticket.id]
 		json([status: 1])
 	}
 	
 	def updateTicketProgression(){
-	    def ticket = parse(request)
+	    def ticket = request.body
 	    connection.executeUpdate "update tickets set progression = ? where id = ?", [ticket.progression,ticket.id] 
 		json([status: 1])
 	}
 	
 	def openTicket(){
-	   def ticket = parse(request)
+	   def ticket = request.body
 	   connection.executeUpdate "update tickets set status = 'in progress', startedOn = Now() where id = ?", [ticket.id]
 	   json([status : 1])
 	}
 	
 	def closeTicket(){
-	   def ticket = parse(request)
+	   def ticket = request.body
 	   connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where id = ?", [user.id,ticket.id]
 	   def user = connection.firstRow("select name,email from users  where id = ?", [ticket.user_id])
        sendMail(user.name,user.email,"Ticket : ${ticket.subject} r&eacute;solu",parseTemplate("ticket",[ticket:ticket,url:appURL])) 

@@ -8,7 +8,7 @@ import org.apache.http.entity.StringEntity
 class ModuleAction extends ActionSupport {
 
    def showDomains(){
-       def domains = connection.rows("select d.id,d.name,d.year,d.date,d.price,d.status,d.emailOn,d.emailActivatedOn,u.name as author, s.name as structure from domains d, users u, structures s where d.user_id = u.id and u.structure_id = s.id order by date DESC",[])
+       request.domains = connection.rows("select d.id,d.name,d.year,d.date,d.price,d.status,d.emailOn,d.emailActivatedOn,u.name as author, s.name as structure from domains d, users u, structures s where d.user_id = u.id and u.structure_id = s.id order by date DESC",[])
        def client = HttpClientBuilder.create().build()
 	   def get = new HttpGet("https://mail.zoho.com/api/organization?mode=getCustomerOrgDetails")
 	   get.setHeader("Accept", "application/json")
@@ -16,7 +16,7 @@ class ModuleAction extends ActionSupport {
        def response = client.execute(get)
        if(response.statusLine.statusCode == 200){
           def data = parse(response.entity.content).data
-          domains.each { domain ->
+          request.domains.each { domain ->
             domain.verified = false
             data.each { result ->
               if(domain.name == result.domainName){
@@ -25,16 +25,14 @@ class ModuleAction extends ActionSupport {
             }
          }  
        }
-       request.setAttribute("domains",domains)  
-       request.setAttribute("total",domains.size())
-       request.setAttribute("registered",connection.firstRow("select count(*) AS num from domains where status = 'finished'").num)
-       request.setAttribute("unregistered",connection.firstRow("select count(*) AS num from domains where status != 'finished'").num)
+       request.total = request.domains.size()
+       request.registered = connection.firstRow("select count(*) AS num from domains where status = 'finished'").num
+       request.unregistered = connection.firstRow("select count(*) AS num from domains where status != 'finished'").num
        SUCCESS
     }
     
     def getDomainInfo(){
-       def id = getParameter("id")
-	   def domain = connection.firstRow("select d.*,u.email as authorEmail,u.name as author, s.name as structure from domains d, users u, structures s where s.id = u.structure_id and d.id = ? and d.user_id = u.id", [id])
+       def domain = connection.firstRow("select d.*,u.email as authorEmail,u.name as author, s.name as structure from domains d, users u, structures s where s.id = u.structure_id and d.id = ? and d.user_id = u.id", [request.id])
 	   def info = connection.firstRow("select zoid from structures_infos where id = ?", [domain.structure_id])
 	   if(info) domain.zoid = info.zoid
 	   domain.date = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(domain.date)
@@ -51,7 +49,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def registerDomain(){
-	    def domain = parse(request)
+	    def domain = request.body
 	    connection.executeUpdate "update domains set status = 'finished', active = true, registeredOn = Now() where id = ?", [domain.id] 
 	    def user = connection.firstRow("select * from users where id = ?", [domain.user_id])
 	    sendMail(user.name,user.email,"Enregistrement du domaine ${domain.name} pour ${domain.year} an termin&eacute;",parseTemplate("domain_registration",[domain:domain,url : appURL]))
@@ -59,7 +57,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def activateMailOffer(){
-	     def order = parse(request)
+	     def order = request.body
 	     connection.executeUpdate "update domains set emailActivatedOn = Now() where id = ?", [order.id]
 	     connection.executeUpdate "update tickets set progression = 100, status = 'finished', closedOn = NOW(), closedBy = ? where service = 'mailhosting' and product_id = ?", [user.id,order.id]
 	     def user_id = connection.firstRow("select user_id from domains where id = ?", [order.id]).user_id
@@ -69,7 +67,7 @@ class ModuleAction extends ActionSupport {
 	}
 	
 	def createMailAccount(){
-	     def order = parse(request)
+	     def order = request.body
 	     def user_id = connection.firstRow("select user_id from domains where id = ?", [order.id]).user_id
 	     def user = connection.firstRow("select u.*, s.name as structure from users u, structures s where u.id = ? and s.id = u.structure_id", [user_id])
 	     def status = 1
