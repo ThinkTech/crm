@@ -1,15 +1,10 @@
 package app;
 
 import java.util.Map;
-import groovy.sql.Sql;
 import groovy.text.markup.MarkupTemplateEngine;
 
 @SuppressWarnings("serial")
 public class ActionSupport extends org.metamorphosis.core.ActionSupport {
-	
-	public Sql getConnection()  {
-		 return (Sql) getRequest().getAttribute("connection");
-    }
 	
 	@SuppressWarnings("rawtypes")
 	public String parseTemplate(String template, Map map) throws Exception {
