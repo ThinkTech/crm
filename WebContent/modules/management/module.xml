@@ -3,32 +3,32 @@
   <url>dashboard</url>
   <type>back-end</type>
   <actions>
-    <action url="customers" page="customers" method="showCustomers" script="customers.groovy"/>
-    <action url="customers/info"  method="getCustomerInfo" script="customers.groovy"/>
-    <action url="projects" page="projects" method="showProjects" script="projects.groovy"/>
-    <action url="projects/open"  method="openProject" script="projects.groovy"/>
-    <action url="projects/info"  method="getProjectInfo" script="projects.groovy"/>
-    <action url="projects/documents/save"  method="saveDocuments" script="projects.groovy"/>
-    <action url="projects/documents/download"  method="downloadDocument" script="projects.groovy"/>
-    <action url="projects/description/update"  method="updateProjectDescription" script="projects.groovy"/>
-    <action url="projects/comments/create"  method="addComment" script="projects.groovy"/>
-    <action url="projects/priority/update"  method="updateProjectPriority" script="projects.groovy"/>
-    <action url="projects/tasks/update"  method="updateTask" script="projects.groovy"/>
-    <action url="projects/tasks/open"  method="openTask" script="projects.groovy"/>
-    <action url="domains"  page="domains" method="showDomains" script="domains.groovy"/>
-    <action url="domains/info"  method="getDomainInfo" script="domains.groovy"/>
-    <action url="domains/register"  method="registerDomain" script="domains.groovy"/>
-     <action url="domains/createMailAccount"  method="createMailAccount" script="domains.groovy"/>
-    <action url="domains/activateMailOffer"  method="activateMailOffer" script="domains.groovy"/>
-    <action url="support"  page="support" method="showTickets" script="support.groovy"/>
-    <action url="support/tickets/open"  method="openTicket" script="support.groovy"/>
-    <action url="support/tickets/info"  method="getTicketInfo" script="support.groovy"/>
-    <action url="support/tickets/comment"  method="addTicketComment" script="support.groovy"/>
-    <action url="support/tickets/close"  method="closeTicket" script="support.groovy"/>
-    <action url="tickets/priority/update"  method="updateTicketPriority" script="support.groovy"/>
-    <action url="tickets/progression/update"  method="updateTicketProgression" script="support.groovy"/>
-    <action url="billing"  page="billing" method="showBills" script="billing.groovy"/>
-    <action url="billing/info"  method="getBillInfo" script="billing.groovy"/>
+    <action url="customers" page="customers" method="showCustomers" script="customers"/>
+    <action url="customers/info"  method="getCustomerInfo" script="customers"/>
+    <action url="projects" page="projects" method="showProjects" script="projects"/>
+    <action url="projects/open"  method="openProject" script="projects"/>
+    <action url="projects/info"  method="getProjectInfo" script="projects"/>
+    <action url="projects/documents/save"  method="saveDocuments" script="projects"/>
+    <action url="projects/documents/download"  method="downloadDocument" script="projects"/>
+    <action url="projects/description/update"  method="updateProjectDescription" script="projects"/>
+    <action url="projects/comments/create"  method="addComment" script="projects"/>
+    <action url="projects/priority/update"  method="updateProjectPriority" script="projects"/>
+    <action url="projects/tasks/update"  method="updateTask" script="projects"/>
+    <action url="projects/tasks/open"  method="openTask" script="projects"/>
+    <action url="domains"  page="domains" method="showDomains" script="domains"/>
+    <action url="domains/info"  method="getDomainInfo" script="domains"/>
+    <action url="domains/register"  method="registerDomain" script="domains"/>
+     <action url="domains/createMailAccount"  method="createMailAccount" script="domains"/>
+    <action url="domains/activateMailOffer"  method="activateMailOffer" script="domains"/>
+    <action url="support"  page="support" method="showTickets" script="support"/>
+    <action url="support/tickets/open"  method="openTicket" script="support"/>
+    <action url="support/tickets/info"  method="getTicketInfo" script="support"/>
+    <action url="support/tickets/comment"  method="addTicketComment" script="support"/>
+    <action url="support/tickets/close"  method="closeTicket" script="support"/>
+    <action url="tickets/priority/update"  method="updateTicketPriority" script="support"/>
+    <action url="tickets/progression/update"  method="updateTicketProgression" script="support"/>
+    <action url="billing"  page="billing" method="showBills" script="billing"/>
+    <action url="billing/info"  method="getBillInfo" script="billing"/>
   </actions>
   
   <menus>
