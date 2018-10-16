@@ -203,7 +203,7 @@
 			 <div class="icons" data-path="${path}"></div>
    		 	</div>
    		 	<div class="document-upload">
-   		 	  <form method="POST" enctype="multipart/form-data" action="documents/upload.html">
+   		 	  <form action="documents/upload.html">
    		 	   <fieldset>
    		 	    <span class="text-right"><i class="fa fa-file"></i> Document 1 </span> <input name="file1" type="file" required>
 				<span class="text-right"><i class="fa fa-file"></i> Document 2 </span> <input name="file2" type="file">
