@@ -114,12 +114,11 @@ class ModuleAction extends ActionSupport {
 	def downloadDocument(){
 	   def project_id = request.project_id
 	   def structure_id = connection.firstRow("select structure_id from projects where id = "+project_id).structure_id
-	   def folder = "structure_"+structure_id+"/"+"project_"+project_id
 	   def name = request.name
 	   response.contentType = context.getMimeType(name)
 	   response.setHeader("Content-disposition","attachment; filename=$name")
-	   def fileManager = new FileManager()
-	   fileManager.download(folder+"/"+name,response.outputStream)
+	   def fileManager = new FileManager("structure_"+structure_id+"/"+"project_"+project_id)
+	   fileManager.download(name,response.outputStream)
 	}
 	
 	def updateProjectDescription(){
