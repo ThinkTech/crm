@@ -19,12 +19,12 @@ public class UploadServlet extends HttpServlet {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		if(isMultipart){
 			try {
-				String directory = "structure_"+request.getParameter("structure_id")+"/"+"project_"+request.getParameter("project_id");
+				String folder = "structure_"+request.getParameter("structure_id")+"/"+"project_"+request.getParameter("project_id");
+				FileManager manager = new FileManager(folder);
 				FileItemIterator it = new ServletFileUpload().getItemIterator(request);
-				FileManager manager = new FileManager();
 				while(it.hasNext()) {
 					FileItemStream item = it.next(); 
-					manager.upload(directory+"/"+new File(item.getName()).getName(),item.openStream());
+					manager.upload(new File(item.getName()).getName(),item.openStream());
 				}
 			}catch(Exception e){
 			}
