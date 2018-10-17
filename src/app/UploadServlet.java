@@ -20,13 +20,11 @@ public class UploadServlet extends HttpServlet {
 		if(isMultipart){
 			try {
 				String directory = "structure_"+request.getParameter("structure_id")+"/"+"project_"+request.getParameter("project_id");
-				ServletFileUpload upload = new ServletFileUpload();
-				FileItemIterator iter = upload.getItemIterator(request);
+				FileItemIterator iter = new ServletFileUpload().getItemIterator(request);
 				FileManager manager = new FileManager();
 				while(iter.hasNext()) {
 					FileItemStream item = iter.next(); 
-					String name = new File(item.getName()).getName();
-					manager.upload(directory+"/"+name,item.openStream());
+					manager.upload(directory+"/"+new File(item.getName()).getName(),item.openStream());
 				}
 			}catch(Exception e){
 			}
