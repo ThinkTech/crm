@@ -16,8 +16,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class UploadServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
-		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-		if(isMultipart){
+		if(ServletFileUpload.isMultipartContent(request)) {
 			try {
 				String folder = "structure_"+request.getParameter("structure_id")+"/"+"project_"+request.getParameter("project_id");
 				FileManager manager = new FileManager(folder);
@@ -26,7 +25,7 @@ public class UploadServlet extends HttpServlet {
 					FileItemStream item = it.next(); 
 					manager.upload(new File(item.getName()).getName(),item.openStream());
 				}
-			}catch(Exception e){
+			}catch(Exception e) {
 			}
 		}
 		response.getWriter().write("{\"status\" : 1}");
